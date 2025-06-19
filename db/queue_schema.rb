@@ -80,7 +80,8 @@ ActiveRecord::Schema[7.1].define(version: 1) do
     t.datetime "run_at", null: false
     t.datetime "created_at", null: false
     t.index [ "job_id" ], name: "index_solid_queue_recurring_executions_on_job_id", unique: true
-    t.index [ "task_key", "run_at" ], name: "index_solid_queue_recurring_executions_on_task_key_and_run_at", unique: true
+    t.index [ "task_key", "run_at" ], name: "index_solid_queue_recurring_executions_on_task_key_and_run_at",
+                                      unique: true
   end
 
   create_table "solid_queue_recurring_tasks", force: :cascade do |t|
