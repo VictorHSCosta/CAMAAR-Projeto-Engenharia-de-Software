@@ -114,31 +114,34 @@
 ## Responsabilidades de Cada Membro
 
 ### Victor Henrique da Silva Costa
-- **Backend Development**: Desenvolvimento da API REST
-- **Banco de Dados**: Modelagem e implementação do banco de dados
-- **Autenticação**: Sistema de login e controle de acesso
 
-### Denis S.G de Araújo  
-- **Frontend Development**: Interface do usuário com React
-- **UX/UI Design**: Design da experiência do usuário
-- **Testes de Interface**: Testes automatizados do frontend
+* **Frontend com ERB**: Desenvolvimento das views utilizando HTML, CSS e JavaScript puro.
+* **Experiência do Usuário (UX)**: Estruturação de páginas intuitivas e acessíveis.
+* **Validações no Lado do Cliente**: Garante consistência dos dados antes do envio.
+
+### Denis S.G de Araújo
+
+* **Lógica de Controllers**: Criação de controllers responsáveis por gerenciar os fluxos principais da aplicação.
+* **Regras de Negócio**: Implementação direta no backend com foco nas ações dos usuários e estados das entidades.
+* **Helpers e Partials**: Organização de componentes reutilizáveis.
 
 ### Luís Eduardo Dalle Molle
-- **DevOps**: Configuração de CI/CD e deploy
-- **Infraestrutura**: Configuração de servidores e monitoramento
-- **Segurança**: Implementação de medidas de segurança
+
+* **Organização dos Models**: Criação e manutenção das entidades ActiveRecord com validações e associações.
+* **Escopos e Query Optimization**: Desenvolvimento de escopos reutilizáveis e consultas performáticas.
+* **Seeds e Migrations**: Gerenciamento do schema e população do banco de dados.
 
 ### Ryan Reis Fontenele
-- **Quality Assurance**: Testes unitários e de integração  
-- **Documentação**: Documentação técnica e de usuário
-- **Análise de Requisitos**: Levantamento e validação de requisitos
+
+* **Testes Automatizados com RSpec**: Criação de testes unitários, de request e de integração para todas as telas e módulos.
+* **Cobertura Total**: Garantia de testes para todas as funcionalidades críticas do sistema.
+* **Documentação Técnica e Funcional**: Registro completo da aplicação e seu funcionamento.
 
 ### Gabriel Henrique Barbosa de Oliveira
-- **Mobile Development**: Aplicativo mobile complementar
-- **Integração**: Integração com sistemas externos (Moodle)
-- **Performance**: Otimização de performance do sistema
 
----
+* **Módulos de Integração**: Desenvolvimento de módulos específicos para integração com sistemas externos como o Moodle.
+* **Camada de Serviços**: Separação de responsabilidades através de service objects.
+* **Manutenção da Performance**: Refino de métodos e uso eficiente de callbacks, background jobs e consultas complexas.
 
 ## Política de Branching
 
