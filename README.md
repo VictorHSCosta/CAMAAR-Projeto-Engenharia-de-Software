@@ -29,6 +29,8 @@
 
 ---
 
+# Funcionalidades do Sistema CAMAAR
+
 ## Funcionalidades Principais
 
 ### 1. Autenticação de Usuários
@@ -93,25 +95,19 @@
 
 ## Regras de Negócio
 
-### RN001 - Autenticação
-- Apenas usuários cadastrados podem acessar o sistema
-- Professores têm permissões de criação e avaliação
-- Alunos têm permissões de visualização e submissão
+1. **Usuários só podem acessar áreas permitidas de acordo com seu papel** (administrador, coordenador, docente ou discente).
+2. **Templates de formulários não podem ser excluídos** se já foram utilizados para gerar formulários instanciados.
+3. **Formulários devem ser respondidos dentro do intervalo de tempo definido** (`data_envio` até `data_fim`).
+4. **Somente alunos matriculados em uma turma associada ao formulário podem respondê-lo.**
+5. **Formulários direcionados a discentes não devem permitir identificação pessoal nas respostas** (uso obrigatório de `uuid_anonimo`).
+6. **Todas as respostas devem estar vinculadas a uma turma e a uma pergunta específica**.
+7. **Respostas incompletas ou fora do prazo não são salvas no sistema.**
+8. **Visualizações de resultados devem respeitar o papel do usuário logado**, ocultando informações sensíveis a quem não tem permissão.
+9. **O sistema não deve permitir edição de formulários já enviados por alunos.**
+10. **Backups devem ocorrer em horários agendados e manter as últimas X versões disponíveis para restauração.**
+11. **A integração com o Moodle deve sincronizar automaticamente os dados das turmas e alunos semanalmente.**
+12. **As perguntas em um formulário devem seguir a ordem definida no template.**
 
-### RN002 - Prazos
-- Atividades devem ter data de início e fim bem definidas
-- Submissões após o prazo são marcadas como atrasadas
-- Professores podem estender prazos individualmente
-
-### RN003 - Avaliação
-- Cada atividade deve ter critérios de avaliação claros
-- Notas devem ser numéricas de 0 a 10
-- Feedback textual é obrigatório para notas abaixo de 7
-
-### RN004 - Integridade dos Dados
-- Todas as submissões devem ser versionadas
-- Logs de acesso devem ser mantidos por 2 anos
-- Backup diário dos dados críticos
 
 ---
 
