@@ -85,3 +85,5 @@ node_modules/
 
 # Does not include typelizer files
 app/frontend/types
+
+.tmp/
