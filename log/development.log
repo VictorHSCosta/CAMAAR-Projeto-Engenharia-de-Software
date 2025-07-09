@@ -12,3 +12,274 @@ Completed 200 OK in 46ms (Views: 4.7ms | ActiveRecord: 0.0ms (0 queries, 0 cache
   [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (5.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2025-07-09 00:20:51.288646', '2025-07-09 00:20:51.288649') RETURNING "key" /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+Migrating to CreateUsers (20250709002019)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='Camaar'*/[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "password_digest" varchar, "name" varchar, "matricula" varchar, "role" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250709002019') RETURNING "version" /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+Started GET "/" for 127.0.0.1 at 2025-07-08 21:22:06 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/victor/.local/share/mise/installs/ruby/3.4.3/lib/ruby/gems/3.4.0/gems/railties-8.0.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/victor/.local/share/mise/installs/ruby/3.4.3/lib/ruby/gems/3.4.0/gems/railties-8.0.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.9ms | GC: 0.0ms)
+Completed 200 OK in 33ms (Views: 3.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.9ms)
+
+
+Started GET "/user" for 127.0.0.1 at 2025-07-08 21:22:10 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/user"):
+  
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-07-08 21:22:10 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "//users" for 127.0.0.1 at 2025-07-08 21:22:20 -0300
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" /*action='index',application='Camaar',controller='users'*/[0m
+  ↳ app/views/users/index.html.erb:8
+  Rendered users/index.html.erb within layouts/application (Duration: 9.1ms | GC: 2.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 33.8ms | GC: 13.6ms)
+Completed 200 OK in 73ms (Views: 35.5ms | ActiveRecord: 0.7ms (1 query, 0 cached) | GC: 20.4ms)
+
+
+Started GET "/assets/application-8b441ae0.css" for 127.0.0.1 at 2025-07-08 21:22:20 -0300
+Started GET "/assets/stimulus-loading-1fc53fe7.js" for 127.0.0.1 at 2025-07-08 21:22:20 -0300
+Started GET "/assets/controllers/application-3affb389.js" for 127.0.0.1 at 2025-07-08 21:22:20 -0300
+Started GET "/assets/controllers/hello_controller-708796bd.js" for 127.0.0.1 at 2025-07-08 21:22:20 -0300
+Started GET "/assets/controllers/index-ee64e1f1.js" for 127.0.0.1 at 2025-07-08 21:22:20 -0300
+Started GET "/assets/stimulus.min-4b1e420e.js" for 127.0.0.1 at 2025-07-08 21:22:20 -0300
+Started GET "/assets/turbo.min-3a2e143f.js" for 127.0.0.1 at 2025-07-08 21:22:20 -0300
+Started GET "/assets/application-bfcdf840.js" for 127.0.0.1 at 2025-07-08 21:22:20 -0300
+Started GET "/users" for 127.0.0.1 at 2025-07-08 21:22:26 -0300
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" /*action='index',application='Camaar',controller='users'*/[0m
+  ↳ app/views/users/index.html.erb:8
+  Rendered users/index.html.erb within layouts/application (Duration: 9.4ms | GC: 1.8ms)
+  Rendered layout layouts/application.html.erb (Duration: 11.1ms | GC: 1.8ms)
+Completed 200 OK in 20ms (Views: 11.5ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 2.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2025-07-08 21:22:27 -0300
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 12.6ms | GC: 1.3ms)
+  Rendered users/new.html.erb within layouts/application (Duration: 13.8ms | GC: 1.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 15.2ms | GC: 1.3ms)
+Completed 200 OK in 50ms (Views: 16.1ms | ActiveRecord: 3.8ms (0 queries, 0 cached) | GC: 2.7ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2025-07-08 21:22:41 -0300
+Processing by UsersController#create as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]", "user" => {"email" => "[FILTERED]", "password_digest" => "[FILTERED]", "name" => "Maria Valentina Ordonhes", "matricula" => "211212122", "role" => "1"}, "commit" => "Create User"}
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='Camaar',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:27:in 'block in UsersController#create'
+  [1m[36mUser Create (4.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "name", "matricula", "role", "created_at", "updated_at") VALUES ('dev@outlook.com', '1234', 'Maria Valentina Ordonhes', '211212122', 1, '2025-07-09 00:22:41.723368', '2025-07-09 00:22:41.723368') RETURNING "id" /*action='create',application='Camaar',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:27:in 'block in UsersController#create'
+  [1m[36mTRANSACTION (5.8ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='Camaar',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:27:in 'block in UsersController#create'
+Redirected to http://127.0.0.1:3000/users/1
+Completed 302 Found in 42ms (ActiveRecord: 11.2ms (1 query, 0 cached) | GC: 1.6ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2025-07-08 21:22:41 -0300
+Processing by UsersController#show as TURBO_STREAM
+  Parameters: {"id" => "1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Camaar',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:63:in 'UsersController#set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.4ms | GC: 0.0ms)
+  Rendered users/show.html.erb within layouts/application (Duration: 2.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | GC: 0.0ms)
+Completed 200 OK in 20ms (Views: 4.9ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2025-07-08 21:22:43 -0300
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" /*action='index',application='Camaar',controller='users'*/[0m
+  ↳ app/views/users/index.html.erb:8
+  Rendered users/_user.html.erb (Duration: 0.8ms | GC: 0.2ms)
+  Rendered users/index.html.erb within layouts/application (Duration: 3.5ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | GC: 0.2ms)
+Completed 200 OK in 16ms (Views: 5.5ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2025-07-08 21:22:45 -0300
+Processing by UsersController#show as HTML
+  Parameters: {"id" => "1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Camaar',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:63:in 'UsersController#set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.4ms | GC: 0.0ms)
+  Rendered users/show.html.erb within layouts/application (Duration: 4.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | GC: 0.0ms)
+Completed 200 OK in 24ms (Views: 5.7ms | ActiveRecord: 0.7ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2025-07-08 21:22:47 -0300
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" /*action='index',application='Camaar',controller='users'*/[0m
+  ↳ app/views/users/index.html.erb:8
+  Rendered users/_user.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered users/index.html.erb within layouts/application (Duration: 5.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.8ms | GC: 0.3ms)
+Completed 200 OK in 20ms (Views: 10.4ms | ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2025-07-08 21:22:51 -0300
+Processing by UsersController#show as HTML
+  Parameters: {"id" => "1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Camaar',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:63:in 'UsersController#set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.9ms | GC: 0.0ms)
+  Rendered users/show.html.erb within layouts/application (Duration: 4.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | GC: 0.0ms)
+Completed 200 OK in 15ms (Views: 6.0ms | ActiveRecord: 0.6ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2025-07-08 21:22:52 -0300
+Processing by UsersController#show as HTML
+  Parameters: {"id" => "1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Camaar',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:63:in 'UsersController#set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered users/show.html.erb within layouts/application (Duration: 2.4ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | GC: 0.3ms)
+Completed 200 OK in 14ms (Views: 3.7ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/users/1/edit" for 127.0.0.1 at 2025-07-08 21:22:53 -0300
+Processing by UsersController#edit as HTML
+  Parameters: {"id" => "1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='edit',application='Camaar',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:63:in 'UsersController#set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 10.2ms | GC: 0.0ms)
+  Rendered users/edit.html.erb within layouts/application (Duration: 10.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 11.3ms | GC: 0.0ms)
+Completed 200 OK in 23ms (Views: 11.7ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2025-07-08 21:22:54 -0300
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" /*action='index',application='Camaar',controller='users'*/[0m
+  ↳ app/views/users/index.html.erb:8
+  Rendered users/_user.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/index.html.erb within layouts/application (Duration: 9.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 10.0ms | GC: 0.0ms)
+Completed 200 OK in 19ms (Views: 11.6ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 1.7ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2025-07-08 21:23:03 -0300
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" /*action='index',application='Camaar',controller='users'*/[0m
+  ↳ app/views/users/index.html.erb:8
+  Rendered users/_user.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/index.html.erb within layouts/application (Duration: 3.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | GC: 0.0ms)
+Completed 200 OK in 12ms (Views: 4.2ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2025-07-08 21:23:07 -0300
+Processing by UsersController#show as HTML
+  Parameters: {"id" => "1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Camaar',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:63:in 'UsersController#set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/show.html.erb within layouts/application (Duration: 8.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.4ms | GC: 0.0ms)
+Completed 200 OK in 23ms (Views: 9.2ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2025-07-08 21:23:08 -0300
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 11.1ms | GC: 0.0ms)
+  Rendered users/new.html.erb within layouts/application (Duration: 11.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 13.2ms | GC: 0.0ms)
+Completed 200 OK in 21ms (Views: 13.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2025-07-08 21:23:17 -0300
+Processing by UsersController#create as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]", "user" => {"email" => "[FILTERED]", "password_digest" => "[FILTERED]", "name" => "dawdad", "matricula" => "wdadw213", "role" => "12"}, "commit" => "Create User"}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='Camaar',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:27:in 'block in UsersController#create'
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "name", "matricula", "role", "created_at", "updated_at") VALUES ('dev@outlook.com', 'awdawdwa', 'dawdad', 'wdadw213', 12, '2025-07-09 00:23:17.880416', '2025-07-09 00:23:17.880416') RETURNING "id" /*action='create',application='Camaar',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:27:in 'block in UsersController#create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='Camaar',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:27:in 'block in UsersController#create'
+Redirected to http://127.0.0.1:3000/users/2
+Completed 302 Found in 30ms (ActiveRecord: 0.8ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2025-07-08 21:23:17 -0300
+Processing by UsersController#show as TURBO_STREAM
+  Parameters: {"id" => "2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1 /*action='show',application='Camaar',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:63:in 'UsersController#set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/_user.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/show.html.erb within layouts/application (Duration: 1.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.4ms | GC: 0.0ms)
+Completed 200 OK in 12ms (Views: 4.7ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2025-07-08 21:23:19 -0300
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" /*action='index',application='Camaar',controller='users'*/[0m
+  ↳ app/views/users/index.html.erb:8
+  Rendered users/_user.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered users/_user.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/index.html.erb within layouts/application (Duration: 7.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 10.4ms | GC: 0.0ms)
+Completed 200 OK in 17ms (Views: 10.6ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for pp */ LIMIT 11 /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mUser Create (4.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "name", "matricula", "role", "created_at", "updated_at") VALUES ('dd@email.com', '12222', 'Tulho', '222', 2, '2025-07-09 00:24:59.224369', '2025-07-09 00:24:59.224369') RETURNING "id" /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Camaar'*/[0m
+Started GET "/users" for 127.0.0.1 at 2025-07-08 21:25:03 -0300
+Processing by UsersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" /*action='index',application='Camaar',controller='users'*/[0m
+  ↳ app/views/users/index.html.erb:8
+  Rendered users/_user.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/_user.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/_user.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered users/index.html.erb within layouts/application (Duration: 2.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | GC: 0.0ms)
+Completed 200 OK in 11ms (Views: 4.0ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
