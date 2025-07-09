@@ -62,5 +62,4 @@ group :test do
   gem 'database_cleaner-active_record'
 end
 
-gem 'rubocop', require: false
-gem 'rubocop-rails', require: false
+gem 'rspec-rails', '~> 6.0.0'
