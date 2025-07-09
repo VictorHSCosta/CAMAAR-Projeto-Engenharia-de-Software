@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :cursos
   get "evaluations/index"
   get "sessions/new"
   resources :users
