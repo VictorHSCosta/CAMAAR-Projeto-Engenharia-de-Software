@@ -65,3 +65,9 @@ end
 gem 'rspec-rails', '~> 6.0.0'
 
 gem "bcrypt", "~> 3.1"
+
+gem 'faker', '~> 3.4', '>= 3.4.2'
+
+group :development, :test do
+  gem 'factory_bot_rails'
+end
