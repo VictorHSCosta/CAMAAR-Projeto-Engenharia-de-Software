@@ -13,7 +13,7 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*
-/tmp/*
+tmp/
 !/log/.keep
 !/tmp/.keep
 
@@ -21,6 +21,7 @@
 /tmp/pids/*
 !/tmp/pids/
 !/tmp/pids/.keep
+
 
 # Ignore storage (uploaded files in development and any SQLite databases).
 /storage/*
