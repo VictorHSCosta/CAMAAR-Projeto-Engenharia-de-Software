@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       # Se estiver tudo certo, armazena o ID do usuário na sessão
       session[:user_id] = user.id
-      redirect_to root_path, notice: "Login realizado com sucesso!"
+      redirect_to evaluations_path, notice: "Login realizado com sucesso!"
     else
       # Se falhar, mostra uma mensagem de erro e renderiza o formulário de novo
       flash.now[:alert] = "Email ou senha inválidos."

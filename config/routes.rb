@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   #
 
-  root 'evaluations#index'
+  root 'sessions#new'
 
   # Rotas para a nova página de Avaliações
   get 'evaluations', to: 'evaluations#index'
