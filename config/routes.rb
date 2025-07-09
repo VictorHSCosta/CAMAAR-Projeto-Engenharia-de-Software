@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "evaluations/index"
+  get "sessions/new"
   resources :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -12,4 +14,15 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  #
+
+  root 'evaluations#index'
+
+  # Rotas para a nova página de Avaliações
+  get 'evaluations', to: 'evaluations#index'
+
+  # Rotas para o processo de login/logout
+  get    'login',   to: 'sessions#new'
+  post   'login',   to: 'sessions#create'
+  delete 'logout',  to: 'sessions#destroy' # Usamos DELETE para sair
 end

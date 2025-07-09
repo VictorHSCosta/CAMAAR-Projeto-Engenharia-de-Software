@@ -1,10 +1,7 @@
 <p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Users" %>
-
 <h1>Users</h1>
-
-<div id="users">
+<div id="users" style="margin-bottom: 20px; background-color:rgb(209, 9, 9); padding: 10px; border-radius: 5px;">
   <% @users.each do |user| %>
     <%= render user %>
     <p>
@@ -12,5 +9,4 @@
     </p>
   <% end %>
 </div>
-
 <%= link_to "New user", new_user_path %>

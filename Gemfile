@@ -63,3 +63,5 @@ group :test do
 end
 
 gem 'rspec-rails', '~> 6.0.0'
+
+gem "bcrypt", "~> 3.1"
