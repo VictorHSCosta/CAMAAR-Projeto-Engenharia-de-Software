@@ -4,7 +4,7 @@ RSpec.describe "users/edit", type: :view do
   let(:user) {
     User.create!(
       email: "MyString",
-      password_digest: "MyString",
+      password: "secret123",
       name: "MyString",
       matricula: "MyString",
       role: 1
@@ -22,7 +22,7 @@ RSpec.describe "users/edit", type: :view do
 
       assert_select "input[name=?]", "user[email]"
 
-      assert_select "input[name=?]", "user[password_digest]"
+      assert_select "input[name=?]", "user[password]"
 
       assert_select "input[name=?]", "user[name]"
 
