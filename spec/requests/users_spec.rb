@@ -13,16 +13,36 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/users", type: :request do
+  let(:user) { FactoryBot.create(:user) }
+  
+  before do
+    # Simula usuário logado
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    allow_any_instance_of(ApplicationController).to receive(:logged_in?).and_return(true)
+  end
   
   # This should return the minimal set of attributes required to create a valid
   # User. As you add validations to User, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {
+      email: "test@example.com",
+      password: "password123",
+      password_confirmation: "password123",
+      name: "Test User",
+      matricula: "12345678",
+      role: 0
+    }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {
+      email: "",
+      password: "",
+      name: "",
+      matricula: "",
+      role: ""
+    }
   }
 
   describe "GET /index" do
@@ -80,7 +100,7 @@ RSpec.describe "/users", type: :request do
     
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
         post users_url, params: { user: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(422)
       end
     
     end
@@ -112,7 +132,7 @@ RSpec.describe "/users", type: :request do
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
         user = User.create! valid_attributes
         patch user_url(user), params: { user: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(422)
       end
     
     end
