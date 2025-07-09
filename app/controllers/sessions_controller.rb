@@ -10,14 +10,21 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(email: params[:email].downcase)
+    
     # Verifica se o usuário existe E se a senha está correta
-    if user && user.authenticate(params[:password])
-      # Se estiver tudo certo, armazena o ID do usuário na sessão
-      session[:user_id] = user.id
-      redirect_to root_path, notice: "Login realizado com sucesso!"
-    else
-      # Se falhar, mostra uma mensagem de erro e renderiza o formulário de novo
-      flash.now[:alert] = "Email ou senha inválidos."
+    begin
+      if user && user.password_digest.present? && user.authenticate(params[:password])
+        # Se estiver tudo certo, armazena o ID do usuário na sessão
+        session[:user_id] = user.id
+        redirect_to evaluations_path, notice: "Login realizado com sucesso!"
+      else
+        # Se falhar, mostra uma mensagem de erro e renderiza o formulário de novo
+        flash.now[:alert] = "Email ou senha inválidos."
+        render :new, status: :unprocessable_entity
+      end
+    rescue BCrypt::Errors::InvalidHash
+      # Trata o erro de hash inválido
+      flash.now[:alert] = "Erro na autenticação. Entre em contato com o administrador."
       render :new, status: :unprocessable_entity
     end
   end

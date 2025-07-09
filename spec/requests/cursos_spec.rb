@@ -13,16 +13,27 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/cursos", type: :request do
+  let(:user) { FactoryBot.create(:user) }
+  
+  before do
+    # Simula usuário logado
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    allow_any_instance_of(ApplicationController).to receive(:logged_in?).and_return(true)
+  end
   
   # This should return the minimal set of attributes required to create a valid
   # Curso. As you add validations to Curso, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {
+      nome: "Engenharia de Software"
+    }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {
+      nome: ""
+    }
   }
 
   describe "GET /index" do
@@ -80,7 +91,7 @@ RSpec.describe "/cursos", type: :request do
     
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
         post cursos_url, params: { curso: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(422)
       end
     
     end
@@ -112,7 +123,7 @@ RSpec.describe "/cursos", type: :request do
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
         curso = Curso.create! valid_attributes
         patch curso_url(curso), params: { curso: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(422)
       end
     
     end
