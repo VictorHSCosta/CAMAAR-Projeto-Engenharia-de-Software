@@ -3,12 +3,15 @@
 AllCops:
   TargetRubyVersion: 3.2
   NewCops: enable
+  SuggestExtensions: false
   Exclude:
     - 'bin/**/*'
     - 'db/schema.rb'
+    - 'db/queue_schema.rb'
     - 'node_modules/**/*'
     - 'config/**/*'
     - 'vendor/**/*'
+    - 'lib/tasks/cucumber.rake'
 
 plugins:
   - rubocop-rails
@@ -22,3 +25,14 @@ Metrics/BlockLength:
   Exclude:
     - 'spec/**/*.rb'
     - 'db/migrate/*.rb'
+    - 'db/queue_schema.rb'
+
+Lint/EmptyBlock:
+  Exclude:
+    - 'lib/tasks/cucumber.rake'
+
+RSpec/MultipleExpectations:
+  Max: 4
+
+RSpec/ExampleLength:
+  Max: 8
