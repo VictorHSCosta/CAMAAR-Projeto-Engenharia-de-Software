@@ -1,5 +1,5 @@
 class CursosController < ApplicationController
-  before_action :set_curso, only: %i[ show edit update destroy ]
+  before_action :set_curso, only: %i[show edit update destroy]
 
   # GET /cursos or /cursos.json
   def index
@@ -7,8 +7,7 @@ class CursosController < ApplicationController
   end
 
   # GET /cursos/1 or /cursos/1.json
-  def show
-  end
+  def show; end
 
   # GET /cursos/new
   def new
@@ -16,8 +15,7 @@ class CursosController < ApplicationController
   end
 
   # GET /cursos/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /cursos or /cursos.json
   def create
@@ -58,13 +56,14 @@ class CursosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_curso
-      @curso = Curso.find(params.expect(:id))
-    end
 
-    # Only allow a list of trusted parameters through.
-    def curso_params
-      params.expect(curso: [ :nome ])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_curso
+    @curso = Curso.find(params.expect(:id))
+  end
+
+  # Only allow a list of trusted parameters through.
+  def curso_params
+    params.expect(curso: [:nome])
+  end
 end

@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(email: params[:email].downcase)
-    
+
     # Verifica se o usuário existe E se a senha está correta
     begin
       if user && user.password_digest.present? && user.authenticate(params[:password])

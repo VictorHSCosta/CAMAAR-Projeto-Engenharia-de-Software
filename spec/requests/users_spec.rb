@@ -14,17 +14,16 @@ require 'rails_helper'
 
 RSpec.describe "/users", type: :request do
   let(:user) { FactoryBot.create(:user) }
-  
+
   before do
-    # Simula usuário logado
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-    allow_any_instance_of(ApplicationController).to receive(:logged_in?).and_return(true)
+    # Simula usuário logado com Devise
+    sign_in user
   end
-  
+
   # This should return the minimal set of attributes required to create a valid
   # User. As you add validations to User, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
+  let(:valid_attributes) do
     {
       email: "test@example.com",
       password: "password123",
@@ -33,9 +32,9 @@ RSpec.describe "/users", type: :request do
       matricula: "12345678",
       role: 0
     }
-  }
+  end
 
-  let(:invalid_attributes) {
+  let(:invalid_attributes) do
     {
       email: "",
       password: "",
@@ -43,7 +42,7 @@ RSpec.describe "/users", type: :request do
       matricula: "",
       role: ""
     }
-  }
+  end
 
   describe "GET /index" do
     it "renders a successful response" do
@@ -79,9 +78,9 @@ RSpec.describe "/users", type: :request do
   describe "POST /create" do
     context "with valid parameters" do
       it "creates a new User" do
-        expect {
+        expect do
           post users_url, params: { user: valid_attributes }
-        }.to change(User, :count).by(1)
+        end.to change(User, :count).by(1)
       end
 
       it "redirects to the created user" do
@@ -92,25 +91,23 @@ RSpec.describe "/users", type: :request do
 
     context "with invalid parameters" do
       it "does not create a new User" do
-        expect {
+        expect do
           post users_url, params: { user: invalid_attributes }
-        }.to change(User, :count).by(0)
+        end.to change(User, :count).by(0)
       end
 
-    
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
         post users_url, params: { user: invalid_attributes }
         expect(response).to have_http_status(422)
       end
-    
     end
   end
 
   describe "PATCH /update" do
     context "with valid parameters" do
-      let(:new_attributes) {
+      let(:new_attributes) do
         skip("Add a hash of attributes valid for your model")
-      }
+      end
 
       it "updates the requested user" do
         user = User.create! valid_attributes
@@ -128,22 +125,20 @@ RSpec.describe "/users", type: :request do
     end
 
     context "with invalid parameters" do
-    
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
         user = User.create! valid_attributes
         patch user_url(user), params: { user: invalid_attributes }
         expect(response).to have_http_status(422)
       end
-    
     end
   end
 
   describe "DELETE /destroy" do
     it "destroys the requested user" do
       user = User.create! valid_attributes
-      expect {
+      expect do
         delete user_url(user)
-      }.to change(User, :count).by(-1)
+      end.to change(User, :count).by(-1)
     end
 
     it "redirects to the users list" do

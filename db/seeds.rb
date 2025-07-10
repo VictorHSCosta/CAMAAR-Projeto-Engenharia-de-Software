@@ -10,7 +10,7 @@ unless User.exists?(email: "admin@camaar.com")
     password_confirmation: "123456",
     name: "Administrador",
     matricula: "000000",
-    role: 0
+    role: :admin
   )
 end
 
@@ -21,7 +21,7 @@ unless User.exists?(email: "professor@camaar.com")
     password_confirmation: "123456",
     name: "Professor Exemplo",
     matricula: "111111",
-    role: 1
+    role: :professor
   )
 end
 
@@ -32,7 +32,7 @@ unless User.exists?(email: "aluno@camaar.com")
     password_confirmation: "123456",
     name: "Aluno Exemplo",
     matricula: "222222",
-    role: 2
+    role: :aluno
   )
 end
 
@@ -41,8 +41,8 @@ end
   Curso.find_or_create_by!(nome: nome_curso)
 end
 
-puts "Seeds executados com sucesso!"
-puts "Usuários criados:"
-puts "  - admin@camaar.com (senha: 123456)"
-puts "  - professor@camaar.com (senha: 123456)"
-puts "  - aluno@camaar.com (senha: 123456)"
+Rails.logger.debug "Seeds executados com sucesso!"
+Rails.logger.debug "Usuários criados:"
+Rails.logger.debug "  - admin@camaar.com (senha: 123456) - Administrador"
+Rails.logger.debug "  - professor@camaar.com (senha: 123456) - Professor"
+Rails.logger.debug "  - aluno@camaar.com (senha: 123456) - Aluno"

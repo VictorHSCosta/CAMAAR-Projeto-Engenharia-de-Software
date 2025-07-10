@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe "cursos/show", type: :view do
   before(:each) do
     assign(:curso, Curso.create!(
-      nome: "Nome"
-    ))
+                     nome: "Nome"
+                   ))
   end
 
   it "renders attributes in <p>" do
