@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Admin
+  # Admin controller for managing users
   class UsersController < ApplicationController
     before_action :authenticate_user!
     before_action :ensure_admin
@@ -27,7 +28,7 @@ module Admin
     end
 
     def ensure_admin
-      redirect_to root_path, alert: 'Acesso negado!' unless current_user.admin?
+      redirect_to root_path, alert: I18n.t('messages.access_denied') unless current_user.admin?
     end
 
     def generate_temp_password

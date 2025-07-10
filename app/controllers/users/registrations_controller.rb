@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Users
+  # Custom Devise registrations controller for user management
   class RegistrationsController < Devise::RegistrationsController
     before_action :ensure_admin, only: %i[new create]
     before_action :configure_sign_up_params, only: [:create]
