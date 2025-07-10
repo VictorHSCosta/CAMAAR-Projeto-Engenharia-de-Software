@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddDeviseToUsers < ActiveRecord::Migration[8.0]
   def change
     add_column :users, :reset_password_token, :string

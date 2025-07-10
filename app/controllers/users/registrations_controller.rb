@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module Users
   class RegistrationsController < Devise::RegistrationsController
-    before_action :ensure_admin, only: [:new, :create]
+    before_action :ensure_admin, only: %i[new create]
     before_action :configure_sign_up_params, only: [:create]
     before_action :configure_account_update_params, only: [:update]
 
@@ -46,12 +48,12 @@ module Users
 
     # Permite parâmetros adicionais para cadastro
     def configure_sign_up_params
-      devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :matricula, :role])
+      devise_parameter_sanitizer.permit(:sign_up, keys: %i[name matricula role])
     end
 
     # Permite parâmetros adicionais para atualização
     def configure_account_update_params
-      devise_parameter_sanitizer.permit(:account_update, keys: [:name, :matricula])
+      devise_parameter_sanitizer.permit(:account_update, keys: %i[name matricula])
     end
 
     # Redireciona após cadastro bem-sucedido

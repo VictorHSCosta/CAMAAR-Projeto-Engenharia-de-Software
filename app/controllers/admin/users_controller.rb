@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   class UsersController < ApplicationController
     before_action :authenticate_user!
@@ -21,7 +23,7 @@ module Admin
     private
 
     def user_params
-      params.require(:user).permit(:email, :name, :matricula, :role, :password, :password_confirmation)
+      params.expect(user: %i[email name matricula role password password_confirmation])
     end
 
     def ensure_admin
