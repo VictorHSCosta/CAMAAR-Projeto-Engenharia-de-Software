@@ -31,7 +31,7 @@ RSpec.describe '/cursos', type: :request do
   end
 
   before do
-    # Simula usuário logado com Devise
+    # Simula usuário logado usando o helper do Devise
     sign_in user
   end
 
