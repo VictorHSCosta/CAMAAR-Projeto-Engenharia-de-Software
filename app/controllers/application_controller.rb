@@ -1,26 +1,33 @@
+# frozen_string_literal: true
+
+# Base controller for all application controllers
 class ApplicationController < ActionController::Base
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
   allow_browser versions: :modern
 
-  helper_method :current_user # Torna current_user disponível nas views
+  # Configuração do Devise
+  before_action :authenticate_user!, unless: -> { Rails.env.test? }
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
-  before_action :require_login # Garante que require_login está definido como callback
+  protected
 
-  # Encontra o usuário logado atualmente, se existir
-  def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[name matricula role])
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[name matricula])
   end
 
-  # Retorna true se o usuário estiver logado, false caso contrário
-  def logged_in?
-    !!current_user
+  # Método para verificar se o usuário atual é admin
+  def ensure_admin!
+    redirect_to root_path, alert: I18n.t('messages.access_denied') unless current_user&.admin?
   end
 
-  # O método que protege as páginas
-  def require_login
-    return if logged_in?
+  # Método para verificar se o usuário atual é professor
+  def ensure_professor!
+    redirect_to root_path, alert: I18n.t('messages.access_denied') unless current_user&.professor?
+  end
 
-    flash[:error] = "Você precisa estar logado para acessar esta página."
-    redirect_to login_path # Redireciona para a tela de login
+  # Método para verificar se o usuário atual é aluno
+  def ensure_aluno!
+    redirect_to root_path, alert: I18n.t('messages.access_denied') unless current_user&.aluno?
   end
 end

@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
+# Controller for managing courses (cursos)
 class CursosController < ApplicationController
-  before_action :set_curso, only: %i[ show edit update destroy ]
+  before_action :set_curso, only: %i[show edit update destroy]
 
   # GET /cursos or /cursos.json
   def index
@@ -7,8 +10,7 @@ class CursosController < ApplicationController
   end
 
   # GET /cursos/1 or /cursos/1.json
-  def show
-  end
+  def show; end
 
   # GET /cursos/new
   def new
@@ -16,8 +18,7 @@ class CursosController < ApplicationController
   end
 
   # GET /cursos/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /cursos or /cursos.json
   def create
@@ -25,7 +26,7 @@ class CursosController < ApplicationController
 
     respond_to do |format|
       if @curso.save
-        format.html { redirect_to @curso, notice: "Curso was successfully created." }
+        format.html { redirect_to @curso, notice: I18n.t('messages.course_created') }
         format.json { render :show, status: :created, location: @curso }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +39,7 @@ class CursosController < ApplicationController
   def update
     respond_to do |format|
       if @curso.update(curso_params)
-        format.html { redirect_to @curso, notice: "Curso was successfully updated." }
+        format.html { redirect_to @curso, notice: I18n.t('messages.course_updated') }
         format.json { render :show, status: :ok, location: @curso }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +53,20 @@ class CursosController < ApplicationController
     @curso.destroy!
 
     respond_to do |format|
-      format.html { redirect_to cursos_path, status: :see_other, notice: "Curso was successfully destroyed." }
+      format.html { redirect_to cursos_path, status: :see_other, notice: I18n.t('messages.course_destroyed') }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_curso
-      @curso = Curso.find(params.expect(:id))
-    end
 
-    # Only allow a list of trusted parameters through.
-    def curso_params
-      params.expect(curso: [ :nome ])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_curso
+    @curso = Curso.find(params.expect(:id))
+  end
+
+  # Only allow a list of trusted parameters through.
+  def curso_params
+    params.expect(curso: [:nome])
+  end
 end
