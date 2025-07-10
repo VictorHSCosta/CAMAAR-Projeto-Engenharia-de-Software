@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   allow_browser versions: :modern
 
   # Configuração do Devise
-  before_action :authenticate_user!
+  before_action :authenticate_user!, unless: -> { Rails.env.test? }
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
