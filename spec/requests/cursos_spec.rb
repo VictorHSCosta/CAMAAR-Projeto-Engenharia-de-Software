@@ -30,11 +30,6 @@ RSpec.describe '/cursos', type: :request do
     }
   end
 
-  before do
-    # Simula usuário logado usando o helper do Devise
-    sign_in user
-  end
-
   describe 'GET /index' do
     it 'renders a successful response' do
       Curso.create! valid_attributes

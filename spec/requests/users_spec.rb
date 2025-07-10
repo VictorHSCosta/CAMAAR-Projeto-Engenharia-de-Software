@@ -26,7 +26,7 @@ RSpec.describe '/users', type: :request do
       password_confirmation: 'password123',
       name: 'Test User',
       matricula: '12345678',
-      role: 0
+      role: 'admin'
     }
   end
   let(:invalid_attributes) do
@@ -39,9 +39,11 @@ RSpec.describe '/users', type: :request do
     }
   end
 
+  let(:admin_user) { FactoryBot.create(:user, role: :admin, email: 'test_admin@example.com', matricula: '00000000') }
+
   before do
-    # Simula usuário logado com Devise
-    sign_in user
+    # Ensure admin user exists for authentication helper
+    admin_user
   end
 
   describe 'GET /index' do

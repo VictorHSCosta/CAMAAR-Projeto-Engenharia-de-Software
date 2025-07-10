@@ -78,8 +78,8 @@ module Users
     end
 
     # Redireciona após cadastro bem-sucedido
-    def after_sign_up_path_for(_resource)
-      users_path
+    def after_sign_up_path_for(resource)
+      user_path(resource)
     end
   end
 end
