@@ -8,42 +8,41 @@
     <% end %>
   </div>
 
-  <div class="card">
-    <div class="card-body">
-      <div class="table-responsive">
-        <table class="table table-striped table-hover">
-          <thead class="table-dark">
+  <div class="table-container">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Matrícula</th>
+            <th>Tipo</th>
+            <th>Cadastrado em</th>
+            <% if current_user.admin? %>
+              <th>Ações</th>
+            <% end %>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
             <tr>
-              <th>Nome</th>
-              <th>E-mail</th>
-              <th>Matrícula</th>
-              <th>Tipo</th>
-              <th>Cadastrado em</th>
-              <% if current_user.admin? %>
-                <th>Ações</th>
-              <% end %>
-            </tr>
-          </thead>
-          <tbody>
-            <% @users.each do |user| %>
-              <tr>
-                <td>
-                  <strong><%= user.name %></strong>
+              <td>
+                <strong><%= user.name %></strong>
                 </td>
                 <td>
                   <i class="fas fa-envelope"></i> <%= user.email %>
                 </td>
                 <td>
-                  <span class="badge bg-secondary"><%= user.matricula %></span>
+                  <span class="badge"><%= user.matricula %></span>
                 </td>
                 <td>
                   <% case user.role %>
                   <% when 'admin' %>
-                    <span class="badge bg-danger"><i class="fas fa-crown"></i> Administrador</span>
+                    <span class="badge badge-admin"><i class="fas fa-crown"></i> Administrador</span>
                   <% when 'professor' %>
-                    <span class="badge bg-info"><i class="fas fa-chalkboard-teacher"></i> Professor</span>
+                    <span class="badge badge-professor"><i class="fas fa-chalkboard-teacher"></i> Professor</span>
                   <% when 'aluno' %>
-                    <span class="badge bg-primary"><i class="fas fa-graduation-cap"></i> Aluno</span>
+                    <span class="badge badge-aluno"><i class="fas fa-graduation-cap"></i> Aluno</span>
                   <% end %>
                 </td>
                 <td>
