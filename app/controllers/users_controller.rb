@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
-  before_action :ensure_admin!, except: [:show, :edit, :update]
+  before_action :ensure_admin!, except: %i[show edit update]
 
   # GET /users or /users.json
   def index
-    @users = User.all.order(:name)
+    @users = User.order(:name)
   end
 
   # GET /users/1 or /users/1.json
@@ -54,7 +56,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update(user_params.except(:password, :password_confirmation).compact)
-        format.html { redirect_to @user, notice: "Usuário atualizado com sucesso." }
+        format.html { redirect_to @user, notice: 'Usuário atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -68,7 +70,7 @@ class UsersController < ApplicationController
     @user.destroy!
 
     respond_to do |format|
-      format.html { redirect_to users_path, status: :see_other, notice: "Usuário removido com sucesso." }
+      format.html { redirect_to users_path, status: :see_other, notice: 'Usuário removido com sucesso.' }
       format.json { head :no_content }
     end
   end
@@ -87,6 +89,6 @@ class UsersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :name, :matricula, :role)
+    params.expect(user: %i[email password password_confirmation name matricula role])
   end
 end

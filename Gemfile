@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
@@ -62,9 +64,7 @@ group :test do
   gem 'database_cleaner-active_record'
 end
 
-gem 'rspec-rails', '~> 6.0.0'
-
-gem "bcrypt", "~> 3.1"
+gem 'bcrypt', '~> 3.1'
 
 gem 'faker', '~> 3.4', '>= 3.4.2'
 
@@ -73,3 +73,11 @@ group :development, :test do
 end
 
 gem 'devise', '~> 4.2'
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'rubocop'
+  gem 'rubocop-performance'
+  gem 'rubocop-rails'
+  gem 'rubocop-rspec'
+end
