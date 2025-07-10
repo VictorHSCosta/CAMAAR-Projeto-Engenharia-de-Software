@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Base controller for all application controllers
 class ApplicationController < ActionController::Base
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
   allow_browser versions: :modern
@@ -17,16 +18,16 @@ class ApplicationController < ActionController::Base
 
   # Método para verificar se o usuário atual é admin
   def ensure_admin!
-    redirect_to root_path, alert: 'Acesso negado!' unless current_user&.admin?
+    redirect_to root_path, alert: I18n.t('messages.access_denied') unless current_user&.admin?
   end
 
   # Método para verificar se o usuário atual é professor
   def ensure_professor!
-    redirect_to root_path, alert: 'Acesso negado!' unless current_user&.professor?
+    redirect_to root_path, alert: I18n.t('messages.access_denied') unless current_user&.professor?
   end
 
   # Método para verificar se o usuário atual é aluno
   def ensure_aluno!
-    redirect_to root_path, alert: 'Acesso negado!' unless current_user&.aluno?
+    redirect_to root_path, alert: I18n.t('messages.access_denied') unless current_user&.aluno?
   end
 end

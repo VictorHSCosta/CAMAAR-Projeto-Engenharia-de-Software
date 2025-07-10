@@ -1,0 +1,13 @@
+pt-BR:
+  messages:
+    access_denied: "Acesso negado!"
+    login_success: "Login realizado com sucesso!"
+    login_failed: "Email ou senha inválidos."
+    auth_error: "Erro na autenticação. Entre em contato com o administrador."
+    logout_success: "Você saiu com segurança."
+    admin_only: "Apenas administradores podem cadastrar usuários."
+    course_created: "Curso was successfully created."
+    course_updated: "Curso was successfully updated."
+    course_destroyed: "Curso was successfully destroyed."
+    user_updated: "Usuário atualizado com sucesso."
+    user_destroyed: "Usuário removido com sucesso."

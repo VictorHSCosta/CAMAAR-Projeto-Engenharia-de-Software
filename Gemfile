@@ -51,6 +51,13 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem 'rubocop-rails-omakase', require: false
+
+  gem 'factory_bot_rails'
+  gem 'rspec-rails'
+  gem 'rubocop'
+  gem 'rubocop-performance'
+  gem 'rubocop-rails'
+  gem 'rubocop-rspec'
 end
 
 group :development do
@@ -65,19 +72,5 @@ group :test do
 end
 
 gem 'bcrypt', '~> 3.1'
-
-gem 'faker', '~> 3.4', '>= 3.4.2'
-
-group :development, :test do
-  gem 'factory_bot_rails'
-end
-
 gem 'devise', '~> 4.2'
-
-group :development, :test do
-  gem 'rspec-rails'
-  gem 'rubocop'
-  gem 'rubocop-performance'
-  gem 'rubocop-rails'
-  gem 'rubocop-rspec'
-end
+gem 'faker', '~> 3.4', '>= 3.4.2'

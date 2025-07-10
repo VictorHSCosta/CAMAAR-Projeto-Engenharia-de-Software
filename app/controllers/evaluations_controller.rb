@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Controller for managing evaluations
 class EvaluationsController < ApplicationController
   def index
     # No futuro, você buscaria isso do banco de dados, ex: @subjects = Subject.all

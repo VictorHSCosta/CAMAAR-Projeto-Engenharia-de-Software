@@ -2718,3 +2718,159 @@ Processing by HomeController#index as HTML
 Completed 200 OK in 16ms (Views: 2.7ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.6ms)
 
 
+Started GET "/" for ::1 at 2025-07-09 23:16:26 -0300
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='home'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | GC: 0.0ms)
+Completed 200 OK in 18ms (Views: 1.9ms | ActiveRecord: 1.3ms (1 query, 0 cached) | GC: 1.2ms)
+
+
+Started GET "/cursos" for ::1 at 2025-07-09 23:16:28 -0300
+Processing by CursosController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='cursos'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering cursos/index.html.erb within layouts/application
+  [1m[36mCurso Load (0.2ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" /*action='index',application='Camaar',controller='cursos'*/[0m
+  ↳ app/views/cursos/index.html.erb:8
+  Rendered cursos/_curso.html.erb (Duration: 0.8ms | GC: 0.0ms)
+  Rendered cursos/_curso.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered cursos/_curso.html.erb (Duration: 0.6ms | GC: 0.0ms)
+  Rendered cursos/index.html.erb within layouts/application (Duration: 36.5ms | GC: 1.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 39.7ms | GC: 1.2ms)
+Completed 200 OK in 75ms (Views: 46.9ms | ActiveRecord: 1.3ms (2 queries, 0 cached) | GC: 1.2ms)
+
+
+Started GET "/evaluations" for ::1 at 2025-07-09 23:16:28 -0300
+Processing by EvaluationsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='evaluations'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering evaluations/index.html.erb within layouts/application
+  Rendered evaluations/index.html.erb within layouts/application (Duration: 1.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | GC: 0.0ms)
+Completed 200 OK in 33ms (Views: 8.5ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/edit" for ::1 at 2025-07-09 23:16:34 -0300
+Processing by Users::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='edit',application='Camaar',controller='registrations'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/registrations/edit.html.erb within layouts/application (Duration: 0.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 9.3ms | GC: 0.0ms)
+Completed 200 OK in 39ms (Views: 18.0ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started DELETE "/users/sign_out?_method=delete" for ::1 at 2025-07-09 23:16:35 -0300
+Processing by Devise::SessionsController#destroy as TURBO_STREAM
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='destroy',application='Camaar',controller='sessions'*/[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 40ms (ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for ::1 at 2025-07-09 23:16:35 -0300
+Processing by HomeController#index as TURBO_STREAM
+Completed 401 Unauthorized in 16ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2025-07-09 23:16:35 -0300
+Processing by Devise::SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 4.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.4ms | GC: 1.2ms)
+Completed 200 OK in 29ms (Views: 11.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 1.2ms)
+
+
+Started GET "/" for ::1 at 2025-07-09 23:30:52 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 23ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2025-07-09 23:30:53 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 5.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 12.0ms | GC: 0.0ms)
+Completed 200 OK in 42ms (Views: 18.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/assets/figma_custom.css" for ::1 at 2025-07-09 23:30:53 -0300
+Started POST "/users/sign_in" for ::1 at 2025-07-09 23:31:55 -0300
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token" => "[FILTERED]", "user" => {"email" => "[FILTERED]", "password" => "[FILTERED]"}, "commit" => "Alterar senha"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'admin@camaar.com' ORDER BY "users"."id" ASC LIMIT 1 /*action='create',application='Camaar',controller='sessions'*/[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 458ms (ActiveRecord: 1.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for ::1 at 2025-07-09 23:31:56 -0300
+Processing by HomeController#index as TURBO_STREAM
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='home'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.6ms | GC: 0.0ms)
+Completed 200 OK in 26ms (Views: 11.2ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/cursos" for ::1 at 2025-07-09 23:32:06 -0300
+Processing by CursosController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='cursos'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering cursos/index.html.erb within layouts/application
+  [1m[36mCurso Load (0.2ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" /*action='index',application='Camaar',controller='cursos'*/[0m
+  ↳ app/views/cursos/index.html.erb:8
+  Rendered cursos/_curso.html.erb (Duration: 1.3ms | GC: 0.0ms)
+  Rendered cursos/_curso.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered cursos/_curso.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered cursos/index.html.erb within layouts/application (Duration: 19.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 23.4ms | GC: 0.0ms)
+Completed 200 OK in 56ms (Views: 25.1ms | ActiveRecord: 0.4ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users" for ::1 at 2025-07-09 23:32:07 -0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='users'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."name" ASC /*action='index',application='Camaar',controller='users'*/[0m
+  ↳ app/views/users/index.html.erb:27
+  Rendered users/index.html.erb within layouts/application (Duration: 5.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.2ms | GC: 0.0ms)
+Completed 200 OK in 28ms (Views: 9.9ms | ActiveRecord: 0.4ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/cursos" for ::1 at 2025-07-09 23:32:09 -0300
+Processing by CursosController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='cursos'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering cursos/index.html.erb within layouts/application
+  [1m[36mCurso Load (0.2ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" /*action='index',application='Camaar',controller='cursos'*/[0m
+  ↳ app/views/cursos/index.html.erb:8
+  Rendered cursos/_curso.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered cursos/_curso.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered cursos/_curso.html.erb (Duration: 0.5ms | GC: 0.0ms)
+  Rendered cursos/index.html.erb within layouts/application (Duration: 4.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.5ms | GC: 0.0ms)
+Completed 200 OK in 26ms (Views: 7.4ms | ActiveRecord: 0.4ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/cursos/1" for ::1 at 2025-07-09 23:32:11 -0300
+Processing by CursosController#show as HTML
+  Parameters: {"id" => "1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='show',application='Camaar',controller='cursos'*/[0m
+  [1m[36mCurso Load (0.1ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" WHERE "cursos"."id" = 1 LIMIT 1 /*action='show',application='Camaar',controller='cursos'*/[0m
+  ↳ app/controllers/cursos_controller.rb:65:in 'CursosController#set_curso'
+  Rendering layout layouts/application.html.erb
+  Rendering cursos/show.html.erb within layouts/application
+  Rendered cursos/_curso.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered cursos/show.html.erb within layouts/application (Duration: 1.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.8ms | GC: 0.0ms)
+Completed 200 OK in 23ms (Views: 3.4ms | ActiveRecord: 0.3ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
