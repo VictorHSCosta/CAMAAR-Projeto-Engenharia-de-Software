@@ -71,3 +71,5 @@ gem 'faker', '~> 3.4', '>= 3.4.2'
 group :development, :test do
   gem 'factory_bot_rails'
 end
+
+gem 'devise', '~> 4.2'

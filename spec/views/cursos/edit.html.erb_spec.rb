@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe "cursos/edit", type: :view do
-  let(:curso) {
+  let(:curso) do
     Curso.create!(
       nome: "MyString"
     )
-  }
+  end
 
   before(:each) do
     assign(:curso, curso)
@@ -15,7 +15,6 @@ RSpec.describe "cursos/edit", type: :view do
     render
 
     assert_select "form[action=?][method=?]", curso_path(curso), "post" do
-
       assert_select "input[name=?]", "curso[nome]"
     end
   end

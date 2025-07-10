@@ -2,18 +2,21 @@ require 'rails_helper'
 
 RSpec.describe "users/index", type: :view do
   before(:each) do
+    admin_user = FactoryBot.create(:user, role: 0)
     assign(:users, [
-      FactoryBot.create(:user),
-      FactoryBot.create(:user)
-    ])
+             FactoryBot.create(:user),
+             FactoryBot.create(:user)
+           ])
+    allow(view).to receive(:current_user).and_return(admin_user)
+    allow(view).to receive(:user_signed_in?).and_return(true)
   end
 
   it "renders a list of users" do
     render
-    cell_selector = Rails::VERSION::STRING >= '7' ? 'div>p' : 'tr>td'
-    # Como os dados são gerados pelo Faker, vamos apenas verificar se os elementos existem
-    expect(rendered).to match(/Email/)
-    expect(rendered).to match(/Name/)
-    expect(rendered).to match(/Matricula/)
+    # Verifica se a página contém elementos de usuários
+    expect(rendered).to match(/E-mail/)
+    expect(rendered).to match(/Nome/)
+    expect(rendered).to match(/Matrícula/)
+    expect(rendered).to match(/Tipo/)
   end
 end

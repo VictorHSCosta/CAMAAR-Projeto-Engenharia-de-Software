@@ -3,13 +3,13 @@ require 'rails_helper'
 RSpec.describe "cursos/index", type: :view do
   before(:each) do
     assign(:cursos, [
-      Curso.create!(
-        nome: "Nome"
-      ),
-      Curso.create!(
-        nome: "Nome"
-      )
-    ])
+             Curso.create!(
+               nome: "Nome"
+             ),
+             Curso.create!(
+               nome: "Nome"
+             )
+           ])
   end
 
   it "renders a list of cursos" do
