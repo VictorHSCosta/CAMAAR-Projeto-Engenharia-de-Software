@@ -2746,3 +2746,19 @@ FOREIGN KEY ("professor_id")
   [1m[36mActiveRecord::SchemaMigration Create (3.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250711154052') RETURNING "version" /*application='Camaar'*/[0m
   [1m[36mTRANSACTION (3.6ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Camaar'*/[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+Migrating to CreateMatriculas (20250711154253)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='Camaar'*/[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "matriculas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "turma_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_91ab1814bc"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_4bf0c451fc"
+FOREIGN KEY ("turma_id")
+  REFERENCES "turmas" ("id")
+) /*application='Camaar'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_matriculas_on_user_id" ON "matriculas" ("user_id") /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_matriculas_on_turma_id" ON "matriculas" ("turma_id") /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (2.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250711154253') RETURNING "version" /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (3.4ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
