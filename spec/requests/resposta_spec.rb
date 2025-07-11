@@ -18,6 +18,27 @@ RSpec.describe '/resposta', type: :request do
   let(:user) do
     User.create!(name: 'Test User', email: 'test@example.com', password: 'password', matricula: '12345', role: 'admin')
   end
+  # This should return the minimal set of attributes required to create a valid
+  # Respostum. As you add validations to Respostum, be sure to
+  # adjust the attributes here as well.
+  let(:valid_attributes) do
+    {
+      formulario_id: formulario.id,
+      pergunta_id: pergunta.id,
+      opcao_id: opcao.id,
+      resposta_texto: 'Test Response',
+      turma_id: turma.id,
+      uuid_anonimo: SecureRandom.uuid
+    }
+  end
+  let(:invalid_attributes) do
+    {
+      formulario_id: nil,
+      pergunta_id: nil,
+      opcao_id: nil,
+      turma_id: nil
+    }
+  end
   let(:curso) { Curso.create!(nome: 'Test Course') }
   let(:disciplina) { Disciplina.create!(nome: 'Test Discipline', curso: curso) }
   let(:professor) do
@@ -32,29 +53,6 @@ RSpec.describe '/resposta', type: :request do
 
   before do
     login_as(user, scope: :user)
-  end
-
-  # This should return the minimal set of attributes required to create a valid
-  # Respostum. As you add validations to Respostum, be sure to
-  # adjust the attributes here as well.
-  let(:valid_attributes) do
-    {
-      formulario_id: formulario.id,
-      pergunta_id: pergunta.id,
-      opcao_id: opcao.id,
-      resposta_texto: 'Test Response',
-      turma_id: turma.id,
-      uuid_anonimo: SecureRandom.uuid
-    }
-  end
-
-  let(:invalid_attributes) do
-    {
-      formulario_id: nil,
-      pergunta_id: nil,
-      opcao_id: nil,
-      turma_id: nil
-    }
   end
 
   describe 'GET /index' do

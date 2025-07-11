@@ -27,7 +27,7 @@ view_specs = [
 ]
 
 view_specs.each do |spec_file|
-  File.delete(spec_file) if File.exist?(spec_file)
+  FileUtils.rm_f(spec_file)
   puts "Deleted #{spec_file}"
 end
 

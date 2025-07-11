@@ -3,15 +3,12 @@
     <strong>Titulo:</strong>
     <%= template.titulo %>
   </p>
-
   <p>
     <strong>Publico alvo:</strong>
-    <%= template.publico_alvo %>
+    <%= template.publico_alvo.humanize %>
   </p>
-
   <p>
     <strong>Criado por:</strong>
-    <%= template.criado_por_id %>
+    <%= template.criado_por.name %>
   </p>
-
 </div>

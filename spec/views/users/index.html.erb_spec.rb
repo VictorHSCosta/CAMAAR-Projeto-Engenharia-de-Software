@@ -3,7 +3,10 @@
 require 'rails_helper'
 
 RSpec.describe 'users/index', type: :view do
-  let(:current_user) { User.create!(name: 'Admin User', email: 'admin@example.com', password: 'password', matricula: '00000', role: 'admin') }
+  let(:current_user) do
+    User.create!(name: 'Admin User', email: 'admin@example.com', password: 'password', matricula: '00000',
+                 role: 'admin')
+  end
   let(:users) do
     [
       User.create!(name: 'João Silva', email: 'joao@example.com', password: 'password', matricula: '12345',

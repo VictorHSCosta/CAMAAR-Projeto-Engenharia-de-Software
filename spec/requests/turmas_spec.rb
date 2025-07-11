@@ -18,17 +18,6 @@ RSpec.describe '/turmas', type: :request do
   let(:user) do
     User.create!(name: 'Test User', email: 'test@example.com', password: 'password', matricula: '12345', role: 'admin')
   end
-  let(:curso) { Curso.create!(nome: 'Test Course') }
-  let(:disciplina) { Disciplina.create!(nome: 'Test Discipline', curso: curso) }
-  let(:professor) do
-    User.create!(name: 'Professor', email: 'professor@example.com', password: 'password', matricula: '67890',
-                 role: 'professor')
-  end
-
-  before do
-    login_as(user, scope: :user)
-  end
-
   # This should return the minimal set of attributes required to create a valid
   # Turma. As you add validations to Turma, be sure to
   # adjust the attributes here as well.
@@ -39,13 +28,22 @@ RSpec.describe '/turmas', type: :request do
       semestre: '2024.1'
     }
   end
-
   let(:invalid_attributes) do
     {
       disciplina_id: nil,
       professor_id: nil,
       semestre: nil
     }
+  end
+  let(:curso) { Curso.create!(nome: 'Test Course') }
+  let(:disciplina) { Disciplina.create!(nome: 'Test Discipline', curso: curso) }
+  let(:professor) do
+    User.create!(name: 'Professor', email: 'professor@example.com', password: 'password', matricula: '67890',
+                 role: 'professor')
+  end
+
+  before do
+    login_as(user, scope: :user)
   end
 
   describe 'GET /index' do

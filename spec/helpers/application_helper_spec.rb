@@ -7,6 +7,24 @@ RSpec.describe ApplicationHelper, type: :helper do
     it 'responds to helper methods' do
       # Testa se o helper está carregado corretamente
       expect(helper).to respond_to(:link_to)
+      expect(helper).to respond_to(:content_for)
+      expect(helper).to respond_to(:render)
+    end
+  end
+
+  describe 'basic helper functionality' do
+    it 'can use built-in Rails helpers' do
+      expect(helper.pluralize(1, 'item')).to eq('1 item')
+      expect(helper.pluralize(2, 'item')).to eq('2 items')
+    end
+
+    it 'can format numbers' do
+      expect(helper.number_with_delimiter(1_234_567)).to eq('1,234,567')
+    end
+
+    it 'can truncate text' do
+      long_text = 'This is a very long text that needs to be truncated'
+      expect(helper.truncate(long_text, length: 20)).to include('...')
     end
   end
 

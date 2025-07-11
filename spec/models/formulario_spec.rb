@@ -17,7 +17,7 @@ RSpec.describe Formulario, type: :model do
 
   describe 'validations' do
     it 'is valid with valid attributes' do
-      formulario = Formulario.new(
+      formulario = described_class.new(
         template: template,
         turma: turma,
         coordenador: user,
@@ -28,23 +28,23 @@ RSpec.describe Formulario, type: :model do
     end
 
     it 'is invalid without a template' do
-      formulario = Formulario.new(turma: turma, coordenador: user)
+      formulario = described_class.new(turma: turma, coordenador: user)
       expect(formulario).not_to be_valid
     end
 
     it 'is invalid without a turma' do
-      formulario = Formulario.new(template: template, coordenador: user)
+      formulario = described_class.new(template: template, coordenador: user)
       expect(formulario).not_to be_valid
     end
 
     it 'is invalid without a coordenador' do
-      formulario = Formulario.new(template: template, turma: turma)
+      formulario = described_class.new(template: template, turma: turma)
       expect(formulario).not_to be_valid
     end
   end
 
   describe 'associations' do
-    let(:formulario) { Formulario.create!(template: template, turma: turma, coordenador: user) }
+    let(:formulario) { described_class.create!(template: template, turma: turma, coordenador: user) }
 
     it 'belongs to a template' do
       expect(formulario.template).to eq(template)
