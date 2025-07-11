@@ -2818,3 +2818,27 @@ FOREIGN KEY ("coordenador_id")
   [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250711154931') RETURNING "version" /*application='Camaar'*/[0m
   [1m[36mTRANSACTION (2.7ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Camaar'*/[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+Migrating to CreateResposta (20250711155022)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='Camaar'*/[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "resposta" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "formulario_id" integer NOT NULL, "pergunta_id" integer NOT NULL, "opcao_id" integer NOT NULL, "resposta_texto" text, "turma_id" integer NOT NULL, "uuid_anonimo" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_7395da2939"
+FOREIGN KEY ("formulario_id")
+  REFERENCES "formularios" ("id")
+, CONSTRAINT "fk_rails_6c55c86da6"
+FOREIGN KEY ("pergunta_id")
+  REFERENCES "pergunta" ("id")
+, CONSTRAINT "fk_rails_e99d71ace7"
+FOREIGN KEY ("opcao_id")
+  REFERENCES "opcaos" ("id")
+, CONSTRAINT "fk_rails_fe48a3689d"
+FOREIGN KEY ("turma_id")
+  REFERENCES "turmas" ("id")
+) /*application='Camaar'*/[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "index_resposta_on_formulario_id" ON "resposta" ("formulario_id") /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_resposta_on_pergunta_id" ON "resposta" ("pergunta_id") /*application='Camaar'*/[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE INDEX "index_resposta_on_opcao_id" ON "resposta" ("opcao_id") /*application='Camaar'*/[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "index_resposta_on_turma_id" ON "resposta" ("turma_id") /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250711155022') RETURNING "version" /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
