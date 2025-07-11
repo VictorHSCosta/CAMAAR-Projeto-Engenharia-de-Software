@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Respostum < ApplicationRecord
   belongs_to :formulario
   belongs_to :pergunta

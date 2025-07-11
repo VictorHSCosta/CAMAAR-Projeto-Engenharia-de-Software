@@ -115,7 +115,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_11_155022) do
   end
 
   add_foreign_key "disciplinas", "cursos"
-  add_foreign_key "formularios", "coordenadors"
+  add_foreign_key "formularios", "users", column: "coordenador_id"
   add_foreign_key "formularios", "templates"
   add_foreign_key "formularios", "turmas"
   add_foreign_key "matriculas", "turmas"
@@ -123,10 +123,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_11_155022) do
   add_foreign_key "opcoes_pergunta", "pergunta", column: "pergunta_id"
   add_foreign_key "pergunta", "templates"
   add_foreign_key "resposta", "formularios"
-  add_foreign_key "resposta", "opcaos"
+  add_foreign_key "resposta", "opcoes_pergunta", column: "opcao_id"
   add_foreign_key "resposta", "pergunta", column: "pergunta_id"
   add_foreign_key "resposta", "turmas"
-  add_foreign_key "templates", "criado_pors"
+  add_foreign_key "templates", "users", column: "criado_por_id"
   add_foreign_key "turmas", "disciplinas"
-  add_foreign_key "turmas", "professors"
+  add_foreign_key "turmas", "users", column: "professor_id"
 end

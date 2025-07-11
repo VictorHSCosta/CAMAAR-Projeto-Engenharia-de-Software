@@ -1,1 +1,3 @@
-json.partial! "formularios/formulario", formulario: @formulario
+# frozen_string_literal: true
+
+json.partial! 'formularios/formulario', formulario: @formulario

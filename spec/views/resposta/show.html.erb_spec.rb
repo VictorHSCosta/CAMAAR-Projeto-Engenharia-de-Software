@@ -1,18 +1,20 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "resposta/show", type: :view do
-  before(:each) do
+RSpec.describe 'resposta/show', type: :view do
+  before do
     assign(:respostum, Respostum.create!(
-      formulario: nil,
-      pergunta: nil,
-      opcao: nil,
-      resposta_texto: "MyText",
-      turma: nil,
-      uuid_anonimo: "Uuid Anonimo"
-    ))
+                         formulario: nil,
+                         pergunta: nil,
+                         opcao: nil,
+                         resposta_texto: 'MyText',
+                         turma: nil,
+                         uuid_anonimo: 'Uuid Anonimo'
+                       ))
   end
 
-  it "renders attributes in <p>" do
+  it 'renders attributes in <p>' do
     render
     expect(rendered).to match(//)
     expect(rendered).to match(//)

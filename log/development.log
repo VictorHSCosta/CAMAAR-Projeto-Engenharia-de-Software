@@ -2842,3 +2842,129 @@ FOREIGN KEY ("turma_id")
   [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250711155022') RETURNING "version" /*application='Camaar'*/[0m
   [1m[36mTRANSACTION (2.8ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Camaar'*/[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+Migrating to CreateResposta (20250711155022)
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='Camaar'*/[0m
+  [1m[35m (2.8ms)[0m  [1m[35mDROP TABLE "resposta" /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.0ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20250711155022' /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+Migrating to CreateResposta (20250711155022)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='Camaar'*/[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE TABLE "resposta" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "formulario_id" integer NOT NULL, "pergunta_id" integer NOT NULL, "opcao_id" integer NOT NULL, "resposta_texto" text, "turma_id" integer NOT NULL, "uuid_anonimo" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_7395da2939"
+FOREIGN KEY ("formulario_id")
+  REFERENCES "formularios" ("id")
+, CONSTRAINT "fk_rails_6c55c86da6"
+FOREIGN KEY ("pergunta_id")
+  REFERENCES "pergunta" ("id")
+, CONSTRAINT "fk_rails_e99d71ace7"
+FOREIGN KEY ("opcao_id")
+  REFERENCES "opcaos" ("id")
+, CONSTRAINT "fk_rails_fe48a3689d"
+FOREIGN KEY ("turma_id")
+  REFERENCES "turmas" ("id")
+) /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_resposta_on_formulario_id" ON "resposta" ("formulario_id") /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_resposta_on_pergunta_id" ON "resposta" ("pergunta_id") /*application='Camaar'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_resposta_on_opcao_id" ON "resposta" ("opcao_id") /*application='Camaar'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_resposta_on_turma_id" ON "resposta" ("turma_id") /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250711155022') RETURNING "version" /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Camaar'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "cursos" /*application='Camaar'*/[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "cursos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "nome" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='Camaar'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "disciplinas" /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "disciplinas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "nome" varchar, "curso_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_disciplinas_on_curso_id" ON "disciplinas" ("curso_id") /*application='Camaar'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "formularios" /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "formularios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "template_id" integer NOT NULL, "turma_id" integer NOT NULL, "coordenador_id" integer NOT NULL, "data_envio" datetime(6), "data_fim" datetime(6), "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_formularios_on_coordenador_id" ON "formularios" ("coordenador_id") /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_formularios_on_template_id" ON "formularios" ("template_id") /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_formularios_on_turma_id" ON "formularios" ("turma_id") /*application='Camaar'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "matriculas" /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "matriculas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "turma_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_matriculas_on_turma_id" ON "matriculas" ("turma_id") /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_matriculas_on_user_id" ON "matriculas" ("user_id") /*application='Camaar'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "opcoes_pergunta" /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "opcoes_pergunta" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "pergunta_id" integer NOT NULL, "texto" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_opcoes_pergunta_on_pergunta_id" ON "opcoes_pergunta" ("pergunta_id") /*application='Camaar'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "pergunta" /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "pergunta" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "template_id" integer NOT NULL, "titulo" varchar, "tipo" integer, "ordem" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_pergunta_on_template_id" ON "pergunta" ("template_id") /*application='Camaar'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "resposta" /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "resposta" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "formulario_id" integer NOT NULL, "pergunta_id" integer NOT NULL, "opcao_id" integer NOT NULL, "resposta_texto" text, "turma_id" integer NOT NULL, "uuid_anonimo" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_resposta_on_formulario_id" ON "resposta" ("formulario_id") /*application='Camaar'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_resposta_on_opcao_id" ON "resposta" ("opcao_id") /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_resposta_on_pergunta_id" ON "resposta" ("pergunta_id") /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_resposta_on_turma_id" ON "resposta" ("turma_id") /*application='Camaar'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "templates" /*application='Camaar'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "templates" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "titulo" varchar, "publico_alvo" integer, "criado_por_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_templates_on_criado_por_id" ON "templates" ("criado_por_id") /*application='Camaar'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "turmas" /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "turmas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "disciplina_id" integer NOT NULL, "professor_id" integer NOT NULL, "semestre" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_turmas_on_disciplina_id" ON "turmas" ("disciplina_id") /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_turmas_on_professor_id" ON "turmas" ("professor_id") /*application='Camaar'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "name" varchar, "matricula" varchar, "role" integer DEFAULT 0 NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime(6), "remember_created_at" datetime(6), "encrypted_password" varchar DEFAULT '' NOT NULL) /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email") /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token") /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='Camaar'*/[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[35mPRAGMA foreign_keys /*application='Camaar'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys /*application='Camaar'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON /*application='Camaar'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "adisciplinas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "nome" varchar, "curso_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_adisciplinas_on_curso_id" ON "adisciplinas" ("curso_id") /*application='Camaar'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "adisciplinas" ("id","nome","curso_id","created_at","updated_at")
+                     SELECT "id","nome","curso_id","created_at","updated_at" FROM "disciplinas" /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "disciplinas" /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "disciplinas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "nome" varchar, "curso_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_63b174f621"
+FOREIGN KEY ("curso_id")
+  REFERENCES "cursos" ("id")
+) /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_disciplinas_on_curso_id" ON "disciplinas" ("curso_id") /*application='Camaar'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "disciplinas" ("id","nome","curso_id","created_at","updated_at")
+                     SELECT "id","nome","curso_id","created_at","updated_at" FROM "adisciplinas" /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "adisciplinas" /*application='Camaar'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0 /*application='Camaar'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1 /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='Camaar'*/[0m
+  [1m[35mSQL (5.2ms)[0m  [1m[35mPRAGMA foreign_keys /*application='Camaar'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys /*application='Camaar'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON /*application='Camaar'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aformularios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "template_id" integer NOT NULL, "turma_id" integer NOT NULL, "coordenador_id" integer NOT NULL, "data_envio" datetime(6), "data_fim" datetime(6), "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aformularios_on_turma_id" ON "aformularios" ("turma_id") /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aformularios_on_template_id" ON "aformularios" ("template_id") /*application='Camaar'*/[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE INDEX "tindex_aformularios_on_coordenador_id" ON "aformularios" ("coordenador_id") /*application='Camaar'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "aformularios" ("id","template_id","turma_id","coordenador_id","data_envio","data_fim","created_at","updated_at")
+                     SELECT "id","template_id","turma_id","coordenador_id","data_envio","data_fim","created_at","updated_at" FROM "formularios" /*application='Camaar'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "formularios" /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "formularios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "template_id" integer NOT NULL, "turma_id" integer NOT NULL, "coordenador_id" integer NOT NULL, "data_envio" datetime(6), "data_fim" datetime(6), "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_da3fe8561e"
+FOREIGN KEY ("coordenador_id")
+  REFERENCES "coordenadors" ("id")
+) /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_formularios_on_coordenador_id" ON "formularios" ("coordenador_id") /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_formularios_on_template_id" ON "formularios" ("template_id") /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_formularios_on_turma_id" ON "formularios" ("turma_id") /*application='Camaar'*/[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "formularios" ("id","template_id","turma_id","coordenador_id","data_envio","data_fim","created_at","updated_at")
+                     SELECT "id","template_id","turma_id","coordenador_id","data_envio","data_fim","created_at","updated_at" FROM "aformularios" /*application='Camaar'*/[0m
+  [1m[35m (0.7ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0 /*application='Camaar'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1 /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION /*application='Camaar'*/[0m

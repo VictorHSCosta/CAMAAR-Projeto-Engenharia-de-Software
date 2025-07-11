@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :template do
-    titulo { "MyString" }
+    titulo { 'MyString' }
     publico_alvo { 1 }
     criado_por { nil }
   end

@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class TemplatesController < ApplicationController
-  before_action :set_template, only: %i[ show edit update destroy ]
+  before_action :set_template, only: %i[show edit update destroy]
 
   # GET /templates or /templates.json
   def index
@@ -7,8 +9,7 @@ class TemplatesController < ApplicationController
   end
 
   # GET /templates/1 or /templates/1.json
-  def show
-  end
+  def show; end
 
   # GET /templates/new
   def new
@@ -16,8 +17,7 @@ class TemplatesController < ApplicationController
   end
 
   # GET /templates/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /templates or /templates.json
   def create
@@ -25,7 +25,7 @@ class TemplatesController < ApplicationController
 
     respond_to do |format|
       if @template.save
-        format.html { redirect_to @template, notice: "Template was successfully created." }
+        format.html { redirect_to @template, notice: 'Template was successfully created.' }
         format.json { render :show, status: :created, location: @template }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class TemplatesController < ApplicationController
   def update
     respond_to do |format|
       if @template.update(template_params)
-        format.html { redirect_to @template, notice: "Template was successfully updated." }
+        format.html { redirect_to @template, notice: 'Template was successfully updated.' }
         format.json { render :show, status: :ok, location: @template }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +52,20 @@ class TemplatesController < ApplicationController
     @template.destroy!
 
     respond_to do |format|
-      format.html { redirect_to templates_path, status: :see_other, notice: "Template was successfully destroyed." }
+      format.html { redirect_to templates_path, status: :see_other, notice: 'Template was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_template
-      @template = Template.find(params.expect(:id))
-    end
 
-    # Only allow a list of trusted parameters through.
-    def template_params
-      params.expect(template: [ :titulo, :publico_alvo, :criado_por_id ])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_template
+    @template = Template.find(params.expect(:id))
+  end
+
+  # Only allow a list of trusted parameters through.
+  def template_params
+    params.expect(template: %i[titulo publico_alvo criado_por_id])
+  end
 end

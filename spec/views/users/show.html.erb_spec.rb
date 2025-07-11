@@ -15,7 +15,7 @@ RSpec.describe 'users/show', type: :view do
     allow(view).to receive_messages(current_user: user, user_signed_in?: true)
   end
 
-  it 'renders attributes in <p>' do
+  it 'renders attributes in <p>' do # rubocop:disable RSpec/MultipleExpectations
     render
     expect(rendered).to match(/test@example.com/)
     expect(rendered).to match(/Test User/)

@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "templates/show", type: :view do
-  before(:each) do
+RSpec.describe 'templates/show', type: :view do
+  before do
     assign(:template, Template.create!(
-      titulo: "Titulo",
-      publico_alvo: 2,
-      criado_por: nil
-    ))
+                        titulo: 'Titulo',
+                        publico_alvo: 2,
+                        criado_por: nil
+                      ))
   end
 
-  it "renders attributes in <p>" do
+  it 'renders attributes in <p>' do
     render
     expect(rendered).to match(/Titulo/)
     expect(rendered).to match(/2/)
