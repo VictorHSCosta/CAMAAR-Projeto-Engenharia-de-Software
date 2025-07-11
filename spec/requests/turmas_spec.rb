@@ -80,7 +80,7 @@ RSpec.describe '/turmas', type: :request do
 
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
         post turmas_url, params: { turma: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(422)
       end
     end
   end
@@ -110,7 +110,7 @@ RSpec.describe '/turmas', type: :request do
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
         turma = Turma.create! valid_attributes
         patch turma_url(turma), params: { turma: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(422)
       end
     end
   end

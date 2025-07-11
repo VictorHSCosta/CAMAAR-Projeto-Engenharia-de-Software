@@ -26,7 +26,7 @@ RSpec.describe '/users', type: :request do
       password_confirmation: 'password123',
       name: 'Test User',
       matricula: '12345678',
-      role: 0
+      role: 'admin'
     }
   end
   let(:invalid_attributes) do
@@ -40,8 +40,8 @@ RSpec.describe '/users', type: :request do
   end
 
   before do
-    # Simula usuário logado com Devise
-    sign_in user
+    # Simula usuário logado com Warden para testes de request
+    login_as(user, scope: :user)
   end
 
   describe 'GET /index' do

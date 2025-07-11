@@ -11,7 +11,7 @@ RSpec.describe 'turmas/new', type: :view do
                    ))
   end
 
-  it 'renders new turma form' do
+  it 'renders new turma form' do # rubocop:disable RSpec/ExampleLength
     render
 
     assert_select 'form[action=?][method=?]', turmas_path, 'post' do
