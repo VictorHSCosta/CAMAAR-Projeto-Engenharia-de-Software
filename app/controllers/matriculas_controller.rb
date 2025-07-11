@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Adicione um comentário de documentação para a classe MatriculasController.
 class MatriculasController < ApplicationController
   before_action :set_matricula, only: %i[show edit update destroy]
 

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Adicione um comentário de documentação para a classe TemplatesController.
 class TemplatesController < ApplicationController
   before_action :set_template, only: %i[show edit update destroy]
 

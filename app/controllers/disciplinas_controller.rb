@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Adicione um comentário de documentação para a classe DisciplinasController.
 class DisciplinasController < ApplicationController
   before_action :set_disciplina, only: %i[show edit update destroy]
 

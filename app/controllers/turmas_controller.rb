@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Adicione um comentário de documentação para a classe TurmasController.
 class TurmasController < ApplicationController
   before_action :set_turma, only: %i[show edit update destroy]
 
