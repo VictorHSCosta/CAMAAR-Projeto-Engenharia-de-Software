@@ -17,16 +17,16 @@ class ApplicationController < ActionController::Base
 
   # Método para verificar se o usuário atual é admin
   def ensure_admin!
-    redirect_to root_path, alert: 'Acesso negado!' unless current_user&.admin? # rubocop:disable Rails/I18nLocaleTexts
+    redirect_to root_path, alert: 'Acesso negado!' unless current_user&.admin?
   end
 
   # Método para verificar se o usuário atual é professor
   def ensure_professor!
-    redirect_to root_path, alert: 'Acesso negado!' unless current_user&.professor? # rubocop:disable Rails/I18nLocaleTexts
+    redirect_to root_path, alert: 'Acesso negado!' unless current_user&.professor?
   end
 
   # Método para verificar se o usuário atual é aluno
   def ensure_aluno!
-    redirect_to root_path, alert: 'Acesso negado!' unless current_user&.aluno? # rubocop:disable Rails/I18nLocaleTexts
+    redirect_to root_path, alert: 'Acesso negado!' unless current_user&.aluno?
   end
 end

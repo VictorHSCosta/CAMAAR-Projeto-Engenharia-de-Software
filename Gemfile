@@ -69,6 +69,7 @@ group :test do
   gem 'capybara'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner-active_record'
+  gem 'rspec_junit_formatter'
 end
 
 gem 'bcrypt', '~> 3.1'

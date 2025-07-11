@@ -14,7 +14,7 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe '/formularios', type: :request do # rubocop:disable RSpec/MultipleMemoizedHelpers
+RSpec.describe '/formularios', type: :request do
   let(:user) do
     User.create!(name: 'Test User', email: 'test@example.com', password: 'password', matricula: '12345', role: 'admin')
   end
@@ -50,7 +50,7 @@ RSpec.describe '/formularios', type: :request do # rubocop:disable RSpec/Multipl
     login_as(user, scope: :user)
   end
 
-  describe 'GET /index' do # rubocop:disable RSpec/MultipleMemoizedHelpers
+  describe 'GET /index' do
     it 'renders a successful response' do
       Formulario.create! valid_attributes
       get formularios_url
@@ -58,7 +58,7 @@ RSpec.describe '/formularios', type: :request do # rubocop:disable RSpec/Multipl
     end
   end
 
-  describe 'GET /show' do # rubocop:disable RSpec/MultipleMemoizedHelpers
+  describe 'GET /show' do
     it 'renders a successful response' do
       formulario = Formulario.create! valid_attributes
       get formulario_url(formulario)
@@ -66,14 +66,14 @@ RSpec.describe '/formularios', type: :request do # rubocop:disable RSpec/Multipl
     end
   end
 
-  describe 'GET /new' do # rubocop:disable RSpec/MultipleMemoizedHelpers
+  describe 'GET /new' do
     it 'renders a successful response' do
       get new_formulario_url
       expect(response).to be_successful
     end
   end
 
-  describe 'GET /edit' do # rubocop:disable RSpec/MultipleMemoizedHelpers
+  describe 'GET /edit' do
     it 'renders a successful response' do
       formulario = Formulario.create! valid_attributes
       get edit_formulario_url(formulario)
@@ -81,8 +81,8 @@ RSpec.describe '/formularios', type: :request do # rubocop:disable RSpec/Multipl
     end
   end
 
-  describe 'POST /create' do # rubocop:disable RSpec/MultipleMemoizedHelpers
-    context 'with valid parameters' do # rubocop:disable RSpec/MultipleMemoizedHelpers
+  describe 'POST /create' do
+    context 'with valid parameters' do
       it 'creates a new Formulario' do
         expect do
           post formularios_url, params: { formulario: valid_attributes }
@@ -95,7 +95,7 @@ RSpec.describe '/formularios', type: :request do # rubocop:disable RSpec/Multipl
       end
     end
 
-    context 'with invalid parameters' do # rubocop:disable RSpec/MultipleMemoizedHelpers
+    context 'with invalid parameters' do
       it 'does not create a new Formulario' do
         expect do
           post formularios_url, params: { formulario: invalid_attributes }
@@ -109,8 +109,8 @@ RSpec.describe '/formularios', type: :request do # rubocop:disable RSpec/Multipl
     end
   end
 
-  describe 'PATCH /update' do # rubocop:disable RSpec/MultipleMemoizedHelpers
-    context 'with valid parameters' do # rubocop:disable RSpec/MultipleMemoizedHelpers
+  describe 'PATCH /update' do
+    context 'with valid parameters' do
       let(:new_attributes) do
         {
           data_envio: 1.day.from_now,
@@ -133,7 +133,7 @@ RSpec.describe '/formularios', type: :request do # rubocop:disable RSpec/Multipl
       end
     end
 
-    context 'with invalid parameters' do # rubocop:disable RSpec/MultipleMemoizedHelpers
+    context 'with invalid parameters' do
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
         formulario = Formulario.create! valid_attributes
         patch formulario_url(formulario), params: { formulario: invalid_attributes }
@@ -142,7 +142,7 @@ RSpec.describe '/formularios', type: :request do # rubocop:disable RSpec/Multipl
     end
   end
 
-  describe 'DELETE /destroy' do # rubocop:disable RSpec/MultipleMemoizedHelpers
+  describe 'DELETE /destroy' do
     it 'destroys the requested formulario' do
       formulario = Formulario.create! valid_attributes
       expect do
