@@ -3,20 +3,27 @@
 require 'rails_helper'
 
 RSpec.describe 'cursos/index', type: :view do
+  let(:cursos) do
+    [
+      Curso.create!(nome: 'Engenharia de Software'),
+      Curso.create!(nome: 'Ciência da Computação')
+    ]
+  end
+
   before do
-    assign(:cursos, [
-             Curso.create!(
-               nome: 'Nome'
-             ),
-             Curso.create!(
-               nome: 'Nome'
-             )
-           ])
+    assign(:cursos, cursos)
   end
 
   it 'renders a list of cursos' do
     render
-    cell_selector = Rails::VERSION::STRING >= '7' ? 'div>p' : 'tr>td'
-    assert_select cell_selector, text: Regexp.new('Nome'), count: 2
+    expect(rendered).to include('Engenharia de Software')
+    expect(rendered).to include('Ciência da Computação')
+  end
+
+  it 'contains links to show each curso' do
+    render
+    cursos.each do |curso|
+      expect(rendered).to include(curso_path(curso))
+    end
   end
 end

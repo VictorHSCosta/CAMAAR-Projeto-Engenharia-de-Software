@@ -3,22 +3,47 @@
 require 'rails_helper'
 
 RSpec.describe 'users/show', type: :view do
-  before do
-    user = User.create!(
-      email: 'test@example.com',
-      password: 'secret123',
-      name: 'Test User',
-      matricula: '123456',
-      role: 2
-    )
-    assign(:user, user)
-    allow(view).to receive_messages(current_user: user, user_signed_in?: true)
+  let(:current_user) do
+    User.create!(name: 'Admin User', email: 'admin@example.com', password: 'password', matricula: '00000',
+                 role: 'admin')
+  end
+  let(:user) do
+    User.create!(name: 'João Silva', email: 'joao@example.com', password: 'password', matricula: '12345',
+                 role: 'professor')
   end
 
-  it 'renders attributes in <p>' do # rubocop:disable RSpec/MultipleExpectations
+  before do
+    assign(:user, user)
+    allow(view).to receive(:current_user).and_return(current_user)
+  end
+
+  it 'renders the user name' do
     render
-    expect(rendered).to match(/test@example.com/)
-    expect(rendered).to match(/Test User/)
-    expect(rendered).to match(/123456/)
+    expect(rendered).to include('João Silva')
+  end
+
+  it 'renders the user email' do
+    render
+    expect(rendered).to include('joao@example.com')
+  end
+
+  it 'renders the user matricula' do
+    render
+    expect(rendered).to include('12345')
+  end
+
+  it 'renders the user role' do
+    render
+    expect(rendered).to include('professor')
+  end
+
+  it 'contains edit link for admin users' do
+    render
+    expect(rendered).to include('Editar')
+  end
+
+  it 'contains back link' do
+    render
+    expect(rendered).to include('Voltar')
   end
 end
