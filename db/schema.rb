@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_11_154253) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_11_154603) do
   create_table "cursos", force: :cascade do |t|
     t.string "nome"
     t.datetime "created_at", null: false
@@ -32,6 +32,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_11_154253) do
     t.datetime "updated_at", null: false
     t.index ["turma_id"], name: "index_matriculas_on_turma_id"
     t.index ["user_id"], name: "index_matriculas_on_user_id"
+  end
+
+  create_table "templates", force: :cascade do |t|
+    t.string "titulo"
+    t.integer "publico_alvo"
+    t.integer "criado_por_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["criado_por_id"], name: "index_templates_on_criado_por_id"
   end
 
   create_table "turmas", force: :cascade do |t|
@@ -62,6 +71,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_11_154253) do
   add_foreign_key "disciplinas", "cursos"
   add_foreign_key "matriculas", "turmas"
   add_foreign_key "matriculas", "users"
+  add_foreign_key "templates", "criado_pors"
   add_foreign_key "turmas", "disciplinas"
   add_foreign_key "turmas", "professors"
 end
