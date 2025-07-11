@@ -15,15 +15,31 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe '/templates', type: :request do
+  let(:user) do
+    User.create!(name: 'Test User', email: 'test@example.com', password: 'password', matricula: '12345', role: 'admin')
+  end
+
+  before do
+    login_as(user, scope: :user)
+  end
+
   # This should return the minimal set of attributes required to create a valid
   # Template. As you add validations to Template, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    skip('Add a hash of attributes valid for your model')
+    {
+      titulo: 'Test Template',
+      publico_alvo: 1,
+      criado_por_id: user.id
+    }
   end
 
   let(:invalid_attributes) do
-    skip('Add a hash of attributes invalid for your model')
+    {
+      titulo: nil,
+      publico_alvo: nil,
+      criado_por_id: nil
+    }
   end
 
   describe 'GET /index' do
@@ -88,14 +104,17 @@ RSpec.describe '/templates', type: :request do
   describe 'PATCH /update' do
     context 'with valid parameters' do
       let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
+        {
+          titulo: 'Updated Template',
+          publico_alvo: 2
+        }
       end
 
       it 'updates the requested template' do
         template = Template.create! valid_attributes
         patch template_url(template), params: { template: new_attributes }
         template.reload
-        skip('Add assertions for updated state')
+        expect(template.titulo).to eq('Updated Template')
       end
 
       it 'redirects to the template' do

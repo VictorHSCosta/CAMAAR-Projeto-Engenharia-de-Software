@@ -106,14 +106,16 @@ RSpec.describe '/users', type: :request do
   describe 'PATCH /update' do
     context 'with valid parameters' do
       let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
+        {
+          name: 'Updated User'
+        }
       end
 
       it 'updates the requested user' do
         user = User.create! valid_attributes
         patch user_url(user), params: { user: new_attributes }
         user.reload
-        skip('Add assertions for updated state')
+        expect(user.name).to eq('Updated User')
       end
 
       it 'redirects to the user' do

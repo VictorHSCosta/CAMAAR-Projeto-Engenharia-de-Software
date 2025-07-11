@@ -15,15 +15,31 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe '/opcoes_pergunta', type: :request do
+  let(:user) do
+    User.create!(name: 'Test User', email: 'test@example.com', password: 'password', matricula: '12345', role: 'admin')
+  end
+  let(:template) { Template.create!(titulo: 'Test Template', publico_alvo: 1, criado_por: user) }
+  let(:pergunta) { Perguntum.create!(template: template, titulo: 'Test Question', tipo: 1, ordem: 1) }
+
+  before do
+    login_as(user, scope: :user)
+  end
+
   # This should return the minimal set of attributes required to create a valid
   # OpcoesPerguntum. As you add validations to OpcoesPerguntum, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    skip('Add a hash of attributes valid for your model')
+    {
+      pergunta_id: pergunta.id,
+      texto: 'Test Option'
+    }
   end
 
   let(:invalid_attributes) do
-    skip('Add a hash of attributes invalid for your model')
+    {
+      pergunta_id: nil,
+      texto: nil
+    }
   end
 
   describe 'GET /index' do
@@ -88,14 +104,16 @@ RSpec.describe '/opcoes_pergunta', type: :request do
   describe 'PATCH /update' do
     context 'with valid parameters' do
       let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
+        {
+          texto: 'Updated Option'
+        }
       end
 
       it 'updates the requested opcoes_perguntum' do
         opcoes_perguntum = OpcoesPerguntum.create! valid_attributes
         patch opcoes_perguntum_url(opcoes_perguntum), params: { opcoes_perguntum: new_attributes }
         opcoes_perguntum.reload
-        skip('Add assertions for updated state')
+        expect(opcoes_perguntum.texto).to eq('Updated Option')
       end
 
       it 'redirects to the opcoes_perguntum' do

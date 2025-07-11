@@ -102,14 +102,16 @@ RSpec.describe '/disciplinas', type: :request do
   describe 'PATCH /update' do
     context 'with valid parameters' do
       let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
+        {
+          nome: 'Updated Discipline'
+        }
       end
 
       it 'updates the requested disciplina' do
         disciplina = Disciplina.create! valid_attributes
         patch disciplina_url(disciplina), params: { disciplina: new_attributes }
         disciplina.reload
-        skip('Add assertions for updated state')
+        expect(disciplina.nome).to eq('Updated Discipline')
       end
 
       it 'redirects to the disciplina' do
