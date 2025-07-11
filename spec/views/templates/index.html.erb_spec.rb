@@ -9,9 +9,9 @@ RSpec.describe 'templates/index', type: :view do
   end
   let(:templates) do
     [
-      Template.create!(titulo: 'Avaliação de Disciplina', descricao: 'Template para avaliação',
+      Template.create!(titulo: 'Avaliação de Disciplina', publico_alvo: 'alunos',
                        criado_por: current_user),
-      Template.create!(titulo: 'Avaliação de Professor', descricao: 'Template para professor', criado_por: current_user)
+      Template.create!(titulo: 'Avaliação de Professor', publico_alvo: 'professores', criado_por: current_user)
     ]
   end
 
@@ -26,10 +26,10 @@ RSpec.describe 'templates/index', type: :view do
     expect(rendered).to include('Avaliação de Professor')
   end
 
-  it 'shows template descriptions' do
+  it 'shows template target audience' do
     render
-    expect(rendered).to include('Template para avaliação')
-    expect(rendered).to include('Template para professor')
+    expect(rendered).to include('Alunos')
+    expect(rendered).to include('Professores')
   end
 
   it 'contains links to show each template' do

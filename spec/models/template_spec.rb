@@ -9,7 +9,7 @@ RSpec.describe Template, type: :model do
 
   describe 'validations' do
     it 'is valid with valid attributes' do
-      template = Template.new(
+      template = described_class.new(
         titulo: 'Test Template',
         publico_alvo: 1,
         criado_por: user
@@ -18,18 +18,18 @@ RSpec.describe Template, type: :model do
     end
 
     it 'is invalid without a titulo' do
-      template = Template.new(publico_alvo: 1, criado_por: user)
+      template = described_class.new(publico_alvo: 1, criado_por: user)
       expect(template).not_to be_valid
     end
 
     it 'is invalid without a criado_por' do
-      template = Template.new(titulo: 'Test Template', publico_alvo: 1)
+      template = described_class.new(titulo: 'Test Template', publico_alvo: 1)
       expect(template).not_to be_valid
     end
   end
 
   describe 'associations' do
-    let(:template) { Template.create!(titulo: 'Test Template', publico_alvo: 1, criado_por: user) }
+    let(:template) { described_class.create!(titulo: 'Test Template', publico_alvo: 1, criado_por: user) }
 
     it 'belongs to a criado_por (user)' do
       expect(template.criado_por).to eq(user)

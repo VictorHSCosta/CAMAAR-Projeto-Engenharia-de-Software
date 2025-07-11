@@ -7,7 +7,7 @@ RSpec.describe 'disciplinas/show', type: :view do
     User.create!(name: 'Admin User', email: 'admin@example.com', password: 'password', matricula: '00000',
                  role: 'admin')
   end
-  let(:curso) { Curso.create!(name: 'Engenharia de Software') }
+  let(:curso) { Curso.create!(nome: 'Engenharia de Software') }
   let(:disciplina) { Disciplina.create!(nome: 'Programação Web', curso: curso) }
 
   before do
@@ -27,11 +27,11 @@ RSpec.describe 'disciplinas/show', type: :view do
 
   it 'contains edit link' do
     render
-    expect(rendered).to include('Editar')
+    expect(rendered).to include('Edit this disciplina')
   end
 
   it 'contains back link' do
     render
-    expect(rendered).to include('Voltar')
+    expect(rendered).to include('Back to disciplinas')
   end
 end

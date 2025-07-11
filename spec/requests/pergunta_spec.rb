@@ -18,12 +18,6 @@ RSpec.describe '/pergunta', type: :request do
   let(:user) do
     User.create!(name: 'Test User', email: 'test@example.com', password: 'password', matricula: '12345', role: 'admin')
   end
-  let(:template) { Template.create!(titulo: 'Test Template', publico_alvo: 1, criado_por: user) }
-
-  before do
-    login_as(user, scope: :user)
-  end
-
   # This should return the minimal set of attributes required to create a valid
   # Perguntum. As you add validations to Perguntum, be sure to
   # adjust the attributes here as well.
@@ -35,7 +29,6 @@ RSpec.describe '/pergunta', type: :request do
       ordem: 1
     }
   end
-
   let(:invalid_attributes) do
     {
       template_id: nil,
@@ -43,6 +36,11 @@ RSpec.describe '/pergunta', type: :request do
       tipo: nil,
       ordem: nil
     }
+  end
+  let(:template) { Template.create!(titulo: 'Test Template', publico_alvo: 1, criado_por: user) }
+
+  before do
+    login_as(user, scope: :user)
   end
 
   describe 'GET /index' do

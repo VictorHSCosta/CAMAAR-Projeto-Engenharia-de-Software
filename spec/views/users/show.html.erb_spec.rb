@@ -39,11 +39,11 @@ RSpec.describe 'users/show', type: :view do
 
   it 'contains edit link for admin users' do
     render
-    expect(rendered).to include('Editar')
+    expect(rendered).to include('Edit this user')
   end
 
   it 'contains back link' do
     render
-    expect(rendered).to include('Voltar')
+    expect(rendered).to include('Back to users')
   end
 end

@@ -18,28 +18,26 @@ RSpec.describe '/templates', type: :request do
   let(:user) do
     User.create!(name: 'Test User', email: 'test@example.com', password: 'password', matricula: '12345', role: 'admin')
   end
-
-  before do
-    login_as(user, scope: :user)
-  end
-
   # This should return the minimal set of attributes required to create a valid
   # Template. As you add validations to Template, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
     {
       titulo: 'Test Template',
-      publico_alvo: 1,
+      publico_alvo: 'alunos',
       criado_por_id: user.id
     }
   end
-
   let(:invalid_attributes) do
     {
       titulo: nil,
       publico_alvo: nil,
       criado_por_id: nil
     }
+  end
+
+  before do
+    login_as(user, scope: :user)
   end
 
   describe 'GET /index' do
@@ -106,7 +104,7 @@ RSpec.describe '/templates', type: :request do
       let(:new_attributes) do
         {
           titulo: 'Updated Template',
-          publico_alvo: 2
+          publico_alvo: 'professores'
         }
       end
 

@@ -2,6 +2,6 @@
 
 class Curso < ApplicationRecord
   validates :nome, presence: true, length: { minimum: 2 }
-  
+
   has_many :disciplinas, dependent: :destroy
 end

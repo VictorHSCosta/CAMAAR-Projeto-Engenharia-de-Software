@@ -7,23 +7,23 @@ RSpec.describe Disciplina, type: :model do
 
   describe 'validations' do
     it 'is valid with valid attributes' do
-      disciplina = Disciplina.new(nome: 'Test Discipline', curso: curso)
+      disciplina = described_class.new(nome: 'Test Discipline', curso: curso)
       expect(disciplina).to be_valid
     end
 
     it 'is invalid without a nome' do
-      disciplina = Disciplina.new(curso: curso)
+      disciplina = described_class.new(curso: curso)
       expect(disciplina).not_to be_valid
     end
 
     it 'is invalid without a curso' do
-      disciplina = Disciplina.new(nome: 'Test Discipline')
+      disciplina = described_class.new(nome: 'Test Discipline')
       expect(disciplina).not_to be_valid
     end
   end
 
   describe 'associations' do
-    let(:disciplina) { Disciplina.create!(nome: 'Test Discipline', curso: curso) }
+    let(:disciplina) { described_class.create!(nome: 'Test Discipline', curso: curso) }
 
     it 'belongs to a curso' do
       expect(disciplina.curso).to eq(curso)
