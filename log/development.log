@@ -1113,3 +1113,46 @@ LoadError (cannot load such file -- bcrypt):
   
 app/models/user.rb:1:in '<main>'
 app/controllers/sessions_controller.rb:12:in 'SessionsController#create'
+Started GET "/" for 127.0.0.1 at 2025-07-11 14:11:13 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+Processing by EvaluationsController#index as HTML
+Redirected to http://127.0.0.1:3000/login
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 189ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2025-07-11 14:11:14 -0300
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb
+  Rendered sessions/new.html.erb (Duration: 43.0ms | GC: 0.0ms)
+Completed 200 OK in 323ms (Views: 72.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-07-11 14:11:15 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started POST "/login" for 127.0.0.1 at 2025-07-11 14:11:41 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token" => "[FILTERED]", "email" => "[FILTERED]", "password" => "[FILTERED]", "commit" => "Entrar"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = '1234@gmail.com' LIMIT 1 /*action='create',application='Camaar',controller='sessions'*/[0m
+  ↳ app/controllers/sessions_controller.rb:12:in 'SessionsController#create'
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 9.1ms | GC: 3.6ms)
+  Rendered layout layouts/application.html.erb (Duration: 13.4ms | GC: 3.6ms)
+Completed 422 Unprocessable Content in 146ms (Views: 15.1ms | ActiveRecord: 3.0ms (1 query, 0 cached) | GC: 11.8ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2025-07-11 14:11:46 -0300
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token" => "[FILTERED]", "email" => "[FILTERED]", "password" => "[FILTERED]", "commit" => "Entrar"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'aluno@aluno.unb.br' LIMIT 1 /*action='create',application='Camaar',controller='sessions'*/[0m
+  ↳ app/controllers/sessions_controller.rb:12:in 'SessionsController#create'
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 7.7ms | GC: 1.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 9.1ms | GC: 1.5ms)
+Completed 422 Unprocessable Content in 48ms (Views: 10.0ms | ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 1.5ms)
+
+
