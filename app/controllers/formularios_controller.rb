@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class FormulariosController < ApplicationController
-  before_action :set_formulario, only: %i[ show edit update destroy ]
+  before_action :set_formulario, only: %i[show edit update destroy]
 
   # GET /formularios or /formularios.json
   def index
@@ -7,8 +9,7 @@ class FormulariosController < ApplicationController
   end
 
   # GET /formularios/1 or /formularios/1.json
-  def show
-  end
+  def show; end
 
   # GET /formularios/new
   def new
@@ -16,8 +17,7 @@ class FormulariosController < ApplicationController
   end
 
   # GET /formularios/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /formularios or /formularios.json
   def create
@@ -25,7 +25,7 @@ class FormulariosController < ApplicationController
 
     respond_to do |format|
       if @formulario.save
-        format.html { redirect_to @formulario, notice: "Formulario was successfully created." }
+        format.html { redirect_to @formulario, notice: 'Formulario was successfully created.' }
         format.json { render :show, status: :created, location: @formulario }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class FormulariosController < ApplicationController
   def update
     respond_to do |format|
       if @formulario.update(formulario_params)
-        format.html { redirect_to @formulario, notice: "Formulario was successfully updated." }
+        format.html { redirect_to @formulario, notice: 'Formulario was successfully updated.' }
         format.json { render :show, status: :ok, location: @formulario }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +52,20 @@ class FormulariosController < ApplicationController
     @formulario.destroy!
 
     respond_to do |format|
-      format.html { redirect_to formularios_path, status: :see_other, notice: "Formulario was successfully destroyed." }
+      format.html { redirect_to formularios_path, status: :see_other, notice: 'Formulario was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_formulario
-      @formulario = Formulario.find(params.expect(:id))
-    end
 
-    # Only allow a list of trusted parameters through.
-    def formulario_params
-      params.expect(formulario: [ :template_id, :turma_id, :coordenador_id, :data_envio, :data_fim ])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_formulario
+    @formulario = Formulario.find(params.expect(:id))
+  end
+
+  # Only allow a list of trusted parameters through.
+  def formulario_params
+    params.expect(formulario: %i[template_id turma_id coordenador_id data_envio data_fim])
+  end
 end

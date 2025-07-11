@@ -1,1 +1,3 @@
-json.partial! "disciplinas/disciplina", disciplina: @disciplina
+# frozen_string_literal: true
+
+json.partial! 'disciplinas/disciplina', disciplina: @disciplina

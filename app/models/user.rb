@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class User < ApplicationRecord
+class User < ApplicationRecord # rubocop:disable Style/Documentation
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -10,7 +10,7 @@ class User < ApplicationRecord
   enum :role, { admin: 0, aluno: 1, professor: 2 }
 
   validates :name, presence: true
-  validates :matricula, presence: true, uniqueness: true
+  validates :matricula, presence: true, uniqueness: true # rubocop:disable Rails/UniqueValidationWithoutIndex
   validates :role, presence: true
 
   before_save :downcase_email
