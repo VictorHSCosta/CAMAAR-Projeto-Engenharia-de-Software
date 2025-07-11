@@ -15,15 +15,29 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe '/disciplinas', type: :request do
+  let(:user) { FactoryBot.create(:user) }
+  let(:curso) { FactoryBot.create(:curso) }
+
   # This should return the minimal set of attributes required to create a valid
   # Disciplina. As you add validations to Disciplina, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    skip('Add a hash of attributes valid for your model')
+    {
+      nome: 'Engenharia de Software',
+      curso_id: curso.id
+    }
   end
 
   let(:invalid_attributes) do
-    skip('Add a hash of attributes invalid for your model')
+    {
+      nome: '',
+      curso_id: nil
+    }
+  end
+
+  before do
+    # Simula usuário logado para testes de request
+    login_as(user, scope: :user)
   end
 
   describe 'GET /index' do
@@ -80,7 +94,7 @@ RSpec.describe '/disciplinas', type: :request do
 
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
         post disciplinas_url, params: { disciplina: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(422)
       end
     end
   end
@@ -110,7 +124,7 @@ RSpec.describe '/disciplinas', type: :request do
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
         disciplina = Disciplina.create! valid_attributes
         patch disciplina_url(disciplina), params: { disciplina: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(422)
       end
     end
   end

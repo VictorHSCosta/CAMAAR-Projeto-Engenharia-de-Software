@@ -15,19 +15,6 @@ class User < ApplicationRecord
 
   before_save :downcase_email
 
-  # Métodos para verificar roles
-  def admin?
-    role == 'admin'
-  end
-
-  def aluno?
-    role == 'aluno'
-  end
-
-  def professor?
-    role == 'professor'
-  end
-
   # Permite que apenas admins cadastrem novos usuários
   def self.can_register?(current_user = nil)
     current_user&.admin?

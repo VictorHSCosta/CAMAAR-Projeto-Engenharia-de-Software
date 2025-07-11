@@ -15,15 +15,41 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe '/formularios', type: :request do
+  let(:user) do
+    User.create!(name: 'Test User', email: 'test@example.com', password: 'password', matricula: '12345', role: 'admin')
+  end
+  let(:curso) { Curso.create!(nome: 'Test Course') }
+  let(:disciplina) { Disciplina.create!(nome: 'Test Discipline', curso: curso) }
+  let(:professor) do
+    User.create!(name: 'Professor', email: 'professor@example.com', password: 'password', matricula: '67890',
+                 role: 'professor')
+  end
+  let(:turma) { Turma.create!(disciplina: disciplina, professor: professor, semestre: '2024.1') }
+  let(:template) { Template.create!(titulo: 'Test Template', publico_alvo: 1, criado_por: user) }
+
+  before do
+    login_as(user, scope: :user)
+  end
+
   # This should return the minimal set of attributes required to create a valid
   # Formulario. As you add validations to Formulario, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    skip('Add a hash of attributes valid for your model')
+    {
+      template_id: template.id,
+      turma_id: turma.id,
+      coordenador_id: user.id,
+      data_envio: Time.current,
+      data_fim: 1.week.from_now
+    }
   end
 
   let(:invalid_attributes) do
-    skip('Add a hash of attributes invalid for your model')
+    {
+      template_id: nil,
+      turma_id: nil,
+      coordenador_id: nil
+    }
   end
 
   describe 'GET /index' do
@@ -80,7 +106,7 @@ RSpec.describe '/formularios', type: :request do
 
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
         post formularios_url, params: { formulario: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(422)
       end
     end
   end
@@ -110,7 +136,7 @@ RSpec.describe '/formularios', type: :request do
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
         formulario = Formulario.create! valid_attributes
         patch formulario_url(formulario), params: { formulario: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(422)
       end
     end
   end

@@ -3,19 +3,13 @@
 require 'rails_helper'
 
 RSpec.describe 'turmas/index', type: :view do
+  let(:curso) { create(:curso) }
+  let(:professor) { create(:user, role: 'professor') }
+  let(:disciplina) { create(:disciplina, curso: curso) }
+  let(:turma) { create(:turma, professor: professor, disciplina: disciplina) }
+
   before do
-    assign(:turmas, [
-             Turma.create!(
-               disciplina: nil,
-               professor: nil,
-               semestre: 'Semestre'
-             ),
-             Turma.create!(
-               disciplina: nil,
-               professor: nil,
-               semestre: 'Semestre'
-             )
-           ])
+    assign(:turma, turma)
   end
 
   it 'renders a list of turmas' do

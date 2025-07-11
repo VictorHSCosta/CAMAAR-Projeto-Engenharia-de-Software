@@ -80,7 +80,7 @@ RSpec.describe '/opcoes_pergunta', type: :request do
 
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
         post opcoes_pergunta_url, params: { opcoes_perguntum: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(422)
       end
     end
   end
@@ -110,7 +110,7 @@ RSpec.describe '/opcoes_pergunta', type: :request do
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
         opcoes_perguntum = OpcoesPerguntum.create! valid_attributes
         patch opcoes_perguntum_url(opcoes_perguntum), params: { opcoes_perguntum: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(422)
       end
     end
   end

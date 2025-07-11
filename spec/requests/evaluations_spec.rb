@@ -7,7 +7,7 @@ RSpec.describe 'Evaluations', type: :request do
 
   before do
     # Simula usuário logado com Devise
-    sign_in user
+    login_as(user, scope: :user)
   end
 
   describe 'GET /index' do

@@ -80,7 +80,7 @@ RSpec.describe '/resposta', type: :request do
 
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
         post resposta_url, params: { respostum: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(422)
       end
     end
   end
@@ -110,7 +110,7 @@ RSpec.describe '/resposta', type: :request do
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
         respostum = Respostum.create! valid_attributes
         patch respostum_url(respostum), params: { respostum: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(422)
       end
     end
   end

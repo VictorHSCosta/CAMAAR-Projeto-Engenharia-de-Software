@@ -31,8 +31,8 @@ RSpec.describe '/cursos', type: :request do
   end
 
   before do
-    # Simula usuário logado com Devise
-    sign_in user
+    # Simula usuário logado para testes de request usando Warden
+    login_as(user, scope: :user)
   end
 
   describe 'GET /index' do
@@ -97,14 +97,16 @@ RSpec.describe '/cursos', type: :request do
   describe 'PATCH /update' do
     context 'with valid parameters' do
       let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
+        {
+          nome: 'Engenharia de Computação'
+        }
       end
 
       it 'updates the requested curso' do
         curso = Curso.create! valid_attributes
         patch curso_url(curso), params: { curso: new_attributes }
         curso.reload
-        skip('Add assertions for updated state')
+        expect(curso.nome).to eq('Engenharia de Computação')
       end
 
       it 'redirects to the curso' do
