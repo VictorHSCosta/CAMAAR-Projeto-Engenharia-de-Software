@@ -3157,3 +3157,83 @@ Started GET "/mcp/sse" for 127.0.0.1 at 2025-07-11 16:17:58 -0300
   
 ActionController::RoutingError (No route matches [GET] "/mcp/sse"):
   
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+Started GET "/" for ::1 at 2025-07-11 18:18:08 -0300
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='home'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 3.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.6ms | GC: 0.0ms)
+Completed 200 OK in 35ms (Views: 8.7ms | ActiveRecord: 0.7ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for ::1 at 2025-07-11 18:18:10 -0300
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='home'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.8ms | GC: 0.0ms)
+Completed 200 OK in 14ms (Views: 3.1ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/assets/figma_custom.css" for ::1 at 2025-07-11 18:18:10 -0300
+Started GET "/cursos" for ::1 at 2025-07-11 18:18:11 -0300
+Processing by CursosController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='cursos'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering cursos/index.html.erb within layouts/application
+  [1m[36mCurso Load (0.1ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" /*action='index',application='Camaar',controller='cursos'*/[0m
+  ↳ app/views/cursos/index.html.erb:8
+  Rendered cursos/_curso.html.erb (Duration: 0.4ms | GC: 0.0ms)
+  Rendered cursos/_curso.html.erb (Duration: 0.4ms | GC: 0.0ms)
+  Rendered cursos/_curso.html.erb (Duration: 0.0ms | GC: 0.0ms)
+  Rendered cursos/index.html.erb within layouts/application (Duration: 10.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 11.8ms | GC: 0.0ms)
+Completed 200 OK in 29ms (Views: 12.2ms | ActiveRecord: 0.2ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for ::1 at 2025-07-11 18:18:13 -0300
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='home'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | GC: 0.0ms)
+Completed 200 OK in 19ms (Views: 4.3ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/admin/users/new" for ::1 at 2025-07-11 18:18:14 -0300
+Processing by Admin::UsersController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='Camaar',controller='users'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering admin/users/new.html.erb within layouts/application
+  Rendered admin/users/new.html.erb within layouts/application (Duration: 6.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 10.1ms | GC: 0.0ms)
+Completed 200 OK in 24ms (Views: 12.2ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users" for ::1 at 2025-07-11 18:18:16 -0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (3.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='users'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."name" ASC /*action='index',application='Camaar',controller='users'*/[0m
+  ↳ app/views/users/index.html.erb:27
+  Rendered users/index.html.erb within layouts/application (Duration: 6.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.6ms | GC: 0.0ms)
+Completed 200 OK in 24ms (Views: 8.9ms | ActiveRecord: 3.8ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for ::1 at 2025-07-11 18:18:16 -0300
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='home'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | GC: 0.0ms)
+Completed 200 OK in 13ms (Views: 2.7ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+

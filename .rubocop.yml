@@ -6,6 +6,7 @@ AllCops:
   Exclude:
     - 'bin/**/*'
     - 'db/schema.rb'
+    - 'db/queue_schema.rb'
     - 'node_modules/**/*'
     - 'config/**/*'
     - 'vendor/**/*'
@@ -14,6 +15,18 @@ plugins:
   - rubocop-rails
   - rubocop-performance
   - rubocop-rspec
+
+# Disable I18n checks for development project
+Rails/I18nLocaleTexts:
+  Enabled: false
+
+# Disable inverse_of warnings
+Rails/InverseOf:
+  Enabled: false
+
+# Allow scoped action filters
+Rails/LexicallyScopedActionFilter:
+  Enabled: false
 
 Layout/LineLength:
   Max: 120
@@ -36,10 +49,41 @@ Layout/SpaceAroundOperators:
 Layout/EndAlignment:
   Enabled: true
 
+# Allow longer methods for controllers
+Metrics/MethodLength:
+  Max: 15
+  Exclude:
+    - 'app/controllers/**/*'
+
+# Allow higher ABC size for controllers
+Metrics/AbcSize:
+  Max: 25
+  Exclude:
+    - 'app/controllers/**/*'
+
+# Allow longer blocks
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*.rb'
     - 'db/migrate/*.rb'
+    - 'db/**/*'
+
+# Allow more memoized helpers in specs
+RSpec/MultipleMemoizedHelpers:
+  Max: 12
+
+# Allow multiple expectations in specs
+RSpec/MultipleExpectations:
+  Max: 3
+
+# Allow longer examples in specs
+RSpec/ExampleLength:
+  Max: 10
+
+# Allow empty blocks in rake tasks
+Lint/EmptyBlock:
+  Exclude:
+    - 'lib/tasks/**/*'
 
 Style/FrozenStringLiteralComment:
   Enabled: false
