@@ -15,15 +15,36 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe '/matriculas', type: :request do
+  let(:user) do
+    User.create!(name: 'Test User', email: 'test@example.com', password: 'password', matricula: '12345', role: 'admin')
+  end
+  let(:curso) { Curso.create!(nome: 'Test Course') }
+  let(:disciplina) { Disciplina.create!(nome: 'Test Discipline', curso: curso) }
+  let(:professor) do
+    User.create!(name: 'Professor', email: 'professor@example.com', password: 'password', matricula: '67890',
+                 role: 'professor')
+  end
+  let(:turma) { Turma.create!(disciplina: disciplina, professor: professor, semestre: '2024.1') }
+
+  before do
+    login_as(user, scope: :user)
+  end
+
   # This should return the minimal set of attributes required to create a valid
   # Matricula. As you add validations to Matricula, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    skip('Add a hash of attributes valid for your model')
+    {
+      user_id: user.id,
+      turma_id: turma.id
+    }
   end
 
   let(:invalid_attributes) do
-    skip('Add a hash of attributes invalid for your model')
+    {
+      user_id: nil,
+      turma_id: nil
+    }
   end
 
   describe 'GET /index' do
@@ -88,14 +109,16 @@ RSpec.describe '/matriculas', type: :request do
   describe 'PATCH /update' do
     context 'with valid parameters' do
       let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
+        {
+          user_id: user.id
+        }
       end
 
       it 'updates the requested matricula' do
         matricula = Matricula.create! valid_attributes
         patch matricula_url(matricula), params: { matricula: new_attributes }
         matricula.reload
-        skip('Add assertions for updated state')
+        expect(matricula.user_id).to eq(new_attributes[:user_id])
       end
 
       it 'redirects to the matricula' do

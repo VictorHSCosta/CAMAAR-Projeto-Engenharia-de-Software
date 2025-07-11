@@ -15,15 +15,46 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe '/resposta', type: :request do
+  let(:user) do
+    User.create!(name: 'Test User', email: 'test@example.com', password: 'password', matricula: '12345', role: 'admin')
+  end
+  let(:curso) { Curso.create!(nome: 'Test Course') }
+  let(:disciplina) { Disciplina.create!(nome: 'Test Discipline', curso: curso) }
+  let(:professor) do
+    User.create!(name: 'Professor', email: 'professor@example.com', password: 'password', matricula: '67890',
+                 role: 'professor')
+  end
+  let(:turma) { Turma.create!(disciplina: disciplina, professor: professor, semestre: '2024.1') }
+  let(:template) { Template.create!(titulo: 'Test Template', publico_alvo: 1, criado_por: user) }
+  let(:formulario) { Formulario.create!(template: template, turma: turma, coordenador: user) }
+  let(:pergunta) { Perguntum.create!(template: template, titulo: 'Test Question', tipo: 1, ordem: 1) }
+  let(:opcao) { OpcoesPerguntum.create!(pergunta: pergunta, texto: 'Test Option') }
+
+  before do
+    login_as(user, scope: :user)
+  end
+
   # This should return the minimal set of attributes required to create a valid
   # Respostum. As you add validations to Respostum, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    skip('Add a hash of attributes valid for your model')
+    {
+      formulario_id: formulario.id,
+      pergunta_id: pergunta.id,
+      opcao_id: opcao.id,
+      resposta_texto: 'Test Response',
+      turma_id: turma.id,
+      uuid_anonimo: SecureRandom.uuid
+    }
   end
 
   let(:invalid_attributes) do
-    skip('Add a hash of attributes invalid for your model')
+    {
+      formulario_id: nil,
+      pergunta_id: nil,
+      opcao_id: nil,
+      turma_id: nil
+    }
   end
 
   describe 'GET /index' do
@@ -88,14 +119,16 @@ RSpec.describe '/resposta', type: :request do
   describe 'PATCH /update' do
     context 'with valid parameters' do
       let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
+        {
+          resposta_texto: 'Updated Response'
+        }
       end
 
       it 'updates the requested respostum' do
         respostum = Respostum.create! valid_attributes
         patch respostum_url(respostum), params: { respostum: new_attributes }
         respostum.reload
-        skip('Add assertions for updated state')
+        expect(respostum.resposta_texto).to eq('Updated Response')
       end
 
       it 'redirects to the respostum' do

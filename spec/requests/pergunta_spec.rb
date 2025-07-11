@@ -15,15 +15,34 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe '/pergunta', type: :request do
+  let(:user) do
+    User.create!(name: 'Test User', email: 'test@example.com', password: 'password', matricula: '12345', role: 'admin')
+  end
+  let(:template) { Template.create!(titulo: 'Test Template', publico_alvo: 1, criado_por: user) }
+
+  before do
+    login_as(user, scope: :user)
+  end
+
   # This should return the minimal set of attributes required to create a valid
   # Perguntum. As you add validations to Perguntum, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    skip('Add a hash of attributes valid for your model')
+    {
+      template_id: template.id,
+      titulo: 'Test Question',
+      tipo: 1,
+      ordem: 1
+    }
   end
 
   let(:invalid_attributes) do
-    skip('Add a hash of attributes invalid for your model')
+    {
+      template_id: nil,
+      titulo: nil,
+      tipo: nil,
+      ordem: nil
+    }
   end
 
   describe 'GET /index' do
@@ -88,14 +107,18 @@ RSpec.describe '/pergunta', type: :request do
   describe 'PATCH /update' do
     context 'with valid parameters' do
       let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
+        {
+          titulo: 'Updated Question',
+          tipo: 2,
+          ordem: 2
+        }
       end
 
       it 'updates the requested perguntum' do
         perguntum = Perguntum.create! valid_attributes
         patch perguntum_url(perguntum), params: { perguntum: new_attributes }
         perguntum.reload
-        skip('Add assertions for updated state')
+        expect(perguntum.titulo).to eq('Updated Question')
       end
 
       it 'redirects to the perguntum' do

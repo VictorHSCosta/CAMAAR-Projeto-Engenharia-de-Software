@@ -15,15 +15,37 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe '/turmas', type: :request do
+  let(:user) do
+    User.create!(name: 'Test User', email: 'test@example.com', password: 'password', matricula: '12345', role: 'admin')
+  end
+  let(:curso) { Curso.create!(nome: 'Test Course') }
+  let(:disciplina) { Disciplina.create!(nome: 'Test Discipline', curso: curso) }
+  let(:professor) do
+    User.create!(name: 'Professor', email: 'professor@example.com', password: 'password', matricula: '67890',
+                 role: 'professor')
+  end
+
+  before do
+    login_as(user, scope: :user)
+  end
+
   # This should return the minimal set of attributes required to create a valid
   # Turma. As you add validations to Turma, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    skip('Add a hash of attributes valid for your model')
+    {
+      disciplina_id: disciplina.id,
+      professor_id: professor.id,
+      semestre: '2024.1'
+    }
   end
 
   let(:invalid_attributes) do
-    skip('Add a hash of attributes invalid for your model')
+    {
+      disciplina_id: nil,
+      professor_id: nil,
+      semestre: nil
+    }
   end
 
   describe 'GET /index' do
@@ -88,14 +110,16 @@ RSpec.describe '/turmas', type: :request do
   describe 'PATCH /update' do
     context 'with valid parameters' do
       let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
+        {
+          semestre: '2024.2'
+        }
       end
 
       it 'updates the requested turma' do
         turma = Turma.create! valid_attributes
         patch turma_url(turma), params: { turma: new_attributes }
         turma.reload
-        skip('Add assertions for updated state')
+        expect(turma.semestre).to eq('2024.2')
       end
 
       it 'redirects to the turma' do
