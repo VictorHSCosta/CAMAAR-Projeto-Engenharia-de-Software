@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Adicione um comentário de documentação para a classe PerguntaController.
 class PerguntaController < ApplicationController
   before_action :set_perguntum, only: %i[show edit update destroy]
 

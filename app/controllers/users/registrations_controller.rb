@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Users
+  # Adicione um comentário de documentação para a classe Users::RegistrationsController.
   class RegistrationsController < Devise::RegistrationsController
     before_action :ensure_admin, only: %i[new create]
     before_action :configure_sign_up_params, only: [:create]

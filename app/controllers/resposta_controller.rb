@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Adicione um comentário de documentação para a classe RespostaController.
 class RespostaController < ApplicationController
   before_action :set_respostum, only: %i[show edit update destroy]
 

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Adicione um comentário de documentação para a classe FormulariosController.
 class FormulariosController < ApplicationController
   before_action :set_formulario, only: %i[show edit update destroy]
 

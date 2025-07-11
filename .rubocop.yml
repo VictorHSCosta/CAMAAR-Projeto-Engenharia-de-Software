@@ -1,8 +1,8 @@
-# .rubocop.yml
-
 AllCops:
   TargetRubyVersion: 3.2
   NewCops: enable
+  DisplayCopNames: true
+  SuggestExtensions: false
   Exclude:
     - 'bin/**/*'
     - 'db/schema.rb'
@@ -18,7 +18,34 @@ plugins:
 Layout/LineLength:
   Max: 120
 
+Layout/EmptyLinesAroundClassBody:
+  Enabled: true
+
+Layout/EmptyLinesAroundModuleBody:
+  Enabled: true
+
+Layout/TrailingWhitespace:
+  Enabled: true
+
+Layout/ExtraSpacing:
+  Enabled: true
+
+Layout/SpaceAroundOperators:
+  Enabled: true
+
+Layout/EndAlignment:
+  Enabled: true
+
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*.rb'
     - 'db/migrate/*.rb'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: true
