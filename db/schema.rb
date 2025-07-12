@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_11_155022) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_12_150546) do
   create_table "cursos", force: :cascade do |t|
     t.string "nome"
     t.datetime "created_at", null: false
@@ -22,6 +22,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_11_155022) do
     t.integer "curso_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "codigo"
+    t.string "codigo_turma"
+    t.string "semestre"
+    t.string "horario"
     t.index ["curso_id"], name: "index_disciplinas_on_curso_id"
   end
 
@@ -110,24 +114,27 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_11_155022) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "encrypted_password", default: "", null: false
+    t.string "curso"
+    t.string "departamento"
+    t.string "formacao"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["matricula"], name: "index_users_on_matricula", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "disciplinas", "cursos"
+  add_foreign_key "formularios", "coordenadors"
   add_foreign_key "formularios", "templates"
   add_foreign_key "formularios", "turmas"
-  add_foreign_key "formularios", "users", column: "coordenador_id"
   add_foreign_key "matriculas", "turmas"
   add_foreign_key "matriculas", "users"
   add_foreign_key "opcoes_pergunta", "pergunta", column: "pergunta_id"
   add_foreign_key "pergunta", "templates"
   add_foreign_key "resposta", "formularios"
-  add_foreign_key "resposta", "opcoes_pergunta", column: "opcao_id"
+  add_foreign_key "resposta", "opcaos"
   add_foreign_key "resposta", "pergunta", column: "pergunta_id"
   add_foreign_key "resposta", "turmas"
-  add_foreign_key "templates", "users", column: "criado_por_id"
+  add_foreign_key "templates", "criado_pors"
   add_foreign_key "turmas", "disciplinas"
-  add_foreign_key "turmas", "users", column: "professor_id"
+  add_foreign_key "turmas", "professors"
 end
