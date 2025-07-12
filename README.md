@@ -2,9 +2,8 @@
 **Sistema para avaliação de atividades acadêmicas remotas do CIC**
 
 [![CI](https://github.com/victor-costa-silva/CAMAAR-Projeto-Engenharia-de-Software/actions/workflows/ci.yml/badge.svg)](https://github.com/victor-costa-silva/CAMAAR-Projeto-Engenharia-de-Software/actions/workflows/ci.yml)
-[![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop)
 [![Rails Version](https://img.shields.io/badge/Rails-8.0.2-red.svg)](https://rubyonrails.org/)
-[![Ruby Version](https://img.shields.io/badge/Ruby-3.2.0-red.svg)](https://www.ruby-lang.org/)
+[![Ruby Version](https://img.shields.io/badge/Ruby-3.4.1-red.svg)](https://www.ruby-lang.org/)
 
 ---
 
