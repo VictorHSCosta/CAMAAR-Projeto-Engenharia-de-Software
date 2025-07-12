@@ -58,6 +58,13 @@ group :development, :test do
   gem 'rubocop-performance'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
+
+  gem 'factory_bot_rails'
+  gem 'rspec-rails'
+  gem 'rubocop'
+  gem 'rubocop-performance'
+  gem 'rubocop-rails'
+  gem 'rubocop-rspec'
 end
 
 group :development do
@@ -73,7 +80,7 @@ group :test do
 end
 
 gem 'bcrypt', '~> 3.1'
-
+gem 'devise', '~> 4.2'
 gem 'faker', '~> 3.4', '>= 3.4.2'
 
 gem 'devise', '~> 4.2'

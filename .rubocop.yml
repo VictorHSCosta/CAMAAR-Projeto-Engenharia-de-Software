@@ -7,9 +7,11 @@ AllCops:
     - 'bin/**/*'
     - 'db/schema.rb'
     - 'db/queue_schema.rb'
+    - 'db/queue_schema.rb'
     - 'node_modules/**/*'
     - 'config/**/*'
     - 'vendor/**/*'
+    - 'lib/tasks/cucumber.rake'
 
 plugins:
   - rubocop-rails

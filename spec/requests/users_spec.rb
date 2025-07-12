@@ -27,6 +27,7 @@ RSpec.describe '/users', type: :request do
       name: 'Test User',
       matricula: '12345678',
       role: 'admin'
+      role: 'admin'
     }
   end
   let(:invalid_attributes) do
@@ -38,6 +39,8 @@ RSpec.describe '/users', type: :request do
       role: ''
     }
   end
+
+  let(:admin_user) { FactoryBot.create(:user, role: :admin, email: 'test_admin@example.com', matricula: '00000000') }
 
   before do
     # Simula usuário logado com Warden para testes de request

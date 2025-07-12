@@ -5,7 +5,6 @@ module Users
   class RegistrationsController < Devise::RegistrationsController
     before_action :ensure_admin, only: %i[new create]
     before_action :configure_sign_up_params, only: [:create]
-    before_action :configure_account_update_params, only: [:update]
 
     # GET /resource/sign_up
     def new
@@ -18,24 +17,45 @@ module Users
     # POST /resource
     def create
       build_resource(sign_up_params)
+      save_and_respond_to_user
+    end
 
+    private
+
+    def save_and_respond_to_user
       resource.save
       yield resource if block_given?
       if resource.persisted?
-        if resource.active_for_authentication?
-          set_flash_message! :notice, :signed_up
-          sign_up(resource_name, resource)
-          respond_with resource, location: after_sign_up_path_for(resource)
-        else
-          set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
-          expire_data_after_sign_up!
-          respond_with resource, location: after_inactive_sign_up_path_for(resource)
-        end
+        handle_successful_registration
       else
-        clean_up_passwords resource
-        set_minimum_password_length
-        respond_with resource
+        handle_failed_registration
       end
+    end
+
+    def handle_successful_registration
+      if resource.active_for_authentication?
+        handle_active_user
+      else
+        handle_inactive_user
+      end
+    end
+
+    def handle_active_user
+      set_flash_message! :notice, :signed_up
+      sign_up(resource_name, resource)
+      respond_with resource, location: after_sign_up_path_for(resource)
+    end
+
+    def handle_inactive_user
+      set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
+      expire_data_after_sign_up!
+      respond_with resource, location: after_inactive_sign_up_path_for(resource)
+    end
+
+    def handle_failed_registration
+      clean_up_passwords resource
+      set_minimum_password_length
+      respond_with resource
     end
 
     protected
@@ -44,7 +64,7 @@ module Users
     def ensure_admin
       return if user_signed_in? && current_user.admin?
 
-      redirect_to root_path, alert: 'Apenas administradores podem cadastrar usuários.'
+      redirect_to root_path, alert: I18n.t('messages.admin_only')
     end
 
     # Permite parâmetros adicionais para cadastro
@@ -58,8 +78,8 @@ module Users
     end
 
     # Redireciona após cadastro bem-sucedido
-    def after_sign_up_path_for(_resource)
-      users_path
+    def after_sign_up_path_for(resource)
+      user_path(resource)
     end
   end
 end

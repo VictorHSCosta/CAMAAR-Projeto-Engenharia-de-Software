@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-# Adicione um comentário de documentação para o módulo EvaluationsHelper.
+# Helper module for evaluations views
 module EvaluationsHelper
 end
