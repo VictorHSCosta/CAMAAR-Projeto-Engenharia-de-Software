@@ -63,6 +63,11 @@
             </li>
             <% if current_user.admin? %>
               <li class="nav-item">
+                <%= link_to admin_management_path, class: "nav-link #{'active' if current_page?(admin_management_path)}" do %>
+                  <i class="fas fa-cogs me-2"></i> Gerenciamento
+                <% end %>
+              </li>
+              <li class="nav-item">
                 <%= link_to users_path, class: "nav-link #{'active' if current_page?(users_path)}" do %>
                   <i class="fas fa-users me-2"></i> Usuários
                 <% end %>
