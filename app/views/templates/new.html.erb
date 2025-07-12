@@ -272,11 +272,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     opcaoTexto.name = `perguntas[${perguntaIndex}][opcoes][${opcaoIndex}]`;
     
+    const opcaoItem = opcaoHtml.querySelector('.opcao-item');
     opcoesList.appendChild(opcaoHtml);
     
     // Remover opção
-    opcaoHtml.querySelector('.remove-opcao').addEventListener('click', function() {
-      opcaoHtml.remove();
+    opcaoItem.querySelector('.remove-opcao').addEventListener('click', function() {
+      opcaoItem.remove();
     });
   }
   

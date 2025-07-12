@@ -86,8 +86,13 @@ class TemplatesController < ApplicationController
 
   def process_perguntas
     return unless params[:perguntas]
+    
+    Rails.logger.info "=== PROCESS PERGUNTAS INICIADO ==="
+    Rails.logger.info "Parâmetros recebidos: #{params[:perguntas].inspect}"
 
     params[:perguntas].each do |index, pergunta_attrs|
+      Rails.logger.info "Processando pergunta #{index}: #{pergunta_attrs.inspect}"
+      
       next if pergunta_attrs[:texto].blank?
 
       pergunta = @template.pergunta.create!(
@@ -95,15 +100,20 @@ class TemplatesController < ApplicationController
         tipo: pergunta_attrs[:tipo],
         obrigatoria: pergunta_attrs[:obrigatoria] == '1' || pergunta_attrs[:obrigatoria] == 'on'
       )
+      
+      Rails.logger.info "Pergunta criada: ID=#{pergunta.id}, Texto=#{pergunta.texto}"
 
       # Criar opções se for múltipla escolha ou verdadeiro/falso
       if pergunta_attrs[:opcoes] && pergunta.multipla_escolha_ou_verdadeiro_falso?
         pergunta_attrs[:opcoes].each do |_, opcao_texto|
           next if opcao_texto.blank?
-          pergunta.opcoes_pergunta.create!(texto: opcao_texto)
+          opcao = pergunta.opcoes_pergunta.create!(texto: opcao_texto)
+          Rails.logger.info "Opção criada: ID=#{opcao.id}, Texto=#{opcao.texto}"
         end
       end
     end
+    
+    Rails.logger.info "=== PROCESS PERGUNTAS FINALIZADO ==="
   end
 
   def process_perguntas_update
