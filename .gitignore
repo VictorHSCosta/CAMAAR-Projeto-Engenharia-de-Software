@@ -8,7 +8,7 @@
 /.bundle
 
 # Ignore all environment files (except templates).
-/.env*
+/env*
 !/.env*.erb
 
 # Ignore all logfiles and tempfiles.
@@ -91,3 +91,18 @@ app/frontend/types
 tmp/
 /app/assets/builds/*
 !/app/assets/builds/.keep
+
+# Ignore large vendor bundle files to avoid GitHub size limits
+/vendor/bundle/
+/vendor/cache/
+/vendor/assets/
+/vendor/javascript/
+
+# Ignore SQLite database files
+*.sqlite3
+*.db
+
+# Ignore Rails temporary files
+/tmp/
+/log/
+/storage/

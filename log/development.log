@@ -8256,3 +8256,29 @@ Checking imported data: users=0, disciplines=6
 Completed 200 OK in 61ms (Views: 7.1ms | ActiveRecord: 0.9ms (3 queries, 0 cached) | GC: 0.0ms)
 
 
+Started GET "/" for 127.0.0.1 at 2025-07-12 17:03:33 -0300
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='home'*/[0m
+  [1m[36mUser Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."email" NOT IN ('admin@camaar.com', 'coordenador@camaar.com', 'professor@camaar.com', 'aluno@camaar.com') /*action='index',application='Camaar',controller='home'*/[0m
+  ↳ app/controllers/home_controller.rb:14:in `index'
+  [1m[36mDisciplina Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" /*action='index',application='Camaar',controller='home'*/[0m
+  ↳ app/controllers/home_controller.rb:15:in `index'
+Redirected to http://localhost:3000/admin/management
+Completed 302 Found in 33ms (ActiveRecord: 0.9ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/admin/management" for 127.0.0.1 at 2025-07-12 17:03:34 -0300
+Processing by Admin::ManagementController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='management'*/[0m
+  [1m[36mUser Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."email" NOT IN ('admin@camaar.com', 'coordenador@camaar.com', 'professor@camaar.com', 'aluno@camaar.com') /*action='index',application='Camaar',controller='management'*/[0m
+  ↳ app/controllers/admin/management_controller.rb:93:in `check_imported_data'
+  [1m[36mDisciplina Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" /*action='index',application='Camaar',controller='management'*/[0m
+  ↳ app/controllers/admin/management_controller.rb:94:in `check_imported_data'
+Checking imported data: users=0, disciplines=6
+  Rendering layout layouts/application.html.erb
+  Rendering admin/management/index.html.erb within layouts/application
+  Rendered admin/management/index.html.erb within layouts/application (Duration: 1.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.3ms | GC: 0.0ms)
+Completed 200 OK in 34ms (Views: 4.0ms | ActiveRecord: 0.8ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
