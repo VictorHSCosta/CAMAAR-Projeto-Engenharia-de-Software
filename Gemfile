@@ -79,4 +79,4 @@ gem 'bcrypt', '~> 3.1'
 gem 'devise', '~> 4.2'
 gem 'faker', '~> 3.4', '>= 3.4.2'
 
-gem "tailwindcss-rails", "~> 4.3"
+gem 'tailwindcss-rails', '~> 4.3'

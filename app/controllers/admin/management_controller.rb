@@ -15,17 +15,17 @@ module Admin
 
     def import_users
       authorize_import_users
-      
+
       if params[:file].present?
         begin
           file_content = File.read(params[:file].path)
           data = JSON.parse(file_content)
-          
+
           result = ImportService.import_users(data)
-          
+
           if result[:success]
-            render json: { 
-              success: true, 
+            render json: {
+              success: true,
               message: "#{result[:imported]} usuários importados com sucesso!",
               imported_count: result[:imported],
               skipped_count: result[:skipped]
@@ -45,17 +45,17 @@ module Admin
 
     def import_disciplines
       authorize_import_disciplines
-      
+
       if params[:file].present?
         begin
           file_content = File.read(params[:file].path)
           data = JSON.parse(file_content)
-          
+
           result = ImportService.import_disciplines(data)
-          
+
           if result[:success]
-            render json: { 
-              success: true, 
+            render json: {
+              success: true,
               message: "#{result[:imported]} disciplinas importadas com sucesso!",
               imported_count: result[:imported],
               skipped_count: result[:skipped]
@@ -76,15 +76,15 @@ module Admin
     private
 
     def authorize_management
-      authorize [:admin, :management], :index?
+      authorize %i[admin management], :index?
     end
 
     def authorize_import_users
-      authorize [:admin, :management], :import_users?
+      authorize %i[admin management], :import_users?
     end
 
     def authorize_import_disciplines
-      authorize [:admin, :management], :import_disciplines?
+      authorize %i[admin management], :import_disciplines?
     end
 
     def check_imported_data
@@ -92,10 +92,10 @@ module Admin
       seed_emails = ['admin@camaar.com', 'coordenador@camaar.com', 'professor@camaar.com', 'aluno@camaar.com']
       users_count = User.where.not(email: seed_emails).count
       disciplinas_count = Disciplina.count
-      
+
       Rails.logger.info "Checking imported data: users=#{users_count}, disciplines=#{disciplinas_count}"
-      
-      users_count > 0 && disciplinas_count > 0
+
+      users_count.positive? && disciplinas_count.positive?
     end
   end
 end
