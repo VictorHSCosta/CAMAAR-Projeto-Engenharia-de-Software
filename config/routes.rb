@@ -37,6 +37,13 @@ Rails.application.routes.draw do
   # Rotas para a nova página de Avaliações
   get 'evaluations', to: 'evaluations#index'
 
+  # Rotas para disciplinas pessoais (alunos, professores e admin)
+  get 'minhas_disciplinas', to: 'minhas_disciplinas#index'
+  get 'minhas_disciplinas/:id', to: 'minhas_disciplinas#show', as: :minhas_disciplinas_show
+  get 'minhas_disciplinas/:id/gerenciar', to: 'minhas_disciplinas#gerenciar', as: :gerenciar_disciplina
+  post 'cadastrar_professor_disciplina', to: 'minhas_disciplinas#cadastrar_professor_disciplina'
+  post 'cadastrar_aluno_disciplina', to: 'minhas_disciplinas#cadastrar_aluno_disciplina'
+
   # Rota administrativa para cadastro de usuários (apenas admins)
   get 'admin/users/new', to: 'admin/users#new', as: :new_admin_user
   post 'admin/users', to: 'admin/users#create', as: :admin_users

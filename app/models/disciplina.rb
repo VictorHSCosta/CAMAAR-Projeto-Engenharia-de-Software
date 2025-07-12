@@ -3,6 +3,9 @@
 class Disciplina < ApplicationRecord
   belongs_to :curso
   has_many :turmas, dependent: :destroy
+  has_many :matriculas, through: :turmas
+  has_many :alunos, through: :matriculas, source: :user
+  has_many :professores, through: :turmas, source: :professor
 
   validates :nome, presence: true, length: { minimum: 2 }
 

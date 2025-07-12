@@ -43,8 +43,55 @@ end
   Curso.find_or_create_by!(nome: nome_curso)
 end
 
+# Cria disciplinas de exemplo
+curso_es = Curso.find_by(nome: 'Engenharia de Software')
+curso_cc = Curso.find_by(nome: 'Ciência da Computação')
+
+disciplinas_data = [
+  { nome: 'Programação Orientada a Objetos', codigo: 'POO001', curso: curso_es },
+  { nome: 'Banco de Dados', codigo: 'BD001', curso: curso_es },
+  { nome: 'Engenharia de Software', codigo: 'ES001', curso: curso_es },
+  { nome: 'Estruturas de Dados', codigo: 'ED001', curso: curso_cc },
+  { nome: 'Algoritmos', codigo: 'ALG001', curso: curso_cc },
+  { nome: 'Redes de Computadores', codigo: 'RC001', curso: curso_cc }
+]
+
+disciplinas_data.each do |disciplina_data|
+  Disciplina.find_or_create_by!(nome: disciplina_data[:nome]) do |disciplina|
+    disciplina.codigo = disciplina_data[:codigo]
+    disciplina.curso = disciplina_data[:curso]
+  end
+end
+
+# Cria turmas de exemplo
+professor = User.find_by(email: 'professor@camaar.com')
+if professor
+  disciplinas = Disciplina.all
+  disciplinas.each do |disciplina|
+    Turma.find_or_create_by!(
+      disciplina: disciplina,
+      professor: professor,
+      semestre: '2025.1'
+    )
+  end
+end
+
+# Cria matrículas de exemplo
+aluno = User.find_by(email: 'aluno@camaar.com')
+if aluno
+  # Matricula o aluno em algumas disciplinas
+  turmas = Turma.limit(3)
+  turmas.each do |turma|
+    Matricula.find_or_create_by!(
+      user: aluno,
+      turma: turma
+    )
+  end
+end
+
 Rails.logger.debug 'Seeds executados com sucesso!'
 Rails.logger.debug 'Usuários criados:'
 Rails.logger.debug '  - admin@camaar.com (senha: 123456) - Administrador'
 Rails.logger.debug '  - professor@camaar.com (senha: 123456) - Professor'
 Rails.logger.debug '  - aluno@camaar.com (senha: 123456) - Aluno'
+Rails.logger.debug 'Disciplinas e turmas criadas com sucesso!'

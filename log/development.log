@@ -6693,3 +6693,1484 @@ Migrating to AddFieldsToDisciplinas (20250712150546)
   [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Camaar'*/[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+Started GET "/" for 127.0.0.1 at 2025-07-12 16:21:53 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate
+
+You have 1 pending migration:
+
+db/migrate/20250712022132_fix_foreign_keys.rb
+
+
+):
+  
+activerecord (8.0.2) lib/active_record/migration.rb:743:in `check_pending_migrations'
+activerecord (8.0.2) lib/active_record/migration.rb:660:in `block (2 levels) in call'
+activesupport (8.0.2) lib/active_support/file_update_checker.rb:85:in `execute'
+activerecord (8.0.2) lib/active_record/migration.rb:665:in `block in call'
+activerecord (8.0.2) lib/active_record/migration.rb:657:in `synchronize'
+activerecord (8.0.2) lib/active_record/migration.rb:657:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/callbacks.rb:31:in `block in call'
+activesupport (8.0.2) lib/active_support/callbacks.rb:100:in `run_callbacks'
+actionpack (8.0.2) lib/action_dispatch/middleware/callbacks.rb:30:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:31:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/show_exceptions.rb:32:in `call'
+railties (8.0.2) lib/rails/rack/logger.rb:41:in `call_app'
+railties (8.0.2) lib/rails/rack/logger.rb:29:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/remote_ip.rb:96:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/request_id.rb:34:in `call'
+rack (3.1.16) lib/rack/method_override.rb:28:in `call'
+rack (3.1.16) lib/rack/runtime.rb:24:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/static.rb:27:in `call'
+rack (3.1.16) lib/rack/sendfile.rb:114:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/host_authorization.rb:143:in `call'
+railties (8.0.2) lib/rails/engine.rb:535:in `call'
+puma (6.6.0) lib/puma/configuration.rb:279:in `call'
+puma (6.6.0) lib/puma/request.rb:99:in `block in handle_request'
+puma (6.6.0) lib/puma/thread_pool.rb:390:in `with_force_shutdown'
+puma (6.6.0) lib/puma/request.rb:98:in `handle_request'
+puma (6.6.0) lib/puma/server.rb:472:in `process_client'
+puma (6.6.0) lib/puma/server.rb:254:in `block in run'
+puma (6.6.0) lib/puma/thread_pool.rb:167:in `block in spawn_thread'
+Started GET "/favicon.ico" for 127.0.0.1 at 2025-07-12 16:21:55 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate
+
+You have 1 pending migration:
+
+db/migrate/20250712022132_fix_foreign_keys.rb
+
+
+):
+  
+activerecord (8.0.2) lib/active_record/migration.rb:743:in `check_pending_migrations'
+activerecord (8.0.2) lib/active_record/migration.rb:660:in `block (2 levels) in call'
+activesupport (8.0.2) lib/active_support/file_update_checker.rb:85:in `execute'
+activerecord (8.0.2) lib/active_record/migration.rb:665:in `block in call'
+activerecord (8.0.2) lib/active_record/migration.rb:657:in `synchronize'
+activerecord (8.0.2) lib/active_record/migration.rb:657:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/callbacks.rb:31:in `block in call'
+activesupport (8.0.2) lib/active_support/callbacks.rb:100:in `run_callbacks'
+actionpack (8.0.2) lib/action_dispatch/middleware/callbacks.rb:30:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:31:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/show_exceptions.rb:32:in `call'
+railties (8.0.2) lib/rails/rack/logger.rb:41:in `call_app'
+railties (8.0.2) lib/rails/rack/logger.rb:29:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/remote_ip.rb:96:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/request_id.rb:34:in `call'
+rack (3.1.16) lib/rack/method_override.rb:28:in `call'
+rack (3.1.16) lib/rack/runtime.rb:24:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/static.rb:27:in `call'
+rack (3.1.16) lib/rack/sendfile.rb:114:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/host_authorization.rb:143:in `call'
+railties (8.0.2) lib/rails/engine.rb:535:in `call'
+puma (6.6.0) lib/puma/configuration.rb:279:in `call'
+puma (6.6.0) lib/puma/request.rb:99:in `block in handle_request'
+puma (6.6.0) lib/puma/thread_pool.rb:390:in `with_force_shutdown'
+puma (6.6.0) lib/puma/request.rb:98:in `handle_request'
+puma (6.6.0) lib/puma/server.rb:472:in `process_client'
+puma (6.6.0) lib/puma/server.rb:254:in `block in run'
+puma (6.6.0) lib/puma/thread_pool.rb:167:in `block in spawn_thread'
+  [1m[36mActiveRecord::InternalMetadata Load (20.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+Migrating to FixForeignKeys (20250712022132)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='Camaar'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mPRAGMA foreign_keys /*application='Camaar'*/[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mPRAGMA defer_foreign_keys /*application='Camaar'*/[0m
+  [1m[35m (0.5ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF /*application='Camaar'*/[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aformularios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "template_id" integer NOT NULL, "turma_id" integer NOT NULL, "coordenador_id" integer NOT NULL, "data_envio" datetime(6), "data_fim" datetime(6), "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='Camaar'*/[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "tindex_aformularios_on_coordenador_id" ON "aformularios" ("coordenador_id") /*application='Camaar'*/[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "tindex_aformularios_on_turma_id" ON "aformularios" ("turma_id") /*application='Camaar'*/[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "tindex_aformularios_on_template_id" ON "aformularios" ("template_id") /*application='Camaar'*/[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "aformularios" ("id","template_id","turma_id","coordenador_id","data_envio","data_fim","created_at","updated_at")
+                     SELECT "id","template_id","turma_id","coordenador_id","data_envio","data_fim","created_at","updated_at" FROM "formularios" /*application='Camaar'*/[0m
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE "formularios" /*application='Camaar'*/[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "formularios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "template_id" integer NOT NULL, "turma_id" integer NOT NULL, "coordenador_id" integer NOT NULL, "data_envio" datetime(6), "data_fim" datetime(6), "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_5a2be0c3c1"
+FOREIGN KEY ("turma_id")
+  REFERENCES "turmas" ("id")
+, CONSTRAINT "fk_rails_93cfa19b36"
+FOREIGN KEY ("template_id")
+  REFERENCES "templates" ("id")
+) /*application='Camaar'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_formularios_on_template_id" ON "formularios" ("template_id") /*application='Camaar'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_formularios_on_turma_id" ON "formularios" ("turma_id") /*application='Camaar'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE INDEX "index_formularios_on_coordenador_id" ON "formularios" ("coordenador_id") /*application='Camaar'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "formularios" ("id","template_id","turma_id","coordenador_id","data_envio","data_fim","created_at","updated_at")
+                     SELECT "id","template_id","turma_id","coordenador_id","data_envio","data_fim","created_at","updated_at" FROM "aformularios" /*application='Camaar'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "aformularios" /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0 /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1 /*application='Camaar'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mPRAGMA foreign_keys /*application='Camaar'*/[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[35mPRAGMA defer_foreign_keys /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF /*application='Camaar'*/[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aresposta" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "formulario_id" integer NOT NULL, "pergunta_id" integer NOT NULL, "opcao_id" integer NOT NULL, "resposta_texto" text, "turma_id" integer NOT NULL, "uuid_anonimo" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='Camaar'*/[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE INDEX "tindex_aresposta_on_turma_id" ON "aresposta" ("turma_id") /*application='Camaar'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "tindex_aresposta_on_opcao_id" ON "aresposta" ("opcao_id") /*application='Camaar'*/[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "tindex_aresposta_on_pergunta_id" ON "aresposta" ("pergunta_id") /*application='Camaar'*/[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "tindex_aresposta_on_formulario_id" ON "aresposta" ("formulario_id") /*application='Camaar'*/[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "aresposta" ("id","formulario_id","pergunta_id","opcao_id","resposta_texto","turma_id","uuid_anonimo","created_at","updated_at")
+                     SELECT "id","formulario_id","pergunta_id","opcao_id","resposta_texto","turma_id","uuid_anonimo","created_at","updated_at" FROM "resposta" /*application='Camaar'*/[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE "resposta" /*application='Camaar'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "resposta" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "formulario_id" integer NOT NULL, "pergunta_id" integer NOT NULL, "opcao_id" integer NOT NULL, "resposta_texto" text, "turma_id" integer NOT NULL, "uuid_anonimo" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_fe48a3689d"
+FOREIGN KEY ("turma_id")
+  REFERENCES "turmas" ("id")
+, CONSTRAINT "fk_rails_6c55c86da6"
+FOREIGN KEY ("pergunta_id")
+  REFERENCES "pergunta" ("id")
+, CONSTRAINT "fk_rails_7395da2939"
+FOREIGN KEY ("formulario_id")
+  REFERENCES "formularios" ("id")
+) /*application='Camaar'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_resposta_on_formulario_id" ON "resposta" ("formulario_id") /*application='Camaar'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_resposta_on_pergunta_id" ON "resposta" ("pergunta_id") /*application='Camaar'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_resposta_on_opcao_id" ON "resposta" ("opcao_id") /*application='Camaar'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_resposta_on_turma_id" ON "resposta" ("turma_id") /*application='Camaar'*/[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "resposta" ("id","formulario_id","pergunta_id","opcao_id","resposta_texto","turma_id","uuid_anonimo","created_at","updated_at")
+                     SELECT "id","formulario_id","pergunta_id","opcao_id","resposta_texto","turma_id","uuid_anonimo","created_at","updated_at" FROM "aresposta" /*application='Camaar'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "aresposta" /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0 /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1 /*application='Camaar'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mPRAGMA foreign_keys /*application='Camaar'*/[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mPRAGMA defer_foreign_keys /*application='Camaar'*/[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF /*application='Camaar'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "atemplates" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "titulo" varchar, "publico_alvo" integer, "criado_por_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='Camaar'*/[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE INDEX "tindex_atemplates_on_criado_por_id" ON "atemplates" ("criado_por_id") /*application='Camaar'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "atemplates" ("id","titulo","publico_alvo","criado_por_id","created_at","updated_at")
+                     SELECT "id","titulo","publico_alvo","criado_por_id","created_at","updated_at" FROM "templates" /*application='Camaar'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "templates" /*application='Camaar'*/[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "templates" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "titulo" varchar, "publico_alvo" integer, "criado_por_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='Camaar'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_templates_on_criado_por_id" ON "templates" ("criado_por_id") /*application='Camaar'*/[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "templates" ("id","titulo","publico_alvo","criado_por_id","created_at","updated_at")
+                     SELECT "id","titulo","publico_alvo","criado_por_id","created_at","updated_at" FROM "atemplates" /*application='Camaar'*/[0m
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE "atemplates" /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0 /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1 /*application='Camaar'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mPRAGMA foreign_keys /*application='Camaar'*/[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[35mPRAGMA defer_foreign_keys /*application='Camaar'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF /*application='Camaar'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aturmas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "disciplina_id" integer NOT NULL, "professor_id" integer NOT NULL, "semestre" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='Camaar'*/[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE INDEX "tindex_aturmas_on_professor_id" ON "aturmas" ("professor_id") /*application='Camaar'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "tindex_aturmas_on_disciplina_id" ON "aturmas" ("disciplina_id") /*application='Camaar'*/[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "aturmas" ("id","disciplina_id","professor_id","semestre","created_at","updated_at")
+                     SELECT "id","disciplina_id","professor_id","semestre","created_at","updated_at" FROM "turmas" /*application='Camaar'*/[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE "turmas" /*application='Camaar'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "turmas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "disciplina_id" integer NOT NULL, "professor_id" integer NOT NULL, "semestre" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_76e53910e3"
+FOREIGN KEY ("disciplina_id")
+  REFERENCES "disciplinas" ("id")
+) /*application='Camaar'*/[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "index_turmas_on_disciplina_id" ON "turmas" ("disciplina_id") /*application='Camaar'*/[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "index_turmas_on_professor_id" ON "turmas" ("professor_id") /*application='Camaar'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "turmas" ("id","disciplina_id","professor_id","semestre","created_at","updated_at")
+                     SELECT "id","disciplina_id","professor_id","semestre","created_at","updated_at" FROM "aturmas" /*application='Camaar'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "aturmas" /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0 /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1 /*application='Camaar'*/[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[35mPRAGMA foreign_keys /*application='Camaar'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys /*application='Camaar'*/[0m
+  [1m[35m (0.5ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON /*application='Camaar'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mPRAGMA foreign_keys = OFF /*application='Camaar'*/[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aformularios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "template_id" integer NOT NULL, "turma_id" integer NOT NULL, "coordenador_id" integer NOT NULL, "data_envio" datetime(6), "data_fim" datetime(6), "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='Camaar'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "tindex_aformularios_on_coordenador_id" ON "aformularios" ("coordenador_id") /*application='Camaar'*/[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE INDEX "tindex_aformularios_on_turma_id" ON "aformularios" ("turma_id") /*application='Camaar'*/[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "tindex_aformularios_on_template_id" ON "aformularios" ("template_id") /*application='Camaar'*/[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "aformularios" ("id","template_id","turma_id","coordenador_id","data_envio","data_fim","created_at","updated_at")
+                     SELECT "id","template_id","turma_id","coordenador_id","data_envio","data_fim","created_at","updated_at" FROM "formularios" /*application='Camaar'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE "formularios" /*application='Camaar'*/[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "formularios" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "template_id" integer NOT NULL, "turma_id" integer NOT NULL, "coordenador_id" integer NOT NULL, "data_envio" datetime(6), "data_fim" datetime(6), "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_93cfa19b36"
+FOREIGN KEY ("template_id")
+  REFERENCES "templates" ("id")
+, CONSTRAINT "fk_rails_5a2be0c3c1"
+FOREIGN KEY ("turma_id")
+  REFERENCES "turmas" ("id")
+, CONSTRAINT "fk_rails_da3fe8561e"
+FOREIGN KEY ("coordenador_id")
+  REFERENCES "users" ("id")
+) /*application='Camaar'*/[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "index_formularios_on_template_id" ON "formularios" ("template_id") /*application='Camaar'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_formularios_on_turma_id" ON "formularios" ("turma_id") /*application='Camaar'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_formularios_on_coordenador_id" ON "formularios" ("coordenador_id") /*application='Camaar'*/[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "formularios" ("id","template_id","turma_id","coordenador_id","data_envio","data_fim","created_at","updated_at")
+                     SELECT "id","template_id","turma_id","coordenador_id","data_envio","data_fim","created_at","updated_at" FROM "aformularios" /*application='Camaar'*/[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE "aformularios" /*application='Camaar'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0 /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1 /*application='Camaar'*/[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mPRAGMA foreign_keys /*application='Camaar'*/[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[35mPRAGMA defer_foreign_keys /*application='Camaar'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF /*application='Camaar'*/[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aresposta" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "formulario_id" integer NOT NULL, "pergunta_id" integer NOT NULL, "opcao_id" integer NOT NULL, "resposta_texto" text, "turma_id" integer NOT NULL, "uuid_anonimo" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='Camaar'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "tindex_aresposta_on_turma_id" ON "aresposta" ("turma_id") /*application='Camaar'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "tindex_aresposta_on_opcao_id" ON "aresposta" ("opcao_id") /*application='Camaar'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "tindex_aresposta_on_pergunta_id" ON "aresposta" ("pergunta_id") /*application='Camaar'*/[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "tindex_aresposta_on_formulario_id" ON "aresposta" ("formulario_id") /*application='Camaar'*/[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "aresposta" ("id","formulario_id","pergunta_id","opcao_id","resposta_texto","turma_id","uuid_anonimo","created_at","updated_at")
+                     SELECT "id","formulario_id","pergunta_id","opcao_id","resposta_texto","turma_id","uuid_anonimo","created_at","updated_at" FROM "resposta" /*application='Camaar'*/[0m
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE "resposta" /*application='Camaar'*/[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "resposta" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "formulario_id" integer NOT NULL, "pergunta_id" integer NOT NULL, "opcao_id" integer NOT NULL, "resposta_texto" text, "turma_id" integer NOT NULL, "uuid_anonimo" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_7395da2939"
+FOREIGN KEY ("formulario_id")
+  REFERENCES "formularios" ("id")
+, CONSTRAINT "fk_rails_6c55c86da6"
+FOREIGN KEY ("pergunta_id")
+  REFERENCES "pergunta" ("id")
+, CONSTRAINT "fk_rails_fe48a3689d"
+FOREIGN KEY ("turma_id")
+  REFERENCES "turmas" ("id")
+, CONSTRAINT "fk_rails_e99d71ace7"
+FOREIGN KEY ("opcao_id")
+  REFERENCES "opcoes_pergunta" ("id")
+) /*application='Camaar'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_resposta_on_formulario_id" ON "resposta" ("formulario_id") /*application='Camaar'*/[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE INDEX "index_resposta_on_pergunta_id" ON "resposta" ("pergunta_id") /*application='Camaar'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_resposta_on_opcao_id" ON "resposta" ("opcao_id") /*application='Camaar'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_resposta_on_turma_id" ON "resposta" ("turma_id") /*application='Camaar'*/[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "resposta" ("id","formulario_id","pergunta_id","opcao_id","resposta_texto","turma_id","uuid_anonimo","created_at","updated_at")
+                     SELECT "id","formulario_id","pergunta_id","opcao_id","resposta_texto","turma_id","uuid_anonimo","created_at","updated_at" FROM "aresposta" /*application='Camaar'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "aresposta" /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0 /*application='Camaar'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mPRAGMA foreign_keys = 1 /*application='Camaar'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mPRAGMA foreign_keys /*application='Camaar'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys /*application='Camaar'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF /*application='Camaar'*/[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TEMPORARY TABLE "atemplates" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "titulo" varchar, "publico_alvo" integer, "criado_por_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='Camaar'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "tindex_atemplates_on_criado_por_id" ON "atemplates" ("criado_por_id") /*application='Camaar'*/[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "atemplates" ("id","titulo","publico_alvo","criado_por_id","created_at","updated_at")
+                     SELECT "id","titulo","publico_alvo","criado_por_id","created_at","updated_at" FROM "templates" /*application='Camaar'*/[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "templates" /*application='Camaar'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "templates" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "titulo" varchar, "publico_alvo" integer, "criado_por_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_4bc139bf26"
+FOREIGN KEY ("criado_por_id")
+  REFERENCES "users" ("id")
+) /*application='Camaar'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_templates_on_criado_por_id" ON "templates" ("criado_por_id") /*application='Camaar'*/[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "templates" ("id","titulo","publico_alvo","criado_por_id","created_at","updated_at")
+                     SELECT "id","titulo","publico_alvo","criado_por_id","created_at","updated_at" FROM "atemplates" /*application='Camaar'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "atemplates" /*application='Camaar'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0 /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1 /*application='Camaar'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mPRAGMA foreign_keys /*application='Camaar'*/[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[35mPRAGMA defer_foreign_keys /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON /*application='Camaar'*/[0m
+  [1m[35m (0.5ms)[0m  [1m[35mPRAGMA foreign_keys = OFF /*application='Camaar'*/[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aturmas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "disciplina_id" integer NOT NULL, "professor_id" integer NOT NULL, "semestre" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='Camaar'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "tindex_aturmas_on_professor_id" ON "aturmas" ("professor_id") /*application='Camaar'*/[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE INDEX "tindex_aturmas_on_disciplina_id" ON "aturmas" ("disciplina_id") /*application='Camaar'*/[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "aturmas" ("id","disciplina_id","professor_id","semestre","created_at","updated_at")
+                     SELECT "id","disciplina_id","professor_id","semestre","created_at","updated_at" FROM "turmas" /*application='Camaar'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "turmas" /*application='Camaar'*/[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "turmas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "disciplina_id" integer NOT NULL, "professor_id" integer NOT NULL, "semestre" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_76e53910e3"
+FOREIGN KEY ("disciplina_id")
+  REFERENCES "disciplinas" ("id")
+, CONSTRAINT "fk_rails_4f2278ddee"
+FOREIGN KEY ("professor_id")
+  REFERENCES "users" ("id")
+) /*application='Camaar'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_turmas_on_disciplina_id" ON "turmas" ("disciplina_id") /*application='Camaar'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_turmas_on_professor_id" ON "turmas" ("professor_id") /*application='Camaar'*/[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "turmas" ("id","disciplina_id","professor_id","semestre","created_at","updated_at")
+                     SELECT "id","disciplina_id","professor_id","semestre","created_at","updated_at" FROM "aturmas" /*application='Camaar'*/[0m
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE "aturmas" /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0 /*application='Camaar'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1 /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250712022132') RETURNING "version" /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (133.3ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'admin@camaar.com' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mCACHE User Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'admin@camaar.com' LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mUser Exists? (3.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."matricula" = '000000' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "matricula", "role", "created_at", "updated_at", "reset_password_token", "reset_password_sent_at", "remember_created_at", "encrypted_password", "curso", "departamento", "formacao") VALUES ('admin@camaar.com', 'Administrador', '000000', 0, '2025-07-12 19:23:41.198180', '2025-07-12 19:23:41.198180', NULL, NULL, NULL, '$2a$12$6mzJiY3I2ypxEMi5.7ABOeIwLW80ndAXNwarwxdYhCifpXP/.em/.', NULL, NULL, NULL) RETURNING "id" /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (53.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'professor@camaar.com' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'professor@camaar.com' LIMIT 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mUser Exists? (3.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."matricula" = '111111' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "matricula", "role", "created_at", "updated_at", "reset_password_token", "reset_password_sent_at", "remember_created_at", "encrypted_password", "curso", "departamento", "formacao") VALUES ('professor@camaar.com', 'Professor Exemplo', '111111', 2, '2025-07-12 19:23:41.762628', '2025-07-12 19:23:41.762628', NULL, NULL, NULL, '$2a$12$ZH96jJEgR3qft5VsUQOMG.HviMZapTPEdL4kUi3DgzKDETxJsLsBi', NULL, NULL, NULL) RETURNING "id" /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'aluno@camaar.com' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'aluno@camaar.com' LIMIT 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mUser Exists? (7.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."matricula" = '222222' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "matricula", "role", "created_at", "updated_at", "reset_password_token", "reset_password_sent_at", "remember_created_at", "encrypted_password", "curso", "departamento", "formacao") VALUES ('aluno@camaar.com', 'Aluno Exemplo', '222222', 1, '2025-07-12 19:23:42.279089', '2025-07-12 19:23:42.279089', NULL, NULL, NULL, '$2a$12$bBH3EKYkfcaQKX824lpD8uxXkXvU9xcciSb9Mjz1p3Gi6eVT2xpma', NULL, NULL, NULL) RETURNING "id" /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mCurso Load (1.0ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" WHERE "cursos"."nome" = 'Engenharia de Software' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mCurso Create (0.3ms)[0m  [1m[32mINSERT INTO "cursos" ("nome", "created_at", "updated_at") VALUES ('Engenharia de Software', '2025-07-12 19:23:42.332086', '2025-07-12 19:23:42.332086') RETURNING "id" /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mCurso Load (0.3ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" WHERE "cursos"."nome" = 'Ciência da Computação' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mCurso Create (2.5ms)[0m  [1m[32mINSERT INTO "cursos" ("nome", "created_at", "updated_at") VALUES ('Ciência da Computação', '2025-07-12 19:23:42.346656', '2025-07-12 19:23:42.346656') RETURNING "id" /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mCurso Load (0.2ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" WHERE "cursos"."nome" = 'Sistemas de Informação' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mCurso Create (2.5ms)[0m  [1m[32mINSERT INTO "cursos" ("nome", "created_at", "updated_at") VALUES ('Sistemas de Informação', '2025-07-12 19:23:42.362318', '2025-07-12 19:23:42.362318') RETURNING "id" /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Camaar'*/[0m
+Seeds executados com sucesso!
+Usuários criados:
+  - admin@camaar.com (senha: 123456) - Administrador
+  - professor@camaar.com (senha: 123456) - Professor
+  - aluno@camaar.com (senha: 123456) - Aluno
+Started GET "/?id=cc7c20b9-57cb-4fe1-95f7-d92310cb3b03&vscodeBrowserReqId=1752348398531" for 127.0.0.1 at 2025-07-12 16:26:38 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+Processing by HomeController#index as HTML
+  Parameters: {"id"=>"cc7c20b9-57cb-4fe1-95f7-d92310cb3b03", "vscodeBrowserReqId"=>"1752348398531"}
+Completed 401 Unauthorized in 183ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2025-07-12 16:26:40 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 12.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 118.9ms | GC: 0.0ms)
+Completed 200 OK in 201ms (Views: 131.2ms | ActiveRecord: 6.5ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-07-12 16:27:18 -0300
+Processing by HomeController#index as HTML
+Completed 401 Unauthorized in 76ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 47.5ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2025-07-12 16:27:18 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 6.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 21.3ms | GC: 0.6ms)
+Completed 200 OK in 205ms (Views: 27.4ms | ActiveRecord: 4.3ms (0 queries, 0 cached) | GC: 2.4ms)
+
+
+Started GET "/assets/application-f2af751b.css" for 127.0.0.1 at 2025-07-12 16:27:20 -0300
+Started GET "/assets/figma_custom-3724d81a.css" for 127.0.0.1 at 2025-07-12 16:27:20 -0300
+Started GET "/assets/stimulus.min-4b1e420e.js" for 127.0.0.1 at 2025-07-12 16:27:20 -0300
+Started GET "/assets/figma_custom.css" for 127.0.0.1 at 2025-07-12 16:27:20 -0300
+Started GET "/assets/controllers/hello_controller-b94c6ec2.js" for 127.0.0.1 at 2025-07-12 16:27:20 -0300
+Started GET "/assets/controllers/index-eaeb0fd6.js" for 127.0.0.1 at 2025-07-12 16:27:20 -0300
+Started GET "/assets/stimulus-loading-1fc53fe7.js" for 127.0.0.1 at 2025-07-12 16:27:20 -0300
+Started GET "/assets/application-ce023cd2.js" for 127.0.0.1 at 2025-07-12 16:27:20 -0300
+Started GET "/assets/turbo.min-3a2e143f.js" for 127.0.0.1 at 2025-07-12 16:27:20 -0300
+Started GET "/assets/controllers/application-6f361061.js" for 127.0.0.1 at 2025-07-12 16:27:20 -0300
+Started POST "/users/sign_in" for 127.0.0.1 at 2025-07-12 16:27:25 -0300
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}, "commit"=>"Entrar"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'admin@camaar.com' ORDER BY "users"."id" ASC LIMIT 1 /*action='create',application='Camaar',controller='sessions'*/[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 563ms (ActiveRecord: 0.7ms (1 query, 0 cached) | GC: 5.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-07-12 16:27:25 -0300
+Processing by HomeController#index as TURBO_STREAM
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='home'*/[0m
+  [1m[36mUser Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."email" NOT IN ('admin@camaar.com', 'coordenador@camaar.com', 'professor@camaar.com', 'aluno@camaar.com') /*action='index',application='Camaar',controller='home'*/[0m
+  ↳ app/controllers/home_controller.rb:14:in `index'
+  [1m[36mDisciplina Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" /*action='index',application='Camaar',controller='home'*/[0m
+  ↳ app/controllers/home_controller.rb:15:in `index'
+Redirected to http://localhost:3000/admin/management
+Completed 302 Found in 154ms (ActiveRecord: 1.7ms (3 queries, 0 cached) | GC: 2.5ms)
+
+
+Started GET "/admin/management" for 127.0.0.1 at 2025-07-12 16:27:25 -0300
+Processing by Admin::ManagementController#index as TURBO_STREAM
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='management'*/[0m
+  [1m[36mUser Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."email" NOT IN ('admin@camaar.com', 'coordenador@camaar.com', 'professor@camaar.com', 'aluno@camaar.com') /*action='index',application='Camaar',controller='management'*/[0m
+  ↳ app/controllers/admin/management_controller.rb:93:in `check_imported_data'
+  [1m[36mDisciplina Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" /*action='index',application='Camaar',controller='management'*/[0m
+  ↳ app/controllers/admin/management_controller.rb:94:in `check_imported_data'
+Checking imported data: users=0, disciplines=0
+  Rendering layout layouts/application.html.erb
+  Rendering admin/management/index.html.erb within layouts/application
+  Rendered admin/management/index.html.erb within layouts/application (Duration: 5.8ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 12.2ms | GC: 0.3ms)
+Completed 200 OK in 77ms (Views: 17.5ms | ActiveRecord: 1.0ms (3 queries, 0 cached) | GC: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-07-12 16:39:37 -0300
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (5.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='home'*/[0m
+  [1m[36mUser Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."email" NOT IN ('admin@camaar.com', 'coordenador@camaar.com', 'professor@camaar.com', 'aluno@camaar.com') /*action='index',application='Camaar',controller='home'*/[0m
+  ↳ app/controllers/home_controller.rb:14:in `index'
+  [1m[36mDisciplina Count (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" /*action='index',application='Camaar',controller='home'*/[0m
+  ↳ app/controllers/home_controller.rb:15:in `index'
+Redirected to http://localhost:3000/admin/management
+Completed 302 Found in 69ms (ActiveRecord: 5.9ms (3 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/admin/management" for 127.0.0.1 at 2025-07-12 16:39:37 -0300
+Processing by Admin::ManagementController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='management'*/[0m
+  [1m[36mUser Count (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."email" NOT IN ('admin@camaar.com', 'coordenador@camaar.com', 'professor@camaar.com', 'aluno@camaar.com') /*action='index',application='Camaar',controller='management'*/[0m
+  ↳ app/controllers/admin/management_controller.rb:93:in `check_imported_data'
+  [1m[36mDisciplina Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" /*action='index',application='Camaar',controller='management'*/[0m
+  ↳ app/controllers/admin/management_controller.rb:94:in `check_imported_data'
+Checking imported data: users=0, disciplines=0
+  Rendering layout layouts/application.html.erb
+  Rendering admin/management/index.html.erb within layouts/application
+  Rendered admin/management/index.html.erb within layouts/application (Duration: 7.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 17.8ms | GC: 0.0ms)
+Completed 200 OK in 77ms (Views: 22.2ms | ActiveRecord: 1.5ms (3 queries, 0 cached) | GC: 0.7ms)
+
+
+Started DELETE "/users/sign_out?_method=delete" for 127.0.0.1 at 2025-07-12 16:39:42 -0300
+Processing by Devise::SessionsController#destroy as TURBO_STREAM
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='destroy',application='Camaar',controller='sessions'*/[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 149ms (ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-07-12 16:39:42 -0300
+Processing by HomeController#index as TURBO_STREAM
+Completed 401 Unauthorized in 35ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2025-07-12 16:39:42 -0300
+Processing by Devise::SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | GC: 0.0ms)
+Completed 200 OK in 49ms (Views: 7.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2025-07-12 16:39:47 -0300
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}, "commit"=>"Entrar"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'professor@camaar.com' ORDER BY "users"."id" ASC LIMIT 1 /*action='create',application='Camaar',controller='sessions'*/[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 561ms (ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 1.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-07-12 16:39:47 -0300
+Processing by HomeController#index as TURBO_STREAM
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='home'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 3.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.8ms | GC: 0.9ms)
+Completed 200 OK in 85ms (Views: 9.8ms | ActiveRecord: 1.0ms (1 query, 0 cached) | GC: 3.1ms)
+
+
+Started GET "/evaluations" for 127.0.0.1 at 2025-07-12 16:39:55 -0300
+Processing by EvaluationsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='evaluations'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering evaluations/index.html.erb within layouts/application
+  Rendered evaluations/index.html.erb within layouts/application (Duration: 3.4ms | GC: 0.6ms)
+  Rendered layout layouts/application.html.erb (Duration: 9.4ms | GC: 0.6ms)
+Completed 200 OK in 63ms (Views: 11.2ms | ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-07-12 16:45:34 -0300
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='home'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 3.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 19.9ms | GC: 0.0ms)
+Completed 200 OK in 92ms (Views: 22.7ms | ActiveRecord: 3.9ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/assets/figma_custom.css" for 127.0.0.1 at 2025-07-12 16:45:35 -0300
+Started GET "/minhas_disciplinas" for 127.0.0.1 at 2025-07-12 16:45:39 -0300
+Processing by MinhasDisciplinasController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+NoMethodError (undefined method `turmas_como_professor' for #<User id: 2, email: [FILTERED], name: "Professor Exemplo", matricula: "111111", role: "professor", created_at: "2025-07-12 19:23:41.762628000 +0000", updated_at: "2025-07-12 19:23:41.762628000 +0000", curso: nil, departamento: nil, formacao: nil>):
+  
+app/controllers/minhas_disciplinas_controller.rb:115:in `set_user_disciplinas'
+Started GET "/minhas_disciplinas" for 127.0.0.1 at 2025-07-12 16:46:01 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+Processing by MinhasDisciplinasController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+Completed 500 Internal Server Error in 101ms (ActiveRecord: 3.0ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+NoMethodError (undefined method `turmas_como_professor' for #<User id: 2, email: [FILTERED], name: "Professor Exemplo", matricula: "111111", role: "professor", created_at: "2025-07-12 19:23:41.762628000 +0000", updated_at: "2025-07-12 19:23:41.762628000 +0000", curso: nil, departamento: nil, formacao: nil>):
+  
+app/controllers/minhas_disciplinas_controller.rb:115:in `set_user_disciplinas'
+Started GET "/minhas_disciplinas" for 127.0.0.1 at 2025-07-12 16:51:24 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+Processing by MinhasDisciplinasController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  [1m[36mTurma Count (1.0ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "turmas" INNER JOIN "disciplinas" ON "disciplinas"."id" = "turmas"."disciplina_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/controllers/minhas_disciplinas_controller.rb:115:in `set_user_disciplinas'
+  Rendering layout layouts/application.html.erb
+  Rendering minhas_disciplinas/index.html.erb within layouts/application
+  [1m[36mDisciplina Count (0.4ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:40
+  [1m[36mDisciplina Count (0.3ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:58
+  [1m[36mDisciplina Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 LIMIT 1 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:80
+  Rendered minhas_disciplinas/index.html.erb within layouts/application (Duration: 142.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 197.3ms | GC: 0.0ms)
+Completed 200 OK in 1205ms (Views: 203.9ms | ActiveRecord: 10.1ms (5 queries, 0 cached) | GC: 56.5ms)
+
+
+Started GET "/assets/figma_custom.css" for 127.0.0.1 at 2025-07-12 16:51:26 -0300
+Started DELETE "/users/sign_out?_method=delete" for 127.0.0.1 at 2025-07-12 16:51:38 -0300
+Processing by Devise::SessionsController#destroy as TURBO_STREAM
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 ORDER BY "users"."id" ASC LIMIT 1 /*action='destroy',application='Camaar',controller='sessions'*/[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 49ms (ActiveRecord: 0.6ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-07-12 16:51:38 -0300
+Processing by HomeController#index as TURBO_STREAM
+Completed 401 Unauthorized in 33ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2025-07-12 16:51:38 -0300
+Processing by Devise::SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 17.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 21.2ms | GC: 0.0ms)
+Completed 200 OK in 69ms (Views: 25.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2025-07-12 16:51:44 -0300
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}, "commit"=>"Entrar"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'aluni@camaar.com' ORDER BY "users"."id" ASC LIMIT 1 /*action='create',application='Camaar',controller='sessions'*/[0m
+Completed 401 Unauthorized in 120ms (ActiveRecord: 0.8ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Processing by Devise::SessionsController#new as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}, "commit"=>"Entrar"}
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 12.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 16.2ms | GC: 0.0ms)
+Completed 200 OK in 582ms (Views: 17.9ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2025-07-12 16:51:49 -0300
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}, "commit"=>"Entrar"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'aluno@camaar.com' ORDER BY "users"."id" ASC LIMIT 1 /*action='create',application='Camaar',controller='sessions'*/[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 807ms (ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-07-12 16:51:50 -0300
+Processing by HomeController#index as TURBO_STREAM
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 3 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='home'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 2.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.8ms | GC: 0.0ms)
+Completed 200 OK in 58ms (Views: 9.6ms | ActiveRecord: 0.9ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/evaluations" for 127.0.0.1 at 2025-07-12 16:51:56 -0300
+Processing by EvaluationsController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 3 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='evaluations'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering evaluations/index.html.erb within layouts/application
+  Rendered evaluations/index.html.erb within layouts/application (Duration: 2.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.8ms | GC: 0.0ms)
+Completed 200 OK in 64ms (Views: 11.9ms | ActiveRecord: 0.9ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/evaluations" for 127.0.0.1 at 2025-07-12 16:52:04 -0300
+Processing by EvaluationsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 3 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='evaluations'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering evaluations/index.html.erb within layouts/application
+  Rendered evaluations/index.html.erb within layouts/application (Duration: 2.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 13.1ms | GC: 0.0ms)
+Completed 200 OK in 70ms (Views: 20.8ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/minhas_disciplinas" for 127.0.0.1 at 2025-07-12 16:52:05 -0300
+Processing by MinhasDisciplinasController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 3 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  [1m[36mMatricula Count (0.4ms)[0m  [1m[34mSELECT COUNT(DISTINCT "turmas"."disciplina_id") FROM "matriculas" INNER JOIN "turmas" ON "turmas"."id" = "matriculas"."turma_id" WHERE "matriculas"."user_id" = 3 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/controllers/minhas_disciplinas_controller.rb:113:in `set_user_disciplinas'
+  Rendering layout layouts/application.html.erb
+  Rendering minhas_disciplinas/index.html.erb within layouts/application
+  [1m[36mDisciplina Count (1.9ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "matriculas"."user_id" = 3 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:40
+  [1m[36mDisciplina Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "matriculas"."user_id" = 3 LIMIT 1 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:80
+  Rendered minhas_disciplinas/index.html.erb within layouts/application (Duration: 25.2ms | GC: 2.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 30.7ms | GC: 2.5ms)
+Completed 200 OK in 97ms (Views: 30.9ms | ActiveRecord: 3.1ms (4 queries, 0 cached) | GC: 3.3ms)
+
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'admin@camaar.com' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'professor@camaar.com' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'aluno@camaar.com' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mCurso Load (0.8ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" WHERE "cursos"."nome" = 'Engenharia de Software' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mCurso Load (0.6ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" WHERE "cursos"."nome" = 'Ciência da Computação' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mCurso Load (0.2ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" WHERE "cursos"."nome" = 'Sistemas de Informação' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mCACHE Curso Load (0.0ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" WHERE "cursos"."nome" = 'Engenharia de Software' LIMIT 1[0m
+  [1m[36mCACHE Curso Load (0.0ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" WHERE "cursos"."nome" = 'Ciência da Computação' LIMIT 1[0m
+  [1m[36mDisciplina Load (1.3ms)[0m  [1m[34mSELECT "disciplinas".* FROM "disciplinas" WHERE "disciplinas"."nome" = 'Programação Orientada a Objetos' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mDisciplina Create (0.3ms)[0m  [1m[32mINSERT INTO "disciplinas" ("nome", "curso_id", "created_at", "updated_at", "codigo", "codigo_turma", "semestre", "horario") VALUES ('Programação Orientada a Objetos', 1, '2025-07-12 19:52:36.034510', '2025-07-12 19:52:36.034510', 'POO001', NULL, NULL, NULL) RETURNING "id" /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (94.9ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mDisciplina Load (0.2ms)[0m  [1m[34mSELECT "disciplinas".* FROM "disciplinas" WHERE "disciplinas"."nome" = 'Banco de Dados' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mDisciplina Create (7.0ms)[0m  [1m[32mINSERT INTO "disciplinas" ("nome", "curso_id", "created_at", "updated_at", "codigo", "codigo_turma", "semestre", "horario") VALUES ('Banco de Dados', 1, '2025-07-12 19:52:36.140866', '2025-07-12 19:52:36.140866', 'BD001', NULL, NULL, NULL) RETURNING "id" /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mDisciplina Load (0.6ms)[0m  [1m[34mSELECT "disciplinas".* FROM "disciplinas" WHERE "disciplinas"."nome" = 'Engenharia de Software' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mDisciplina Create (7.5ms)[0m  [1m[32mINSERT INTO "disciplinas" ("nome", "curso_id", "created_at", "updated_at", "codigo", "codigo_turma", "semestre", "horario") VALUES ('Engenharia de Software', 1, '2025-07-12 19:52:36.163827', '2025-07-12 19:52:36.163827', 'ES001', NULL, NULL, NULL) RETURNING "id" /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mDisciplina Load (0.3ms)[0m  [1m[34mSELECT "disciplinas".* FROM "disciplinas" WHERE "disciplinas"."nome" = 'Estruturas de Dados' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mDisciplina Create (8.9ms)[0m  [1m[32mINSERT INTO "disciplinas" ("nome", "curso_id", "created_at", "updated_at", "codigo", "codigo_turma", "semestre", "horario") VALUES ('Estruturas de Dados', 2, '2025-07-12 19:52:36.192896', '2025-07-12 19:52:36.192896', 'ED001', NULL, NULL, NULL) RETURNING "id" /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mDisciplina Load (0.9ms)[0m  [1m[34mSELECT "disciplinas".* FROM "disciplinas" WHERE "disciplinas"."nome" = 'Algoritmos' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mDisciplina Create (4.8ms)[0m  [1m[32mINSERT INTO "disciplinas" ("nome", "curso_id", "created_at", "updated_at", "codigo", "codigo_turma", "semestre", "horario") VALUES ('Algoritmos', 2, '2025-07-12 19:52:36.220474', '2025-07-12 19:52:36.220474', 'ALG001', NULL, NULL, NULL) RETURNING "id" /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mDisciplina Load (0.2ms)[0m  [1m[34mSELECT "disciplinas".* FROM "disciplinas" WHERE "disciplinas"."nome" = 'Redes de Computadores' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mDisciplina Create (7.6ms)[0m  [1m[32mINSERT INTO "disciplinas" ("nome", "curso_id", "created_at", "updated_at", "codigo", "codigo_turma", "semestre", "horario") VALUES ('Redes de Computadores', 2, '2025-07-12 19:52:36.237130', '2025-07-12 19:52:36.237130', 'RC001', NULL, NULL, NULL) RETURNING "id" /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'professor@camaar.com' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mDisciplina Load (0.3ms)[0m  [1m[34mSELECT "disciplinas".* FROM "disciplinas" /*application='Camaar'*/[0m
+  [1m[36mTurma Load (1.0ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 1 AND "turmas"."professor_id" = 2 AND "turmas"."semestre" = '2025.1' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mTurma Create (0.4ms)[0m  [1m[32mINSERT INTO "turmas" ("disciplina_id", "professor_id", "semestre", "created_at", "updated_at") VALUES (1, 2, '2025.1', '2025-07-12 19:52:36.318346', '2025-07-12 19:52:36.318346') RETURNING "id" /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mTurma Load (0.5ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 2 AND "turmas"."professor_id" = 2 AND "turmas"."semestre" = '2025.1' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mTurma Create (3.0ms)[0m  [1m[32mINSERT INTO "turmas" ("disciplina_id", "professor_id", "semestre", "created_at", "updated_at") VALUES (2, 2, '2025.1', '2025-07-12 19:52:36.332808', '2025-07-12 19:52:36.332808') RETURNING "id" /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mTurma Load (0.5ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 3 AND "turmas"."professor_id" = 2 AND "turmas"."semestre" = '2025.1' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mTurma Create (30.3ms)[0m  [1m[32mINSERT INTO "turmas" ("disciplina_id", "professor_id", "semestre", "created_at", "updated_at") VALUES (3, 2, '2025.1', '2025-07-12 19:52:36.351585', '2025-07-12 19:52:36.351585') RETURNING "id" /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 4 AND "turmas"."professor_id" = 2 AND "turmas"."semestre" = '2025.1' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mTurma Create (7.6ms)[0m  [1m[32mINSERT INTO "turmas" ("disciplina_id", "professor_id", "semestre", "created_at", "updated_at") VALUES (4, 2, '2025.1', '2025-07-12 19:52:36.393191', '2025-07-12 19:52:36.393191') RETURNING "id" /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mTurma Load (0.6ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 5 AND "turmas"."professor_id" = 2 AND "turmas"."semestre" = '2025.1' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mTurma Create (2.6ms)[0m  [1m[32mINSERT INTO "turmas" ("disciplina_id", "professor_id", "semestre", "created_at", "updated_at") VALUES (5, 2, '2025.1', '2025-07-12 19:52:36.415595', '2025-07-12 19:52:36.415595') RETURNING "id" /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 6 AND "turmas"."professor_id" = 2 AND "turmas"."semestre" = '2025.1' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mTurma Create (6.9ms)[0m  [1m[32mINSERT INTO "turmas" ("disciplina_id", "professor_id", "semestre", "created_at", "updated_at") VALUES (6, 2, '2025.1', '2025-07-12 19:52:36.441476', '2025-07-12 19:52:36.441476') RETURNING "id" /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'aluno@camaar.com' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mTurma Load (0.8ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" LIMIT 3 /*application='Camaar'*/[0m
+  [1m[36mMatricula Load (2.5ms)[0m  [1m[34mSELECT "matriculas".* FROM "matriculas" WHERE "matriculas"."user_id" = 3 AND "matriculas"."turma_id" = 1 AND "matriculas"."situacao" = 'matriculado' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+Migrating to AddSituacaoToMatriculas (20250712195321)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='Camaar'*/[0m
+  [1m[35m (4.4ms)[0m  [1m[35mALTER TABLE "matriculas" ADD "situacao" varchar DEFAULT 'matriculado' NOT NULL /*application='Camaar'*/[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE INDEX "index_matriculas_on_situacao" ON "matriculas" ("situacao") /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250712195321') RETURNING "version" /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'admin@camaar.com' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'professor@camaar.com' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'aluno@camaar.com' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mCurso Load (0.1ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" WHERE "cursos"."nome" = 'Engenharia de Software' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mCurso Load (0.2ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" WHERE "cursos"."nome" = 'Ciência da Computação' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mCurso Load (0.3ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" WHERE "cursos"."nome" = 'Sistemas de Informação' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mCACHE Curso Load (0.2ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" WHERE "cursos"."nome" = 'Engenharia de Software' LIMIT 1[0m
+  [1m[36mCACHE Curso Load (0.1ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" WHERE "cursos"."nome" = 'Ciência da Computação' LIMIT 1[0m
+  [1m[36mDisciplina Load (0.2ms)[0m  [1m[34mSELECT "disciplinas".* FROM "disciplinas" WHERE "disciplinas"."nome" = 'Programação Orientada a Objetos' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mDisciplina Load (0.2ms)[0m  [1m[34mSELECT "disciplinas".* FROM "disciplinas" WHERE "disciplinas"."nome" = 'Banco de Dados' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mDisciplina Load (0.2ms)[0m  [1m[34mSELECT "disciplinas".* FROM "disciplinas" WHERE "disciplinas"."nome" = 'Engenharia de Software' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mDisciplina Load (0.2ms)[0m  [1m[34mSELECT "disciplinas".* FROM "disciplinas" WHERE "disciplinas"."nome" = 'Estruturas de Dados' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mDisciplina Load (0.7ms)[0m  [1m[34mSELECT "disciplinas".* FROM "disciplinas" WHERE "disciplinas"."nome" = 'Algoritmos' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mDisciplina Load (0.2ms)[0m  [1m[34mSELECT "disciplinas".* FROM "disciplinas" WHERE "disciplinas"."nome" = 'Redes de Computadores' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'professor@camaar.com' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mDisciplina Load (0.4ms)[0m  [1m[34mSELECT "disciplinas".* FROM "disciplinas" /*application='Camaar'*/[0m
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 1 AND "turmas"."professor_id" = 2 AND "turmas"."semestre" = '2025.1' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mTurma Load (0.2ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 2 AND "turmas"."professor_id" = 2 AND "turmas"."semestre" = '2025.1' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 3 AND "turmas"."professor_id" = 2 AND "turmas"."semestre" = '2025.1' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 4 AND "turmas"."professor_id" = 2 AND "turmas"."semestre" = '2025.1' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mTurma Load (0.2ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 5 AND "turmas"."professor_id" = 2 AND "turmas"."semestre" = '2025.1' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mTurma Load (0.2ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 6 AND "turmas"."professor_id" = 2 AND "turmas"."semestre" = '2025.1' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'aluno@camaar.com' LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mTurma Load (0.2ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" LIMIT 3 /*application='Camaar'*/[0m
+  [1m[36mMatricula Load (0.3ms)[0m  [1m[34mSELECT "matriculas".* FROM "matriculas" WHERE "matriculas"."user_id" = 3 AND "matriculas"."turma_id" = 1 LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mMatricula Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "matriculas" WHERE "matriculas"."user_id" = 3 AND "matriculas"."turma_id" = 1 LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mMatricula Create (0.6ms)[0m  [1m[32mINSERT INTO "matriculas" ("user_id", "turma_id", "created_at", "updated_at", "situacao") VALUES (3, 1, '2025-07-12 19:55:27.342551', '2025-07-12 19:55:27.342551', 'matriculado') RETURNING "id" /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mMatricula Load (0.3ms)[0m  [1m[34mSELECT "matriculas".* FROM "matriculas" WHERE "matriculas"."user_id" = 3 AND "matriculas"."turma_id" = 2 LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mMatricula Exists? (6.4ms)[0m  [1m[34mSELECT 1 AS one FROM "matriculas" WHERE "matriculas"."user_id" = 3 AND "matriculas"."turma_id" = 2 LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mMatricula Create (0.3ms)[0m  [1m[32mINSERT INTO "matriculas" ("user_id", "turma_id", "created_at", "updated_at", "situacao") VALUES (3, 2, '2025-07-12 19:55:27.370212', '2025-07-12 19:55:27.370212', 'matriculado') RETURNING "id" /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mMatricula Load (0.5ms)[0m  [1m[34mSELECT "matriculas".* FROM "matriculas" WHERE "matriculas"."user_id" = 3 AND "matriculas"."turma_id" = 3 LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mMatricula Exists? (2.8ms)[0m  [1m[34mSELECT 1 AS one FROM "matriculas" WHERE "matriculas"."user_id" = 3 AND "matriculas"."turma_id" = 3 LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mMatricula Create (0.4ms)[0m  [1m[32mINSERT INTO "matriculas" ("user_id", "turma_id", "created_at", "updated_at", "situacao") VALUES (3, 3, '2025-07-12 19:55:27.391860', '2025-07-12 19:55:27.391860', 'matriculado') RETURNING "id" /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Camaar'*/[0m
+Seeds executados com sucesso!
+Usuários criados:
+  - admin@camaar.com (senha: 123456) - Administrador
+  - professor@camaar.com (senha: 123456) - Professor
+  - aluno@camaar.com (senha: 123456) - Aluno
+Disciplinas e turmas criadas com sucesso!
+Started GET "/minhas_disciplinas" for 127.0.0.1 at 2025-07-12 16:56:29 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+Processing by MinhasDisciplinasController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 3 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  [1m[36mMatricula Count (0.3ms)[0m  [1m[34mSELECT COUNT(DISTINCT "turmas"."disciplina_id") FROM "matriculas" INNER JOIN "turmas" ON "turmas"."id" = "matriculas"."turma_id" WHERE "matriculas"."user_id" = 3 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/controllers/minhas_disciplinas_controller.rb:113:in `set_user_disciplinas'
+  Rendering layout layouts/application.html.erb
+  Rendering minhas_disciplinas/index.html.erb within layouts/application
+  [1m[36mDisciplina Count (0.3ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "matriculas"."user_id" = 3 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:40
+  [1m[36mDisciplina Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "matriculas"."user_id" = 3 LIMIT 1 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:80
+  [1m[36mDisciplina Load (0.4ms)[0m  [1m[34mSELECT DISTINCT "disciplinas".* FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "matriculas"."user_id" = 3 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:99
+  [1m[36mCurso Load (0.2ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" WHERE "cursos"."id" = 1 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:99
+  [1m[36mTurma Load (0.4ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" IN (1, 2, 3) /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:99
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:99
+  [1m[36mMatricula Load (0.5ms)[0m  [1m[34mSELECT "matriculas".* FROM "matriculas" WHERE "matriculas"."turma_id" IN (1, 2, 3) /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:99
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 1 AND "matriculas"."user_id" = 3 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:113
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:114
+  [1m[36mCACHE Turma Load (0.0ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 1 AND "matriculas"."user_id" = 3[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:130
+  [1m[36mTurma Load (0.2ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 2 AND "matriculas"."user_id" = 3 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:113
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:114
+  [1m[36mCACHE Turma Load (0.1ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 2 AND "matriculas"."user_id" = 3[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:130
+  [1m[36mTurma Load (0.2ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 3 AND "matriculas"."user_id" = 3 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:113
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 LIMIT 1[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:114
+  [1m[36mCACHE Turma Load (0.0ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 3 AND "matriculas"."user_id" = 3[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:130
+  Rendered minhas_disciplinas/index.html.erb within layouts/application (Duration: 230.1ms | GC: 3.6ms)
+  Rendered layout layouts/application.html.erb (Duration: 237.3ms | GC: 3.6ms)
+Completed 200 OK in 436ms (Views: 234.6ms | ActiveRecord: 12.6ms (18 queries, 5 cached) | GC: 9.2ms)
+
+
+Started GET "/assets/figma_custom.css" for 127.0.0.1 at 2025-07-12 16:56:31 -0300
+Started DELETE "/users/sign_out?_method=delete" for 127.0.0.1 at 2025-07-12 16:56:59 -0300
+Processing by Devise::SessionsController#destroy as TURBO_STREAM
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 3 ORDER BY "users"."id" ASC LIMIT 1 /*action='destroy',application='Camaar',controller='sessions'*/[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 28ms (ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-07-12 16:56:59 -0300
+Processing by HomeController#index as TURBO_STREAM
+Completed 401 Unauthorized in 21ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2025-07-12 16:56:59 -0300
+Processing by Devise::SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.8ms | GC: 0.0ms)
+Completed 200 OK in 33ms (Views: 13.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2025-07-12 16:57:04 -0300
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}, "commit"=>"Entrar"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = 'professor@camaar.com' ORDER BY "users"."id" ASC LIMIT 1 /*action='create',application='Camaar',controller='sessions'*/[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 520ms (ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-07-12 16:57:05 -0300
+Processing by HomeController#index as TURBO_STREAM
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='home'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | GC: 0.0ms)
+Completed 200 OK in 49ms (Views: 4.9ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/evaluations" for 127.0.0.1 at 2025-07-12 16:57:06 -0300
+Processing by EvaluationsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='evaluations'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering evaluations/index.html.erb within layouts/application
+  Rendered evaluations/index.html.erb within layouts/application (Duration: 1.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | GC: 0.0ms)
+Completed 200 OK in 32ms (Views: 5.3ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/evaluations" for 127.0.0.1 at 2025-07-12 16:57:14 -0300
+Processing by EvaluationsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='evaluations'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering evaluations/index.html.erb within layouts/application
+  Rendered evaluations/index.html.erb within layouts/application (Duration: 0.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.6ms | GC: 0.0ms)
+Completed 200 OK in 44ms (Views: 3.3ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 11.2ms)
+
+
+Started GET "/minhas_disciplinas" for 127.0.0.1 at 2025-07-12 16:57:15 -0300
+Processing by MinhasDisciplinasController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  [1m[36mTurma Count (0.5ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "turmas" INNER JOIN "disciplinas" ON "disciplinas"."id" = "turmas"."disciplina_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/controllers/minhas_disciplinas_controller.rb:115:in `set_user_disciplinas'
+  Rendering layout layouts/application.html.erb
+  Rendering minhas_disciplinas/index.html.erb within layouts/application
+  [1m[36mDisciplina Count (0.2ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:40
+  [1m[36mDisciplina Count (0.4ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:58
+  [1m[36mDisciplina Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 LIMIT 1 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:80
+  [1m[35mSQL (0.6ms)[0m  [1m[34mSELECT DISTINCT "disciplinas"."id" AS t0_r0, "disciplinas"."nome" AS t0_r1, "disciplinas"."curso_id" AS t0_r2, "disciplinas"."created_at" AS t0_r3, "disciplinas"."updated_at" AS t0_r4, "disciplinas"."codigo" AS t0_r5, "disciplinas"."codigo_turma" AS t0_r6, "disciplinas"."semestre" AS t0_r7, "disciplinas"."horario" AS t0_r8, "cursos"."id" AS t1_r0, "cursos"."nome" AS t1_r1, "cursos"."created_at" AS t1_r2, "cursos"."updated_at" AS t1_r3, "turmas"."id" AS t2_r0, "turmas"."disciplina_id" AS t2_r1, "turmas"."professor_id" AS t2_r2, "turmas"."semestre" AS t2_r3, "turmas"."created_at" AS t2_r4, "turmas"."updated_at" AS t2_r5 FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:99
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 1 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (1.0ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 1 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.5ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 3 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.2ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 3 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 4 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.7ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 4 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 5 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.4ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 5 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 6 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.4ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 6 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  Rendered minhas_disciplinas/index.html.erb within layouts/application (Duration: 75.2ms | GC: 2.9ms)
+  Rendered layout layouts/application.html.erb (Duration: 78.3ms | GC: 3.3ms)
+Completed 200 OK in 111ms (Views: 73.3ms | ActiveRecord: 6.6ms (18 queries, 0 cached) | GC: 3.9ms)
+
+
+Started GET "/minhas_disciplinas.1" for 127.0.0.1 at 2025-07-12 16:57:30 -0300
+Processing by MinhasDisciplinasController#index as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  [1m[36mTurma Count (0.2ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "turmas" INNER JOIN "disciplinas" ON "disciplinas"."id" = "turmas"."disciplina_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/controllers/minhas_disciplinas_controller.rb:115:in `set_user_disciplinas'
+  Rendering layout layouts/application.html.erb
+  Rendering minhas_disciplinas/index.html.erb within layouts/application
+  [1m[36mDisciplina Count (0.2ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:40
+  [1m[36mDisciplina Count (0.4ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:58
+  [1m[36mDisciplina Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 LIMIT 1 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:80
+  [1m[35mSQL (0.4ms)[0m  [1m[34mSELECT DISTINCT "disciplinas"."id" AS t0_r0, "disciplinas"."nome" AS t0_r1, "disciplinas"."curso_id" AS t0_r2, "disciplinas"."created_at" AS t0_r3, "disciplinas"."updated_at" AS t0_r4, "disciplinas"."codigo" AS t0_r5, "disciplinas"."codigo_turma" AS t0_r6, "disciplinas"."semestre" AS t0_r7, "disciplinas"."horario" AS t0_r8, "cursos"."id" AS t1_r0, "cursos"."nome" AS t1_r1, "cursos"."created_at" AS t1_r2, "cursos"."updated_at" AS t1_r3, "turmas"."id" AS t2_r0, "turmas"."disciplina_id" AS t2_r1, "turmas"."professor_id" AS t2_r2, "turmas"."semestre" AS t2_r3, "turmas"."created_at" AS t2_r4, "turmas"."updated_at" AS t2_r5 FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:99
+  [1m[36mTurma Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 1 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.2ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 1 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 3 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 3 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 4 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 4 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 5 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 5 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 6 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 6 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  Rendered minhas_disciplinas/index.html.erb within layouts/application (Duration: 73.2ms | GC: 1.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 77.7ms | GC: 1.5ms)
+Completed 200 OK in 109ms (Views: 73.5ms | ActiveRecord: 5.8ms (18 queries, 0 cached) | GC: 1.9ms)
+
+
+Started GET "/minhas_disciplinas.1" for 127.0.0.1 at 2025-07-12 16:57:33 -0300
+Processing by MinhasDisciplinasController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  [1m[36mTurma Count (0.4ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "turmas" INNER JOIN "disciplinas" ON "disciplinas"."id" = "turmas"."disciplina_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/controllers/minhas_disciplinas_controller.rb:115:in `set_user_disciplinas'
+  Rendering layout layouts/application.html.erb
+  Rendering minhas_disciplinas/index.html.erb within layouts/application
+  [1m[36mDisciplina Count (0.3ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:40
+  [1m[36mDisciplina Count (0.4ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:58
+  [1m[36mDisciplina Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 LIMIT 1 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:80
+  [1m[35mSQL (0.5ms)[0m  [1m[34mSELECT DISTINCT "disciplinas"."id" AS t0_r0, "disciplinas"."nome" AS t0_r1, "disciplinas"."curso_id" AS t0_r2, "disciplinas"."created_at" AS t0_r3, "disciplinas"."updated_at" AS t0_r4, "disciplinas"."codigo" AS t0_r5, "disciplinas"."codigo_turma" AS t0_r6, "disciplinas"."semestre" AS t0_r7, "disciplinas"."horario" AS t0_r8, "cursos"."id" AS t1_r0, "cursos"."nome" AS t1_r1, "cursos"."created_at" AS t1_r2, "cursos"."updated_at" AS t1_r3, "turmas"."id" AS t2_r0, "turmas"."disciplina_id" AS t2_r1, "turmas"."professor_id" AS t2_r2, "turmas"."semestre" AS t2_r3, "turmas"."created_at" AS t2_r4, "turmas"."updated_at" AS t2_r5 FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:99
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 1 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 1 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 3 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.2ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 3 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 4 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.2ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 4 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 5 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.2ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 5 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 6 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.2ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 6 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  Rendered minhas_disciplinas/index.html.erb within layouts/application (Duration: 55.5ms | GC: 1.7ms)
+  Rendered layout layouts/application.html.erb (Duration: 58.5ms | GC: 1.7ms)
+Completed 200 OK in 89ms (Views: 55.2ms | ActiveRecord: 4.6ms (18 queries, 0 cached) | GC: 2.1ms)
+
+
+Started GET "/minhas_disciplinas.1" for 127.0.0.1 at 2025-07-12 16:57:34 -0300
+Processing by MinhasDisciplinasController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  [1m[36mTurma Count (0.6ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "turmas" INNER JOIN "disciplinas" ON "disciplinas"."id" = "turmas"."disciplina_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/controllers/minhas_disciplinas_controller.rb:115:in `set_user_disciplinas'
+  Rendering layout layouts/application.html.erb
+  Rendering minhas_disciplinas/index.html.erb within layouts/application
+  [1m[36mDisciplina Count (0.5ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:40
+  [1m[36mDisciplina Count (1.4ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:58
+  [1m[36mDisciplina Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 LIMIT 1 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:80
+  [1m[35mSQL (0.5ms)[0m  [1m[34mSELECT DISTINCT "disciplinas"."id" AS t0_r0, "disciplinas"."nome" AS t0_r1, "disciplinas"."curso_id" AS t0_r2, "disciplinas"."created_at" AS t0_r3, "disciplinas"."updated_at" AS t0_r4, "disciplinas"."codigo" AS t0_r5, "disciplinas"."codigo_turma" AS t0_r6, "disciplinas"."semestre" AS t0_r7, "disciplinas"."horario" AS t0_r8, "cursos"."id" AS t1_r0, "cursos"."nome" AS t1_r1, "cursos"."created_at" AS t1_r2, "cursos"."updated_at" AS t1_r3, "turmas"."id" AS t2_r0, "turmas"."disciplina_id" AS t2_r1, "turmas"."professor_id" AS t2_r2, "turmas"."semestre" AS t2_r3, "turmas"."created_at" AS t2_r4, "turmas"."updated_at" AS t2_r5 FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:99
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 1 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 1 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 3 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.8ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 3 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 4 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.4ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 4 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 5 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.4ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 5 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 6 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 6 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  Rendered minhas_disciplinas/index.html.erb within layouts/application (Duration: 87.2ms | GC: 2.8ms)
+  Rendered layout layouts/application.html.erb (Duration: 90.2ms | GC: 2.8ms)
+Completed 200 OK in 131ms (Views: 84.4ms | ActiveRecord: 7.7ms (18 queries, 0 cached) | GC: 3.3ms)
+
+
+Started GET "/minhas_disciplinas.1" for 127.0.0.1 at 2025-07-12 16:57:34 -0300
+Processing by MinhasDisciplinasController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  [1m[36mTurma Count (0.4ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "turmas" INNER JOIN "disciplinas" ON "disciplinas"."id" = "turmas"."disciplina_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/controllers/minhas_disciplinas_controller.rb:115:in `set_user_disciplinas'
+  Rendering layout layouts/application.html.erb
+  Rendering minhas_disciplinas/index.html.erb within layouts/application
+  [1m[36mDisciplina Count (0.4ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:40
+  [1m[36mDisciplina Count (0.4ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:58
+  [1m[36mDisciplina Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 LIMIT 1 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:80
+  [1m[35mSQL (0.4ms)[0m  [1m[34mSELECT DISTINCT "disciplinas"."id" AS t0_r0, "disciplinas"."nome" AS t0_r1, "disciplinas"."curso_id" AS t0_r2, "disciplinas"."created_at" AS t0_r3, "disciplinas"."updated_at" AS t0_r4, "disciplinas"."codigo" AS t0_r5, "disciplinas"."codigo_turma" AS t0_r6, "disciplinas"."semestre" AS t0_r7, "disciplinas"."horario" AS t0_r8, "cursos"."id" AS t1_r0, "cursos"."nome" AS t1_r1, "cursos"."created_at" AS t1_r2, "cursos"."updated_at" AS t1_r3, "turmas"."id" AS t2_r0, "turmas"."disciplina_id" AS t2_r1, "turmas"."professor_id" AS t2_r2, "turmas"."semestre" AS t2_r3, "turmas"."created_at" AS t2_r4, "turmas"."updated_at" AS t2_r5 FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:99
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 1 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (1.8ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 1 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.2ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 3 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 3 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 4 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 4 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 5 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 5 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 6 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 6 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  Rendered minhas_disciplinas/index.html.erb within layouts/application (Duration: 62.1ms | GC: 3.6ms)
+  Rendered layout layouts/application.html.erb (Duration: 64.2ms | GC: 3.6ms)
+Completed 200 OK in 100ms (Views: 59.1ms | ActiveRecord: 6.7ms (18 queries, 0 cached) | GC: 5.0ms)
+
+
+Started GET "/minhas_disciplinas.1" for 127.0.0.1 at 2025-07-12 16:57:35 -0300
+Processing by MinhasDisciplinasController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  [1m[36mTurma Count (0.2ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "turmas" INNER JOIN "disciplinas" ON "disciplinas"."id" = "turmas"."disciplina_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/controllers/minhas_disciplinas_controller.rb:115:in `set_user_disciplinas'
+  Rendering layout layouts/application.html.erb
+  Rendering minhas_disciplinas/index.html.erb within layouts/application
+  [1m[36mDisciplina Count (0.3ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:40
+  [1m[36mDisciplina Count (0.4ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:58
+  [1m[36mDisciplina Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 LIMIT 1 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:80
+  [1m[35mSQL (0.7ms)[0m  [1m[34mSELECT DISTINCT "disciplinas"."id" AS t0_r0, "disciplinas"."nome" AS t0_r1, "disciplinas"."curso_id" AS t0_r2, "disciplinas"."created_at" AS t0_r3, "disciplinas"."updated_at" AS t0_r4, "disciplinas"."codigo" AS t0_r5, "disciplinas"."codigo_turma" AS t0_r6, "disciplinas"."semestre" AS t0_r7, "disciplinas"."horario" AS t0_r8, "cursos"."id" AS t1_r0, "cursos"."nome" AS t1_r1, "cursos"."created_at" AS t1_r2, "cursos"."updated_at" AS t1_r3, "turmas"."id" AS t2_r0, "turmas"."disciplina_id" AS t2_r1, "turmas"."professor_id" AS t2_r2, "turmas"."semestre" AS t2_r3, "turmas"."created_at" AS t2_r4, "turmas"."updated_at" AS t2_r5 FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:99
+  [1m[36mTurma Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 1 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.7ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 1 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 3 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 3 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 4 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 4 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 5 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.2ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 5 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 6 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.2ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 6 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  Rendered minhas_disciplinas/index.html.erb within layouts/application (Duration: 62.9ms | GC: 1.4ms)
+  Rendered layout layouts/application.html.erb (Duration: 65.6ms | GC: 1.7ms)
+Completed 200 OK in 100ms (Views: 61.5ms | ActiveRecord: 5.8ms (18 queries, 0 cached) | GC: 2.2ms)
+
+
+Started GET "/minhas_disciplinas.1" for 127.0.0.1 at 2025-07-12 16:57:36 -0300
+Processing by MinhasDisciplinasController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "turmas" INNER JOIN "disciplinas" ON "disciplinas"."id" = "turmas"."disciplina_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/controllers/minhas_disciplinas_controller.rb:115:in `set_user_disciplinas'
+  Rendering layout layouts/application.html.erb
+  Rendering minhas_disciplinas/index.html.erb within layouts/application
+  [1m[36mDisciplina Count (0.3ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:40
+  [1m[36mDisciplina Count (1.1ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:58
+  [1m[36mDisciplina Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 LIMIT 1 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:80
+  [1m[35mSQL (0.6ms)[0m  [1m[34mSELECT DISTINCT "disciplinas"."id" AS t0_r0, "disciplinas"."nome" AS t0_r1, "disciplinas"."curso_id" AS t0_r2, "disciplinas"."created_at" AS t0_r3, "disciplinas"."updated_at" AS t0_r4, "disciplinas"."codigo" AS t0_r5, "disciplinas"."codigo_turma" AS t0_r6, "disciplinas"."semestre" AS t0_r7, "disciplinas"."horario" AS t0_r8, "cursos"."id" AS t1_r0, "cursos"."nome" AS t1_r1, "cursos"."created_at" AS t1_r2, "cursos"."updated_at" AS t1_r3, "turmas"."id" AS t2_r0, "turmas"."disciplina_id" AS t2_r1, "turmas"."professor_id" AS t2_r2, "turmas"."semestre" AS t2_r3, "turmas"."created_at" AS t2_r4, "turmas"."updated_at" AS t2_r5 FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:99
+  [1m[36mTurma Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 1 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 1 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.2ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 3 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 3 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 4 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 4 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 5 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 5 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 6 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.6ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 6 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  Rendered minhas_disciplinas/index.html.erb within layouts/application (Duration: 66.4ms | GC: 1.4ms)
+  Rendered layout layouts/application.html.erb (Duration: 68.5ms | GC: 1.4ms)
+Completed 200 OK in 103ms (Views: 63.5ms | ActiveRecord: 6.1ms (18 queries, 0 cached) | GC: 1.9ms)
+
+
+Started GET "/minhas_disciplinas.1" for 127.0.0.1 at 2025-07-12 16:57:36 -0300
+Processing by MinhasDisciplinasController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  [1m[36mTurma Count (0.2ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "turmas" INNER JOIN "disciplinas" ON "disciplinas"."id" = "turmas"."disciplina_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/controllers/minhas_disciplinas_controller.rb:115:in `set_user_disciplinas'
+  Rendering layout layouts/application.html.erb
+  Rendering minhas_disciplinas/index.html.erb within layouts/application
+  [1m[36mDisciplina Count (0.4ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:40
+  [1m[36mDisciplina Count (0.4ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:58
+  [1m[36mDisciplina Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 LIMIT 1 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:80
+  [1m[35mSQL (0.5ms)[0m  [1m[34mSELECT DISTINCT "disciplinas"."id" AS t0_r0, "disciplinas"."nome" AS t0_r1, "disciplinas"."curso_id" AS t0_r2, "disciplinas"."created_at" AS t0_r3, "disciplinas"."updated_at" AS t0_r4, "disciplinas"."codigo" AS t0_r5, "disciplinas"."codigo_turma" AS t0_r6, "disciplinas"."semestre" AS t0_r7, "disciplinas"."horario" AS t0_r8, "cursos"."id" AS t1_r0, "cursos"."nome" AS t1_r1, "cursos"."created_at" AS t1_r2, "cursos"."updated_at" AS t1_r3, "turmas"."id" AS t2_r0, "turmas"."disciplina_id" AS t2_r1, "turmas"."professor_id" AS t2_r2, "turmas"."semestre" AS t2_r3, "turmas"."created_at" AS t2_r4, "turmas"."updated_at" AS t2_r5 FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:99
+  [1m[36mTurma Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 1 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 1 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.5ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 3 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.2ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 3 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 4 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.2ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 4 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 5 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 5 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 6 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.2ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 6 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  Rendered minhas_disciplinas/index.html.erb within layouts/application (Duration: 62.4ms | GC: 1.6ms)
+  Rendered layout layouts/application.html.erb (Duration: 65.0ms | GC: 1.6ms)
+Completed 200 OK in 95ms (Views: 60.9ms | ActiveRecord: 5.2ms (18 queries, 0 cached) | GC: 1.6ms)
+
+
+Started GET "/minhas_disciplinas.1" for 127.0.0.1 at 2025-07-12 16:57:37 -0300
+Processing by MinhasDisciplinasController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  [1m[36mTurma Count (0.9ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "turmas" INNER JOIN "disciplinas" ON "disciplinas"."id" = "turmas"."disciplina_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/controllers/minhas_disciplinas_controller.rb:115:in `set_user_disciplinas'
+  Rendering layout layouts/application.html.erb
+  Rendering minhas_disciplinas/index.html.erb within layouts/application
+  [1m[36mDisciplina Count (0.3ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:40
+  [1m[36mDisciplina Count (0.5ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:58
+  [1m[36mDisciplina Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 LIMIT 1 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:80
+  [1m[35mSQL (0.5ms)[0m  [1m[34mSELECT DISTINCT "disciplinas"."id" AS t0_r0, "disciplinas"."nome" AS t0_r1, "disciplinas"."curso_id" AS t0_r2, "disciplinas"."created_at" AS t0_r3, "disciplinas"."updated_at" AS t0_r4, "disciplinas"."codigo" AS t0_r5, "disciplinas"."codigo_turma" AS t0_r6, "disciplinas"."semestre" AS t0_r7, "disciplinas"."horario" AS t0_r8, "cursos"."id" AS t1_r0, "cursos"."nome" AS t1_r1, "cursos"."created_at" AS t1_r2, "cursos"."updated_at" AS t1_r3, "turmas"."id" AS t2_r0, "turmas"."disciplina_id" AS t2_r1, "turmas"."professor_id" AS t2_r2, "turmas"."semestre" AS t2_r3, "turmas"."created_at" AS t2_r4, "turmas"."updated_at" AS t2_r5 FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:99
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 1 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.4ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 1 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.2ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 3 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 3 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 4 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 4 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 5 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 5 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 6 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.4ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 6 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  Rendered minhas_disciplinas/index.html.erb within layouts/application (Duration: 68.9ms | GC: 4.4ms)
+  Rendered layout layouts/application.html.erb (Duration: 72.2ms | GC: 4.4ms)
+Completed 200 OK in 106ms (Views: 68.0ms | ActiveRecord: 6.3ms (18 queries, 0 cached) | GC: 5.0ms)
+
+
+Started GET "/minhas_disciplinas.2" for 127.0.0.1 at 2025-07-12 16:57:37 -0300
+Processing by MinhasDisciplinasController#index as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "turmas" INNER JOIN "disciplinas" ON "disciplinas"."id" = "turmas"."disciplina_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/controllers/minhas_disciplinas_controller.rb:115:in `set_user_disciplinas'
+  Rendering layout layouts/application.html.erb
+  Rendering minhas_disciplinas/index.html.erb within layouts/application
+  [1m[36mDisciplina Count (0.3ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:40
+  [1m[36mDisciplina Count (0.3ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:58
+  [1m[36mDisciplina Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 LIMIT 1 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:80
+  [1m[35mSQL (0.4ms)[0m  [1m[34mSELECT DISTINCT "disciplinas"."id" AS t0_r0, "disciplinas"."nome" AS t0_r1, "disciplinas"."curso_id" AS t0_r2, "disciplinas"."created_at" AS t0_r3, "disciplinas"."updated_at" AS t0_r4, "disciplinas"."codigo" AS t0_r5, "disciplinas"."codigo_turma" AS t0_r6, "disciplinas"."semestre" AS t0_r7, "disciplinas"."horario" AS t0_r8, "cursos"."id" AS t1_r0, "cursos"."nome" AS t1_r1, "cursos"."created_at" AS t1_r2, "cursos"."updated_at" AS t1_r3, "turmas"."id" AS t2_r0, "turmas"."disciplina_id" AS t2_r1, "turmas"."professor_id" AS t2_r2, "turmas"."semestre" AS t2_r3, "turmas"."created_at" AS t2_r4, "turmas"."updated_at" AS t2_r5 FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:99
+  [1m[36mTurma Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 1 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.2ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 1 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.4ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 3 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 3 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 4 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 4 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 5 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 5 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 6 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.4ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 6 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  Rendered minhas_disciplinas/index.html.erb within layouts/application (Duration: 63.3ms | GC: 2.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 66.1ms | GC: 2.3ms)
+Completed 200 OK in 100ms (Views: 62.2ms | ActiveRecord: 5.5ms (18 queries, 0 cached) | GC: 2.9ms)
+
+
+Started GET "/minhas_disciplinas.2" for 127.0.0.1 at 2025-07-12 16:57:38 -0300
+Processing by MinhasDisciplinasController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  [1m[36mTurma Count (0.5ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "turmas" INNER JOIN "disciplinas" ON "disciplinas"."id" = "turmas"."disciplina_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/controllers/minhas_disciplinas_controller.rb:115:in `set_user_disciplinas'
+  Rendering layout layouts/application.html.erb
+  Rendering minhas_disciplinas/index.html.erb within layouts/application
+  [1m[36mDisciplina Count (0.3ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:40
+  [1m[36mDisciplina Count (0.2ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:58
+  [1m[36mDisciplina Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 LIMIT 1 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:80
+  [1m[35mSQL (0.3ms)[0m  [1m[34mSELECT DISTINCT "disciplinas"."id" AS t0_r0, "disciplinas"."nome" AS t0_r1, "disciplinas"."curso_id" AS t0_r2, "disciplinas"."created_at" AS t0_r3, "disciplinas"."updated_at" AS t0_r4, "disciplinas"."codigo" AS t0_r5, "disciplinas"."codigo_turma" AS t0_r6, "disciplinas"."semestre" AS t0_r7, "disciplinas"."horario" AS t0_r8, "cursos"."id" AS t1_r0, "cursos"."nome" AS t1_r1, "cursos"."created_at" AS t1_r2, "cursos"."updated_at" AS t1_r3, "turmas"."id" AS t2_r0, "turmas"."disciplina_id" AS t2_r1, "turmas"."professor_id" AS t2_r2, "turmas"."semestre" AS t2_r3, "turmas"."created_at" AS t2_r4, "turmas"."updated_at" AS t2_r5 FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:99
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 1 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 1 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 3 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.4ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 3 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 4 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 4 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 5 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 5 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 6 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 6 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  Rendered minhas_disciplinas/index.html.erb within layouts/application (Duration: 58.2ms | GC: 1.6ms)
+  Rendered layout layouts/application.html.erb (Duration: 61.2ms | GC: 1.6ms)
+Completed 200 OK in 92ms (Views: 57.7ms | ActiveRecord: 5.1ms (18 queries, 0 cached) | GC: 1.9ms)
+
+
+Started GET "/minhas_disciplinas.4" for 127.0.0.1 at 2025-07-12 16:57:39 -0300
+Processing by MinhasDisciplinasController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  [1m[36mTurma Count (0.2ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "turmas" INNER JOIN "disciplinas" ON "disciplinas"."id" = "turmas"."disciplina_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/controllers/minhas_disciplinas_controller.rb:115:in `set_user_disciplinas'
+  Rendering layout layouts/application.html.erb
+  Rendering minhas_disciplinas/index.html.erb within layouts/application
+  [1m[36mDisciplina Count (0.3ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:40
+  [1m[36mDisciplina Count (1.2ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:58
+  [1m[36mDisciplina Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 LIMIT 1 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:80
+  [1m[35mSQL (0.5ms)[0m  [1m[34mSELECT DISTINCT "disciplinas"."id" AS t0_r0, "disciplinas"."nome" AS t0_r1, "disciplinas"."curso_id" AS t0_r2, "disciplinas"."created_at" AS t0_r3, "disciplinas"."updated_at" AS t0_r4, "disciplinas"."codigo" AS t0_r5, "disciplinas"."codigo_turma" AS t0_r6, "disciplinas"."semestre" AS t0_r7, "disciplinas"."horario" AS t0_r8, "cursos"."id" AS t1_r0, "cursos"."nome" AS t1_r1, "cursos"."created_at" AS t1_r2, "cursos"."updated_at" AS t1_r3, "turmas"."id" AS t2_r0, "turmas"."disciplina_id" AS t2_r1, "turmas"."professor_id" AS t2_r2, "turmas"."semestre" AS t2_r3, "turmas"."created_at" AS t2_r4, "turmas"."updated_at" AS t2_r5 FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:99
+  [1m[36mTurma Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 1 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.4ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 1 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 3 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.2ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 3 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 4 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 4 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 5 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 5 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 6 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.2ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 6 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  Rendered minhas_disciplinas/index.html.erb within layouts/application (Duration: 71.6ms | GC: 1.6ms)
+  Rendered layout layouts/application.html.erb (Duration: 74.0ms | GC: 1.6ms)
+Completed 200 OK in 109ms (Views: 69.4ms | ActiveRecord: 6.0ms (18 queries, 0 cached) | GC: 1.6ms)
+
+
+Started GET "/minhas_disciplinas.5" for 127.0.0.1 at 2025-07-12 16:57:40 -0300
+Processing by MinhasDisciplinasController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  [1m[36mTurma Count (0.2ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "turmas" INNER JOIN "disciplinas" ON "disciplinas"."id" = "turmas"."disciplina_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/controllers/minhas_disciplinas_controller.rb:115:in `set_user_disciplinas'
+  Rendering layout layouts/application.html.erb
+  Rendering minhas_disciplinas/index.html.erb within layouts/application
+  [1m[36mDisciplina Count (0.2ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:40
+  [1m[36mDisciplina Count (0.5ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:58
+  [1m[36mDisciplina Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 LIMIT 1 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:80
+  [1m[35mSQL (0.5ms)[0m  [1m[34mSELECT DISTINCT "disciplinas"."id" AS t0_r0, "disciplinas"."nome" AS t0_r1, "disciplinas"."curso_id" AS t0_r2, "disciplinas"."created_at" AS t0_r3, "disciplinas"."updated_at" AS t0_r4, "disciplinas"."codigo" AS t0_r5, "disciplinas"."codigo_turma" AS t0_r6, "disciplinas"."semestre" AS t0_r7, "disciplinas"."horario" AS t0_r8, "cursos"."id" AS t1_r0, "cursos"."nome" AS t1_r1, "cursos"."created_at" AS t1_r2, "cursos"."updated_at" AS t1_r3, "turmas"."id" AS t2_r0, "turmas"."disciplina_id" AS t2_r1, "turmas"."professor_id" AS t2_r2, "turmas"."semestre" AS t2_r3, "turmas"."created_at" AS t2_r4, "turmas"."updated_at" AS t2_r5 FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:99
+  [1m[36mTurma Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 1 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 1 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 3 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 3 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 4 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.2ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 4 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 5 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.4ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 5 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 6 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 6 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  Rendered minhas_disciplinas/index.html.erb within layouts/application (Duration: 59.0ms | GC: 2.8ms)
+  Rendered layout layouts/application.html.erb (Duration: 61.8ms | GC: 3.5ms)
+Completed 200 OK in 94ms (Views: 58.1ms | ActiveRecord: 5.2ms (18 queries, 0 cached) | GC: 4.1ms)
+
+
+Started GET "/minhas_disciplinas.2" for 127.0.0.1 at 2025-07-12 16:57:54 -0300
+Processing by MinhasDisciplinasController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 2 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  [1m[36mTurma Count (0.4ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "turmas" INNER JOIN "disciplinas" ON "disciplinas"."id" = "turmas"."disciplina_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/controllers/minhas_disciplinas_controller.rb:115:in `set_user_disciplinas'
+  Rendering layout layouts/application.html.erb
+  Rendering minhas_disciplinas/index.html.erb within layouts/application
+  [1m[36mDisciplina Count (0.2ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:40
+  [1m[36mDisciplina Count (0.3ms)[0m  [1m[34mSELECT COUNT(DISTINCT "disciplinas"."id") FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:58
+  [1m[36mDisciplina Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 LIMIT 1 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:80
+  [1m[35mSQL (0.5ms)[0m  [1m[34mSELECT DISTINCT "disciplinas"."id" AS t0_r0, "disciplinas"."nome" AS t0_r1, "disciplinas"."curso_id" AS t0_r2, "disciplinas"."created_at" AS t0_r3, "disciplinas"."updated_at" AS t0_r4, "disciplinas"."codigo" AS t0_r5, "disciplinas"."codigo_turma" AS t0_r6, "disciplinas"."semestre" AS t0_r7, "disciplinas"."horario" AS t0_r8, "cursos"."id" AS t1_r0, "cursos"."nome" AS t1_r1, "cursos"."created_at" AS t1_r2, "cursos"."updated_at" AS t1_r3, "turmas"."id" AS t2_r0, "turmas"."disciplina_id" AS t2_r1, "turmas"."professor_id" AS t2_r2, "turmas"."semestre" AS t2_r3, "turmas"."created_at" AS t2_r4, "turmas"."updated_at" AS t2_r5 FROM "disciplinas" INNER JOIN "turmas" ON "turmas"."disciplina_id" = "disciplinas"."id" LEFT OUTER JOIN "cursos" ON "cursos"."id" = "disciplinas"."curso_id" WHERE "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:99
+  [1m[36mTurma Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 1 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.4ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 1 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.2ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 2 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 3 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.4ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 3 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 4 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.2ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 4 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 5 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.3ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 5 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  [1m[36mTurma Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "turmas" INNER JOIN "matriculas" ON "matriculas"."turma_id" = "turmas"."id" WHERE "turmas"."disciplina_id" = 6 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:118
+  [1m[36mTurma Load (0.2ms)[0m  [1m[34mSELECT "turmas".* FROM "turmas" WHERE "turmas"."disciplina_id" = 6 AND "turmas"."professor_id" = 2 /*action='index',application='Camaar',controller='minhas_disciplinas'*/[0m
+  ↳ app/views/minhas_disciplinas/index.html.erb:135
+  Rendered minhas_disciplinas/index.html.erb within layouts/application (Duration: 55.0ms | GC: 1.4ms)
+  Rendered layout layouts/application.html.erb (Duration: 56.7ms | GC: 1.4ms)
+Completed 200 OK in 89ms (Views: 52.8ms | ActiveRecord: 5.0ms (18 queries, 0 cached) | GC: 1.9ms)
+
+
