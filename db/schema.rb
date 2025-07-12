@@ -115,9 +115,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_11_155022) do
   end
 
   add_foreign_key "disciplinas", "cursos"
-  add_foreign_key "formularios", "users", column: "coordenador_id"
   add_foreign_key "formularios", "templates"
   add_foreign_key "formularios", "turmas"
+  add_foreign_key "formularios", "users", column: "coordenador_id"
   add_foreign_key "matriculas", "turmas"
   add_foreign_key "matriculas", "users"
   add_foreign_key "opcoes_pergunta", "pergunta", column: "pergunta_id"
