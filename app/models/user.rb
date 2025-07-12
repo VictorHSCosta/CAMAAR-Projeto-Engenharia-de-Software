@@ -39,6 +39,24 @@ class User < ApplicationRecord
     current_user&.admin?
   end
 
+  # Método para retornar disciplinas que o usuário tem acesso
+  def disciplinas
+    case role
+    when 'admin'
+      # Admin tem acesso a todas as disciplinas
+      Disciplina.all
+    when 'professor'
+      # Professor tem acesso às disciplinas que leciona
+      disciplinas_como_professor
+    when 'aluno'
+      # Aluno tem acesso às disciplinas que está matriculado
+      disciplinas_como_aluno
+    else
+      # Outros roles não têm acesso
+      Disciplina.none
+    end
+  end
+
   private
 
   def downcase_email

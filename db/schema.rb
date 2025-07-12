@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_12_195321) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_12_210125) do
   create_table "cursos", force: :cascade do |t|
     t.string "nome"
     t.datetime "created_at", null: false
@@ -63,11 +63,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_12_195321) do
 
   create_table "pergunta", force: :cascade do |t|
     t.integer "template_id", null: false
-    t.string "titulo"
+    t.string "texto"
     t.integer "tipo"
-    t.integer "ordem"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "obrigatoria", default: true
     t.index ["template_id"], name: "index_pergunta_on_template_id"
   end
 
@@ -92,7 +92,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_12_195321) do
     t.integer "criado_por_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "descricao"
+    t.integer "disciplina_id"
     t.index ["criado_por_id"], name: "index_templates_on_criado_por_id"
+    t.index ["disciplina_id"], name: "index_templates_on_disciplina_id"
   end
 
   create_table "turmas", force: :cascade do |t|
@@ -136,6 +139,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_12_195321) do
   add_foreign_key "resposta", "opcoes_pergunta", column: "opcao_id"
   add_foreign_key "resposta", "pergunta", column: "pergunta_id"
   add_foreign_key "resposta", "turmas"
+  add_foreign_key "templates", "disciplinas"
   add_foreign_key "templates", "users", column: "criado_por_id"
   add_foreign_key "turmas", "disciplinas"
   add_foreign_key "turmas", "users", column: "professor_id"
