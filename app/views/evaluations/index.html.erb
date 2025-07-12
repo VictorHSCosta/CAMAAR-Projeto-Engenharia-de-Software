@@ -1,40 +1,39 @@
-<%# app/views/evaluations/index.html.erb %>
-<style>
-  .subjects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-  }
-  .subject-card {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-  }
-  .subject-card .name {
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-    margin: 0 0 5px 0;
-  }
-  .subject-card .semester {
-    font-size: 12px;
-    color: #888;
-    margin: 0 0 15px 0;
-    text-transform: uppercase;
-  }
-  .subject-card .professor {
-    font-size: 16px;
-    color: #555;
-    margin: 0;
-  }
-</style>
-<div class="subjects-grid">
-  <% @subjects.each do |subject| %>
-    <div class="subject-card">
-      <p class="name"><%= subject[:name] %></p>
-      <p class="semester">semestre <%= subject[:semester] %></p>
-      <p class="professor"><%= subject[:professor] %></p>
+<% content_for :title, "Avaliações - CAMAAR" %>
+<div class="container-fluid">
+  <!-- Header com navegação -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <div class="container-fluid">
+      <div class="d-flex align-items-center">
+        <button class="btn btn-outline-secondary me-3" type="button">
+          <i class="fas fa-bars"></i>
+        </button>
+        <a class="navbar-brand" href="#">Avaliações</a>
+      </div>
+      <div class="d-flex align-items-center">
+        <div class="me-3">
+          <input type="search" class="form-control" placeholder="Buscar...">
+        </div>
+        <div class="dropdown">
+          <button class="btn p-0" type="button" data-bs-toggle="dropdown">
+            <div class="user-avatar">U</div>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><%= link_to "Perfil", edit_user_registration_path, class: "dropdown-item" %></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %></li>
+          </ul>
+        </div>
+      </div>
     </div>
-  <% end %>
+  </nav>
+  <!-- Grid de Avaliações -->
+  <div class="evaluations-grid">
+    <% @subjects.each do |subject| %>
+      <div class="evaluation-card fade-in-up">
+        <h3 class="evaluation-title"><%= subject[:name] %></h3>
+        <p class="evaluation-semester">semestre <%= subject[:semester] %></p>
+        <p class="evaluation-professor">Professor</p>
+      </div>
+    <% end %>
+  </div>
 </div>
