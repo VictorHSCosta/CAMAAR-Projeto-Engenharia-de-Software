@@ -17,7 +17,7 @@ class User < ApplicationRecord
   has_many :matriculas, dependent: :destroy
 
   validates :name, presence: true
-  validates :matricula, presence: true, uniqueness: true # rubocop:disable Rails/UniqueValidationWithoutIndex
+  validates :matricula, presence: true, uniqueness: true
   validates :role, presence: true
 
   before_save :downcase_email
