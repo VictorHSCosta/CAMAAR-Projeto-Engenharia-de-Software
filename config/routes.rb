@@ -3,9 +3,17 @@ Rails.application.routes.draw do
   # Configurações do Devise
   devise_for :users, controllers: {
     registrations: 'users/registrations'
-  }
+  }, skip: [:registrations]
 
   resources :cursos
+  resources :disciplinas
+  resources :formularios
+  resources :matriculas
+  resources :opcoes_pergunta
+  resources :pergunta
+  resources :resposta
+  resources :templates
+  resources :turmas
   get "evaluations/index"
   resources :users do
     member do

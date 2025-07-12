@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Controller for user authentication sessions
+# Adicione um comentário de documentação para a classe SessionsController.
 class SessionsController < ApplicationController
   # Desativa o layout padrão para esta página específica
   # Ignora a verificação de login para as páginas de 'new' (formulário) e 'create' (processamento)

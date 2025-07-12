@@ -88,3 +88,4 @@ node_modules/
 app/frontend/types
 
 .tmp/
+tmp/

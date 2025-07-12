@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Admin
-  # Admin controller for managing users
+  # Adicione um comentário de documentação para a classe Admin::UsersController.
   class UsersController < ApplicationController
     before_action :authenticate_user!
     before_action :ensure_admin
