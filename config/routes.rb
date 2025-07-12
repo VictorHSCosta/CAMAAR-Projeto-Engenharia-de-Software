@@ -1,7 +1,18 @@
 Rails.application.routes.draw do
+  get "home/index"
+  # Configurações do Devise
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
+
+  resources :cursos
   get "evaluations/index"
-  get "sessions/new"
-  resources :users
+  resources :users do
+    member do
+      patch :toggle_active
+    end
+  end
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -13,16 +24,12 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  # root "posts#index"
-  #
-
-  root 'evaluations#index'
+  root 'home#index'
 
   # Rotas para a nova página de Avaliações
   get 'evaluations', to: 'evaluations#index'
 
-  # Rotas para o processo de login/logout
-  get    'login',   to: 'sessions#new'
-  post   'login',   to: 'sessions#create'
-  delete 'logout',  to: 'sessions#destroy' # Usamos DELETE para sair
+  # Rota administrativa para cadastro de usuários (apenas admins)
+  get 'admin/users/new', to: 'admin/users#new', as: :new_admin_user
+  post 'admin/users', to: 'admin/users#create', as: :admin_users
 end

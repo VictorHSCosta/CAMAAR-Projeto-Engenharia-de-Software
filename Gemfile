@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
@@ -49,6 +51,13 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem 'rubocop-rails-omakase', require: false
+
+  gem 'factory_bot_rails'
+  gem 'rspec-rails'
+  gem 'rubocop'
+  gem 'rubocop-performance'
+  gem 'rubocop-rails'
+  gem 'rubocop-rspec'
 end
 
 group :development do
@@ -62,6 +71,6 @@ group :test do
   gem 'database_cleaner-active_record'
 end
 
-gem 'rspec-rails', '~> 6.0.0'
-
-gem "bcrypt", "~> 3.1"
+gem 'bcrypt', '~> 3.1'
+gem 'devise', '~> 4.2'
+gem 'faker', '~> 3.4', '>= 3.4.2'
