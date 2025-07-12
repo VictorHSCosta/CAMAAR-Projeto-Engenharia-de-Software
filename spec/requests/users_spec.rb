@@ -27,7 +27,6 @@ RSpec.describe '/users', type: :request do
       name: 'Test User',
       matricula: '12345678',
       role: 'admin'
-      role: 'admin'
     }
   end
   let(:invalid_attributes) do
