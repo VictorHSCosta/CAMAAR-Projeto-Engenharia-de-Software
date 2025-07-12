@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Controller for home page
+# Adicione um comentário de documentação para a classe HomeController.
 class HomeController < ApplicationController
   before_action :authenticate_user!
 

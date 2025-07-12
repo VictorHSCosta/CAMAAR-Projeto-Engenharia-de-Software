@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Controller for managing courses (cursos)
+# Adicione um comentário de documentação para a classe CursosController.
 class CursosController < ApplicationController
   before_action :set_curso, only: %i[show edit update destroy]
 

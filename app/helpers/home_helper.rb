@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-# Helper module for home views
+# Adicione um comentário de documentação para o módulo HomeHelper.
 module HomeHelper
 end
