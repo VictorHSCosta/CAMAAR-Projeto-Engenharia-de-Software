@@ -20,6 +20,11 @@ class User < ApplicationRecord
   validates :matricula, presence: true, uniqueness: true
   validates :role, presence: true
 
+  # Validações opcionais para campos importados
+  validates :curso, length: { maximum: 255 }, allow_blank: true
+  validates :departamento, length: { maximum: 255 }, allow_blank: true
+  validates :formacao, length: { maximum: 100 }, allow_blank: true
+
   before_save :downcase_email
 
   # Permite que apenas admins cadastrem novos usuários

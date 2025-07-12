@@ -40,4 +40,11 @@ Rails.application.routes.draw do
   # Rota administrativa para cadastro de usuários (apenas admins)
   get 'admin/users/new', to: 'admin/users#new', as: :new_admin_user
   post 'admin/users', to: 'admin/users#create', as: :admin_users
+
+  # Rotas administrativas para gerenciamento
+  namespace :admin do
+    get 'management', to: 'management#index'
+    post 'management/import_users', to: 'management#import_users', as: 'management_import_users'
+    post 'management/import_disciplines', to: 'management#import_disciplines', as: 'management_import_disciplines'
+  end
 end

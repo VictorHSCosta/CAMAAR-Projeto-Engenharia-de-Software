@@ -1,0 +1,312 @@
+<% content_for :title, "Gerenciamento - CAMAAR" %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="dashboard-title">Gerenciamento</h1>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body text-center p-5">
+          <div class="row justify-content-center">
+            <div class="col-md-8 text-center">
+              <h2 class="mb-4">Sistema de Gerenciamento</h2>
+              <p class="lead text-muted mb-4">
+                Bem-vindo ao painel administrativo! Aqui você pode importar dados do SIGAA e gerenciar o sistema.
+              </p>
+            </div>
+          </div>
+          <!-- Card de Importação -->
+          <div class="management-card mb-4">
+            <div class="card border-primary">
+              <div class="card-body">
+                <i class="fas fa-upload fa-3x text-primary mb-3"></i>
+                <h5 class="card-title">Importar Dados</h5>
+                <p class="card-text text-muted">
+                  Importe usuários e disciplinas do SIGAA através de arquivos JSON
+                </p>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#importModal">
+                  Importar Dados
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Cards de Funcionalidades Condicionais -->
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              <div class="management-card">
+                <div class="card <%= 'disabled-card' unless @has_imported_data %>">
+                  <div class="card-body">
+                    <i class="fas fa-edit fa-2x <%= @has_imported_data ? 'text-success' : 'text-muted' %> mb-3"></i>
+                    <h6 class="card-title">Editar Templates</h6>
+                    <p class="card-text text-muted small">
+                      Gerencie templates de formulários
+                    </p>
+                    <% if @has_imported_data %>
+                      <%= link_to "Acessar", templates_path, class: "btn btn-success btn-sm" %>
+                    <% else %>
+                      <button class="btn btn-secondary btn-sm" disabled>
+                        Bloqueado
+                      </button>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <div class="management-card">
+                <div class="card <%= 'disabled-card' unless @has_imported_data %>">
+                  <div class="card-body">
+                    <i class="fas fa-paper-plane fa-2x <%= @has_imported_data ? 'text-warning' : 'text-muted' %> mb-3"></i>
+                    <h6 class="card-title">Enviar Formulários</h6>
+                    <p class="card-text text-muted small">
+                      Distribua formulários para turmas
+                    </p>
+                    <% if @has_imported_data %>
+                      <%= link_to "Acessar", formularios_path, class: "btn btn-warning btn-sm" %>
+                    <% else %>
+                      <button class="btn btn-secondary btn-sm" disabled>
+                        Bloqueado
+                      </button>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <div class="management-card">
+                <div class="card <%= 'disabled-card' unless @has_imported_data %>">
+                  <div class="card-body">
+                    <i class="fas fa-chart-bar fa-2x <%= @has_imported_data ? 'text-info' : 'text-muted' %> mb-3"></i>
+                    <h6 class="card-title">Resultados</h6>
+                    <p class="card-text text-muted small">
+                      Visualize relatórios e resultados
+                    </p>
+                    <% if @has_imported_data %>
+                      <%= link_to "Acessar", evaluations_path, class: "btn btn-info btn-sm" %>
+                    <% else %>
+                      <button class="btn btn-secondary btn-sm" disabled>
+                        Bloqueado
+                      </button>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% unless @has_imported_data %>
+            <div class="alert alert-info mt-4">
+              <i class="fas fa-info-circle me-2"></i>
+              <strong>Primeiro Acesso:</strong> Para começar a usar o sistema, importe os dados do SIGAA através do botão "Importar Dados" acima.
+              <br>
+              <small class="text-muted">Após a importação, as demais funcionalidades serão liberadas automaticamente.</small>
+            </div>
+          <% else %>
+            <div class="alert alert-success mt-4">
+              <i class="fas fa-check-circle me-2"></i>
+              <strong>Sistema Configurado:</strong> Dados importados com sucesso! Todas as funcionalidades estão disponíveis.
+            </div>
+          <% end %>
+          <!-- Estatísticas -->
+          <% if @has_imported_data %>
+            <div class="row mt-4">
+              <div class="col-md-4">
+                <div class="stat-card">
+                  <h4><%= User.count %></h4>
+                  <p class="text-muted">Usuários</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="stat-card">
+                  <h4><%= Disciplina.count %></h4>
+                  <p class="text-muted">Disciplinas</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="stat-card">
+                  <h4><%= Curso.count %></h4>
+                  <p class="text-muted">Cursos</p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal de Importação -->
+<div class="modal fade" id="importModal" tabindex="-1" aria-labelledby="importModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="importModalLabel">Importar Dados</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="import-option">
+              <div class="card h-100">
+                <div class="card-body text-center">
+                  <i class="fas fa-users fa-3x text-primary mb-3"></i>
+                  <h5>Importar Usuários</h5>
+                  <p class="text-muted">
+                    Faça upload do arquivo class_members.json com os dados dos usuários
+                  </p>
+                  <form id="importUsersForm" enctype="multipart/form-data">
+                    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                    <div class="mb-3">
+                      <input type="file" class="form-control" id="usersFile" name="file" accept=".json" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                      <i class="fas fa-upload me-2"></i>Importar Usuários
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="import-option">
+              <div class="card h-100">
+                <div class="card-body text-center">
+                  <i class="fas fa-book fa-3x text-success mb-3"></i>
+                  <h5>Importar Disciplinas</h5>
+                  <p class="text-muted">
+                    Faça upload do arquivo classes.json com os dados das disciplinas
+                  </p>
+                  <form id="importDisciplinesForm" enctype="multipart/form-data">
+                    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                    <div class="mb-3">
+                      <input type="file" class="form-control" id="disciplinesFile" name="file" accept=".json" required>
+                    </div>
+                    <button type="submit" class="btn btn-success">
+                      <i class="fas fa-upload me-2"></i>Importar Disciplinas
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Loading -->
+        <div id="importLoading" class="text-center mt-3" style="display: none;">
+          <div class="spinner-border" role="status">
+            <span class="visually-hidden">Carregando...</span>
+          </div>
+          <p class="mt-2">Processando arquivo...</p>
+        </div>
+        <!-- Results -->
+        <div id="importResults" class="mt-3"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Form de importação de usuários
+    document.getElementById('importUsersForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      importData(this, '<%= admin_management_import_users_path %>');
+    });
+
+    // Form de importação de disciplinas
+    document.getElementById('importDisciplinesForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      importData(this, '<%= admin_management_import_disciplines_path %>');
+    });
+
+    function importData(form, url) {
+      const formData = new FormData(form);
+      const loadingDiv = document.getElementById('importLoading');
+      const resultsDiv = document.getElementById('importResults');
+
+      // Mostra loading
+      loadingDiv.style.display = 'block';
+      resultsDiv.innerHTML = '';
+
+      fetch(url, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        loadingDiv.style.display = 'none';
+
+        if (data.success) {
+          resultsDiv.innerHTML = `
+            <div class="alert alert-success">
+              <i class="fas fa-check-circle me-2"></i>
+              ${data.message}
+              ${data.imported_count ? `<br><small>Importados: ${data.imported_count} | Ignorados: ${data.skipped_count || 0}</small>` : ''}
+            </div>
+          `;
+
+          // Recarrega a página após 2 segundos para atualizar o status
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);
+        } else {
+          resultsDiv.innerHTML = `
+            <div class="alert alert-danger">
+              <i class="fas fa-exclamation-circle me-2"></i>
+              ${data.message}
+            </div>
+          `;
+        }
+      })
+      .catch(error => {
+        loadingDiv.style.display = 'none';
+        resultsDiv.innerHTML = `
+          <div class="alert alert-danger">
+            <i class="fas fa-exclamation-circle me-2"></i>
+            Erro ao processar arquivo: ${error.message}
+          </div>
+        `;
+      });
+    }
+  });
+</script>
+<style>
+  .management-card {
+    transition: all 0.3s ease;
+  }
+
+  .management-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .disabled-card {
+    opacity: 0.6;
+    background-color: #f8f9fa;
+  }
+
+  .disabled-card .card-body {
+    filter: grayscale(100%);
+  }
+
+  .stat-card {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+
+  .import-option .card {
+    border: 2px dashed #dee2e6;
+    transition: all 0.3s ease;
+  }
+
+  .import-option .card:hover {
+    border-color: var(--primary-purple);
+    transform: translateY(-2px);
+  }
+</style>
