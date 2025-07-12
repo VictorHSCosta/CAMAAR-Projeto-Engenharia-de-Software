@@ -19,7 +19,7 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :matricula, presence: true, uniqueness: true
   validates :role, presence: true
-  
+
   # Validações opcionais para campos importados
   validates :curso, length: { maximum: 255 }, allow_blank: true
   validates :departamento, length: { maximum: 255 }, allow_blank: true

@@ -10,20 +10,16 @@ class ImportService
     ActiveRecord::Base.transaction do
       # Processa tanto usuários do class_members.json quanto docentes
       process_data = []
-      
+
       if data.is_a?(Array)
         data.each do |item|
           # Se o item tem estrutura class_members.json (com dicente/docente arrays)
           if item['dicente'].is_a?(Array) || item['docente'].is_a?(Hash)
             # Adiciona discentes
-            if item['dicente'].is_a?(Array)
-              process_data.concat(item['dicente'])
-            end
-            
+            process_data.concat(item['dicente']) if item['dicente'].is_a?(Array)
+
             # Adiciona docente
-            if item['docente'].is_a?(Hash)
-              process_data << item['docente']
-            end
+            process_data << item['docente'] if item['docente'].is_a?(Hash)
           else
             # Se o item é um usuário direto (formato test_users.json)
             process_data << item
@@ -45,7 +41,7 @@ class ImportService
 
         # Determina o role baseado na ocupação
         role = determine_role(user_data['ocupacao'] || user_data['formacao'])
-        
+
         # Cria o usuário
         user = User.new(
           email: user_data['email'],
@@ -129,8 +125,6 @@ class ImportService
   rescue StandardError => e
     { success: false, error: e.message }
   end
-
-  private
 
   def self.determine_role(ocupacao)
     case ocupacao&.downcase

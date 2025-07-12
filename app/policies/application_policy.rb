@@ -47,7 +47,7 @@ class ApplicationPolicy
     user&.admin? || user&.professor? || user&.coordenador?
   end
 
-  # Coordenador and above actions  
+  # Coordenador and above actions
   def coordenador_and_above?
     user&.admin? || user&.coordenador?
   end
