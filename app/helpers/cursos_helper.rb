@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-# Adicione um comentário de documentação para o módulo CursosHelper.
+# Helper module for courses (cursos) views
 module CursosHelper
 end

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Migration to add Devise fields to users table
 class AddDeviseToUsers < ActiveRecord::Migration[8.0]
   def change
     add_column :users, :reset_password_token, :string

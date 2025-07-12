@@ -111,6 +111,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_11_155022) do
     t.datetime "remember_created_at"
     t.string "encrypted_password", default: "", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["matricula"], name: "index_users_on_matricula", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
