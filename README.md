@@ -1,6 +1,11 @@
 # CAMAAR
 **Sistema para avaliação de atividades acadêmicas remotas do CIC**
 
+[![CI](https://github.com/victor-costa-silva/CAMAAR-Projeto-Engenharia-de-Software/actions/workflows/ci.yml/badge.svg)](https://github.com/victor-costa-silva/CAMAAR-Projeto-Engenharia-de-Software/actions/workflows/ci.yml)
+[![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop)
+[![Rails Version](https://img.shields.io/badge/Rails-8.0.2-red.svg)](https://rubyonrails.org/)
+[![Ruby Version](https://img.shields.io/badge/Ruby-3.2.0-red.svg)](https://www.ruby-lang.org/)
+
 ---
 
 ## Membros do Grupo
@@ -108,6 +113,71 @@
 11. **A integração com o Moodle deve sincronizar automaticamente os dados das turmas e alunos semanalmente.**
 12. **As perguntas em um formulário devem seguir a ordem definida no template.**
 
+
+---
+
+## CI/CD e Qualidade de Código
+
+### GitHub Actions
+
+O projeto utiliza GitHub Actions para integração contínua e entrega contínua (CI/CD). Os workflows executam automaticamente a cada push e pull request.
+
+#### Workflows Configurados
+
+1. **CI (Continuous Integration)**
+   - **Trigger**: Push/PR para `main` e `develop`
+   - **Jobs**:
+     - **test**: Executa toda a suíte de testes RSpec
+     - **lint**: Executa RuboCop para verificação de estilo
+     - **security**: Executa Brakeman para análise de segurança
+
+2. **Status Badges**
+   - **Trigger**: Push para `main`
+   - **Propósito**: Gera badges de status para o README
+
+#### Artefatos Gerados
+
+- **Relatórios de Teste**: Formato JUnit XML para integração com ferramentas de CI
+- **Relatórios RuboCop**: Formato JSON com violações de estilo
+- **Relatórios Brakeman**: Formato JSON com vulnerabilidades de segurança
+
+### Qualidade de Código
+
+#### RuboCop
+- **Configuração**: `.rubocop.yml` com regras específicas para Rails
+- **Plugins**: rubocop-rails, rubocop-rspec, rubocop-performance
+- **Execução**: `bundle exec rubocop`
+
+#### RSpec
+- **Cobertura**: 267 testes, 0 falhas
+- **Tipos**: Models, Controllers, Views, Helpers, Routing
+- **Configuração**: Relatórios em formato JUnit para CI
+
+#### Brakeman
+- **Análise de Segurança**: Verifica vulnerabilidades conhecidas
+- **Configuração**: `.brakeman.yml` com checks específicos
+- **Execução**: `bundle exec brakeman`
+
+### Executar CI Localmente
+
+Para executar os mesmos checks que rodam no CI:
+
+```bash
+# Executar script completo de CI
+./scripts/ci_local.sh
+
+# Ou executar individualmente:
+bundle exec rubocop                # Verificação de estilo
+bundle exec rspec                  # Testes
+bundle exec brakeman               # Análise de segurança
+```
+
+### Status do Build
+
+- ✅ **Testes**: 267 exemplos, 0 falhas
+- ✅ **Cobertura**: Models, Controllers, Views, Helpers
+- ✅ **Segurança**: Configuração Brakeman ativa
+- ✅ **Estilo**: RuboCop configurado
 
 ---
 

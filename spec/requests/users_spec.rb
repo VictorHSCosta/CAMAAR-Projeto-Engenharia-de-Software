@@ -42,8 +42,8 @@ RSpec.describe '/users', type: :request do
   let(:admin_user) { FactoryBot.create(:user, role: :admin, email: 'test_admin@example.com', matricula: '00000000') }
 
   before do
-    # Ensure admin user exists for authentication helper
-    admin_user
+    # Simula usuário logado com Warden para testes de request
+    login_as(user, scope: :user)
   end
 
   describe 'GET /index' do
@@ -108,14 +108,16 @@ RSpec.describe '/users', type: :request do
   describe 'PATCH /update' do
     context 'with valid parameters' do
       let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
+        {
+          name: 'Updated User'
+        }
       end
 
       it 'updates the requested user' do
         user = User.create! valid_attributes
         patch user_url(user), params: { user: new_attributes }
         user.reload
-        skip('Add assertions for updated state')
+        expect(user.name).to eq('Updated User')
       end
 
       it 'redirects to the user' do
