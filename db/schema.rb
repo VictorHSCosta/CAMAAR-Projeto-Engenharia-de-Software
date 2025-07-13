@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_12_220842) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_13_023515) do
   create_table "cursos", force: :cascade do |t|
     t.string "nome"
     t.datetime "created_at", null: false
@@ -31,15 +31,19 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_12_220842) do
 
   create_table "formularios", force: :cascade do |t|
     t.integer "template_id", null: false
-    t.integer "turma_id", null: false
+    t.integer "turma_id"
     t.integer "coordenador_id", null: false
     t.datetime "data_envio"
     t.datetime "data_fim"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "ativo", default: false, null: false
-    t.index ["ativo"], name: "index_formularios_on_ativo"
+    t.boolean "ativo", default: false
+    t.integer "escopo_visibilidade", default: 0, null: false
+    t.integer "disciplina_id"
     t.index ["coordenador_id"], name: "index_formularios_on_coordenador_id"
+    t.index ["disciplina_id"], name: "index_formularios_on_disciplina_id"
+    t.index ["escopo_visibilidade", "disciplina_id"], name: "index_formularios_on_escopo_visibilidade_and_disciplina_id"
+    t.index ["escopo_visibilidade"], name: "index_formularios_on_escopo_visibilidade"
     t.index ["template_id"], name: "index_formularios_on_template_id"
     t.index ["turma_id"], name: "index_formularios_on_turma_id"
   end
@@ -88,6 +92,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_12_220842) do
     t.index ["turma_id"], name: "index_resposta_on_turma_id"
   end
 
+  create_table "submissoes_concluidas", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "formulario_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["formulario_id"], name: "index_submissoes_concluidas_on_formulario_id"
+    t.index ["user_id", "formulario_id"], name: "index_submissoes_concluidas_unique", unique: true
+    t.index ["user_id"], name: "index_submissoes_concluidas_on_user_id"
+  end
+
   create_table "templates", force: :cascade do |t|
     t.string "titulo"
     t.integer "publico_alvo"
@@ -130,6 +144,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_12_220842) do
   end
 
   add_foreign_key "disciplinas", "cursos"
+  add_foreign_key "formularios", "disciplinas"
   add_foreign_key "formularios", "templates"
   add_foreign_key "formularios", "turmas"
   add_foreign_key "formularios", "users", column: "coordenador_id"
@@ -141,6 +156,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_12_220842) do
   add_foreign_key "resposta", "opcoes_pergunta", column: "opcao_id"
   add_foreign_key "resposta", "pergunta", column: "pergunta_id"
   add_foreign_key "resposta", "turmas"
+  add_foreign_key "submissoes_concluidas", "formularios"
+  add_foreign_key "submissoes_concluidas", "users"
   add_foreign_key "templates", "disciplinas"
   add_foreign_key "templates", "users", column: "criado_por_id"
   add_foreign_key "turmas", "disciplinas"
