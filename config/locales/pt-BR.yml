@@ -1,4 +1,17 @@
 pt-BR:
+  activerecord:
+    models:
+      curso: "Curso"
+    attributes:
+      curso:
+        nome: "Nome do Curso"
+    errors:
+      models:
+        curso:
+          attributes:
+            nome:
+              blank: "não pode ficar em branco"
+              too_short: "deve ter pelo menos %{count} caracteres"
   messages:
     access_denied: "Acesso negado!"
     login_success: "Login realizado com sucesso!"
@@ -6,8 +19,8 @@ pt-BR:
     auth_error: "Erro na autenticação. Entre em contato com o administrador."
     logout_success: "Você saiu com segurança."
     admin_only: "Apenas administradores podem cadastrar usuários."
-    course_created: "Curso was successfully created."
-    course_updated: "Curso was successfully updated."
-    course_destroyed: "Curso was successfully destroyed."
+    course_created: "Curso criado com sucesso."
+    course_updated: "Curso atualizado com sucesso."
+    course_destroyed: "Curso removido com sucesso."
     user_updated: "Usuário atualizado com sucesso."
     user_destroyed: "Usuário removido com sucesso."
