@@ -22,7 +22,7 @@
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
           <div class="d-flex align-items-center">
-            <button class="btn btn-outline-secondary me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" data-turbo="false">
+            <button class="btn btn-outline-secondary me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar">
               <i class="fas fa-bars"></i>
             </button>
             <%= link_to "CAMAAR", root_path, class: "navbar-brand" %>
@@ -33,12 +33,12 @@
             </div>
             <% if current_user %>
               <div class="dropdown">
-                <button class="btn p-0" type="button" data-bs-toggle="dropdown" data-turbo="false">
+                <button class="btn p-0" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                   <div class="user-avatar">
                     <%= current_user.name.first.upcase %>
                   </div>
                 </button>
-                <ul class="dropdown-menu dropdown-menu-end">
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                   <li><%= link_to "Meu Perfil", edit_user_path(current_user), class: "dropdown-item" %></li>
                   <li><hr class="dropdown-divider"></li>
                   <li><%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %></li>
@@ -51,8 +51,10 @@
       <!-- Sidebar -->
       <div class="offcanvas offcanvas-start sidebar" tabindex="-1" id="sidebar">
         <div class="offcanvas-header">
-          <h5 class="offcanvas-title">Menu</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-turbo="false"></button>
+          <h5 class="offcanvas-title">
+            <%= link_to "CAMAAR", root_path, class: "text-decoration-none" %>
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
           <ul class="nav flex-column">
@@ -65,6 +67,11 @@
               <li class="nav-item">
                 <%= link_to admin_management_path, class: "nav-link #{'active' if current_page?(admin_management_path)}" do %>
                   <i class="fas fa-cogs me-2"></i> Gerenciamento
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to templates_path, class: "nav-link #{'active' if current_page?(templates_path)}" do %>
+                  <i class="fas fa-file-alt me-2"></i> Templates
                 <% end %>
               </li>
               <li class="nav-item">
@@ -112,8 +119,8 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-      // Garante que os componentes Bootstrap funcionem após navegação Turbo
-      document.addEventListener('turbo:load', function() {
+      // Inicializa componentes Bootstrap
+      function initializeBootstrap() {
         // Reinicializa dropdowns
         var dropdownElementList = [].slice.call(document.querySelectorAll('[data-bs-toggle="dropdown"]'));
         dropdownElementList.map(function (dropdownToggleEl) {
@@ -125,7 +132,19 @@
         offcanvasElementList.map(function (offcanvasToggleEl) {
           return new bootstrap.Offcanvas(offcanvasToggleEl);
         });
-      });
+        
+        // Reinicializa tooltips
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.map(function (tooltipTriggerEl) {
+          return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+      }
+      
+      // Inicializa na carga inicial
+      document.addEventListener('DOMContentLoaded', initializeBootstrap);
+      
+      // Garante que os componentes Bootstrap funcionem após navegação Turbo
+      document.addEventListener('turbo:load', initializeBootstrap);
     </script>
   </body>
 </html>

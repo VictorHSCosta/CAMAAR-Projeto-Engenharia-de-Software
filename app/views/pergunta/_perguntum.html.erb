@@ -1,22 +1,22 @@
 <div id="<%= dom_id perguntum %>">
   <p>
     <strong>Template:</strong>
-    <%= perguntum.template_id %>
+    <%= perguntum.template.titulo %>
   </p>
 
   <p>
-    <strong>Titulo:</strong>
-    <%= perguntum.titulo %>
+    <strong>Texto:</strong>
+    <%= perguntum.texto %>
   </p>
 
   <p>
     <strong>Tipo:</strong>
-    <%= perguntum.tipo %>
+    <%= perguntum.tipo.humanize %>
   </p>
 
   <p>
-    <strong>Ordem:</strong>
-    <%= perguntum.ordem %>
+    <strong>Obrigatória:</strong>
+    <%= perguntum.obrigatoria? ? "Sim" : "Não" %>
   </p>
 
 </div>

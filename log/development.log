@@ -12881,3 +12881,1607 @@ Completed 200 OK in 109ms (Views: 44.1ms | ActiveRecord: 5.5ms (9 queries, 1 cac
 
 
 Started GET "/assets/figma_custom.css" for 127.0.0.1 at 2025-07-13 18:01:44 -0300
+  [1m[36mTemplate Load (0.3ms)[0m  [1m[34mSELECT "templates".* FROM "templates" ORDER BY "templates"."id" ASC LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mTemplate Load (4.2ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id" = 10 LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mPerguntum Create (0.7ms)[0m  [1m[32mINSERT INTO "pergunta" ("template_id", "texto", "tipo", "created_at", "updated_at", "obrigatoria") VALUES (10, 'Pergunta de teste', 2, '2025-07-13 21:13:37.185126', '2025-07-13 21:13:37.185126', 1) RETURNING "id" /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (61.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Camaar'*/[0m
+Started GET "/templates/10" for 127.0.0.1 at 2025-07-13 18:14:12 -0300
+  
+ActiveRecord::DuplicateMigrationNameError (
+
+Multiple migrations have the name AdicionarVisibilidadeESubmissoesConcluidas.
+
+):
+  
+activerecord (8.0.2) lib/active_record/migration.rb:1559:in `validate'
+activerecord (8.0.2) lib/active_record/migration.rb:1429:in `initialize'
+activerecord (8.0.2) lib/active_record/migration.rb:1279:in `new'
+activerecord (8.0.2) lib/active_record/migration.rb:1279:in `open'
+activerecord (8.0.2) lib/active_record/migration.rb:763:in `block (2 levels) in pending_migrations'
+activerecord (8.0.2) lib/active_record/migration/pending_migration_connection.rb:8:in `with_temporary_pool'
+activerecord (8.0.2) lib/active_record/migration.rb:762:in `block in pending_migrations'
+activerecord (8.0.2) lib/active_record/migration.rb:761:in `each'
+activerecord (8.0.2) lib/active_record/migration.rb:761:in `pending_migrations'
+activerecord (8.0.2) lib/active_record/migration.rb:740:in `check_pending_migrations'
+activerecord (8.0.2) lib/active_record/migration.rb:660:in `block (2 levels) in call'
+activesupport (8.0.2) lib/active_support/file_update_checker.rb:85:in `execute'
+activesupport (8.0.2) lib/active_support/file_update_checker.rb:95:in `execute_if_updated'
+activerecord (8.0.2) lib/active_record/migration.rb:667:in `block in call'
+activerecord (8.0.2) lib/active_record/migration.rb:657:in `synchronize'
+activerecord (8.0.2) lib/active_record/migration.rb:657:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/callbacks.rb:31:in `block in call'
+activesupport (8.0.2) lib/active_support/callbacks.rb:100:in `run_callbacks'
+actionpack (8.0.2) lib/action_dispatch/middleware/callbacks.rb:30:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:31:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/show_exceptions.rb:32:in `call'
+railties (8.0.2) lib/rails/rack/logger.rb:41:in `call_app'
+railties (8.0.2) lib/rails/rack/logger.rb:29:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/remote_ip.rb:96:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/request_id.rb:34:in `call'
+rack (3.1.16) lib/rack/method_override.rb:28:in `call'
+rack (3.1.16) lib/rack/runtime.rb:24:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (8.0.2) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/executor.rb:16:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/static.rb:27:in `call'
+rack (3.1.16) lib/rack/sendfile.rb:114:in `call'
+actionpack (8.0.2) lib/action_dispatch/middleware/host_authorization.rb:143:in `call'
+railties (8.0.2) lib/rails/engine.rb:535:in `call'
+puma (6.6.0) lib/puma/configuration.rb:279:in `call'
+puma (6.6.0) lib/puma/request.rb:99:in `block in handle_request'
+puma (6.6.0) lib/puma/thread_pool.rb:390:in `with_force_shutdown'
+puma (6.6.0) lib/puma/request.rb:98:in `handle_request'
+puma (6.6.0) lib/puma/server.rb:472:in `process_client'
+puma (6.6.0) lib/puma/server.rb:254:in `block in run'
+puma (6.6.0) lib/puma/thread_pool.rb:167:in `block in spawn_thread'
+Started GET "/templates/10" for 127.0.0.1 at 2025-07-13 18:14:48 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Camaar'*/[0m
+Processing by TemplatesController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (3.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  [1m[36mTemplate Load (0.3ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id" = 10 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:76:in `set_template'
+  Rendering layout layouts/application.html.erb
+  Rendering templates/show.html.erb within layouts/application
+  [1m[36mDisciplina Load (0.8ms)[0m  [1m[34mSELECT "disciplinas".* FROM "disciplinas" WHERE "disciplinas"."id" = 1 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:20
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:62
+  [1m[36mPerguntum Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 10 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:76
+  [1m[36mPerguntum Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 10 AND "pergunta"."obrigatoria" = 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:82
+  [1m[36mPerguntum Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) AS "count_all", "pergunta"."tipo" AS "pergunta_tipo" FROM "pergunta" WHERE "pergunta"."template_id" = 10 GROUP BY "pergunta"."tipo" /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:92
+  [1m[36mCACHE Perguntum Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 10[0m
+  ↳ app/views/templates/show.html.erb:149
+  [1m[36mPerguntum Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "pergunta" WHERE "pergunta"."template_id" = 10 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:153
+  [1m[36mPerguntum Load (0.3ms)[0m  [1m[34mSELECT "pergunta".* FROM "pergunta" WHERE "pergunta"."template_id" = 10 ORDER BY "pergunta"."id" ASC /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:154:in `each_with_index'
+  Rendered templates/show.html.erb within layouts/application (Duration: 98.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 108.2ms | GC: 0.0ms)
+Completed 200 OK in 256ms (Views: 124.0ms | ActiveRecord: 6.6ms (10 queries, 1 cached) | GC: 0.0ms)
+
+
+Started GET "/assets/figma_custom.css" for 127.0.0.1 at 2025-07-13 18:14:49 -0300
+Started GET "/templates/10/edit" for 127.0.0.1 at 2025-07-13 18:14:55 -0300
+Processing by TemplatesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='edit',application='Camaar',controller='templates'*/[0m
+  [1m[36mTemplate Load (0.3ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id" = 10 LIMIT 1 /*action='edit',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:76:in `set_template'
+  Rendering layout layouts/application.html.erb
+  Rendering templates/edit.html.erb within layouts/application
+  [1m[36mDisciplina Load (0.3ms)[0m  [1m[34mSELECT "disciplinas".* FROM "disciplinas" /*action='edit',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/edit.html.erb:94
+  [1m[36mPerguntum Load (0.5ms)[0m  [1m[34mSELECT "pergunta".* FROM "pergunta" WHERE "pergunta"."template_id" = 10 ORDER BY "pergunta"."id" ASC /*action='edit',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/edit.html.erb:117:in `each_with_index'
+  [1m[36mOpcoesPerguntum Load (1.9ms)[0m  [1m[34mSELECT "opcoes_pergunta".* FROM "opcoes_pergunta" WHERE "opcoes_pergunta"."pergunta_id" = 9 /*action='edit',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/edit.html.erb:157:in `each_with_index'
+  [1m[36mPerguntum Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 10 /*action='edit',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/edit.html.erb:279
+  Rendered templates/edit.html.erb within layouts/application (Duration: 108.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 126.8ms | GC: 0.0ms)
+Completed 200 OK in 212ms (Views: 129.6ms | ActiveRecord: 3.5ms (6 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/templates/10" for 127.0.0.1 at 2025-07-13 18:14:56 -0300
+Processing by TemplatesController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  [1m[36mTemplate Load (0.3ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id" = 10 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:76:in `set_template'
+  Rendering layout layouts/application.html.erb
+  Rendering templates/show.html.erb within layouts/application
+  [1m[36mDisciplina Load (0.3ms)[0m  [1m[34mSELECT "disciplinas".* FROM "disciplinas" WHERE "disciplinas"."id" = 1 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:20
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:62
+  [1m[36mPerguntum Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 10 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:76
+  [1m[36mPerguntum Count (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 10 AND "pergunta"."obrigatoria" = 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:82
+  [1m[36mPerguntum Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) AS "count_all", "pergunta"."tipo" AS "pergunta_tipo" FROM "pergunta" WHERE "pergunta"."template_id" = 10 GROUP BY "pergunta"."tipo" /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:92
+  [1m[36mCACHE Perguntum Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 10[0m
+  ↳ app/views/templates/show.html.erb:149
+  [1m[36mPerguntum Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "pergunta" WHERE "pergunta"."template_id" = 10 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:153
+  [1m[36mPerguntum Load (0.3ms)[0m  [1m[34mSELECT "pergunta".* FROM "pergunta" WHERE "pergunta"."template_id" = 10 ORDER BY "pergunta"."id" ASC /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:154:in `each_with_index'
+  Rendered templates/show.html.erb within layouts/application (Duration: 59.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 66.6ms | GC: 0.0ms)
+Completed 200 OK in 132ms (Views: 65.9ms | ActiveRecord: 6.4ms (10 queries, 1 cached) | GC: 0.0ms)
+
+
+Started PATCH "/templates/10" for 127.0.0.1 at 2025-07-13 18:15:38 -0300
+Processing by TemplatesController#update as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "template"=>{"titulo"=>"Avaliação Semestral", "descricao"=>"Indique como foi o rendimento acadêmico de seus alunos!", "publico_alvo"=>"professores", "disciplina_id"=>"1"}, "perguntas"=>{"9"=>{"texto"=>"Como foi a sua percepção sobre os alunos neste semestre ?", "tipo"=>"subjetiva", "obrigatoria"=>"on", "id"=>"9"}}, "commit"=>"Salvar Alterações", "id"=>"10"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='update',application='Camaar',controller='templates'*/[0m
+  [1m[36mTemplate Load (0.4ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id" = 10 LIMIT 1 /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:76:in `set_template'
+  [1m[36mPerguntum Load (0.6ms)[0m  [1m[34mSELECT "pergunta".* FROM "pergunta" WHERE "pergunta"."template_id" = 10 AND "pergunta"."id" = 9 LIMIT 1 /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:130:in `block in process_perguntas_update'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:131:in `block in process_perguntas_update'
+  [1m[36mPerguntum Update (8.9ms)[0m  [1m[33mUPDATE "pergunta" SET "texto" = 'Como foi a sua percepção sobre os alunos neste semestre ?', "updated_at" = '2025-07-13 21:15:38.640340' WHERE "pergunta"."id" = 9 /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:131:in `block in process_perguntas_update'
+  [1m[36mTRANSACTION (76.3ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:131:in `block in process_perguntas_update'
+  [1m[36mOpcoesPerguntum Load (0.3ms)[0m  [1m[34mSELECT "opcoes_pergunta".* FROM "opcoes_pergunta" WHERE "opcoes_pergunta"."pergunta_id" = 9 /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:139:in `block in process_perguntas_update'
+  [1m[36mPerguntum Load (4.8ms)[0m  [1m[34mSELECT "pergunta".* FROM "pergunta" WHERE "pergunta"."template_id" = 10 AND "pergunta"."id" != 9 /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:160:in `process_perguntas_update'
+Redirected to http://localhost:3000/templates/10
+Completed 302 Found in 209ms (ActiveRecord: 92.8ms (6 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/templates/10" for 127.0.0.1 at 2025-07-13 18:15:38 -0300
+Processing by TemplatesController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  [1m[36mTemplate Load (1.2ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id" = 10 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:76:in `set_template'
+  Rendering layout layouts/application.html.erb
+  Rendering templates/show.html.erb within layouts/application
+  [1m[36mDisciplina Load (0.3ms)[0m  [1m[34mSELECT "disciplinas".* FROM "disciplinas" WHERE "disciplinas"."id" = 1 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:20
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:62
+  [1m[36mPerguntum Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 10 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:76
+  [1m[36mPerguntum Count (1.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 10 AND "pergunta"."obrigatoria" = 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:82
+  [1m[36mPerguntum Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) AS "count_all", "pergunta"."tipo" AS "pergunta_tipo" FROM "pergunta" WHERE "pergunta"."template_id" = 10 GROUP BY "pergunta"."tipo" /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:92
+  [1m[36mCACHE Perguntum Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 10[0m
+  ↳ app/views/templates/show.html.erb:149
+  [1m[36mPerguntum Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "pergunta" WHERE "pergunta"."template_id" = 10 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:153
+  [1m[36mPerguntum Load (1.0ms)[0m  [1m[34mSELECT "pergunta".* FROM "pergunta" WHERE "pergunta"."template_id" = 10 ORDER BY "pergunta"."id" ASC /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:154:in `each_with_index'
+  Rendered templates/show.html.erb within layouts/application (Duration: 70.5ms | GC: 1.1ms)
+  Rendered layout layouts/application.html.erb (Duration: 82.7ms | GC: 1.1ms)
+Completed 200 OK in 132ms (Views: 78.7ms | ActiveRecord: 6.8ms (10 queries, 1 cached) | GC: 2.2ms)
+
+
+Started GET "/assets/figma_custom.css" for 127.0.0.1 at 2025-07-13 18:15:39 -0300
+Started GET "/templates/10/edit" for 127.0.0.1 at 2025-07-13 18:15:41 -0300
+Processing by TemplatesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='edit',application='Camaar',controller='templates'*/[0m
+  [1m[36mTemplate Load (0.4ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id" = 10 LIMIT 1 /*action='edit',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:76:in `set_template'
+  Rendering layout layouts/application.html.erb
+  Rendering templates/edit.html.erb within layouts/application
+  [1m[36mDisciplina Load (0.3ms)[0m  [1m[34mSELECT "disciplinas".* FROM "disciplinas" /*action='edit',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/edit.html.erb:94
+  [1m[36mPerguntum Load (0.4ms)[0m  [1m[34mSELECT "pergunta".* FROM "pergunta" WHERE "pergunta"."template_id" = 10 ORDER BY "pergunta"."id" ASC /*action='edit',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/edit.html.erb:117:in `each_with_index'
+  [1m[36mOpcoesPerguntum Load (0.9ms)[0m  [1m[34mSELECT "opcoes_pergunta".* FROM "opcoes_pergunta" WHERE "opcoes_pergunta"."pergunta_id" = 9 /*action='edit',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/edit.html.erb:157:in `each_with_index'
+  [1m[36mPerguntum Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 10 /*action='edit',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/edit.html.erb:279
+  Rendered templates/edit.html.erb within layouts/application (Duration: 48.7ms | GC: 2.6ms)
+  Rendered layout layouts/application.html.erb (Duration: 61.5ms | GC: 2.6ms)
+Completed 200 OK in 147ms (Views: 61.3ms | ActiveRecord: 2.9ms (6 queries, 0 cached) | GC: 3.9ms)
+
+
+Started GET "/templates" for 127.0.0.1 at 2025-07-13 18:15:42 -0300
+Processing by TemplatesController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='templates'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering templates/index.html.erb within layouts/application
+  [1m[36mTemplate Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "templates" /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:29
+  [1m[36mTemplate Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "templates" WHERE "templates"."publico_alvo" = 0 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:38
+  [1m[36mTemplate Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "templates" WHERE "templates"."publico_alvo" = 1 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:47
+  [1m[36mTemplate Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "templates" LIMIT 1 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:62
+  [1m[36mTemplate Load (0.2ms)[0m  [1m[34mSELECT "templates".* FROM "templates" /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:76
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:76
+  [1m[36mPerguntum Count (1.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 10 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:94
+  Rendered templates/index.html.erb within layouts/application (Duration: 49.3ms | GC: 0.9ms)
+  Rendered layout layouts/application.html.erb (Duration: 59.5ms | GC: 2.3ms)
+Completed 200 OK in 130ms (Views: 58.0ms | ActiveRecord: 3.9ms (8 queries, 0 cached) | GC: 2.3ms)
+
+
+Started GET "/templates/new" for 127.0.0.1 at 2025-07-13 18:15:48 -0300
+Processing by TemplatesController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='Camaar',controller='templates'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering templates/new.html.erb within layouts/application
+  [1m[36mDisciplina Load (0.3ms)[0m  [1m[34mSELECT "disciplinas".* FROM "disciplinas" /*action='new',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/new.html.erb:87
+  Rendered templates/new.html.erb within layouts/application (Duration: 48.3ms | GC: 0.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 55.4ms | GC: 0.5ms)
+Completed 200 OK in 126ms (Views: 57.3ms | ActiveRecord: 0.7ms (2 queries, 0 cached) | GC: 0.9ms)
+
+
+  [1m[36mTemplate Load (0.4ms)[0m  [1m[34mSELECT "templates".* FROM "templates" ORDER BY "templates"."id" ASC LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mTemplate Load (4.5ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id" = 10 LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mPerguntum Create (0.4ms)[0m  [1m[32mINSERT INTO "pergunta" ("template_id", "texto", "tipo", "created_at", "updated_at", "obrigatoria") VALUES (10, 'Teste pergunta', 1, '2025-07-13 21:19:11.868343', '2025-07-13 21:19:11.868343', 1) RETURNING "id" /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mTemplate Load (0.3ms)[0m  [1m[34mSELECT "templates".* FROM "templates" ORDER BY "templates"."id" ASC LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mTemplate Load (2.6ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id" = 10 LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mPerguntum Create (1.4ms)[0m  [1m[32mINSERT INTO "pergunta" ("template_id", "texto", "tipo", "created_at", "updated_at", "obrigatoria") VALUES (10, 'Teste pergunta', 2, '2025-07-13 21:30:46.507674', '2025-07-13 21:30:46.507674', 1) RETURNING "id" /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (50.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mPerguntum Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 10 /*application='Camaar'*/[0m
+Started GET "/?id=13c36225-c9c8-4817-8c90-dc425d8c6c3f&vscodeBrowserReqId=1752442362036" for ::1 at 2025-07-13 18:32:42 -0300
+Processing by HomeController#index as HTML
+  Parameters: {"id"=>"13c36225-c9c8-4817-8c90-dc425d8c6c3f", "vscodeBrowserReqId"=>"1752442362036"}
+Completed 401 Unauthorized in 29ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2025-07-13 18:32:42 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 10.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 20.2ms | GC: 1.4ms)
+Completed 200 OK in 79ms (Views: 27.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 4.3ms)
+
+
+Started GET "/" for ::1 at 2025-07-13 18:35:33 -0300
+Processing by HomeController#index as */*
+Completed 401 Unauthorized in 32ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mTemplate Load (0.6ms)[0m  [1m[34mSELECT "templates".* FROM "templates" ORDER BY "templates"."id" ASC LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mPerguntum Count (2.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 10 /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mTemplate Load (8.4ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id" = 10 LIMIT 1 /*application='Camaar'*/[0m
+  [1m[36mPerguntum Create (0.9ms)[0m  [1m[32mINSERT INTO "pergunta" ("template_id", "texto", "tipo", "created_at", "updated_at", "obrigatoria") VALUES (10, 'Pergunta de teste #{Time.current}', 2, '2025-07-13 21:35:39.599637', '2025-07-13 21:35:39.599637', 1) RETURNING "id" /*application='Camaar'*/[0m
+  [1m[36mTRANSACTION (72.5ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='Camaar'*/[0m
+  [1m[36mPerguntum Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 10 /*application='Camaar'*/[0m
+Started GET "/templates/new" for 127.0.0.1 at 2025-07-13 18:40:17 -0300
+Processing by TemplatesController#new as HTML
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='Camaar',controller='templates'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering templates/new.html.erb within layouts/application
+  [1m[36mDisciplina Load (0.5ms)[0m  [1m[34mSELECT "disciplinas".* FROM "disciplinas" /*action='new',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/new.html.erb:87
+  Rendered templates/new.html.erb within layouts/application (Duration: 25.8ms | GC: 0.8ms)
+  Rendered layout layouts/application.html.erb (Duration: 32.6ms | GC: 0.9ms)
+Completed 200 OK in 111ms (Views: 34.8ms | ActiveRecord: 2.7ms (2 queries, 0 cached) | GC: 1.7ms)
+
+
+Started GET "/assets/figma_custom.css" for 127.0.0.1 at 2025-07-13 18:40:18 -0300
+Started GET "/templates/new" for 127.0.0.1 at 2025-07-13 18:40:19 -0300
+Processing by TemplatesController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='Camaar',controller='templates'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering templates/new.html.erb within layouts/application
+  [1m[36mDisciplina Load (0.2ms)[0m  [1m[34mSELECT "disciplinas".* FROM "disciplinas" /*action='new',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/new.html.erb:87
+  Rendered templates/new.html.erb within layouts/application (Duration: 6.5ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 9.5ms | GC: 0.2ms)
+Completed 200 OK in 41ms (Views: 10.1ms | ActiveRecord: 0.5ms (2 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/assets/figma_custom.css" for 127.0.0.1 at 2025-07-13 18:40:20 -0300
+Started POST "/templates" for 127.0.0.1 at 2025-07-13 18:41:21 -0300
+Processing by TemplatesController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "template"=>{"titulo"=>"iubffdkmvpof", "descricao"=>"cvkn cv bkdfpomvr", "publico_alvo"=>"alunos", "disciplina_id"=>"3"}, "perguntas"=>{"1"=>{"texto"=>"sdbjvsdbvjiscskn", "tipo"=>"multipla_escolha", "opcoes"=>{"1"=>"A JCANOVCLKDL", "2"=>"akd jvjdkbnokgbkg1!!!", "3"=>"j xcsdmvsdj fofpnkdvbsdnf"}, "obrigatoria"=>"on"}, "2"=>{"texto"=>"?ckkvsk vscl ?", "tipo"=>"verdadeiro_falso", "obrigatoria"=>"on"}, "3"=>{"texto"=>"xc mdfj vwokdqa jvsddifvpowadxṕc :?", "tipo"=>"subjetiva", "obrigatoria"=>"on"}}, "commit"=>"Criar Template"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='create',application='Camaar',controller='templates'*/[0m
+[31mUnpermitted parameters: :authenticity_token, :commit. Context: { controller: TemplatesController, action: create, request: #<ActionDispatch::Request:0x0000708ef2cc7d00>, params: {"authenticity_token"=>"[FILTERED]", "template"=>{"titulo"=>"iubffdkmvpof", "descricao"=>"cvkn cv bkdfpomvr", "publico_alvo"=>"alunos", "disciplina_id"=>"3"}, "perguntas"=>{"1"=>{"texto"=>"sdbjvsdbvjiscskn", "tipo"=>"multipla_escolha", "opcoes"=>{"1"=>"A JCANOVCLKDL", "2"=>"akd jvjdkbnokgbkg1!!!", "3"=>"j xcsdmvsdj fofpnkdvbsdnf"}, "obrigatoria"=>"on"}, "2"=>{"texto"=>"?ckkvsk vscl ?", "tipo"=>"verdadeiro_falso", "obrigatoria"=>"on"}, "3"=>{"texto"=>"xc mdfj vwokdqa jvsddifvpowadxṕc :?", "tipo"=>"subjetiva", "obrigatoria"=>"on"}}, "commit"=>"Criar Template", "controller"=>"templates", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:37:in `block in create'
+  [1m[36mDisciplina Load (3.5ms)[0m  [1m[34mSELECT "disciplinas".* FROM "disciplinas" WHERE "disciplinas"."id" = 3 LIMIT 1 /*action='create',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:37:in `block in create'
+  [1m[36mTemplate Create (0.3ms)[0m  [1m[32mINSERT INTO "templates" ("titulo", "publico_alvo", "criado_por_id", "created_at", "updated_at", "descricao", "disciplina_id") VALUES ('iubffdkmvpof', 0, 1, '2025-07-13 21:41:21.774621', '2025-07-13 21:41:21.774621', 'cvkn cv bkdfpomvr', 3) RETURNING "id" /*action='create',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:37:in `block in create'
+  [1m[36mTRANSACTION (57.9ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:37:in `block in create'
+=== PROCESS PERGUNTAS INICIADO ===
+Parâmetros recebidos: #<ActionController::Parameters {"1"=>#<ActionController::Parameters {"texto"=>"sdbjvsdbvjiscskn", "tipo"=>"multipla_escolha", "opcoes"=>#<ActionController::Parameters {"1"=>"A JCANOVCLKDL", "2"=>"akd jvjdkbnokgbkg1!!!", "3"=>"j xcsdmvsdj fofpnkdvbsdnf"} permitted: false>, "obrigatoria"=>"on"} permitted: false>, "2"=>#<ActionController::Parameters {"texto"=>"?ckkvsk vscl ?", "tipo"=>"verdadeiro_falso", "obrigatoria"=>"on"} permitted: false>, "3"=>#<ActionController::Parameters {"texto"=>"xc mdfj vwokdqa jvsddifvpowadxṕc :?", "tipo"=>"subjetiva", "obrigatoria"=>"on"} permitted: false>} permitted: false>
+Processando pergunta 1: #<ActionController::Parameters {"texto"=>"sdbjvsdbvjiscskn", "tipo"=>"multipla_escolha", "opcoes"=>#<ActionController::Parameters {"1"=>"A JCANOVCLKDL", "2"=>"akd jvjdkbnokgbkg1!!!", "3"=>"j xcsdmvsdj fofpnkdvbsdnf"} permitted: false>, "obrigatoria"=>"on"} permitted: false>
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:104:in `block in process_perguntas'
+  [1m[36mTemplate Load (4.0ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id" = 11 LIMIT 1 /*action='create',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:104:in `block in process_perguntas'
+  [1m[36mPerguntum Create (0.3ms)[0m  [1m[32mINSERT INTO "pergunta" ("template_id", "texto", "tipo", "created_at", "updated_at", "obrigatoria") VALUES (11, 'sdbjvsdbvjiscskn', 1, '2025-07-13 21:41:21.852174', '2025-07-13 21:41:21.852174', 1) RETURNING "id" /*action='create',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:104:in `block in process_perguntas'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:104:in `block in process_perguntas'
+Pergunta criada: ID=13, Texto=sdbjvsdbvjiscskn
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:116:in `block (2 levels) in process_perguntas'
+  [1m[36mPerguntum Load (3.9ms)[0m  [1m[34mSELECT "pergunta".* FROM "pergunta" WHERE "pergunta"."id" = 13 LIMIT 1 /*action='create',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:116:in `block (2 levels) in process_perguntas'
+  [1m[36mOpcoesPerguntum Create (0.4ms)[0m  [1m[32mINSERT INTO "opcoes_pergunta" ("pergunta_id", "texto", "created_at", "updated_at") VALUES (13, 'A JCANOVCLKDL', '2025-07-13 21:41:21.934719', '2025-07-13 21:41:21.934719') RETURNING "id" /*action='create',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:116:in `block (2 levels) in process_perguntas'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:116:in `block (2 levels) in process_perguntas'
+Opção criada: ID=11, Texto=A JCANOVCLKDL
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:116:in `block (2 levels) in process_perguntas'
+  [1m[36mPerguntum Load (3.5ms)[0m  [1m[34mSELECT "pergunta".* FROM "pergunta" WHERE "pergunta"."id" = 13 LIMIT 1 /*action='create',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:116:in `block (2 levels) in process_perguntas'
+  [1m[36mOpcoesPerguntum Create (0.5ms)[0m  [1m[32mINSERT INTO "opcoes_pergunta" ("pergunta_id", "texto", "created_at", "updated_at") VALUES (13, 'akd jvjdkbnokgbkg1!!!', '2025-07-13 21:41:21.947366', '2025-07-13 21:41:21.947366') RETURNING "id" /*action='create',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:116:in `block (2 levels) in process_perguntas'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:116:in `block (2 levels) in process_perguntas'
+Opção criada: ID=12, Texto=akd jvjdkbnokgbkg1!!!
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:116:in `block (2 levels) in process_perguntas'
+  [1m[36mPerguntum Load (2.7ms)[0m  [1m[34mSELECT "pergunta".* FROM "pergunta" WHERE "pergunta"."id" = 13 LIMIT 1 /*action='create',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:116:in `block (2 levels) in process_perguntas'
+  [1m[36mOpcoesPerguntum Create (0.8ms)[0m  [1m[32mINSERT INTO "opcoes_pergunta" ("pergunta_id", "texto", "created_at", "updated_at") VALUES (13, 'j xcsdmvsdj fofpnkdvbsdnf', '2025-07-13 21:41:21.960191', '2025-07-13 21:41:21.960191') RETURNING "id" /*action='create',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:116:in `block (2 levels) in process_perguntas'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:116:in `block (2 levels) in process_perguntas'
+Opção criada: ID=13, Texto=j xcsdmvsdj fofpnkdvbsdnf
+Processando pergunta 2: #<ActionController::Parameters {"texto"=>"?ckkvsk vscl ?", "tipo"=>"verdadeiro_falso", "obrigatoria"=>"on"} permitted: false>
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:104:in `block in process_perguntas'
+  [1m[36mTemplate Load (2.7ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id" = 11 LIMIT 1 /*action='create',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:104:in `block in process_perguntas'
+  [1m[36mPerguntum Create (0.2ms)[0m  [1m[32mINSERT INTO "pergunta" ("template_id", "texto", "tipo", "created_at", "updated_at", "obrigatoria") VALUES (11, '?ckkvsk vscl ?', 0, '2025-07-13 21:41:21.973906', '2025-07-13 21:41:21.973906', 1) RETURNING "id" /*action='create',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:104:in `block in process_perguntas'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:104:in `block in process_perguntas'
+Pergunta criada: ID=14, Texto=?ckkvsk vscl ?
+Processando pergunta 3: #<ActionController::Parameters {"texto"=>"xc mdfj vwokdqa jvsddifvpowadxṕc :?", "tipo"=>"subjetiva", "obrigatoria"=>"on"} permitted: false>
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:104:in `block in process_perguntas'
+  [1m[36mTemplate Load (6.8ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id" = 11 LIMIT 1 /*action='create',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:104:in `block in process_perguntas'
+  [1m[36mPerguntum Create (2.3ms)[0m  [1m[32mINSERT INTO "pergunta" ("template_id", "texto", "tipo", "created_at", "updated_at", "obrigatoria") VALUES (11, 'xc mdfj vwokdqa jvsddifvpowadxṕc :?', 2, '2025-07-13 21:41:21.993213', '2025-07-13 21:41:21.993213', 1) RETURNING "id" /*action='create',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:104:in `block in process_perguntas'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:104:in `block in process_perguntas'
+Pergunta criada: ID=15, Texto=xc mdfj vwokdqa jvsddifvpowadxṕc :?
+=== PROCESS PERGUNTAS FINALIZADO ===
+Redirected to http://localhost:3000/templates/11
+Completed 302 Found in 279ms (ActiveRecord: 93.5ms (15 queries, 0 cached) | GC: 19.7ms)
+
+
+Started GET "/templates/11" for 127.0.0.1 at 2025-07-13 18:41:22 -0300
+Processing by TemplatesController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  [1m[36mTemplate Load (0.2ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id" = 11 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:82:in `set_template'
+  Rendering layout layouts/application.html.erb
+  Rendering templates/show.html.erb within layouts/application
+  [1m[36mDisciplina Load (0.2ms)[0m  [1m[34mSELECT "disciplinas".* FROM "disciplinas" WHERE "disciplinas"."id" = 3 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:20
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:62
+  [1m[36mPerguntum Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 11 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:76
+  [1m[36mPerguntum Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 11 AND "pergunta"."obrigatoria" = 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:82
+  [1m[36mPerguntum Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) AS "count_all", "pergunta"."tipo" AS "pergunta_tipo" FROM "pergunta" WHERE "pergunta"."template_id" = 11 GROUP BY "pergunta"."tipo" /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:92
+  [1m[36mCACHE Perguntum Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 11[0m
+  ↳ app/views/templates/show.html.erb:149
+  [1m[36mPerguntum Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "pergunta" WHERE "pergunta"."template_id" = 11 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:153
+  [1m[36mPerguntum Load (0.2ms)[0m  [1m[34mSELECT "pergunta".* FROM "pergunta" WHERE "pergunta"."template_id" = 11 ORDER BY "pergunta"."id" ASC /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:154:in `each_with_index'
+  [1m[36mOpcoesPerguntum Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "opcoes_pergunta" WHERE "opcoes_pergunta"."pergunta_id" = 13 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:176
+  [1m[36mOpcoesPerguntum Load (0.2ms)[0m  [1m[34mSELECT "opcoes_pergunta".* FROM "opcoes_pergunta" WHERE "opcoes_pergunta"."pergunta_id" = 13 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:180:in `each_with_index'
+  Rendered templates/show.html.erb within layouts/application (Duration: 34.5ms | GC: 0.8ms)
+  Rendered layout layouts/application.html.erb (Duration: 37.3ms | GC: 0.8ms)
+Completed 200 OK in 67ms (Views: 36.1ms | ActiveRecord: 2.6ms (12 queries, 1 cached) | GC: 0.8ms)
+
+
+Started GET "/assets/figma_custom.css" for 127.0.0.1 at 2025-07-13 18:41:22 -0300
+Started GET "/templates" for 127.0.0.1 at 2025-07-13 18:41:29 -0300
+Processing by TemplatesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='templates'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering templates/index.html.erb within layouts/application
+  [1m[36mTemplate Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "templates" /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:29
+  [1m[36mTemplate Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "templates" WHERE "templates"."publico_alvo" = 0 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:38
+  [1m[36mTemplate Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "templates" WHERE "templates"."publico_alvo" = 1 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:47
+  [1m[36mTemplate Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "templates" LIMIT 1 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:62
+  [1m[36mTemplate Load (0.2ms)[0m  [1m[34mSELECT "templates".* FROM "templates" /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:76
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:76
+  [1m[36mPerguntum Count (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 10 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:94
+  [1m[36mPerguntum Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 11 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:94
+  Rendered templates/index.html.erb within layouts/application (Duration: 32.1ms | GC: 0.6ms)
+  Rendered layout layouts/application.html.erb (Duration: 35.6ms | GC: 0.6ms)
+Completed 200 OK in 65ms (Views: 33.9ms | ActiveRecord: 2.8ms (9 queries, 0 cached) | GC: 0.8ms)
+
+
+Started GET "/templates/new" for 127.0.0.1 at 2025-07-13 18:41:32 -0300
+Processing by TemplatesController#new as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='Camaar',controller='templates'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering templates/new.html.erb within layouts/application
+  [1m[36mDisciplina Load (0.4ms)[0m  [1m[34mSELECT "disciplinas".* FROM "disciplinas" /*action='new',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/new.html.erb:87
+  Rendered templates/new.html.erb within layouts/application (Duration: 16.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 23.2ms | GC: 0.7ms)
+Completed 200 OK in 69ms (Views: 24.2ms | ActiveRecord: 1.3ms (2 queries, 0 cached) | GC: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-07-13 18:41:34 -0300
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='home'*/[0m
+  [1m[36mUser Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."email" NOT IN ('admin@camaar.com', 'coordenador@camaar.com', 'professor@camaar.com', 'aluno@camaar.com') /*action='index',application='Camaar',controller='home'*/[0m
+  ↳ app/controllers/home_controller.rb:14:in `index'
+  [1m[36mDisciplina Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" /*action='index',application='Camaar',controller='home'*/[0m
+  ↳ app/controllers/home_controller.rb:15:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | GC: 0.0ms)
+Completed 200 OK in 48ms (Views: 5.9ms | ActiveRecord: 0.5ms (3 queries, 0 cached) | GC: 5.8ms)
+
+
+Started GET "/admin/management" for 127.0.0.1 at 2025-07-13 18:41:39 -0300
+Processing by Admin::ManagementController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='management'*/[0m
+  [1m[36mUser Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."email" NOT IN ('admin@camaar.com', 'coordenador@camaar.com', 'professor@camaar.com', 'aluno@camaar.com') /*action='index',application='Camaar',controller='management'*/[0m
+  ↳ app/controllers/admin/management_controller.rb:93:in `check_imported_data'
+  [1m[36mDisciplina Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" /*action='index',application='Camaar',controller='management'*/[0m
+  ↳ app/controllers/admin/management_controller.rb:94:in `check_imported_data'
+Checking imported data: users=45, disciplines=6
+  Rendering layout layouts/application.html.erb
+  Rendering admin/management/index.html.erb within layouts/application
+  Rendered admin/management/index.html.erb within layouts/application (Duration: 4.0ms | GC: 0.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.6ms | GC: 0.5ms)
+Completed 200 OK in 44ms (Views: 9.4ms | ActiveRecord: 0.8ms (3 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2025-07-13 18:41:40 -0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='users'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."name" ASC /*action='index',application='Camaar',controller='users'*/[0m
+  ↳ app/views/users/index.html.erb:25
+  Rendered users/index.html.erb within layouts/application (Duration: 30.9ms | GC: 1.6ms)
+  Rendered layout layouts/application.html.erb (Duration: 34.4ms | GC: 1.6ms)
+Completed 200 OK in 68ms (Views: 34.7ms | ActiveRecord: 1.4ms (2 queries, 0 cached) | GC: 2.6ms)
+
+
+Started GET "/admin/management" for 127.0.0.1 at 2025-07-13 18:41:40 -0300
+Processing by Admin::ManagementController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='management'*/[0m
+  [1m[36mUser Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."email" NOT IN ('admin@camaar.com', 'coordenador@camaar.com', 'professor@camaar.com', 'aluno@camaar.com') /*action='index',application='Camaar',controller='management'*/[0m
+  ↳ app/controllers/admin/management_controller.rb:93:in `check_imported_data'
+  [1m[36mDisciplina Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" /*action='index',application='Camaar',controller='management'*/[0m
+  ↳ app/controllers/admin/management_controller.rb:94:in `check_imported_data'
+Checking imported data: users=45, disciplines=6
+  Rendering layout layouts/application.html.erb
+  Rendering admin/management/index.html.erb within layouts/application
+  Rendered admin/management/index.html.erb within layouts/application (Duration: 2.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | GC: 0.3ms)
+Completed 200 OK in 42ms (Views: 7.1ms | ActiveRecord: 0.7ms (3 queries, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2025-07-13 18:41:41 -0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='users'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."name" ASC /*action='index',application='Camaar',controller='users'*/[0m
+  ↳ app/views/users/index.html.erb:25
+  Rendered users/index.html.erb within layouts/application (Duration: 22.3ms | GC: 0.8ms)
+  Rendered layout layouts/application.html.erb (Duration: 24.9ms | GC: 0.8ms)
+Completed 200 OK in 51ms (Views: 24.9ms | ActiveRecord: 1.0ms (2 queries, 0 cached) | GC: 1.0ms)
+
+
+Started GET "/admin/management" for 127.0.0.1 at 2025-07-13 18:41:48 -0300
+Processing by Admin::ManagementController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='management'*/[0m
+  [1m[36mUser Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."email" NOT IN ('admin@camaar.com', 'coordenador@camaar.com', 'professor@camaar.com', 'aluno@camaar.com') /*action='index',application='Camaar',controller='management'*/[0m
+  ↳ app/controllers/admin/management_controller.rb:93:in `check_imported_data'
+  [1m[36mDisciplina Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" /*action='index',application='Camaar',controller='management'*/[0m
+  ↳ app/controllers/admin/management_controller.rb:94:in `check_imported_data'
+Checking imported data: users=45, disciplines=6
+  Rendering layout layouts/application.html.erb
+  Rendering admin/management/index.html.erb within layouts/application
+  Rendered admin/management/index.html.erb within layouts/application (Duration: 1.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | GC: 0.0ms)
+Completed 200 OK in 40ms (Views: 5.7ms | ActiveRecord: 0.9ms (3 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/admin/management" for 127.0.0.1 at 2025-07-13 18:41:48 -0300
+Processing by Admin::ManagementController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='management'*/[0m
+  [1m[36mUser Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."email" NOT IN ('admin@camaar.com', 'coordenador@camaar.com', 'professor@camaar.com', 'aluno@camaar.com') /*action='index',application='Camaar',controller='management'*/[0m
+  ↳ app/controllers/admin/management_controller.rb:93:in `check_imported_data'
+  [1m[36mDisciplina Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" /*action='index',application='Camaar',controller='management'*/[0m
+  ↳ app/controllers/admin/management_controller.rb:94:in `check_imported_data'
+Checking imported data: users=45, disciplines=6
+  Rendering layout layouts/application.html.erb
+  Rendering admin/management/index.html.erb within layouts/application
+  Rendered admin/management/index.html.erb within layouts/application (Duration: 1.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.3ms | GC: 0.0ms)
+Completed 200 OK in 35ms (Views: 4.1ms | ActiveRecord: 0.6ms (3 queries, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/evaluations" for 127.0.0.1 at 2025-07-13 18:41:58 -0300
+Processing by EvaluationsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='evaluations'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering evaluations/index.html.erb within layouts/application
+  Rendered evaluations/index.html.erb within layouts/application (Duration: 1.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.1ms | GC: 0.0ms)
+Completed 200 OK in 34ms (Views: 6.5ms | ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-07-13 18:42:53 -0300
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='home'*/[0m
+  [1m[36mUser Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."email" NOT IN ('admin@camaar.com', 'coordenador@camaar.com', 'professor@camaar.com', 'aluno@camaar.com') /*action='index',application='Camaar',controller='home'*/[0m
+  ↳ app/controllers/home_controller.rb:14:in `index'
+  [1m[36mDisciplina Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" /*action='index',application='Camaar',controller='home'*/[0m
+  ↳ app/controllers/home_controller.rb:15:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.8ms | GC: 0.0ms)
+Completed 200 OK in 46ms (Views: 5.7ms | ActiveRecord: 0.7ms (3 queries, 0 cached) | GC: 9.3ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2025-07-13 18:42:54 -0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='users'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."name" ASC /*action='index',application='Camaar',controller='users'*/[0m
+  ↳ app/views/users/index.html.erb:25
+  Rendered users/index.html.erb within layouts/application (Duration: 28.1ms | GC: 3.4ms)
+  Rendered layout layouts/application.html.erb (Duration: 32.3ms | GC: 3.4ms)
+Completed 200 OK in 65ms (Views: 31.8ms | ActiveRecord: 1.7ms (2 queries, 0 cached) | GC: 3.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-07-13 19:05:31 -0300
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='home'*/[0m
+  [1m[36mUser Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."email" NOT IN ('admin@camaar.com', 'coordenador@camaar.com', 'professor@camaar.com', 'aluno@camaar.com') /*action='index',application='Camaar',controller='home'*/[0m
+  ↳ app/controllers/home_controller.rb:14:in `index'
+  [1m[36mDisciplina Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" /*action='index',application='Camaar',controller='home'*/[0m
+  ↳ app/controllers/home_controller.rb:15:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 4.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 89.9ms | GC: 0.2ms)
+Completed 200 OK in 200ms (Views: 92.8ms | ActiveRecord: 2.6ms (3 queries, 0 cached) | GC: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-07-13 19:05:34 -0300
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='home'*/[0m
+  [1m[36mUser Count (3.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."email" NOT IN ('admin@camaar.com', 'coordenador@camaar.com', 'professor@camaar.com', 'aluno@camaar.com') /*action='index',application='Camaar',controller='home'*/[0m
+  ↳ app/controllers/home_controller.rb:14:in `index'
+  [1m[36mDisciplina Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" /*action='index',application='Camaar',controller='home'*/[0m
+  ↳ app/controllers/home_controller.rb:15:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 16.4ms | GC: 0.5ms)
+Completed 200 OK in 113ms (Views: 19.0ms | ActiveRecord: 0.9ms (3 queries, 0 cached) | GC: 0.8ms)
+
+
+Started GET "/assets/figma_custom-738ff2b0.css" for 127.0.0.1 at 2025-07-13 19:05:35 -0300
+Started GET "/assets/figma_custom.css" for 127.0.0.1 at 2025-07-13 19:05:35 -0300
+Started GET "/admin/management" for 127.0.0.1 at 2025-07-13 19:05:38 -0300
+Processing by Admin::ManagementController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='management'*/[0m
+  [1m[36mUser Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."email" NOT IN ('admin@camaar.com', 'coordenador@camaar.com', 'professor@camaar.com', 'aluno@camaar.com') /*action='index',application='Camaar',controller='management'*/[0m
+  ↳ app/controllers/admin/management_controller.rb:93:in `check_imported_data'
+  [1m[36mDisciplina Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" /*action='index',application='Camaar',controller='management'*/[0m
+  ↳ app/controllers/admin/management_controller.rb:94:in `check_imported_data'
+Checking imported data: users=45, disciplines=6
+  Rendering layout layouts/application.html.erb
+  Rendering admin/management/index.html.erb within layouts/application
+  Rendered admin/management/index.html.erb within layouts/application (Duration: 12.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 26.8ms | GC: 0.0ms)
+Completed 200 OK in 78ms (Views: 29.4ms | ActiveRecord: 0.8ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2025-07-13 19:05:43 -0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='users'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."name" ASC /*action='index',application='Camaar',controller='users'*/[0m
+  ↳ app/views/users/index.html.erb:25
+  Rendered users/index.html.erb within layouts/application (Duration: 98.9ms | GC: 21.8ms)
+  Rendered layout layouts/application.html.erb (Duration: 110.6ms | GC: 21.8ms)
+Completed 200 OK in 223ms (Views: 111.0ms | ActiveRecord: 2.3ms (2 queries, 0 cached) | GC: 21.8ms)
+
+
+Started GET "/cursos" for 127.0.0.1 at 2025-07-13 19:05:47 -0300
+Processing by CursosController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='cursos'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering cursos/index.html.erb within layouts/application
+  [1m[36mCurso Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "cursos" LIMIT 1 /*action='index',application='Camaar',controller='cursos'*/[0m
+  ↳ app/views/cursos/index.html.erb:39
+  [1m[36mCurso Load (2.7ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" ORDER BY "cursos"."nome" ASC /*action='index',application='Camaar',controller='cursos'*/[0m
+  ↳ app/views/cursos/index.html.erb:41
+  [1m[36mDisciplina Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" WHERE "disciplinas"."curso_id" = 2 /*action='index',application='Camaar',controller='cursos'*/[0m
+  ↳ app/views/cursos/index.html.erb:49
+  [1m[36mCACHE Disciplina Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" WHERE "disciplinas"."curso_id" = 2[0m
+  ↳ app/views/cursos/index.html.erb:49
+  [1m[36mDisciplina Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" WHERE "disciplinas"."curso_id" = 1 /*action='index',application='Camaar',controller='cursos'*/[0m
+  ↳ app/views/cursos/index.html.erb:49
+  [1m[36mCACHE Disciplina Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" WHERE "disciplinas"."curso_id" = 1[0m
+  ↳ app/views/cursos/index.html.erb:49
+  [1m[36mDisciplina Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" WHERE "disciplinas"."curso_id" = 3 /*action='index',application='Camaar',controller='cursos'*/[0m
+  ↳ app/views/cursos/index.html.erb:49
+  [1m[36mCACHE Disciplina Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" WHERE "disciplinas"."curso_id" = 3[0m
+  ↳ app/views/cursos/index.html.erb:49
+  Rendered cursos/index.html.erb within layouts/application (Duration: 118.9ms | GC: 1.9ms)
+  Rendered layout layouts/application.html.erb (Duration: 125.0ms | GC: 1.9ms)
+Completed 200 OK in 280ms (Views: 114.7ms | ActiveRecord: 14.1ms (9 queries, 3 cached) | GC: 3.6ms)
+
+
+Started GET "/disciplinas" for 127.0.0.1 at 2025-07-13 19:05:51 -0300
+Processing by DisciplinasController#index as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='disciplinas'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering disciplinas/index.html.erb within layouts/application
+  [1m[36mDisciplina Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "disciplinas" LIMIT 1 /*action='index',application='Camaar',controller='disciplinas'*/[0m
+  ↳ app/views/disciplinas/index.html.erb:39
+  [1m[36mDisciplina Load (0.3ms)[0m  [1m[34mSELECT "disciplinas".* FROM "disciplinas" /*action='index',application='Camaar',controller='disciplinas'*/[0m
+  ↳ app/views/disciplinas/index.html.erb:41
+  [1m[36mCurso Load (0.3ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" WHERE "cursos"."id" = 1 LIMIT 1 /*action='index',application='Camaar',controller='disciplinas'*/[0m
+  ↳ app/views/disciplinas/index.html.erb:50
+  [1m[36mCACHE Curso Load (0.1ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" WHERE "cursos"."id" = 1 LIMIT 1[0m
+  ↳ app/views/disciplinas/index.html.erb:50
+  [1m[36mCACHE Curso Load (0.1ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" WHERE "cursos"."id" = 1 LIMIT 1[0m
+  ↳ app/views/disciplinas/index.html.erb:50
+  [1m[36mCurso Load (0.3ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" WHERE "cursos"."id" = 2 LIMIT 1 /*action='index',application='Camaar',controller='disciplinas'*/[0m
+  ↳ app/views/disciplinas/index.html.erb:50
+  [1m[36mCACHE Curso Load (0.1ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" WHERE "cursos"."id" = 2 LIMIT 1[0m
+  ↳ app/views/disciplinas/index.html.erb:50
+  [1m[36mCACHE Curso Load (0.0ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" WHERE "cursos"."id" = 2 LIMIT 1[0m
+  ↳ app/views/disciplinas/index.html.erb:50
+  Rendered disciplinas/index.html.erb within layouts/application (Duration: 60.7ms | GC: 1.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 66.1ms | GC: 1.8ms)
+Completed 200 OK in 107ms (Views: 67.9ms | ActiveRecord: 2.8ms (9 queries, 4 cached) | GC: 3.5ms)
+
+
+Started GET "/cursos" for 127.0.0.1 at 2025-07-13 19:05:55 -0300
+Processing by CursosController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='cursos'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering cursos/index.html.erb within layouts/application
+  [1m[36mCurso Exists? (2.8ms)[0m  [1m[34mSELECT 1 AS one FROM "cursos" LIMIT 1 /*action='index',application='Camaar',controller='cursos'*/[0m
+  ↳ app/views/cursos/index.html.erb:39
+  [1m[36mCurso Load (0.6ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" ORDER BY "cursos"."nome" ASC /*action='index',application='Camaar',controller='cursos'*/[0m
+  ↳ app/views/cursos/index.html.erb:41
+  [1m[36mDisciplina Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" WHERE "disciplinas"."curso_id" = 2 /*action='index',application='Camaar',controller='cursos'*/[0m
+  ↳ app/views/cursos/index.html.erb:49
+  [1m[36mCACHE Disciplina Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" WHERE "disciplinas"."curso_id" = 2[0m
+  ↳ app/views/cursos/index.html.erb:49
+  [1m[36mDisciplina Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" WHERE "disciplinas"."curso_id" = 1 /*action='index',application='Camaar',controller='cursos'*/[0m
+  ↳ app/views/cursos/index.html.erb:49
+  [1m[36mCACHE Disciplina Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" WHERE "disciplinas"."curso_id" = 1[0m
+  ↳ app/views/cursos/index.html.erb:49
+  [1m[36mDisciplina Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" WHERE "disciplinas"."curso_id" = 3 /*action='index',application='Camaar',controller='cursos'*/[0m
+  ↳ app/views/cursos/index.html.erb:49
+  [1m[36mCACHE Disciplina Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" WHERE "disciplinas"."curso_id" = 3[0m
+  ↳ app/views/cursos/index.html.erb:49
+  Rendered cursos/index.html.erb within layouts/application (Duration: 49.4ms | GC: 0.4ms)
+  Rendered layout layouts/application.html.erb (Duration: 53.9ms | GC: 0.4ms)
+Completed 200 OK in 118ms (Views: 52.3ms | ActiveRecord: 4.5ms (9 queries, 3 cached) | GC: 0.9ms)
+
+
+Started GET "/evaluations" for 127.0.0.1 at 2025-07-13 19:05:55 -0300
+Processing by EvaluationsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='evaluations'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering evaluations/index.html.erb within layouts/application
+  Rendered evaluations/index.html.erb within layouts/application (Duration: 2.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 12.2ms | GC: 0.0ms)
+Completed 200 OK in 79ms (Views: 14.6ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/cursos" for 127.0.0.1 at 2025-07-13 19:06:13 -0300
+Processing by CursosController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='cursos'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering cursos/index.html.erb within layouts/application
+  [1m[36mCurso Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "cursos" LIMIT 1 /*action='index',application='Camaar',controller='cursos'*/[0m
+  ↳ app/views/cursos/index.html.erb:39
+  [1m[36mCurso Load (0.3ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" ORDER BY "cursos"."nome" ASC /*action='index',application='Camaar',controller='cursos'*/[0m
+  ↳ app/views/cursos/index.html.erb:41
+  [1m[36mDisciplina Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" WHERE "disciplinas"."curso_id" = 2 /*action='index',application='Camaar',controller='cursos'*/[0m
+  ↳ app/views/cursos/index.html.erb:49
+  [1m[36mCACHE Disciplina Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" WHERE "disciplinas"."curso_id" = 2[0m
+  ↳ app/views/cursos/index.html.erb:49
+  [1m[36mDisciplina Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" WHERE "disciplinas"."curso_id" = 1 /*action='index',application='Camaar',controller='cursos'*/[0m
+  ↳ app/views/cursos/index.html.erb:49
+  [1m[36mCACHE Disciplina Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" WHERE "disciplinas"."curso_id" = 1[0m
+  ↳ app/views/cursos/index.html.erb:49
+  [1m[36mDisciplina Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" WHERE "disciplinas"."curso_id" = 3 /*action='index',application='Camaar',controller='cursos'*/[0m
+  ↳ app/views/cursos/index.html.erb:49
+  [1m[36mCACHE Disciplina Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" WHERE "disciplinas"."curso_id" = 3[0m
+  ↳ app/views/cursos/index.html.erb:49
+  Rendered cursos/index.html.erb within layouts/application (Duration: 26.6ms | GC: 0.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 29.9ms | GC: 0.5ms)
+Completed 200 OK in 57ms (Views: 29.3ms | ActiveRecord: 1.6ms (9 queries, 3 cached) | GC: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-07-13 19:06:15 -0300
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='home'*/[0m
+  [1m[36mUser Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."email" NOT IN ('admin@camaar.com', 'coordenador@camaar.com', 'professor@camaar.com', 'aluno@camaar.com') /*action='index',application='Camaar',controller='home'*/[0m
+  ↳ app/controllers/home_controller.rb:14:in `index'
+  [1m[36mDisciplina Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" /*action='index',application='Camaar',controller='home'*/[0m
+  ↳ app/controllers/home_controller.rb:15:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.4ms | GC: 0.0ms)
+Completed 200 OK in 51ms (Views: 8.5ms | ActiveRecord: 1.2ms (3 queries, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/admin/management" for 127.0.0.1 at 2025-07-13 19:06:16 -0300
+Processing by Admin::ManagementController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='management'*/[0m
+  [1m[36mUser Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."email" NOT IN ('admin@camaar.com', 'coordenador@camaar.com', 'professor@camaar.com', 'aluno@camaar.com') /*action='index',application='Camaar',controller='management'*/[0m
+  ↳ app/controllers/admin/management_controller.rb:93:in `check_imported_data'
+  [1m[36mDisciplina Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" /*action='index',application='Camaar',controller='management'*/[0m
+  ↳ app/controllers/admin/management_controller.rb:94:in `check_imported_data'
+Checking imported data: users=45, disciplines=6
+  Rendering layout layouts/application.html.erb
+  Rendering admin/management/index.html.erb within layouts/application
+  Rendered admin/management/index.html.erb within layouts/application (Duration: 1.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.1ms | GC: 0.2ms)
+Completed 200 OK in 39ms (Views: 4.9ms | ActiveRecord: 0.8ms (3 queries, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2025-07-13 19:06:16 -0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='users'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."name" ASC /*action='index',application='Camaar',controller='users'*/[0m
+  ↳ app/views/users/index.html.erb:25
+  Rendered users/index.html.erb within layouts/application (Duration: 32.4ms | GC: 10.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 34.5ms | GC: 10.2ms)
+Completed 200 OK in 66ms (Views: 34.6ms | ActiveRecord: 1.1ms (2 queries, 0 cached) | GC: 10.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-07-13 19:06:19 -0300
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='home'*/[0m
+  [1m[36mUser Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."email" NOT IN ('admin@camaar.com', 'coordenador@camaar.com', 'professor@camaar.com', 'aluno@camaar.com') /*action='index',application='Camaar',controller='home'*/[0m
+  ↳ app/controllers/home_controller.rb:14:in `index'
+  [1m[36mDisciplina Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" /*action='index',application='Camaar',controller='home'*/[0m
+  ↳ app/controllers/home_controller.rb:15:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | GC: 0.0ms)
+Completed 200 OK in 40ms (Views: 4.9ms | ActiveRecord: 0.7ms (3 queries, 0 cached) | GC: 0.6ms)
+
+
+Started GET "/admin/management" for 127.0.0.1 at 2025-07-13 19:06:19 -0300
+Processing by Admin::ManagementController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='management'*/[0m
+  [1m[36mUser Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."email" NOT IN ('admin@camaar.com', 'coordenador@camaar.com', 'professor@camaar.com', 'aluno@camaar.com') /*action='index',application='Camaar',controller='management'*/[0m
+  ↳ app/controllers/admin/management_controller.rb:93:in `check_imported_data'
+  [1m[36mDisciplina Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" /*action='index',application='Camaar',controller='management'*/[0m
+  ↳ app/controllers/admin/management_controller.rb:94:in `check_imported_data'
+Checking imported data: users=45, disciplines=6
+  Rendering layout layouts/application.html.erb
+  Rendering admin/management/index.html.erb within layouts/application
+  Rendered admin/management/index.html.erb within layouts/application (Duration: 1.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.8ms | GC: 0.0ms)
+Completed 200 OK in 37ms (Views: 5.7ms | ActiveRecord: 0.7ms (3 queries, 0 cached) | GC: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-07-13 19:06:22 -0300
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='home'*/[0m
+  [1m[36mUser Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."email" NOT IN ('admin@camaar.com', 'coordenador@camaar.com', 'professor@camaar.com', 'aluno@camaar.com') /*action='index',application='Camaar',controller='home'*/[0m
+  ↳ app/controllers/home_controller.rb:14:in `index'
+  [1m[36mDisciplina Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" /*action='index',application='Camaar',controller='home'*/[0m
+  ↳ app/controllers/home_controller.rb:15:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 2.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.7ms | GC: 0.0ms)
+Completed 200 OK in 42ms (Views: 6.6ms | ActiveRecord: 0.7ms (3 queries, 0 cached) | GC: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2025-07-13 19:08:37 -0300
+Started GET "/cursos" for 127.0.0.1 at 2025-07-13 19:08:38 -0300
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='home'*/[0m
+  [1m[36mUser Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."email" NOT IN ('admin@camaar.com', 'coordenador@camaar.com', 'professor@camaar.com', 'aluno@camaar.com') /*action='index',application='Camaar',controller='home'*/[0m
+  ↳ app/controllers/home_controller.rb:14:in `index'
+  [1m[36mDisciplina Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" /*action='index',application='Camaar',controller='home'*/[0m
+  ↳ app/controllers/home_controller.rb:15:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 3.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 33.8ms | GC: 1.1ms)
+Completed 200 OK in 294ms (Views: 49.9ms | ActiveRecord: 12.2ms (3 queries, 0 cached) | GC: 1.7ms)
+
+
+Started GET "/disciplinas" for 127.0.0.1 at 2025-07-13 19:08:39 -0300
+Started GET "/evaluations" for 127.0.0.1 at 2025-07-13 19:08:39 -0300
+Processing by CursosController#index as HTML
+Processing by DisciplinasController#index as HTML
+Processing by EvaluationsController#index as HTML
+  [1m[36mUser Load (3.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='cursos'*/[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='evaluations'*/[0m
+  Rendering layout layouts/application.html.erb
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='disciplinas'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering cursos/index.html.erb within layouts/application
+  Rendering evaluations/index.html.erb within layouts/application
+  Rendered evaluations/index.html.erb within layouts/application (Duration: 4.3ms | GC: 0.0ms)
+  [1m[36mCurso Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "cursos" LIMIT 1 /*action='index',application='Camaar',controller='cursos'*/[0m
+  ↳ app/views/cursos/index.html.erb:39
+  [1m[36mCurso Load (0.5ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" ORDER BY "cursos"."nome" ASC /*action='index',application='Camaar',controller='cursos'*/[0m
+  Rendering layout layouts/application.html.erb
+  ↳ app/views/cursos/index.html.erb:41
+  Rendering disciplinas/index.html.erb within layouts/application
+  [1m[36mDisciplina Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" WHERE "disciplinas"."curso_id" = 2 /*action='index',application='Camaar',controller='cursos'*/[0m
+  ↳ app/views/cursos/index.html.erb:49
+  [1m[36mDisciplina Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "disciplinas" LIMIT 1 /*action='index',application='Camaar',controller='disciplinas'*/[0m
+  [1m[36mCACHE Disciplina Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" WHERE "disciplinas"."curso_id" = 2[0m
+  ↳ app/views/cursos/index.html.erb:49
+  [1m[36mDisciplina Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" WHERE "disciplinas"."curso_id" = 1 /*action='index',application='Camaar',controller='cursos'*/[0m
+  ↳ app/views/disciplinas/index.html.erb:39
+  Rendered layout layouts/application.html.erb (Duration: 131.9ms | GC: 9.0ms)
+  ↳ app/views/cursos/index.html.erb:49
+Completed 200 OK in 388ms (Views: 153.2ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 36.2ms)
+
+
+  [1m[36mCACHE Disciplina Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" WHERE "disciplinas"."curso_id" = 1[0m
+  [1m[36mDisciplina Load (0.7ms)[0m  [1m[34mSELECT "disciplinas".* FROM "disciplinas" /*action='index',application='Camaar',controller='disciplinas'*/[0m
+  ↳ app/views/cursos/index.html.erb:49
+  ↳ app/views/disciplinas/index.html.erb:41
+  [1m[36mDisciplina Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" WHERE "disciplinas"."curso_id" = 3 /*action='index',application='Camaar',controller='cursos'*/[0m
+  ↳ app/views/cursos/index.html.erb:49
+  [1m[36mCurso Load (0.7ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" WHERE "cursos"."id" = 1 LIMIT 1 /*action='index',application='Camaar',controller='disciplinas'*/[0m
+  [1m[36mCACHE Disciplina Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" WHERE "disciplinas"."curso_id" = 3[0m
+  ↳ app/views/cursos/index.html.erb:49
+  ↳ app/views/disciplinas/index.html.erb:50
+  Rendered cursos/index.html.erb within layouts/application (Duration: 225.6ms | GC: 9.9ms)
+  [1m[36mCACHE Curso Load (0.0ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" WHERE "cursos"."id" = 1 LIMIT 1[0m
+  ↳ app/views/disciplinas/index.html.erb:50
+  Rendered layout layouts/application.html.erb (Duration: 241.0ms | GC: 9.9ms)
+Completed 200 OK in 554ms (Views: 255.4ms | ActiveRecord: 27.3ms (9 queries, 3 cached) | GC: 38.8ms)
+
+
+  [1m[36mCACHE Curso Load (0.1ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" WHERE "cursos"."id" = 1 LIMIT 1[0m
+  ↳ app/views/disciplinas/index.html.erb:50
+  [1m[36mCurso Load (0.3ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" WHERE "cursos"."id" = 2 LIMIT 1 /*action='index',application='Camaar',controller='disciplinas'*/[0m
+  ↳ app/views/disciplinas/index.html.erb:50
+  [1m[36mCACHE Curso Load (0.1ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" WHERE "cursos"."id" = 2 LIMIT 1[0m
+  ↳ app/views/disciplinas/index.html.erb:50
+  [1m[36mCACHE Curso Load (0.2ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" WHERE "cursos"."id" = 2 LIMIT 1[0m
+  ↳ app/views/disciplinas/index.html.erb:50
+  Rendered disciplinas/index.html.erb within layouts/application (Duration: 204.6ms | GC: 5.1ms)
+  Rendered layout layouts/application.html.erb (Duration: 226.4ms | GC: 6.5ms)
+Completed 200 OK in 548ms (Views: 234.2ms | ActiveRecord: 2.3ms (9 queries, 4 cached) | GC: 39.6ms)
+
+
+Started GET "/cursos" for 127.0.0.1 at 2025-07-13 19:08:44 -0300
+Processing by CursosController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='cursos'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering cursos/index.html.erb within layouts/application
+  [1m[36mCurso Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "cursos" LIMIT 1 /*action='index',application='Camaar',controller='cursos'*/[0m
+  ↳ app/views/cursos/index.html.erb:39
+  [1m[36mCurso Load (0.3ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" ORDER BY "cursos"."nome" ASC /*action='index',application='Camaar',controller='cursos'*/[0m
+  ↳ app/views/cursos/index.html.erb:41
+  [1m[36mDisciplina Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" WHERE "disciplinas"."curso_id" = 2 /*action='index',application='Camaar',controller='cursos'*/[0m
+  ↳ app/views/cursos/index.html.erb:49
+  [1m[36mCACHE Disciplina Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" WHERE "disciplinas"."curso_id" = 2[0m
+  ↳ app/views/cursos/index.html.erb:49
+  [1m[36mDisciplina Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" WHERE "disciplinas"."curso_id" = 1 /*action='index',application='Camaar',controller='cursos'*/[0m
+  ↳ app/views/cursos/index.html.erb:49
+  [1m[36mCACHE Disciplina Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" WHERE "disciplinas"."curso_id" = 1[0m
+  ↳ app/views/cursos/index.html.erb:49
+  [1m[36mDisciplina Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" WHERE "disciplinas"."curso_id" = 3 /*action='index',application='Camaar',controller='cursos'*/[0m
+  ↳ app/views/cursos/index.html.erb:49
+  [1m[36mCACHE Disciplina Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" WHERE "disciplinas"."curso_id" = 3[0m
+  ↳ app/views/cursos/index.html.erb:49
+  Rendered cursos/index.html.erb within layouts/application (Duration: 32.3ms | GC: 0.6ms)
+  Rendered layout layouts/application.html.erb (Duration: 35.9ms | GC: 1.0ms)
+Completed 200 OK in 67ms (Views: 35.2ms | ActiveRecord: 2.0ms (9 queries, 3 cached) | GC: 1.0ms)
+
+
+Started GET "/disciplinas" for 127.0.0.1 at 2025-07-13 19:08:44 -0300
+Processing by DisciplinasController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='disciplinas'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering disciplinas/index.html.erb within layouts/application
+  [1m[36mDisciplina Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "disciplinas" LIMIT 1 /*action='index',application='Camaar',controller='disciplinas'*/[0m
+  ↳ app/views/disciplinas/index.html.erb:39
+  [1m[36mDisciplina Load (1.7ms)[0m  [1m[34mSELECT "disciplinas".* FROM "disciplinas" /*action='index',application='Camaar',controller='disciplinas'*/[0m
+  ↳ app/views/disciplinas/index.html.erb:41
+  [1m[36mCurso Load (0.3ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" WHERE "cursos"."id" = 1 LIMIT 1 /*action='index',application='Camaar',controller='disciplinas'*/[0m
+  ↳ app/views/disciplinas/index.html.erb:50
+  [1m[36mCACHE Curso Load (0.1ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" WHERE "cursos"."id" = 1 LIMIT 1[0m
+  ↳ app/views/disciplinas/index.html.erb:50
+  [1m[36mCACHE Curso Load (0.1ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" WHERE "cursos"."id" = 1 LIMIT 1[0m
+  ↳ app/views/disciplinas/index.html.erb:50
+  [1m[36mCurso Load (0.2ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" WHERE "cursos"."id" = 2 LIMIT 1 /*action='index',application='Camaar',controller='disciplinas'*/[0m
+  ↳ app/views/disciplinas/index.html.erb:50
+  [1m[36mCACHE Curso Load (0.1ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" WHERE "cursos"."id" = 2 LIMIT 1[0m
+  ↳ app/views/disciplinas/index.html.erb:50
+  [1m[36mCACHE Curso Load (0.0ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" WHERE "cursos"."id" = 2 LIMIT 1[0m
+  ↳ app/views/disciplinas/index.html.erb:50
+  Rendered disciplinas/index.html.erb within layouts/application (Duration: 34.2ms | GC: 1.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 37.3ms | GC: 1.0ms)
+Completed 200 OK in 71ms (Views: 35.8ms | ActiveRecord: 2.8ms (9 queries, 4 cached) | GC: 1.0ms)
+
+
+Started GET "/evaluations" for 127.0.0.1 at 2025-07-13 19:08:44 -0300
+Processing by EvaluationsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='evaluations'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering evaluations/index.html.erb within layouts/application
+  Rendered evaluations/index.html.erb within layouts/application (Duration: 0.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.6ms | GC: 0.0ms)
+Completed 200 OK in 42ms (Views: 8.5ms | ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/admin/management" for 127.0.0.1 at 2025-07-13 19:08:51 -0300
+Processing by Admin::ManagementController#index as HTML
+Started GET "/users" for 127.0.0.1 at 2025-07-13 19:08:51 -0300
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='management'*/[0m
+  [1m[36mUser Count (3.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."email" NOT IN ('admin@camaar.com', 'coordenador@camaar.com', 'professor@camaar.com', 'aluno@camaar.com') /*action='index',application='Camaar',controller='management'*/[0m
+Processing by UsersController#index as HTML
+  ↳ app/controllers/admin/management_controller.rb:93:in `check_imported_data'
+  [1m[36mDisciplina Count (2.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" /*action='index',application='Camaar',controller='management'*/[0m
+  ↳ app/controllers/admin/management_controller.rb:94:in `check_imported_data'
+Checking imported data: users=45, disciplines=6
+  Rendering layout layouts/application.html.erb
+Started GET "/cursos" for 127.0.0.1 at 2025-07-13 19:08:51 -0300
+  Rendering admin/management/index.html.erb within layouts/application
+  Rendered admin/management/index.html.erb within layouts/application (Duration: 13.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 33.0ms | GC: 0.7ms)
+Completed 200 OK in 264ms (Views: 41.0ms | ActiveRecord: 0.8ms (3 queries, 0 cached) | GC: 1.7ms)
+
+
+Processing by CursosController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='users'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (4.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."name" ASC /*action='index',application='Camaar',controller='users'*/[0m
+  ↳ app/views/users/index.html.erb:25
+  Rendered users/index.html.erb within layouts/application (Duration: 154.4ms | GC: 0.6ms)
+  Rendered layout layouts/application.html.erb (Duration: 161.4ms | GC: 0.9ms)
+Completed 200 OK in 331ms (Views: 164.7ms | ActiveRecord: 4.8ms (2 queries, 0 cached) | GC: 2.4ms)
+
+
+Started GET "/templates" for 127.0.0.1 at 2025-07-13 19:08:51 -0300
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='cursos'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering cursos/index.html.erb within layouts/application
+  [1m[36mCurso Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "cursos" LIMIT 1 /*action='index',application='Camaar',controller='cursos'*/[0m
+  ↳ app/views/cursos/index.html.erb:39
+  [1m[36mCurso Load (0.2ms)[0m  [1m[34mSELECT "cursos".* FROM "cursos" ORDER BY "cursos"."nome" ASC /*action='index',application='Camaar',controller='cursos'*/[0m
+  ↳ app/views/cursos/index.html.erb:41
+  [1m[36mDisciplina Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" WHERE "disciplinas"."curso_id" = 2 /*action='index',application='Camaar',controller='cursos'*/[0m
+  ↳ app/views/cursos/index.html.erb:49
+  [1m[36mCACHE Disciplina Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" WHERE "disciplinas"."curso_id" = 2[0m
+  ↳ app/views/cursos/index.html.erb:49
+  [1m[36mDisciplina Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" WHERE "disciplinas"."curso_id" = 1 /*action='index',application='Camaar',controller='cursos'*/[0m
+  ↳ app/views/cursos/index.html.erb:49
+  [1m[36mCACHE Disciplina Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" WHERE "disciplinas"."curso_id" = 1[0m
+  ↳ app/views/cursos/index.html.erb:49
+  [1m[36mDisciplina Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" WHERE "disciplinas"."curso_id" = 3 /*action='index',application='Camaar',controller='cursos'*/[0m
+  ↳ app/views/cursos/index.html.erb:49
+  [1m[36mCACHE Disciplina Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" WHERE "disciplinas"."curso_id" = 3[0m
+  ↳ app/views/cursos/index.html.erb:49
+  Rendered cursos/index.html.erb within layouts/application (Duration: 63.0ms | GC: 11.9ms)
+  Rendered layout layouts/application.html.erb (Duration: 73.7ms | GC: 17.6ms)
+Completed 200 OK in 342ms (Views: 75.4ms | ActiveRecord: 1.9ms (9 queries, 3 cached) | GC: 20.8ms)
+
+
+Processing by TemplatesController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='templates'*/[0m
+Started GET "/admin/management" for 127.0.0.1 at 2025-07-13 19:08:52 -0300
+  Rendering layout layouts/application.html.erb
+  Rendering templates/index.html.erb within layouts/application
+  [1m[36mTemplate Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "templates" /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:31
+  [1m[36mTemplate Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "templates" WHERE "templates"."publico_alvo" = 0 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:40
+  [1m[36mTemplate Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "templates" WHERE "templates"."publico_alvo" = 1 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:49
+  [1m[36mTemplate Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "templates" LIMIT 1 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:65
+  [1m[36mTemplate Load (6.2ms)[0m  [1m[34mSELECT "templates".* FROM "templates" /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:79
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:79
+  [1m[36mPerguntum Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 10 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:97
+  [1m[36mPerguntum Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 11 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:97
+Processing by Admin::ManagementController#index as HTML
+  Rendered templates/index.html.erb within layouts/application (Duration: 101.0ms | GC: 4.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 106.0ms | GC: 4.7ms)
+Completed 200 OK in 178ms (Views: 103.7ms | ActiveRecord: 5.0ms (9 queries, 0 cached) | GC: 6.0ms)
+
+
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='management'*/[0m
+  [1m[36mUser Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE "users"."email" NOT IN ('admin@camaar.com', 'coordenador@camaar.com', 'professor@camaar.com', 'aluno@camaar.com') /*action='index',application='Camaar',controller='management'*/[0m
+  ↳ app/controllers/admin/management_controller.rb:93:in `check_imported_data'
+  [1m[36mDisciplina Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "disciplinas" /*action='index',application='Camaar',controller='management'*/[0m
+  ↳ app/controllers/admin/management_controller.rb:94:in `check_imported_data'
+Checking imported data: users=45, disciplines=6
+  Rendering layout layouts/application.html.erb
+  Rendering admin/management/index.html.erb within layouts/application
+  Rendered admin/management/index.html.erb within layouts/application (Duration: 0.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | GC: 0.0ms)
+Completed 200 OK in 52ms (Views: 3.8ms | ActiveRecord: 0.9ms (3 queries, 0 cached) | GC: 0.9ms)
+
+
+Started GET "/templates" for 127.0.0.1 at 2025-07-13 19:08:55 -0300
+Processing by TemplatesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='templates'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering templates/index.html.erb within layouts/application
+  [1m[36mTemplate Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "templates" /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:31
+  [1m[36mTemplate Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "templates" WHERE "templates"."publico_alvo" = 0 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:40
+  [1m[36mTemplate Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "templates" WHERE "templates"."publico_alvo" = 1 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:49
+  [1m[36mTemplate Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "templates" LIMIT 1 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:65
+  [1m[36mTemplate Load (0.4ms)[0m  [1m[34mSELECT "templates".* FROM "templates" /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:79
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:79
+  [1m[36mPerguntum Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 10 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:97
+  [1m[36mPerguntum Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 11 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:97
+  Rendered templates/index.html.erb within layouts/application (Duration: 30.3ms | GC: 1.4ms)
+  Rendered layout layouts/application.html.erb (Duration: 34.1ms | GC: 1.4ms)
+Completed 200 OK in 65ms (Views: 32.6ms | ActiveRecord: 2.6ms (9 queries, 0 cached) | GC: 1.4ms)
+
+
+Started GET "/templates" for 127.0.0.1 at 2025-07-13 19:08:56 -0300
+Processing by TemplatesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='templates'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering templates/index.html.erb within layouts/application
+  [1m[36mTemplate Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "templates" /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:31
+  [1m[36mTemplate Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "templates" WHERE "templates"."publico_alvo" = 0 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:40
+  [1m[36mTemplate Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "templates" WHERE "templates"."publico_alvo" = 1 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:49
+  [1m[36mTemplate Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "templates" LIMIT 1 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:65
+  [1m[36mTemplate Load (1.4ms)[0m  [1m[34mSELECT "templates".* FROM "templates" /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:79
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:79
+  [1m[36mPerguntum Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 10 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:97
+  [1m[36mPerguntum Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 11 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:97
+  Rendered templates/index.html.erb within layouts/application (Duration: 40.2ms | GC: 0.8ms)
+  Rendered layout layouts/application.html.erb (Duration: 50.4ms | GC: 1.8ms)
+Completed 200 OK in 84ms (Views: 47.3ms | ActiveRecord: 4.2ms (9 queries, 0 cached) | GC: 2.5ms)
+
+
+Started GET "/templates/10" for 127.0.0.1 at 2025-07-13 19:09:07 -0300
+Processing by TemplatesController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  [1m[36mTemplate Load (0.2ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id" = 10 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:82:in `set_template'
+  Rendering layout layouts/application.html.erb
+  Rendering templates/show.html.erb within layouts/application
+  [1m[36mDisciplina Load (0.3ms)[0m  [1m[34mSELECT "disciplinas".* FROM "disciplinas" WHERE "disciplinas"."id" = 1 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:20
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:62
+  [1m[36mPerguntum Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 10 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:76
+  [1m[36mPerguntum Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 10 AND "pergunta"."obrigatoria" = 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:82
+  [1m[36mPerguntum Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) AS "count_all", "pergunta"."tipo" AS "pergunta_tipo" FROM "pergunta" WHERE "pergunta"."template_id" = 10 GROUP BY "pergunta"."tipo" /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:92
+  [1m[36mCACHE Perguntum Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 10[0m
+  ↳ app/views/templates/show.html.erb:149
+  [1m[36mPerguntum Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "pergunta" WHERE "pergunta"."template_id" = 10 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:153
+  [1m[36mPerguntum Load (0.4ms)[0m  [1m[34mSELECT "pergunta".* FROM "pergunta" WHERE "pergunta"."template_id" = 10 ORDER BY "pergunta"."id" ASC /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:154:in `each_with_index'
+  [1m[36mOpcoesPerguntum Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "opcoes_pergunta" WHERE "opcoes_pergunta"."pergunta_id" = 10 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:176
+  Rendered templates/show.html.erb within layouts/application (Duration: 54.3ms | GC: 1.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 57.0ms | GC: 1.3ms)
+Completed 200 OK in 91ms (Views: 54.3ms | ActiveRecord: 4.0ms (11 queries, 1 cached) | GC: 2.1ms)
+
+
+Started GET "/templates/10/edit" for 127.0.0.1 at 2025-07-13 19:09:08 -0300
+Processing by TemplatesController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='edit',application='Camaar',controller='templates'*/[0m
+  [1m[36mTemplate Load (0.4ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id" = 10 LIMIT 1 /*action='edit',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:82:in `set_template'
+  Rendering layout layouts/application.html.erb
+  Rendering templates/edit.html.erb within layouts/application
+  [1m[36mDisciplina Load (0.2ms)[0m  [1m[34mSELECT "disciplinas".* FROM "disciplinas" /*action='edit',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/edit.html.erb:94
+  [1m[36mPerguntum Load (0.5ms)[0m  [1m[34mSELECT "pergunta".* FROM "pergunta" WHERE "pergunta"."template_id" = 10 ORDER BY "pergunta"."id" ASC /*action='edit',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/edit.html.erb:117:in `each_with_index'
+  [1m[36mOpcoesPerguntum Load (0.2ms)[0m  [1m[34mSELECT "opcoes_pergunta".* FROM "opcoes_pergunta" WHERE "opcoes_pergunta"."pergunta_id" = 9 /*action='edit',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/edit.html.erb:157:in `each_with_index'
+  [1m[36mOpcoesPerguntum Load (0.2ms)[0m  [1m[34mSELECT "opcoes_pergunta".* FROM "opcoes_pergunta" WHERE "opcoes_pergunta"."pergunta_id" = 10 /*action='edit',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/edit.html.erb:157:in `each_with_index'
+  [1m[36mOpcoesPerguntum Load (0.2ms)[0m  [1m[34mSELECT "opcoes_pergunta".* FROM "opcoes_pergunta" WHERE "opcoes_pergunta"."pergunta_id" = 11 /*action='edit',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/edit.html.erb:157:in `each_with_index'
+  [1m[36mOpcoesPerguntum Load (0.3ms)[0m  [1m[34mSELECT "opcoes_pergunta".* FROM "opcoes_pergunta" WHERE "opcoes_pergunta"."pergunta_id" = 12 /*action='edit',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/edit.html.erb:157:in `each_with_index'
+  [1m[36mPerguntum Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 10 /*action='edit',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/edit.html.erb:279
+  Rendered templates/edit.html.erb within layouts/application (Duration: 34.1ms | GC: 0.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 37.2ms | GC: 0.5ms)
+Completed 200 OK in 72ms (Views: 36.2ms | ActiveRecord: 2.3ms (9 queries, 0 cached) | GC: 1.0ms)
+
+
+Started PATCH "/templates/10" for 127.0.0.1 at 2025-07-13 19:10:30 -0300
+Processing by TemplatesController#update as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "template"=>{"titulo"=>"Avaliação Semestral", "descricao"=>"Indique como foi o rendimento acadêmico de seus alunos!", "publico_alvo"=>"professores", "disciplina_id"=>"1"}, "perguntas"=>{"9"=>{"texto"=>"Como foi a sua percepção sobre os alunos neste semestre ?", "tipo"=>"subjetiva", "obrigatoria"=>"on", "id"=>"9"}, "10"=>{"texto"=>"Qual foi a menção com maior quantidade de alunos?", "tipo"=>"multipla_escolha", "obrigatoria"=>"on", "id"=>"10"}, "11"=>{"texto"=>"Teste pergunta", "tipo"=>"subjetiva", "obrigatoria"=>"on", "id"=>"11"}, "12"=>{"texto"=>"Pergunta de teste \#{Time.current}", "tipo"=>"verdadeiro_falso", "obrigatoria"=>"on", "id"=>"12"}}, "commit"=>"Salvar Alterações", "id"=>"10"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='update',application='Camaar',controller='templates'*/[0m
+  [1m[36mTemplate Load (0.2ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id" = 10 LIMIT 1 /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:82:in `set_template'
+=== TEMPLATE UPDATE INICIADO ===
+Parâmetros completos: #<ActionController::Parameters {"_method"=>"patch", "authenticity_token"=>"ljVgNImxSfn-Imsns7bQV-OzVqY4A7XrInY46aLU8LFrSSo3-HW1rrGDT0GM0N9weJzOjP_Fj9U0q4URH-W9Ow", "template"=>{"titulo"=>"Avaliação Semestral", "descricao"=>"Indique como foi o rendimento acadêmico de seus alunos!", "publico_alvo"=>"professores", "disciplina_id"=>"1"}, "perguntas"=>{"9"=>{"texto"=>"Como foi a sua percepção sobre os alunos neste semestre ?", "tipo"=>"subjetiva", "obrigatoria"=>"on", "id"=>"9"}, "10"=>{"texto"=>"Qual foi a menção com maior quantidade de alunos?", "tipo"=>"multipla_escolha", "obrigatoria"=>"on", "id"=>"10"}, "11"=>{"texto"=>"Teste pergunta", "tipo"=>"subjetiva", "obrigatoria"=>"on", "id"=>"11"}, "12"=>{"texto"=>"Pergunta de teste \#{Time.current}", "tipo"=>"verdadeiro_falso", "obrigatoria"=>"on", "id"=>"12"}}, "commit"=>"Salvar Alterações", "controller"=>"templates", "action"=>"update", "id"=>"10"} permitted: false>
+[31mUnpermitted parameters: :_method, :authenticity_token, :commit, :id. Context: { controller: TemplatesController, action: update, request: #<ActionDispatch::Request:0x0000708ef2c68210>, params: {"_method"=>"patch", "authenticity_token"=>"[FILTERED]", "template"=>{"titulo"=>"Avaliação Semestral", "descricao"=>"Indique como foi o rendimento acadêmico de seus alunos!", "publico_alvo"=>"professores", "disciplina_id"=>"1"}, "perguntas"=>{"9"=>{"texto"=>"Como foi a sua percepção sobre os alunos neste semestre ?", "tipo"=>"subjetiva", "obrigatoria"=>"on", "id"=>"9"}, "10"=>{"texto"=>"Qual foi a menção com maior quantidade de alunos?", "tipo"=>"multipla_escolha", "obrigatoria"=>"on", "id"=>"10"}, "11"=>{"texto"=>"Teste pergunta", "tipo"=>"subjetiva", "obrigatoria"=>"on", "id"=>"11"}, "12"=>{"texto"=>"Pergunta de teste \#{Time.current}", "tipo"=>"verdadeiro_falso", "obrigatoria"=>"on", "id"=>"12"}}, "commit"=>"Salvar Alterações", "controller"=>"templates", "action"=>"update", "id"=>"10"} }[0m
+Template params: #<ActionController::Parameters {"titulo"=>"Avaliação Semestral", "descricao"=>"Indique como foi o rendimento acadêmico de seus alunos!", "publico_alvo"=>"professores", "disciplina_id"=>"1"} permitted: true>
+[31mUnpermitted parameters: :_method, :authenticity_token, :commit, :id. Context: { controller: TemplatesController, action: update, request: #<ActionDispatch::Request:0x0000708ef2c68210>, params: {"_method"=>"patch", "authenticity_token"=>"[FILTERED]", "template"=>{"titulo"=>"Avaliação Semestral", "descricao"=>"Indique como foi o rendimento acadêmico de seus alunos!", "publico_alvo"=>"professores", "disciplina_id"=>"1"}, "perguntas"=>{"9"=>{"texto"=>"Como foi a sua percepção sobre os alunos neste semestre ?", "tipo"=>"subjetiva", "obrigatoria"=>"on", "id"=>"9"}, "10"=>{"texto"=>"Qual foi a menção com maior quantidade de alunos?", "tipo"=>"multipla_escolha", "obrigatoria"=>"on", "id"=>"10"}, "11"=>{"texto"=>"Teste pergunta", "tipo"=>"subjetiva", "obrigatoria"=>"on", "id"=>"11"}, "12"=>{"texto"=>"Pergunta de teste \#{Time.current}", "tipo"=>"verdadeiro_falso", "obrigatoria"=>"on", "id"=>"12"}}, "commit"=>"Salvar Alterações", "controller"=>"templates", "action"=>"update", "id"=>"10"} }[0m
+Template atualizado com sucesso
+  [1m[36mPerguntum Load (0.3ms)[0m  [1m[34mSELECT "pergunta".* FROM "pergunta" WHERE "pergunta"."template_id" = 10 AND "pergunta"."id" = 9 LIMIT 1 /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:136:in `block in process_perguntas_update'
+  [1m[36mOpcoesPerguntum Load (0.2ms)[0m  [1m[34mSELECT "opcoes_pergunta".* FROM "opcoes_pergunta" WHERE "opcoes_pergunta"."pergunta_id" = 9 /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:145:in `block in process_perguntas_update'
+  [1m[36mPerguntum Load (0.3ms)[0m  [1m[34mSELECT "pergunta".* FROM "pergunta" WHERE "pergunta"."template_id" = 10 AND "pergunta"."id" = 10 LIMIT 1 /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:136:in `block in process_perguntas_update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:137:in `block in process_perguntas_update'
+  [1m[36mPerguntum Update (2.8ms)[0m  [1m[33mUPDATE "pergunta" SET "texto" = 'Qual foi a menção com maior quantidade de alunos?', "updated_at" = '2025-07-13 22:10:30.612704' WHERE "pergunta"."id" = 10 /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:137:in `block in process_perguntas_update'
+  [1m[36mTRANSACTION (76.9ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:137:in `block in process_perguntas_update'
+  [1m[36mOpcoesPerguntum Load (0.2ms)[0m  [1m[34mSELECT "opcoes_pergunta".* FROM "opcoes_pergunta" WHERE "opcoes_pergunta"."pergunta_id" = 10 /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:145:in `block in process_perguntas_update'
+  [1m[36mPerguntum Load (0.2ms)[0m  [1m[34mSELECT "pergunta".* FROM "pergunta" WHERE "pergunta"."template_id" = 10 AND "pergunta"."id" = 11 LIMIT 1 /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:136:in `block in process_perguntas_update'
+  [1m[36mOpcoesPerguntum Load (0.4ms)[0m  [1m[34mSELECT "opcoes_pergunta".* FROM "opcoes_pergunta" WHERE "opcoes_pergunta"."pergunta_id" = 11 /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:145:in `block in process_perguntas_update'
+  [1m[36mPerguntum Load (0.2ms)[0m  [1m[34mSELECT "pergunta".* FROM "pergunta" WHERE "pergunta"."template_id" = 10 AND "pergunta"."id" = 12 LIMIT 1 /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:136:in `block in process_perguntas_update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:137:in `block in process_perguntas_update'
+  [1m[36mPerguntum Update (2.3ms)[0m  [1m[33mUPDATE "pergunta" SET "tipo" = 0, "updated_at" = '2025-07-13 22:10:30.714380' WHERE "pergunta"."id" = 12 /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:137:in `block in process_perguntas_update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:137:in `block in process_perguntas_update'
+  [1m[36mOpcoesPerguntum Load (0.3ms)[0m  [1m[34mSELECT "opcoes_pergunta".* FROM "opcoes_pergunta" WHERE "opcoes_pergunta"."pergunta_id" = 12 /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:145:in `block in process_perguntas_update'
+  [1m[36mPerguntum Load (0.3ms)[0m  [1m[34mSELECT "pergunta".* FROM "pergunta" WHERE "pergunta"."template_id" = 10 AND "pergunta"."id" NOT IN (9, 10, 11, 12) /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:166:in `process_perguntas_update'
+Redirected to http://localhost:3000/templates/10
+Completed 302 Found in 189ms (ActiveRecord: 84.8ms (13 queries, 0 cached) | GC: 16.4ms)
+
+
+Started GET "/templates/10" for 127.0.0.1 at 2025-07-13 19:10:30 -0300
+Processing by TemplatesController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  [1m[36mTemplate Load (0.2ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id" = 10 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:82:in `set_template'
+  Rendering layout layouts/application.html.erb
+  Rendering templates/show.html.erb within layouts/application
+  [1m[36mDisciplina Load (0.2ms)[0m  [1m[34mSELECT "disciplinas".* FROM "disciplinas" WHERE "disciplinas"."id" = 1 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:20
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:62
+  [1m[36mPerguntum Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 10 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:76
+  [1m[36mPerguntum Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 10 AND "pergunta"."obrigatoria" = 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:82
+  [1m[36mPerguntum Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) AS "count_all", "pergunta"."tipo" AS "pergunta_tipo" FROM "pergunta" WHERE "pergunta"."template_id" = 10 GROUP BY "pergunta"."tipo" /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:92
+  [1m[36mCACHE Perguntum Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 10[0m
+  ↳ app/views/templates/show.html.erb:149
+  [1m[36mPerguntum Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "pergunta" WHERE "pergunta"."template_id" = 10 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:153
+  [1m[36mPerguntum Load (0.2ms)[0m  [1m[34mSELECT "pergunta".* FROM "pergunta" WHERE "pergunta"."template_id" = 10 ORDER BY "pergunta"."id" ASC /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:154:in `each_with_index'
+  [1m[36mOpcoesPerguntum Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "opcoes_pergunta" WHERE "opcoes_pergunta"."pergunta_id" = 10 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:176
+  Rendered templates/show.html.erb within layouts/application (Duration: 29.4ms | GC: 2.4ms)
+  Rendered layout layouts/application.html.erb (Duration: 32.3ms | GC: 2.4ms)
+Completed 200 OK in 62ms (Views: 31.0ms | ActiveRecord: 2.3ms (11 queries, 1 cached) | GC: 2.4ms)
+
+
+Started GET "/assets/figma_custom.css" for 127.0.0.1 at 2025-07-13 19:10:31 -0300
+Started GET "/templates" for 127.0.0.1 at 2025-07-13 19:10:34 -0300
+Processing by TemplatesController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='templates'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering templates/index.html.erb within layouts/application
+  [1m[36mTemplate Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "templates" /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:31
+  [1m[36mTemplate Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "templates" WHERE "templates"."publico_alvo" = 0 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:40
+  [1m[36mTemplate Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "templates" WHERE "templates"."publico_alvo" = 1 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:49
+  [1m[36mTemplate Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "templates" LIMIT 1 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:65
+  [1m[36mTemplate Load (0.3ms)[0m  [1m[34mSELECT "templates".* FROM "templates" /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:79
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:79
+  [1m[36mPerguntum Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 10 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:97
+  [1m[36mPerguntum Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 11 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:97
+  Rendered templates/index.html.erb within layouts/application (Duration: 34.0ms | GC: 0.6ms)
+  Rendered layout layouts/application.html.erb (Duration: 38.9ms | GC: 0.6ms)
+Completed 200 OK in 74ms (Views: 37.8ms | ActiveRecord: 2.6ms (9 queries, 0 cached) | GC: 1.2ms)
+
+
+Started GET "/templates/11" for 127.0.0.1 at 2025-07-13 19:10:38 -0300
+Processing by TemplatesController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  [1m[36mTemplate Load (0.2ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id" = 11 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:82:in `set_template'
+  Rendering layout layouts/application.html.erb
+  Rendering templates/show.html.erb within layouts/application
+  [1m[36mDisciplina Load (0.3ms)[0m  [1m[34mSELECT "disciplinas".* FROM "disciplinas" WHERE "disciplinas"."id" = 3 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:20
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:62
+  [1m[36mPerguntum Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 11 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:76
+  [1m[36mPerguntum Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 11 AND "pergunta"."obrigatoria" = 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:82
+  [1m[36mPerguntum Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) AS "count_all", "pergunta"."tipo" AS "pergunta_tipo" FROM "pergunta" WHERE "pergunta"."template_id" = 11 GROUP BY "pergunta"."tipo" /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:92
+  [1m[36mCACHE Perguntum Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 11[0m
+  ↳ app/views/templates/show.html.erb:149
+  [1m[36mPerguntum Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "pergunta" WHERE "pergunta"."template_id" = 11 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:153
+  [1m[36mPerguntum Load (0.5ms)[0m  [1m[34mSELECT "pergunta".* FROM "pergunta" WHERE "pergunta"."template_id" = 11 ORDER BY "pergunta"."id" ASC /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:154:in `each_with_index'
+  [1m[36mOpcoesPerguntum Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "opcoes_pergunta" WHERE "opcoes_pergunta"."pergunta_id" = 13 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:176
+  [1m[36mOpcoesPerguntum Load (0.4ms)[0m  [1m[34mSELECT "opcoes_pergunta".* FROM "opcoes_pergunta" WHERE "opcoes_pergunta"."pergunta_id" = 13 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:180:in `each_with_index'
+  Rendered templates/show.html.erb within layouts/application (Duration: 67.4ms | GC: 2.1ms)
+  Rendered layout layouts/application.html.erb (Duration: 74.9ms | GC: 2.1ms)
+Completed 200 OK in 115ms (Views: 73.6ms | ActiveRecord: 3.5ms (12 queries, 1 cached) | GC: 2.8ms)
+
+
+Started GET "/templates/11/edit" for 127.0.0.1 at 2025-07-13 19:10:38 -0300
+Processing by TemplatesController#edit as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='edit',application='Camaar',controller='templates'*/[0m
+  [1m[36mTemplate Load (0.2ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id" = 11 LIMIT 1 /*action='edit',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:82:in `set_template'
+  Rendering layout layouts/application.html.erb
+  Rendering templates/edit.html.erb within layouts/application
+  [1m[36mDisciplina Load (0.5ms)[0m  [1m[34mSELECT "disciplinas".* FROM "disciplinas" /*action='edit',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/edit.html.erb:94
+  [1m[36mPerguntum Load (0.2ms)[0m  [1m[34mSELECT "pergunta".* FROM "pergunta" WHERE "pergunta"."template_id" = 11 ORDER BY "pergunta"."id" ASC /*action='edit',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/edit.html.erb:117:in `each_with_index'
+  [1m[36mOpcoesPerguntum Load (0.3ms)[0m  [1m[34mSELECT "opcoes_pergunta".* FROM "opcoes_pergunta" WHERE "opcoes_pergunta"."pergunta_id" = 13 /*action='edit',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/edit.html.erb:157:in `each_with_index'
+  [1m[36mOpcoesPerguntum Load (0.2ms)[0m  [1m[34mSELECT "opcoes_pergunta".* FROM "opcoes_pergunta" WHERE "opcoes_pergunta"."pergunta_id" = 14 /*action='edit',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/edit.html.erb:157:in `each_with_index'
+  [1m[36mOpcoesPerguntum Load (0.2ms)[0m  [1m[34mSELECT "opcoes_pergunta".* FROM "opcoes_pergunta" WHERE "opcoes_pergunta"."pergunta_id" = 15 /*action='edit',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/edit.html.erb:157:in `each_with_index'
+  [1m[36mPerguntum Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 11 /*action='edit',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/edit.html.erb:279
+  Rendered templates/edit.html.erb within layouts/application (Duration: 24.6ms | GC: 0.9ms)
+  Rendered layout layouts/application.html.erb (Duration: 28.2ms | GC: 0.9ms)
+Completed 200 OK in 60ms (Views: 27.5ms | ActiveRecord: 1.9ms (8 queries, 0 cached) | GC: 0.9ms)
+
+
+Started GET "/templates/11/edit" for 127.0.0.1 at 2025-07-13 19:17:29 -0300
+Processing by TemplatesController#edit as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='edit',application='Camaar',controller='templates'*/[0m
+  [1m[36mTemplate Load (0.2ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id" = 11 LIMIT 1 /*action='edit',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:82:in `set_template'
+  Rendering layout layouts/application.html.erb
+  Rendering templates/edit.html.erb within layouts/application
+  [1m[36mDisciplina Load (0.4ms)[0m  [1m[34mSELECT "disciplinas".* FROM "disciplinas" /*action='edit',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/edit.html.erb:94
+  [1m[36mPerguntum Load (0.2ms)[0m  [1m[34mSELECT "pergunta".* FROM "pergunta" WHERE "pergunta"."template_id" = 11 ORDER BY "pergunta"."id" ASC /*action='edit',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/edit.html.erb:117:in `each_with_index'
+  [1m[36mOpcoesPerguntum Load (0.2ms)[0m  [1m[34mSELECT "opcoes_pergunta".* FROM "opcoes_pergunta" WHERE "opcoes_pergunta"."pergunta_id" = 13 /*action='edit',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/edit.html.erb:157:in `each_with_index'
+  [1m[36mOpcoesPerguntum Load (0.3ms)[0m  [1m[34mSELECT "opcoes_pergunta".* FROM "opcoes_pergunta" WHERE "opcoes_pergunta"."pergunta_id" = 14 /*action='edit',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/edit.html.erb:157:in `each_with_index'
+  [1m[36mOpcoesPerguntum Load (0.3ms)[0m  [1m[34mSELECT "opcoes_pergunta".* FROM "opcoes_pergunta" WHERE "opcoes_pergunta"."pergunta_id" = 15 /*action='edit',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/edit.html.erb:157:in `each_with_index'
+  [1m[36mPerguntum Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 11 /*action='edit',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/edit.html.erb:279
+  Rendered templates/edit.html.erb within layouts/application (Duration: 62.5ms | GC: 0.4ms)
+  Rendered layout layouts/application.html.erb (Duration: 71.5ms | GC: 0.4ms)
+Completed 200 OK in 168ms (Views: 73.6ms | ActiveRecord: 3.8ms (8 queries, 0 cached) | GC: 0.7ms)
+
+
+Started GET "/assets/figma_custom.css" for 127.0.0.1 at 2025-07-13 19:17:30 -0300
+Started PATCH "/templates/11" for 127.0.0.1 at 2025-07-13 19:18:33 -0300
+Processing by TemplatesController#update as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "template"=>{"titulo"=>"iubffdkmvpof", "descricao"=>"cvkn cv bkdfpomvr", "publico_alvo"=>"alunos", "disciplina_id"=>"3"}, "perguntas"=>{"13"=>{"texto"=>"sdbjvsdbvjiscskn", "tipo"=>"multipla_escolha", "opcoes"=>{"11"=>"A JCANOVCLKDL", "12"=>"akd jvjdkbnokgbkg1!!!", "13"=>"j xcsdmvsdj fofpnkdvbsdnf", "new_4"=>"DVDFNJHTKJHN ZDBDBDHHD"}, "obrigatoria"=>"on", "id"=>"13"}, "14"=>{"texto"=>"?ckkvsk vscl ?", "tipo"=>"verdadeiro_falso", "obrigatoria"=>"on", "id"=>"14"}, "15"=>{"texto"=>"xc mdfj vwokdqa jvsddifvpowadxṕc :?", "tipo"=>"subjetiva", "obrigatoria"=>"on", "id"=>"15"}, "new_4"=>{"texto"=>"FDBFGGJFJGXBBGHTGH???????????????????", "tipo"=>"verdadeiro_falso", "obrigatoria"=>"on"}, "new_5"=>{"texto"=>"DFBSGHJYTKHSGDJG?", "tipo"=>"multipla_escolha", "opcoes"=>{"new_1"=>"IH9UBGHBU", "new_2"=>"JOIBUYHGO"}}, "new_6"=>{"texto"=>"HVU JUNJÇK KOKBG Y??????????????????????/", "tipo"=>"verdadeiro_falso", "obrigatoria"=>"on"}, "new_7"=>{"texto"=>"JK BHVGHKFCUETRH?", "tipo"=>"verdadeiro_falso", "obrigatoria"=>"on"}}, "commit"=>"Salvar Alterações", "id"=>"11"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='update',application='Camaar',controller='templates'*/[0m
+  [1m[36mTemplate Load (0.3ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id" = 11 LIMIT 1 /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:82:in `set_template'
+=== TEMPLATE UPDATE INICIADO ===
+Parâmetros completos: #<ActionController::Parameters {"_method"=>"patch", "authenticity_token"=>"ZFQKUWExKXnO1IVQEhTu6F0zCFXGVlG_pmeDYml1bV8idBNNSSrejRrBKXUv9yrRwGu_8K4e3CCanq1TovzC4Q", "template"=>{"titulo"=>"iubffdkmvpof", "descricao"=>"cvkn cv bkdfpomvr", "publico_alvo"=>"alunos", "disciplina_id"=>"3"}, "perguntas"=>{"13"=>{"texto"=>"sdbjvsdbvjiscskn", "tipo"=>"multipla_escolha", "opcoes"=>{"11"=>"A JCANOVCLKDL", "12"=>"akd jvjdkbnokgbkg1!!!", "13"=>"j xcsdmvsdj fofpnkdvbsdnf", "new_4"=>"DVDFNJHTKJHN ZDBDBDHHD"}, "obrigatoria"=>"on", "id"=>"13"}, "14"=>{"texto"=>"?ckkvsk vscl ?", "tipo"=>"verdadeiro_falso", "obrigatoria"=>"on", "id"=>"14"}, "15"=>{"texto"=>"xc mdfj vwokdqa jvsddifvpowadxṕc :?", "tipo"=>"subjetiva", "obrigatoria"=>"on", "id"=>"15"}, "new_4"=>{"texto"=>"FDBFGGJFJGXBBGHTGH???????????????????", "tipo"=>"verdadeiro_falso", "obrigatoria"=>"on"}, "new_5"=>{"texto"=>"DFBSGHJYTKHSGDJG?", "tipo"=>"multipla_escolha", "opcoes"=>{"new_1"=>"IH9UBGHBU", "new_2"=>"JOIBUYHGO"}}, "new_6"=>{"texto"=>"HVU JUNJÇK KOKBG Y??????????????????????/", "tipo"=>"verdadeiro_falso", "obrigatoria"=>"on"}, "new_7"=>{"texto"=>"JK BHVGHKFCUETRH?", "tipo"=>"verdadeiro_falso", "obrigatoria"=>"on"}}, "commit"=>"Salvar Alterações", "controller"=>"templates", "action"=>"update", "id"=>"11"} permitted: false>
+[31mUnpermitted parameters: :_method, :authenticity_token, :commit, :id. Context: { controller: TemplatesController, action: update, request: #<ActionDispatch::Request:0x0000708ef1929ed8>, params: {"_method"=>"patch", "authenticity_token"=>"[FILTERED]", "template"=>{"titulo"=>"iubffdkmvpof", "descricao"=>"cvkn cv bkdfpomvr", "publico_alvo"=>"alunos", "disciplina_id"=>"3"}, "perguntas"=>{"13"=>{"texto"=>"sdbjvsdbvjiscskn", "tipo"=>"multipla_escolha", "opcoes"=>{"11"=>"A JCANOVCLKDL", "12"=>"akd jvjdkbnokgbkg1!!!", "13"=>"j xcsdmvsdj fofpnkdvbsdnf", "new_4"=>"DVDFNJHTKJHN ZDBDBDHHD"}, "obrigatoria"=>"on", "id"=>"13"}, "14"=>{"texto"=>"?ckkvsk vscl ?", "tipo"=>"verdadeiro_falso", "obrigatoria"=>"on", "id"=>"14"}, "15"=>{"texto"=>"xc mdfj vwokdqa jvsddifvpowadxṕc :?", "tipo"=>"subjetiva", "obrigatoria"=>"on", "id"=>"15"}, "new_4"=>{"texto"=>"FDBFGGJFJGXBBGHTGH???????????????????", "tipo"=>"verdadeiro_falso", "obrigatoria"=>"on"}, "new_5"=>{"texto"=>"DFBSGHJYTKHSGDJG?", "tipo"=>"multipla_escolha", "opcoes"=>{"new_1"=>"IH9UBGHBU", "new_2"=>"JOIBUYHGO"}}, "new_6"=>{"texto"=>"HVU JUNJÇK KOKBG Y??????????????????????/", "tipo"=>"verdadeiro_falso", "obrigatoria"=>"on"}, "new_7"=>{"texto"=>"JK BHVGHKFCUETRH?", "tipo"=>"verdadeiro_falso", "obrigatoria"=>"on"}}, "commit"=>"Salvar Alterações", "controller"=>"templates", "action"=>"update", "id"=>"11"} }[0m
+Template params: #<ActionController::Parameters {"titulo"=>"iubffdkmvpof", "descricao"=>"cvkn cv bkdfpomvr", "publico_alvo"=>"alunos", "disciplina_id"=>"3"} permitted: true>
+[31mUnpermitted parameters: :_method, :authenticity_token, :commit, :id. Context: { controller: TemplatesController, action: update, request: #<ActionDispatch::Request:0x0000708ef1929ed8>, params: {"_method"=>"patch", "authenticity_token"=>"[FILTERED]", "template"=>{"titulo"=>"iubffdkmvpof", "descricao"=>"cvkn cv bkdfpomvr", "publico_alvo"=>"alunos", "disciplina_id"=>"3"}, "perguntas"=>{"13"=>{"texto"=>"sdbjvsdbvjiscskn", "tipo"=>"multipla_escolha", "opcoes"=>{"11"=>"A JCANOVCLKDL", "12"=>"akd jvjdkbnokgbkg1!!!", "13"=>"j xcsdmvsdj fofpnkdvbsdnf", "new_4"=>"DVDFNJHTKJHN ZDBDBDHHD"}, "obrigatoria"=>"on", "id"=>"13"}, "14"=>{"texto"=>"?ckkvsk vscl ?", "tipo"=>"verdadeiro_falso", "obrigatoria"=>"on", "id"=>"14"}, "15"=>{"texto"=>"xc mdfj vwokdqa jvsddifvpowadxṕc :?", "tipo"=>"subjetiva", "obrigatoria"=>"on", "id"=>"15"}, "new_4"=>{"texto"=>"FDBFGGJFJGXBBGHTGH???????????????????", "tipo"=>"verdadeiro_falso", "obrigatoria"=>"on"}, "new_5"=>{"texto"=>"DFBSGHJYTKHSGDJG?", "tipo"=>"multipla_escolha", "opcoes"=>{"new_1"=>"IH9UBGHBU", "new_2"=>"JOIBUYHGO"}}, "new_6"=>{"texto"=>"HVU JUNJÇK KOKBG Y??????????????????????/", "tipo"=>"verdadeiro_falso", "obrigatoria"=>"on"}, "new_7"=>{"texto"=>"JK BHVGHKFCUETRH?", "tipo"=>"verdadeiro_falso", "obrigatoria"=>"on"}}, "commit"=>"Salvar Alterações", "controller"=>"templates", "action"=>"update", "id"=>"11"} }[0m
+Template atualizado com sucesso
+  [1m[36mPerguntum Load (0.5ms)[0m  [1m[34mSELECT "pergunta".* FROM "pergunta" WHERE "pergunta"."template_id" = 11 AND "pergunta"."id" = 13 LIMIT 1 /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:136:in `block in process_perguntas_update'
+  [1m[36mOpcoesPerguntum Load (1.0ms)[0m  [1m[34mSELECT "opcoes_pergunta".* FROM "opcoes_pergunta" WHERE "opcoes_pergunta"."pergunta_id" = 13 /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:145:in `block in process_perguntas_update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:145:in `block in process_perguntas_update'
+  [1m[36mRespostum Load (0.3ms)[0m  [1m[34mSELECT "resposta".* FROM "resposta" WHERE "resposta"."opcao_id" = 11 /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:145:in `block in process_perguntas_update'
+  [1m[36mOpcoesPerguntum Destroy (11.5ms)[0m  [1m[31mDELETE FROM "opcoes_pergunta" WHERE "opcoes_pergunta"."id" = 11 /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:145:in `block in process_perguntas_update'
+  [1m[36mRespostum Load (0.4ms)[0m  [1m[34mSELECT "resposta".* FROM "resposta" WHERE "resposta"."opcao_id" = 12 /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:145:in `block in process_perguntas_update'
+  [1m[36mOpcoesPerguntum Destroy (0.3ms)[0m  [1m[31mDELETE FROM "opcoes_pergunta" WHERE "opcoes_pergunta"."id" = 12 /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:145:in `block in process_perguntas_update'
+  [1m[36mRespostum Load (0.3ms)[0m  [1m[34mSELECT "resposta".* FROM "resposta" WHERE "resposta"."opcao_id" = 13 /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:145:in `block in process_perguntas_update'
+  [1m[36mOpcoesPerguntum Destroy (0.2ms)[0m  [1m[31mDELETE FROM "opcoes_pergunta" WHERE "opcoes_pergunta"."id" = 13 /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:145:in `block in process_perguntas_update'
+  [1m[36mTRANSACTION (54.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:145:in `block in process_perguntas_update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:160:in `block (2 levels) in process_perguntas_update'
+  [1m[36mPerguntum Load (3.9ms)[0m  [1m[34mSELECT "pergunta".* FROM "pergunta" WHERE "pergunta"."id" = 13 LIMIT 1 /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:160:in `block (2 levels) in process_perguntas_update'
+  [1m[36mOpcoesPerguntum Create (0.3ms)[0m  [1m[32mINSERT INTO "opcoes_pergunta" ("pergunta_id", "texto", "created_at", "updated_at") VALUES (13, 'A JCANOVCLKDL', '2025-07-13 22:18:33.580660', '2025-07-13 22:18:33.580660') RETURNING "id" /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:160:in `block (2 levels) in process_perguntas_update'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:160:in `block (2 levels) in process_perguntas_update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:160:in `block (2 levels) in process_perguntas_update'
+  [1m[36mPerguntum Load (4.4ms)[0m  [1m[34mSELECT "pergunta".* FROM "pergunta" WHERE "pergunta"."id" = 13 LIMIT 1 /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:160:in `block (2 levels) in process_perguntas_update'
+  [1m[36mOpcoesPerguntum Create (0.2ms)[0m  [1m[32mINSERT INTO "opcoes_pergunta" ("pergunta_id", "texto", "created_at", "updated_at") VALUES (13, 'akd jvjdkbnokgbkg1!!!', '2025-07-13 22:18:33.597627', '2025-07-13 22:18:33.597627') RETURNING "id" /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:160:in `block (2 levels) in process_perguntas_update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:160:in `block (2 levels) in process_perguntas_update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:160:in `block (2 levels) in process_perguntas_update'
+  [1m[36mPerguntum Load (16.5ms)[0m  [1m[34mSELECT "pergunta".* FROM "pergunta" WHERE "pergunta"."id" = 13 LIMIT 1 /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:160:in `block (2 levels) in process_perguntas_update'
+  [1m[36mOpcoesPerguntum Create (0.2ms)[0m  [1m[32mINSERT INTO "opcoes_pergunta" ("pergunta_id", "texto", "created_at", "updated_at") VALUES (13, 'j xcsdmvsdj fofpnkdvbsdnf', '2025-07-13 22:18:33.623934', '2025-07-13 22:18:33.623934') RETURNING "id" /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:160:in `block (2 levels) in process_perguntas_update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:160:in `block (2 levels) in process_perguntas_update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:160:in `block (2 levels) in process_perguntas_update'
+  [1m[36mPerguntum Load (3.5ms)[0m  [1m[34mSELECT "pergunta".* FROM "pergunta" WHERE "pergunta"."id" = 13 LIMIT 1 /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:160:in `block (2 levels) in process_perguntas_update'
+  [1m[36mOpcoesPerguntum Create (0.2ms)[0m  [1m[32mINSERT INTO "opcoes_pergunta" ("pergunta_id", "texto", "created_at", "updated_at") VALUES (13, 'DVDFNJHTKJHN ZDBDBDHHD', '2025-07-13 22:18:33.635663', '2025-07-13 22:18:33.635663') RETURNING "id" /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:160:in `block (2 levels) in process_perguntas_update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:160:in `block (2 levels) in process_perguntas_update'
+  [1m[36mPerguntum Load (0.2ms)[0m  [1m[34mSELECT "pergunta".* FROM "pergunta" WHERE "pergunta"."template_id" = 11 AND "pergunta"."id" = 14 LIMIT 1 /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:136:in `block in process_perguntas_update'
+  [1m[36mOpcoesPerguntum Load (0.3ms)[0m  [1m[34mSELECT "opcoes_pergunta".* FROM "opcoes_pergunta" WHERE "opcoes_pergunta"."pergunta_id" = 14 /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:145:in `block in process_perguntas_update'
+  [1m[36mPerguntum Load (0.2ms)[0m  [1m[34mSELECT "pergunta".* FROM "pergunta" WHERE "pergunta"."template_id" = 11 AND "pergunta"."id" = 15 LIMIT 1 /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:136:in `block in process_perguntas_update'
+  [1m[36mOpcoesPerguntum Load (0.8ms)[0m  [1m[34mSELECT "opcoes_pergunta".* FROM "opcoes_pergunta" WHERE "opcoes_pergunta"."pergunta_id" = 15 /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:145:in `block in process_perguntas_update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:148:in `block in process_perguntas_update'
+  [1m[36mTemplate Load (4.2ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id" = 11 LIMIT 1 /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:148:in `block in process_perguntas_update'
+  [1m[36mPerguntum Create (0.2ms)[0m  [1m[32mINSERT INTO "pergunta" ("template_id", "texto", "tipo", "created_at", "updated_at", "obrigatoria") VALUES (11, 'FDBFGGJFJGXBBGHTGH???????????????????', 0, '2025-07-13 22:18:33.666831', '2025-07-13 22:18:33.666831', 1) RETURNING "id" /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:148:in `block in process_perguntas_update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:148:in `block in process_perguntas_update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:148:in `block in process_perguntas_update'
+  [1m[36mTemplate Load (3.4ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id" = 11 LIMIT 1 /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:148:in `block in process_perguntas_update'
+  [1m[36mPerguntum Create (0.2ms)[0m  [1m[32mINSERT INTO "pergunta" ("template_id", "texto", "tipo", "created_at", "updated_at", "obrigatoria") VALUES (11, 'DFBSGHJYTKHSGDJG?', 1, '2025-07-13 22:18:33.678488', '2025-07-13 22:18:33.678488', 0) RETURNING "id" /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:148:in `block in process_perguntas_update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:148:in `block in process_perguntas_update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:160:in `block (2 levels) in process_perguntas_update'
+  [1m[36mPerguntum Load (2.4ms)[0m  [1m[34mSELECT "pergunta".* FROM "pergunta" WHERE "pergunta"."id" = 17 LIMIT 1 /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:160:in `block (2 levels) in process_perguntas_update'
+  [1m[36mOpcoesPerguntum Create (0.2ms)[0m  [1m[32mINSERT INTO "opcoes_pergunta" ("pergunta_id", "texto", "created_at", "updated_at") VALUES (17, 'IH9UBGHBU', '2025-07-13 22:18:33.690204', '2025-07-13 22:18:33.690204') RETURNING "id" /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:160:in `block (2 levels) in process_perguntas_update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:160:in `block (2 levels) in process_perguntas_update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:160:in `block (2 levels) in process_perguntas_update'
+  [1m[36mPerguntum Load (2.4ms)[0m  [1m[34mSELECT "pergunta".* FROM "pergunta" WHERE "pergunta"."id" = 17 LIMIT 1 /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:160:in `block (2 levels) in process_perguntas_update'
+  [1m[36mOpcoesPerguntum Create (0.2ms)[0m  [1m[32mINSERT INTO "opcoes_pergunta" ("pergunta_id", "texto", "created_at", "updated_at") VALUES (17, 'JOIBUYHGO', '2025-07-13 22:18:33.701491', '2025-07-13 22:18:33.701491') RETURNING "id" /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:160:in `block (2 levels) in process_perguntas_update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:160:in `block (2 levels) in process_perguntas_update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:148:in `block in process_perguntas_update'
+  [1m[36mTemplate Load (2.4ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id" = 11 LIMIT 1 /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:148:in `block in process_perguntas_update'
+  [1m[36mPerguntum Create (0.3ms)[0m  [1m[32mINSERT INTO "pergunta" ("template_id", "texto", "tipo", "created_at", "updated_at", "obrigatoria") VALUES (11, 'HVU JUNJÇK KOKBG Y??????????????????????/', 0, '2025-07-13 22:18:33.712067', '2025-07-13 22:18:33.712067', 1) RETURNING "id" /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:148:in `block in process_perguntas_update'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:148:in `block in process_perguntas_update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:148:in `block in process_perguntas_update'
+  [1m[36mTemplate Load (2.7ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id" = 11 LIMIT 1 /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:148:in `block in process_perguntas_update'
+  [1m[36mPerguntum Create (0.2ms)[0m  [1m[32mINSERT INTO "pergunta" ("template_id", "texto", "tipo", "created_at", "updated_at", "obrigatoria") VALUES (11, 'JK BHVGHKFCUETRH?', 0, '2025-07-13 22:18:33.722887', '2025-07-13 22:18:33.722887', 1) RETURNING "id" /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:148:in `block in process_perguntas_update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:148:in `block in process_perguntas_update'
+  [1m[36mPerguntum Load (0.2ms)[0m  [1m[34mSELECT "pergunta".* FROM "pergunta" WHERE "pergunta"."template_id" = 11 AND "pergunta"."id" NOT IN (13, 14, 15, 16, 17, 18, 19) /*action='update',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:166:in `process_perguntas_update'
+Redirected to http://localhost:3000/templates/11
+Completed 302 Found in 433ms (ActiveRecord: 124.3ms (35 queries, 0 cached) | GC: 18.7ms)
+
+
+Started GET "/templates/11" for 127.0.0.1 at 2025-07-13 19:18:33 -0300
+Processing by TemplatesController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  [1m[36mTemplate Load (0.3ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id" = 11 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:82:in `set_template'
+  Rendering layout layouts/application.html.erb
+  Rendering templates/show.html.erb within layouts/application
+  [1m[36mDisciplina Load (0.2ms)[0m  [1m[34mSELECT "disciplinas".* FROM "disciplinas" WHERE "disciplinas"."id" = 3 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:20
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:62
+  [1m[36mPerguntum Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 11 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:76
+  [1m[36mPerguntum Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 11 AND "pergunta"."obrigatoria" = 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:82
+  [1m[36mPerguntum Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) AS "count_all", "pergunta"."tipo" AS "pergunta_tipo" FROM "pergunta" WHERE "pergunta"."template_id" = 11 GROUP BY "pergunta"."tipo" /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:92
+  [1m[36mCACHE Perguntum Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 11[0m
+  ↳ app/views/templates/show.html.erb:149
+  [1m[36mPerguntum Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "pergunta" WHERE "pergunta"."template_id" = 11 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:153
+  [1m[36mPerguntum Load (0.2ms)[0m  [1m[34mSELECT "pergunta".* FROM "pergunta" WHERE "pergunta"."template_id" = 11 ORDER BY "pergunta"."id" ASC /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:154:in `each_with_index'
+  [1m[36mOpcoesPerguntum Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "opcoes_pergunta" WHERE "opcoes_pergunta"."pergunta_id" = 13 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:176
+  [1m[36mOpcoesPerguntum Load (0.3ms)[0m  [1m[34mSELECT "opcoes_pergunta".* FROM "opcoes_pergunta" WHERE "opcoes_pergunta"."pergunta_id" = 13 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:180:in `each_with_index'
+  [1m[36mOpcoesPerguntum Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "opcoes_pergunta" WHERE "opcoes_pergunta"."pergunta_id" = 17 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:176
+  [1m[36mOpcoesPerguntum Load (0.2ms)[0m  [1m[34mSELECT "opcoes_pergunta".* FROM "opcoes_pergunta" WHERE "opcoes_pergunta"."pergunta_id" = 17 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:180:in `each_with_index'
+  Rendered templates/show.html.erb within layouts/application (Duration: 38.4ms | GC: 1.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 40.7ms | GC: 1.2ms)
+Completed 200 OK in 68ms (Views: 39.2ms | ActiveRecord: 2.7ms (14 queries, 1 cached) | GC: 1.5ms)
+
+
+Started GET "/assets/figma_custom.css" for 127.0.0.1 at 2025-07-13 19:18:34 -0300
+Started GET "/templates" for 127.0.0.1 at 2025-07-13 19:18:38 -0300
+Processing by TemplatesController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='Camaar',controller='templates'*/[0m
+  Rendering layout layouts/application.html.erb
+  Rendering templates/index.html.erb within layouts/application
+  [1m[36mTemplate Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "templates" /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:31
+  [1m[36mTemplate Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "templates" WHERE "templates"."publico_alvo" = 0 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:40
+  [1m[36mTemplate Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "templates" WHERE "templates"."publico_alvo" = 1 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:49
+  [1m[36mTemplate Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "templates" LIMIT 1 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:65
+  [1m[36mTemplate Load (0.3ms)[0m  [1m[34mSELECT "templates".* FROM "templates" /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:79
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:79
+  [1m[36mPerguntum Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 10 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:97
+  [1m[36mPerguntum Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 11 /*action='index',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/index.html.erb:97
+  Rendered templates/index.html.erb within layouts/application (Duration: 72.5ms | GC: 20.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 76.3ms | GC: 20.2ms)
+Completed 200 OK in 154ms (Views: 75.4ms | ActiveRecord: 3.0ms (9 queries, 0 cached) | GC: 20.4ms)
+
+
+Started GET "/templates/10" for 127.0.0.1 at 2025-07-13 19:18:42 -0300
+Processing by TemplatesController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  [1m[36mTemplate Load (0.2ms)[0m  [1m[34mSELECT "templates".* FROM "templates" WHERE "templates"."id" = 10 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/controllers/templates_controller.rb:82:in `set_template'
+  Rendering layout layouts/application.html.erb
+  Rendering templates/show.html.erb within layouts/application
+  [1m[36mDisciplina Load (0.2ms)[0m  [1m[34mSELECT "disciplinas".* FROM "disciplinas" WHERE "disciplinas"."id" = 1 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:20
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:62
+  [1m[36mPerguntum Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 10 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:76
+  [1m[36mPerguntum Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 10 AND "pergunta"."obrigatoria" = 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:82
+  [1m[36mPerguntum Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) AS "count_all", "pergunta"."tipo" AS "pergunta_tipo" FROM "pergunta" WHERE "pergunta"."template_id" = 10 GROUP BY "pergunta"."tipo" /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:92
+  [1m[36mCACHE Perguntum Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "pergunta" WHERE "pergunta"."template_id" = 10[0m
+  ↳ app/views/templates/show.html.erb:149
+  [1m[36mPerguntum Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "pergunta" WHERE "pergunta"."template_id" = 10 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:153
+  [1m[36mPerguntum Load (0.3ms)[0m  [1m[34mSELECT "pergunta".* FROM "pergunta" WHERE "pergunta"."template_id" = 10 ORDER BY "pergunta"."id" ASC /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:154:in `each_with_index'
+  [1m[36mOpcoesPerguntum Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "opcoes_pergunta" WHERE "opcoes_pergunta"."pergunta_id" = 10 LIMIT 1 /*action='show',application='Camaar',controller='templates'*/[0m
+  ↳ app/views/templates/show.html.erb:176
+  Rendered templates/show.html.erb within layouts/application (Duration: 28.4ms | GC: 0.8ms)
+  Rendered layout layouts/application.html.erb (Duration: 31.9ms | GC: 0.8ms)
+Completed 200 OK in 63ms (Views: 31.5ms | ActiveRecord: 2.3ms (11 queries, 1 cached) | GC: 1.4ms)
+
+
