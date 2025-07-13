@@ -21,10 +21,10 @@ RSpec.describe 'disciplinas/index', type: :view do
     expect(rendered).to include('Estrutura de Dados')
   end
 
-  it 'contains links to show each disciplina' do
+  it 'contains links to edit each disciplina' do
     render
     disciplinas.each do |disciplina|
-      expect(rendered).to include(disciplina_path(disciplina))
+      expect(rendered).to include(edit_disciplina_path(disciplina))
     end
   end
 end

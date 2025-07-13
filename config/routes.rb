@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   }, skip: [:registrations]
 
   resources :cursos, except: [:show]
-  resources :disciplinas
+  resources :disciplinas, except: [:show]
   resources :formularios
   resources :matriculas
   resources :opcoes_pergunta

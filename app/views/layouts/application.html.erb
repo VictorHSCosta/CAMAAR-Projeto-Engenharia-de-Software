@@ -77,22 +77,17 @@
                   <i class="fas fa-book me-2"></i> Cursos
                 <% end %>
               </li>
+              <% if current_user.admin? %>
+                <li class="nav-item">
+                  <%= link_to disciplinas_path, class: "nav-link #{'active' if current_page?(disciplinas_path)}" do %>
+                    <i class="fas fa-list me-2"></i> Disciplinas
+                  <% end %>
+                </li>
+              <% end %>
             <% end %>
             <li class="nav-item">
               <%= link_to evaluations_path, class: "nav-link #{'active' if current_page?(evaluations_path)}" do %>
                 <i class="fas fa-poll me-2"></i> Avaliações
-              <% end %>
-            </li>
-            <li class="nav-item">
-              <%= link_to minhas_disciplinas_path, class: "nav-link #{'active' if current_page?(minhas_disciplinas_path)}" do %>
-                <i class="fas fa-graduation-cap me-2"></i> 
-                <% if current_user.admin? %>
-                  Gerenciar Disciplinas
-                <% elsif current_user.professor? %>
-                  Minhas Disciplinas
-                <% else %>
-                  Disciplinas
-                <% end %>
               <% end %>
             </li>
           </ul>
@@ -116,7 +111,6 @@
     </main>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    
     <script>
       // Garante que os componentes Bootstrap funcionem após navegação Turbo
       document.addEventListener('turbo:load', function() {
@@ -125,7 +119,7 @@
         dropdownElementList.map(function (dropdownToggleEl) {
           return new bootstrap.Dropdown(dropdownToggleEl);
         });
-        
+
         // Reinicializa offcanvas
         var offcanvasElementList = [].slice.call(document.querySelectorAll('[data-bs-toggle="offcanvas"]'));
         offcanvasElementList.map(function (offcanvasToggleEl) {

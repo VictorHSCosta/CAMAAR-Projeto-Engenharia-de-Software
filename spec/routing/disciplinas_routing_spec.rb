@@ -12,10 +12,6 @@ RSpec.describe DisciplinasController, type: :routing do
       expect(get: '/disciplinas/new').to route_to('disciplinas#new')
     end
 
-    it 'routes to #show' do
-      expect(get: '/disciplinas/1').to route_to('disciplinas#show', id: '1')
-    end
-
     it 'routes to #edit' do
       expect(get: '/disciplinas/1/edit').to route_to('disciplinas#edit', id: '1')
     end

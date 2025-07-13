@@ -2,9 +2,13 @@ pt-BR:
   activerecord:
     models:
       curso: "Curso"
+      disciplina: "Disciplina"
     attributes:
       curso:
         nome: "Nome do Curso"
+      disciplina:
+        nome: "Nome da Disciplina"
+        curso_id: "Curso"
     errors:
       models:
         curso:
@@ -12,6 +16,13 @@ pt-BR:
             nome:
               blank: "não pode ficar em branco"
               too_short: "deve ter pelo menos %{count} caracteres"
+        disciplina:
+          attributes:
+            nome:
+              blank: "não pode ficar em branco"
+              too_short: "deve ter pelo menos %{count} caracteres"
+            curso_id:
+              blank: "deve ser selecionado"
   messages:
     access_denied: "Acesso negado!"
     login_success: "Login realizado com sucesso!"
@@ -22,5 +33,8 @@ pt-BR:
     course_created: "Curso criado com sucesso."
     course_updated: "Curso atualizado com sucesso."
     course_destroyed: "Curso removido com sucesso."
+    disciplina_created: "Disciplina criada com sucesso."
+    disciplina_updated: "Disciplina atualizada com sucesso."
+    disciplina_destroyed: "Disciplina removida com sucesso."
     user_updated: "Usuário atualizado com sucesso."
     user_destroyed: "Usuário removido com sucesso."

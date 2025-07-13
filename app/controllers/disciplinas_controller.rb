@@ -2,15 +2,12 @@
 
 # Adicione um comentário de documentação para a classe DisciplinasController.
 class DisciplinasController < ApplicationController
-  before_action :set_disciplina, only: %i[show edit update destroy]
+  before_action :set_disciplina, only: %i[edit update destroy]
 
   # GET /disciplinas or /disciplinas.json
   def index
     @disciplinas = Disciplina.all
   end
-
-  # GET /disciplinas/1 or /disciplinas/1.json
-  def show; end
 
   # GET /disciplinas/new
   def new
@@ -26,8 +23,8 @@ class DisciplinasController < ApplicationController
 
     respond_to do |format|
       if @disciplina.save
-        format.html { redirect_to @disciplina, notice: 'Disciplina was successfully created.' }
-        format.json { render :show, status: :created, location: @disciplina }
+        format.html { redirect_to disciplinas_path, notice: I18n.t('messages.disciplina_created') }
+        format.json { render :index, status: :created }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @disciplina.errors, status: :unprocessable_entity }
@@ -39,8 +36,8 @@ class DisciplinasController < ApplicationController
   def update
     respond_to do |format|
       if @disciplina.update(disciplina_params)
-        format.html { redirect_to @disciplina, notice: 'Disciplina was successfully updated.' }
-        format.json { render :show, status: :ok, location: @disciplina }
+        format.html { redirect_to disciplinas_path, notice: I18n.t('messages.disciplina_updated') }
+        format.json { render :index, status: :ok }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @disciplina.errors, status: :unprocessable_entity }
@@ -53,7 +50,7 @@ class DisciplinasController < ApplicationController
     @disciplina.destroy!
 
     respond_to do |format|
-      format.html { redirect_to disciplinas_path, status: :see_other, notice: 'Disciplina was successfully destroyed.' }
+      format.html { redirect_to disciplinas_path, status: :see_other, notice: I18n.t('messages.disciplina_destroyed') }
       format.json { head :no_content }
     end
   end
