@@ -2,15 +2,12 @@
 
 # Adicione um comentário de documentação para a classe CursosController.
 class CursosController < ApplicationController
-  before_action :set_curso, only: %i[show edit update destroy]
+  before_action :set_curso, only: %i[edit update destroy]
 
   # GET /cursos or /cursos.json
   def index
-    @cursos = Curso.all
+    @cursos = Curso.order(:nome)
   end
-
-  # GET /cursos/1 or /cursos/1.json
-  def show; end
 
   # GET /cursos/new
   def new
@@ -26,8 +23,8 @@ class CursosController < ApplicationController
 
     respond_to do |format|
       if @curso.save
-        format.html { redirect_to @curso, notice: I18n.t('messages.course_created') }
-        format.json { render :show, status: :created, location: @curso }
+        format.html { redirect_to cursos_path, notice: I18n.t('messages.course_created') }
+        format.json { render json: @curso, status: :created }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @curso.errors, status: :unprocessable_entity }
@@ -39,8 +36,8 @@ class CursosController < ApplicationController
   def update
     respond_to do |format|
       if @curso.update(curso_params)
-        format.html { redirect_to @curso, notice: I18n.t('messages.course_updated') }
-        format.json { render :show, status: :ok, location: @curso }
+        format.html { redirect_to cursos_path, notice: I18n.t('messages.course_updated') }
+        format.json { render json: @curso, status: :ok }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @curso.errors, status: :unprocessable_entity }
