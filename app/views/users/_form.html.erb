@@ -76,7 +76,7 @@
   </div>
   <!-- Submit Button -->
   <div class="d-grid mt-4">
-    <%= form.submit "Atualizar Usuário", class: "btn btn-primary btn-lg fw-semibold py-3" %>
+    <%= form.submit user.persisted? ? "Atualizar Usuário" : "Criar Usuário", class: "btn btn-primary btn-lg fw-semibold py-3" %>
   </div>
 <% end %>
 <style>

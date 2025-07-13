@@ -2,20 +2,12 @@
 
 # Adicione um comentário de documentação para a classe UsersController.
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show edit update destroy]
-  before_action :ensure_admin!, except: %i[show edit update]
+  before_action :set_user, only: %i[edit update destroy]
+  before_action :ensure_admin!, except: %i[edit update]
 
   # GET /users or /users.json
   def index
     @users = User.order(:name)
-  end
-
-  # GET /users/1 or /users/1.json
-  def show
-    # Permite que usuários vejam apenas seu próprio perfil, ou admins vejam qualquer um
-    return if current_user.admin? || @user == current_user
-
-    redirect_to root_path, alert: I18n.t('messages.access_denied')
   end
 
   # GET /users/new
@@ -69,8 +61,8 @@ class UsersController < ApplicationController
   def save_user_and_respond
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: "Usuário criado com sucesso! Senha temporária: #{@user.password}" }
-        format.json { render :show, status: :created, location: @user }
+        format.html { redirect_to users_path, notice: "Usuário criado com sucesso! Senha temporária: #{@user.password}" }
+        format.json { render json: @user, status: :created }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -88,8 +80,8 @@ class UsersController < ApplicationController
   def update_user_and_respond
     respond_to do |format|
       if @user.update(user_params.except(:password, :password_confirmation).compact)
-        format.html { redirect_to @user, notice: I18n.t('messages.user_updated') }
-        format.json { render :show, status: :ok, location: @user }
+        format.html { redirect_to users_path, notice: I18n.t('messages.user_updated') }
+        format.json { render json: @user, status: :ok }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @user.errors, status: :unprocessable_entity }

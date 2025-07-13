@@ -15,7 +15,7 @@ class User < ApplicationRecord
   has_many :formularios, foreign_key: 'coordenador_id', dependent: :destroy
   has_many :turmas, foreign_key: 'professor_id', dependent: :destroy
   has_many :matriculas, dependent: :destroy
-  has_many :submissoes_concluidas, dependent: :destroy
+  has_many :submissoes_concluidas, class_name: 'SubmissaoConcluida', dependent: :destroy
   
   # Associações específicas para professores
   has_many :turmas_como_professor, class_name: 'Turma', foreign_key: 'professor_id', dependent: :destroy

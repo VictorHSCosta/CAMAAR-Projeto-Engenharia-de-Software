@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :templates
   resources :turmas
   get "evaluations/index"
-  resources :users do
+  resources :users, except: [:show] do
     member do
       patch :toggle_active
     end
