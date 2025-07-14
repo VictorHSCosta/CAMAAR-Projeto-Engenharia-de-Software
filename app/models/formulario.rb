@@ -11,7 +11,7 @@ class Formulario < ApplicationRecord
   belongs_to :coordenador, class_name: 'User'
   belongs_to :disciplina, optional: true
   has_many :resposta, class_name: 'Respostum', foreign_key: 'formulario_id', dependent: :destroy
-  has_many :submissoes_concluidas, dependent: :destroy
+  has_many :submissoes_concluidas, class_name: 'SubmissaoConcluida', dependent: :destroy
   
   # Validações
   validates :data_envio, :data_fim, presence: true

@@ -36,6 +36,8 @@ Rails.application.routes.draw do
 
   # Rotas para a nova página de Avaliações
   get 'evaluations', to: 'evaluations#index'
+  get 'evaluations/:id', to: 'evaluations#show', as: :evaluation
+  post 'evaluations/:id', to: 'evaluations#show'
 
   # Rotas para disciplinas pessoais (alunos, professores e admin)
   get 'minhas_disciplinas', to: 'minhas_disciplinas#index'
