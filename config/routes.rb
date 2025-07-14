@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   get 'evaluations', to: 'evaluations#index'
   get 'evaluations/:id', to: 'evaluations#show', as: :evaluation
   post 'evaluations/:id', to: 'evaluations#show'
+  get 'evaluations/:id/results', to: 'evaluations#results', as: :evaluation_results
 
   # Rotas para disciplinas pessoais (alunos, professores e admin)
   get 'minhas_disciplinas', to: 'minhas_disciplinas#index'

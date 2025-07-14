@@ -95,10 +95,18 @@
                         <small class="text-muted">
                           <%= pluralize(formulario.template.pergunta.count, 'pergunta') %>
                         </small>
-                        <%= link_to evaluation_path(formulario), class: "btn btn-primary btn-sm" do %>
-                          <i class="fas fa-play me-1"></i>
-                          Responder
-                        <% end %>
+                        <div class="btn-group">
+                          <%= link_to evaluation_path(formulario), class: "btn btn-primary btn-sm" do %>
+                            <i class="fas fa-play me-1"></i>
+                            Responder
+                          <% end %>
+                          <% if current_user&.admin? %>
+                            <%= link_to evaluation_results_path(formulario), class: "btn btn-info btn-sm" do %>
+                              <i class="fas fa-chart-bar me-1"></i>
+                              Resultados
+                            <% end %>
+                          <% end %>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -165,12 +173,20 @@
                           <i class="fas fa-check text-success me-1"></i>
                           Concluída
                         </small>
-                        <% submissao = formulario.submissoes_concluidas.find_by(user: current_user) %>
-                        <% if submissao %>
-                          <small class="text-muted">
-                            <%= submissao.created_at.strftime("%d/%m/%Y") %>
-                          </small>
-                        <% end %>
+                        <div class="d-flex align-items-center">
+                          <% submissao = formulario.submissoes_concluidas.find_by(user: current_user) %>
+                          <% if submissao %>
+                            <small class="text-muted me-2">
+                              <%= submissao.created_at.strftime("%d/%m/%Y") %>
+                            </small>
+                          <% end %>
+                          <% if current_user&.admin? %>
+                            <%= link_to evaluation_results_path(formulario), class: "btn btn-info btn-sm" do %>
+                              <i class="fas fa-chart-bar me-1"></i>
+                              Resultados
+                            <% end %>
+                          <% end %>
+                        </div>
                       </div>
                     </div>
                   </div>
