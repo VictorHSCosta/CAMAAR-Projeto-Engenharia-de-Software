@@ -67,6 +67,6 @@ class PerguntaController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def perguntum_params
-    params.expect(perguntum: %i[template_id titulo tipo ordem])
+    params.expect(perguntum: %i[template_id texto tipo obrigatoria])
   end
 end

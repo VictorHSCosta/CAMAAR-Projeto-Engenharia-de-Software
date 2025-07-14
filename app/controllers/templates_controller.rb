@@ -47,12 +47,18 @@ class TemplatesController < ApplicationController
 
   # PATCH/PUT /templates/1 or /templates/1.json
   def update
+    Rails.logger.info "=== TEMPLATE UPDATE INICIADO ==="
+    Rails.logger.info "Parâmetros completos: #{params.inspect}"
+    Rails.logger.info "Template params: #{template_params.inspect}"
+    
     respond_to do |format|
       if @template.update(template_params)
+        Rails.logger.info "Template atualizado com sucesso"
         process_perguntas_update if params[:perguntas]
         format.html { redirect_to @template, notice: 'Template atualizado com sucesso!' }
         format.json { render :show, status: :ok, location: @template }
       else
+        Rails.logger.error "Erro ao atualizar template: #{@template.errors.full_messages}"
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @template.errors, status: :unprocessable_entity }
       end
@@ -162,6 +168,14 @@ class TemplatesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def template_params
-    params.expect(template: %i[titulo descricao publico_alvo disciplina_id])
+    permitted_params = params.expect(template: %i[titulo descricao publico_alvo disciplina_id])
+    
+    # Permitir parâmetros aninhados das perguntas
+    if params[:perguntas]
+      permitted_params = params.permit(:template => %i[titulo descricao publico_alvo disciplina_id],
+                                      :perguntas => {})
+    end
+    
+    permitted_params[:template] || permitted_params
   end
 end

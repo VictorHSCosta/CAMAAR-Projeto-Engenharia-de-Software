@@ -13,22 +13,26 @@
 
   <div>
     <%= form.label :template_id, style: "display: block" %>
-    <%= form.text_field :template_id %>
+    <%= form.collection_select :template_id, Template.all, :id, :titulo, { prompt: "Selecione um template" }, { class: "form-control" } %>
   </div>
 
   <div>
-    <%= form.label :titulo, style: "display: block" %>
-    <%= form.text_field :titulo %>
+    <%= form.label :texto, "Texto da Pergunta", style: "display: block" %>
+    <%= form.text_area :texto, rows: 3, class: "form-control" %>
   </div>
 
   <div>
     <%= form.label :tipo, style: "display: block" %>
-    <%= form.number_field :tipo %>
+    <%= form.select :tipo, options_for_select([
+      ["Verdadeiro/Falso", "verdadeiro_falso"],
+      ["Múltipla Escolha", "multipla_escolha"], 
+      ["Subjetiva", "subjetiva"]
+    ], perguntum.tipo), { prompt: "Selecione o tipo" }, { class: "form-control" } %>
   </div>
 
   <div>
-    <%= form.label :ordem, style: "display: block" %>
-    <%= form.number_field :ordem %>
+    <%= form.label :obrigatoria, "Pergunta Obrigatória?", style: "display: block" %>
+    <%= form.check_box :obrigatoria %>
   </div>
 
   <div>

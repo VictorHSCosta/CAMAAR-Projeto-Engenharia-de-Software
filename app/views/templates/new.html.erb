@@ -1,9 +1,9 @@
 <% content_for :title, "Criar Novo Template" %>
 
-<div class="container-fluid py-4">
+<div class="container-fluid px-4 py-4">
+  <!-- Header consistente com outras páginas -->
   <div class="row">
     <div class="col-12">
-      <!-- Header -->
       <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
           <h2 class="mb-1">
@@ -18,9 +18,13 @@
           Voltar
         <% end %>
       </div>
+    </div>
+  </div>
 
-      <div class="card">
-        <div class="card-header">
+  <div class="row">
+    <div class="col-12">
+      <div class="card shadow-sm">
+        <div class="card-header bg-white">
           <h5 class="card-title mb-0">
             <i class="fas fa-edit me-2"></i>
             Informações do Template
@@ -200,57 +204,98 @@
 </template>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+// Sistema de Perguntas - Versão Robusta
+(function() {
+  'use strict';
+  
   let perguntaCount = 0;
-  let opcaoCount = 0;
+  let initialized = false;
   
-  const addPerguntaBtn = document.getElementById('add-pergunta');
-  const perguntasContainer = document.getElementById('perguntas-container');
-  const perguntaTemplate = document.getElementById('pergunta-template');
-  const opcaoTemplate = document.getElementById('opcao-template');
-  
-  // Adicionar pergunta
-  addPerguntaBtn.addEventListener('click', function() {
-    perguntaCount++;
-    const perguntaHtml = perguntaTemplate.content.cloneNode(true);
+  function initSystem() {
+    if (initialized) return;
     
-    // Atualizar número da pergunta
-    perguntaHtml.querySelector('.pergunta-number').textContent = perguntaCount;
+    console.log('🚀 Inicializando sistema de perguntas...');
     
-    // Adicionar nomes aos campos
-    const perguntaItem = perguntaHtml.querySelector('.pergunta-item');
-    const perguntaTexto = perguntaItem.querySelector('.pergunta-texto');
-    const perguntaTipo = perguntaItem.querySelector('.pergunta-tipo');
-    const perguntaObrigatoria = perguntaItem.querySelector('.pergunta-obrigatoria');
+    const addBtn = document.getElementById('add-pergunta');
+    const container = document.getElementById('perguntas-container');
+    const perguntaTemplate = document.getElementById('pergunta-template');
+    const opcaoTemplate = document.getElementById('opcao-template');
     
-    perguntaTexto.name = `perguntas[${perguntaCount}][texto]`;
-    perguntaTipo.name = `perguntas[${perguntaCount}][tipo]`;
-    perguntaObrigatoria.name = `perguntas[${perguntaCount}][obrigatoria]`;
+    if (!addBtn || !container || !perguntaTemplate || !opcaoTemplate) {
+      console.log('⏳ Elementos ainda não carregados, tentando novamente...');
+      setTimeout(initSystem, 100);
+      return;
+    }
     
-    perguntasContainer.appendChild(perguntaHtml);
+    initialized = true;
+    console.log('✅ Elementos encontrados! Configurando eventos...');
     
-    // Adicionar event listeners
-    setupPerguntaEvents(perguntaItem, perguntaCount);
-  });
-  
-  function setupPerguntaEvents(perguntaItem, perguntaIndex) {
-    // Remover pergunta
-    perguntaItem.querySelector('.remove-pergunta').addEventListener('click', function() {
-      perguntaItem.remove();
-      updatePerguntaNumbers();
+    // Limpar eventos anteriores
+    const newBtn = addBtn.cloneNode(true);
+    addBtn.parentNode.replaceChild(newBtn, addBtn);
+    
+    // Configurar evento do botão
+    newBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log('➕ Adicionando pergunta...');
+      addPergunta();
     });
     
-    // Mudança de tipo de pergunta
+    // Adicionar primeira pergunta
+    if (container.children.length === 0) {
+      setTimeout(() => addPergunta(), 200);
+    }
+  }
+  
+  function addPergunta() {
+    perguntaCount++;
+    console.log(`📝 Criando pergunta ${perguntaCount}...`);
+    
+    const container = document.getElementById('perguntas-container');
+    const template = document.getElementById('pergunta-template');
+    
+    const clone = template.content.cloneNode(true);
+    
+    // Configurar número
+    clone.querySelector('.pergunta-number').textContent = perguntaCount;
+    
+    // Configurar names dos inputs
+    clone.querySelector('.pergunta-texto').name = `perguntas[${perguntaCount}][texto]`;
+    clone.querySelector('.pergunta-tipo').name = `perguntas[${perguntaCount}][tipo]`;
+    clone.querySelector('.pergunta-obrigatoria').name = `perguntas[${perguntaCount}][obrigatoria]`;
+    
+    container.appendChild(clone);
+    
+    // Configurar eventos da pergunta recém-criada
+    const perguntaItem = container.lastElementChild;
+    setupPerguntaEvents(perguntaItem, perguntaCount);
+    
+    console.log(`✅ Pergunta ${perguntaCount} criada com sucesso!`);
+  }
+  
+  function setupPerguntaEvents(perguntaItem, index) {
+    // Remover pergunta
+    const removeBtn = perguntaItem.querySelector('.remove-pergunta');
+    removeBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      console.log(`🗑️ Removendo pergunta ${index}...`);
+      perguntaItem.remove();
+      updateNumbers();
+    });
+    
+    // Mudança de tipo
     const tipoSelect = perguntaItem.querySelector('.pergunta-tipo');
     const opcoesContainer = perguntaItem.querySelector('.opcoes-container');
     
     tipoSelect.addEventListener('change', function() {
+      console.log(`🔄 Tipo alterado para: ${this.value}`);
       if (this.value === 'multipla_escolha') {
         opcoesContainer.style.display = 'block';
-        // Adicionar pelo menos 2 opções
+        // Adicionar opções se não existirem
         if (perguntaItem.querySelectorAll('.opcao-item').length === 0) {
-          addOpcao(perguntaItem, perguntaIndex);
-          addOpcao(perguntaItem, perguntaIndex);
+          addOpcao(perguntaItem, index);
+          addOpcao(perguntaItem, index);
         }
       } else {
         opcoesContainer.style.display = 'none';
@@ -258,39 +303,51 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Adicionar opção
-    perguntaItem.querySelector('.add-opcao').addEventListener('click', function() {
-      addOpcao(perguntaItem, perguntaIndex);
+    const addOpcaoBtn = perguntaItem.querySelector('.add-opcao');
+    addOpcaoBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      addOpcao(perguntaItem, index);
     });
   }
   
   function addOpcao(perguntaItem, perguntaIndex) {
-    const opcoesList = perguntaItem.querySelector('.opcoes-list');
-    const opcaoHtml = opcaoTemplate.content.cloneNode(true);
+    console.log(`➕ Adicionando opção para pergunta ${perguntaIndex}...`);
     
-    const opcaoTexto = opcaoHtml.querySelector('.opcao-texto');
+    const opcoesList = perguntaItem.querySelector('.opcoes-list');
+    const template = document.getElementById('opcao-template');
+    
+    const clone = template.content.cloneNode(true);
     const opcaoIndex = perguntaItem.querySelectorAll('.opcao-item').length + 1;
     
-    opcaoTexto.name = `perguntas[${perguntaIndex}][opcoes][${opcaoIndex}]`;
+    clone.querySelector('.opcao-texto').name = `perguntas[${perguntaIndex}][opcoes][${opcaoIndex}]`;
     
-    const opcaoItem = opcaoHtml.querySelector('.opcao-item');
-    opcoesList.appendChild(opcaoHtml);
+    opcoesList.appendChild(clone);
     
-    // Remover opção
-    opcaoItem.querySelector('.remove-opcao').addEventListener('click', function() {
+    // Evento remover
+    const opcaoItem = opcoesList.lastElementChild;
+    opcaoItem.querySelector('.remove-opcao').addEventListener('click', function(e) {
+      e.preventDefault();
       opcaoItem.remove();
     });
   }
   
-  function updatePerguntaNumbers() {
-    const perguntas = perguntasContainer.querySelectorAll('.pergunta-item');
+  function updateNumbers() {
+    const perguntas = document.querySelectorAll('.pergunta-item');
     perguntas.forEach((pergunta, index) => {
       pergunta.querySelector('.pergunta-number').textContent = index + 1;
     });
   }
   
-  // Adicionar primeira pergunta automaticamente
-  addPerguntaBtn.click();
-});
+  // Múltiplos pontos de inicialização
+  document.addEventListener('DOMContentLoaded', initSystem);
+  document.addEventListener('turbo:load', initSystem);
+  window.addEventListener('load', initSystem);
+  
+  // Fallback com delay
+  setTimeout(initSystem, 500);
+  setTimeout(initSystem, 1000);
+  
+})();
 </script>
 
 <style>
@@ -327,3 +384,9 @@ document.addEventListener('DOMContentLoaded', function() {
   box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
 }
 </style>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

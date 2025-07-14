@@ -4,8 +4,9 @@
 class SubmissaoConcluida < ApplicationRecord
   self.table_name = 'submissoes_concluidas'
   
-  belongs_to :user
+  belongs_to :user, optional: true
   belongs_to :formulario
 
-  validates :user_id, uniqueness: { scope: :formulario_id }
+  validates :uuid_anonimo, presence: true, uniqueness: { scope: :formulario_id }
+  validates :user_id, uniqueness: { scope: :formulario_id }, allow_nil: true
 end

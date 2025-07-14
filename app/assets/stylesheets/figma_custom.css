@@ -123,8 +123,9 @@ body {
 
 /* Dashboard - Baseado no Figma */
 .navbar {
-  background: var(--white) !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border-bottom: 1px solid #e3e6f0;
+  box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
   padding: 16px 0;
   position: fixed;
   top: 0;
@@ -134,22 +135,33 @@ body {
 }
 
 .navbar-brand {
-  font-size: 24px;
   font-weight: 700;
-  color: var(--text-dark) !important;
+  color: #5e72e4 !important;
+  font-size: 1.25rem;
+}
+
+.navbar-brand:hover {
+  color: #4c6ef5 !important;
 }
 
 .user-avatar {
   width: 40px;
   height: 40px;
-  background: var(--primary-purple);
   border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--white);
-  font-weight: 600;
+  color: white;
+  font-weight: bold;
   font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.user-avatar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 /* Cards de Avaliações - Baseado no Figma */
@@ -314,6 +326,108 @@ select.form-control {
   color: var(--white);
 }
 
+/* Melhorias para navegação e layout */
+.navbar {
+  background-color: #fff;
+  border-bottom: 1px solid #e3e6f0;
+  box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+}
+
+.navbar-brand {
+  font-weight: 700;
+  color: #5e72e4 !important;
+  font-size: 1.25rem;
+}
+
+.navbar-brand:hover {
+  color: #4c6ef5 !important;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.user-avatar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Sidebar improvements */
+.sidebar {
+  box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.15);
+}
+
+.sidebar .nav-link {
+  color: #8898aa;
+  font-weight: 500;
+  padding: 12px 20px;
+  transition: all 0.3s ease;
+}
+
+.sidebar .nav-link:hover {
+  color: #5e72e4;
+  background-color: rgba(94, 114, 228, 0.1);
+  border-radius: 6px;
+  margin: 2px 16px;
+}
+
+.sidebar .nav-link.active {
+  color: #5e72e4;
+  background-color: rgba(94, 114, 228, 0.1);
+  border-radius: 6px;
+  margin: 2px 16px;
+}
+
+/* Card improvements */
+.card {
+  border: 1px solid #e3e6f0;
+  border-radius: 0.75rem;
+  box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+}
+
+.card-header {
+  border-bottom: 1px solid #e3e6f0;
+  border-radius: 0.75rem 0.75rem 0 0 !important;
+  padding: 1.5rem;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+/* Button improvements */
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.btn-outline-secondary {
+  border-color: #8898aa;
+  color: #8898aa;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #8898aa;
+  border-color: #8898aa;
+}
+
 /* Responsividade */
 @media (max-width: 768px) {
   .login-card {
@@ -337,6 +451,15 @@ select.form-control {
   .evaluations-grid {
     grid-template-columns: 1fr;
     padding: 16px;
+  }
+  
+  .container-fluid {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  .card-header, .card-body {
+    padding: 1rem;
   }
 }
 
@@ -405,6 +528,7 @@ body.user-signed-in {
 .main-content {
   margin-left: 0;
   transition: margin-left 0.3s ease;
+  padding-top: 0;
 }
 
 /* Ajustes para responsividade */

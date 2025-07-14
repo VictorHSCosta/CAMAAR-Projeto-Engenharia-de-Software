@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_13_023515) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_14_000749) do
   create_table "cursos", force: :cascade do |t|
     t.string "nome"
     t.datetime "created_at", null: false
@@ -80,10 +80,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_13_023515) do
   create_table "resposta", force: :cascade do |t|
     t.integer "formulario_id", null: false
     t.integer "pergunta_id", null: false
-    t.integer "opcao_id", null: false
+    t.integer "opcao_id"
     t.text "resposta_texto"
-    t.integer "turma_id", null: false
-    t.string "uuid_anonimo"
+    t.integer "turma_id"
+    t.string "uuid_anonimo", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["formulario_id"], name: "index_resposta_on_formulario_id"
@@ -93,10 +93,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_13_023515) do
   end
 
   create_table "submissoes_concluidas", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.integer "user_id"
     t.integer "formulario_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "uuid_anonimo", null: false
     t.index ["formulario_id"], name: "index_submissoes_concluidas_on_formulario_id"
     t.index ["user_id", "formulario_id"], name: "index_submissoes_concluidas_unique", unique: true
     t.index ["user_id"], name: "index_submissoes_concluidas_on_user_id"
