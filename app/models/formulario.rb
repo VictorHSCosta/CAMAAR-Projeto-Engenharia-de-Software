@@ -1,10 +1,8 @@
+# app/models/formulario.rb
 # frozen_string_literal: true
 
 # Classe responsável por representar formulários de avaliação
 class Formulario < ApplicationRecord
-  # Enums para controle de visibilidade
-  enum :escopo_visibilidade, { todos: 0, por_disciplina: 1 }
-  
   # Associações
   belongs_to :template
   belongs_to :turma, optional: true
@@ -12,6 +10,14 @@ class Formulario < ApplicationRecord
   belongs_to :disciplina, optional: true
   has_many :resposta, class_name: 'Respostum', foreign_key: 'formulario_id', dependent: :destroy
   has_many :submissoes_concluidas, class_name: 'SubmissaoConcluida', dependent: :destroy
+  
+  # Enums para controle de visibilidade (com a sintaxe corrigida)
+  enum :escopo_visibilidade, {
+    todos_os_alunos: 0,
+    por_turma: 1,
+    por_disciplina: 2,
+    por_curso: 3
+  }
   
   # Validações
   validates :data_envio, :data_fim, presence: true
@@ -31,9 +37,9 @@ class Formulario < ApplicationRecord
     
     case template.publico_alvo
     when 'professores'
-      user.professor? && (todos? || (por_disciplina? && user.leciona_disciplina?(disciplina_id)))
+      user.professor? && (todos_os_alunos? || (por_disciplina? && user.leciona_disciplina?(disciplina_id)))
     when 'alunos'
-      user.aluno? && (todos? || (por_disciplina? && user.matriculado_em_disciplina?(disciplina_id)))
+      user.aluno? && (todos_os_alunos? || (por_disciplina? && user.matriculado_em_disciplina?(disciplina_id)))
     else
       false
     end

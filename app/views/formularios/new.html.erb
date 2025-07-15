@@ -1,11 +1,13 @@
-<% content_for :title, "New formulario" %>
+<%# app/views/formularios/new.html.erb %>
 
-<h1>New formulario</h1>
+<% content_for :title, "Publicar Novo Formulário" %>
+
+<h1>Publicar Novo Formulário</h1>
 
 <%= render "form", formulario: @formulario %>
 
 <br>
 
 <div>
-  <%= link_to "Back to formularios", formularios_path %>
+  <%= link_to "Voltar para a lista de formulários", formularios_path %>
 </div>

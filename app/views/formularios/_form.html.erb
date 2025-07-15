@@ -1,8 +1,8 @@
+<%# app/views/formularios/_form.html.erb %>
 <%= form_with(model: formulario) do |form| %>
   <% if formulario.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(formulario.errors.count, "error") %> prohibited this formulario from being saved:</h2>
-
+      <h2><%= pluralize(formulario.errors.count, "erro") %> impediu este formulário de ser salvo:</h2>
       <ul>
         <% formulario.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,32 +11,71 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :template_id, style: "display: block" %>
-    <%= form.text_field :template_id %>
+  <div class="mb-3">
+    <%= form.label :template_id, "Template a ser enviado", class: "form-label" %>
+    <%= form.select :template_id, options_from_collection_for_select(@templates, 'id', 'titulo', formulario.template_id), { prompt: 'Selecione um template' }, class: "form-select", required: true %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :escopo_visibilidade, "Visível para quem?", class: "form-label" %>
+    <%# ### CORREÇÃO APLICADA AQUI ### %>
+    <%= form.select :escopo_visibilidade, Formulario.defined_enums['escopo_visibilidade'].keys.map { |e| [e.titleize.gsub('_', ' '), e] }, { prompt: 'Selecione o público-alvo' }, class: "form-select", required: true, id: "escopo_visibilidade_select" %>
+  </div>
+
+  <div class="mb-3" id="campo-disciplina" style="display: none;">
+    <%= form.label :disciplina_id, "Para qual disciplina?", class: "form-label" %>
+    <%= form.select :disciplina_id, options_from_collection_for_select(@disciplinas, 'id', 'nome', formulario.disciplina_id), { prompt: 'Selecione uma disciplina' }, class: "form-select" %>
+  </div>
+
+  <div class="mb-3" id="campo-turma" style="display: none;">
+    <%= form.label :turma_id, "Para qual turma?", class: "form-label" %>
+    <%= form.select :turma_id, options_from_collection_for_select(@turmas, 'id', ->(turma) { "#{turma.disciplina.nome} - Semestre #{turma.semestre}" }, formulario.turma_id), { prompt: 'Selecione uma turma' }, class: "form-select" %>
+  </div>
+  
+  <div class="mb-3">
+    <%= form.label :data_fim, "Prazo final para respostas", class: "form-label" %>
+    <%= form.datetime_field :data_fim, class: "form-control", required: true %>
+  </div>
+
+  <div class="form-check mb-3">
+    <%= form.check_box :ativo, class: "form-check-input" %>
+    <%= form.label :ativo, "Publicar e ativar formulário imediatamente", class: "form-check-label" %>
   </div>
 
   <div>
-    <%= form.label :turma_id, style: "display: block" %>
-    <%= form.text_field :turma_id %>
-  </div>
-
-  <div>
-    <%= form.label :coordenador_id, style: "display: block" %>
-    <%= form.text_field :coordenador_id %>
-  </div>
-
-  <div>
-    <%= form.label :data_envio, style: "display: block" %>
-    <%= form.datetime_field :data_envio %>
-  </div>
-
-  <div>
-    <%= form.label :data_fim, style: "display: block" %>
-    <%= form.datetime_field :data_fim %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit "Salvar e Publicar Formulário", class: "btn btn-primary" %>
   </div>
 <% end %>
+
+<script>
+  document.addEventListener('turbo:load', function() {
+    const visibilidadeSelect = document.getElementById('escopo_visibilidade_select');
+    const turmaField = document.getElementById('campo-turma');
+    const disciplinaField = document.getElementById('campo-disciplina');
+
+    if (visibilidadeSelect) {
+      function toggleFields() {
+        const selectedValue = visibilidadeSelect.value;
+        
+        if (selectedValue === 'por_turma') {
+          turmaField.style.display = 'block';
+          turmaField.querySelector('select').required = true;
+        } else {
+          turmaField.style.display = 'none';
+          turmaField.querySelector('select').required = false;
+        }
+
+        if (selectedValue === 'por_disciplina') {
+          disciplinaField.style.display = 'block';
+          disciplinaField.querySelector('select').required = true;
+        } else {
+          disciplinaField.style.display = 'none';
+          disciplinaField.querySelector('select').required = false;
+        }
+      }
+
+      visibilidadeSelect.addEventListener('change', toggleFields);
+      toggleFields();
+    }
+  });
+</script>
