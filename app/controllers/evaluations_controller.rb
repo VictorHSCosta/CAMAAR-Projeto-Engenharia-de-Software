@@ -70,7 +70,7 @@ class EvaluationsController < ApplicationController
           total_respostas: respostas_pergunta.count,
           respostas_texto: respostas_pergunta.where.not(resposta_texto: [nil, '']).pluck(:resposta_texto)
         }
-      when 'multipla_escolha', 'verdadeiro_falso'
+      when 'multipla_escolha'
         opcoes_stats = {}
         pergunta.opcoes_pergunta.each do |opcao|
           opcoes_stats[opcao.id] = {
@@ -78,6 +78,29 @@ class EvaluationsController < ApplicationController
             count: respostas_pergunta.where(opcao: opcao).count
           }
         end
+        @estatisticas[pergunta.id] = {
+          tipo: pergunta.tipo,
+          total_respostas: respostas_pergunta.count,
+          opcoes: opcoes_stats
+        }
+      when 'verdadeiro_falso'
+        # Para verdadeiro/falso, usar resposta_texto
+        opcoes_stats = {}
+        
+        # Contar respostas "true" (verdadeiro)
+        verdadeiro_count = respostas_pergunta.where(resposta_texto: ['true', 'True', 'TRUE', 'Verdadeiro']).count
+        opcoes_stats['verdadeiro'] = {
+          texto: 'Verdadeiro',
+          count: verdadeiro_count
+        }
+        
+        # Contar respostas "false" (falso)
+        falso_count = respostas_pergunta.where(resposta_texto: ['false', 'False', 'FALSE', 'Falso']).count
+        opcoes_stats['falso'] = {
+          texto: 'Falso',
+          count: falso_count
+        }
+        
         @estatisticas[pergunta.id] = {
           tipo: pergunta.tipo,
           total_respostas: respostas_pergunta.count,
