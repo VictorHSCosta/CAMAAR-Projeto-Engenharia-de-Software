@@ -3,7 +3,7 @@
 # Classe responsável por representar templates de formulários
 class Template < ApplicationRecord
   belongs_to :criado_por, class_name: 'User'
-  belongs_to :disciplina
+  belongs_to :disciplina, optional: true
   has_many :pergunta, class_name: 'Perguntum', dependent: :destroy
   has_many :formularios, dependent: :destroy
 

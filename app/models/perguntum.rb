@@ -16,7 +16,20 @@ class Perguntum < ApplicationRecord
 
   scope :ordenadas, -> { order(:id) }
 
+  alias_attribute :titulo, :texto
+  attr_accessor :ordem
+
   def multipla_escolha_ou_verdadeiro_falso?
     multipla_escolha? || verdadeiro_falso?
+  end
+
+  # Map virtual attributes before assignment
+  def assign_attributes(new_attributes)
+    return super unless new_attributes.is_a?(Hash)
+
+    attrs = new_attributes.dup
+    attrs[:texto] = attrs.delete(:titulo) if attrs.key?(:titulo)
+    attrs.delete(:ordem)
+    super(attrs)
   end
 end

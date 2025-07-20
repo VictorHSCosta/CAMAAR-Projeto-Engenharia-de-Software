@@ -67,6 +67,6 @@ class TurmasController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def turma_params
-    params.expect(turma: %i[disciplina_id professor_id semestre])
+    params.require(:turma).permit(:semestre, :professor_id, :disciplina_id)
   end
 end

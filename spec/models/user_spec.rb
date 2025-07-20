@@ -102,8 +102,8 @@ RSpec.describe User, type: :model do
 
   describe '#disciplinas' do
     let(:curso) { create(:curso) }
-    let(:disciplina1) { create(:disciplina, curso: curso) }
-    let(:disciplina2) { create(:disciplina, curso: curso) }
+    let(:disciplina1) { create(:disciplina, curso: curso) } # rubocop:disable RSpec/IndexedLet
+    let(:disciplina2) { create(:disciplina, curso: curso) } # rubocop:disable RSpec/IndexedLet
 
     context 'when user is admin' do
       let(:admin) { create(:user, :admin) }

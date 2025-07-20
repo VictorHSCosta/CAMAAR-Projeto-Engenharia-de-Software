@@ -5,7 +5,7 @@ class PrimeiraSenhaController < ApplicationController
     # Formulário para definir primeira senha
   end
 
-  def create
+  def create # rubocop:disable Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity
     # Validações básicas dos parâmetros
     unless params[:matricula].present? && params[:email].present?
       flash.now[:alert] = 'Por favor, preencha todos os campos obrigatórios.'

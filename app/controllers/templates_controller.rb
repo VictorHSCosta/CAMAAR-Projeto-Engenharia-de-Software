@@ -31,7 +31,7 @@ class TemplatesController < ApplicationController
   # POST /templates or /templates.json
   def create
     @template = Template.new(template_params)
-    @template.criado_por = current_user
+    @template.disciplina_id ||= nil
 
     respond_to do |format|
       if @template.save
@@ -79,7 +79,7 @@ class TemplatesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_template
-    @template = Template.find(params.expect(:id))
+    @template = Template.find(params[:id])
   end
 
   def authorize_template
@@ -186,14 +186,6 @@ class TemplatesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def template_params
-    permitted_params = params.expect(template: %i[titulo descricao publico_alvo disciplina_id])
-
-    # Permitir parâmetros aninhados das perguntas
-    if params[:perguntas]
-      permitted_params = params.permit(template: %i[titulo descricao publico_alvo disciplina_id],
-                                       perguntas: {})
-    end
-
-    permitted_params[:template] || permitted_params
+    params.require(:template).permit(:titulo, :publico_alvo, :criado_por_id, :disciplina_id)
   end
 end

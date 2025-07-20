@@ -129,15 +129,10 @@ class FormulariosController < ApplicationController
     @formulario = Formulario.find(params[:id])
   end
 
+  # Only allow a list of trusted parameters through.
   def formulario_params
-    params.expect(
-      formulario: %i[template_id
-                     turma_id
-                     data_fim
-                     ativo
-                     escopo_visibilidade
-                     disciplina_id]
-    )
+    params.require(:formulario).permit(:template_id, :turma_id, :coordenador_id,
+                                       :data_envio, :data_fim, :ativo, :escopo_visibilidade, :disciplina_id)
   end
 
   # ### CORREÇÃO AQUI ###

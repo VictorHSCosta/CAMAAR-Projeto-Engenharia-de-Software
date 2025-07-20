@@ -9,6 +9,9 @@ class DisciplinasController < ApplicationController
     @disciplinas = Disciplina.all
   end
 
+  # GET /disciplinas/1 or /disciplinas/1.json
+  def show; end
+
   # GET /disciplinas/new
   def new
     @disciplina = Disciplina.new
@@ -23,8 +26,8 @@ class DisciplinasController < ApplicationController
 
     respond_to do |format|
       if @disciplina.save
-        format.html { redirect_to disciplinas_path, notice: I18n.t('messages.disciplina_created') }
-        format.json { render :index, status: :created }
+        format.html { redirect_to disciplinas_url, notice: 'Disciplina criada com sucesso!' }
+        format.json { render :show, status: :created, location: @disciplina }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @disciplina.errors, status: :unprocessable_entity }
@@ -36,8 +39,8 @@ class DisciplinasController < ApplicationController
   def update
     respond_to do |format|
       if @disciplina.update(disciplina_params)
-        format.html { redirect_to disciplinas_path, notice: I18n.t('messages.disciplina_updated') }
-        format.json { render :index, status: :ok }
+        format.html { redirect_to disciplina_url(@disciplina), notice: 'Disciplina atualizada com sucesso!' }
+        format.json { render :show, status: :ok, location: @disciplina }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @disciplina.errors, status: :unprocessable_entity }
@@ -50,7 +53,7 @@ class DisciplinasController < ApplicationController
     @disciplina.destroy!
 
     respond_to do |format|
-      format.html { redirect_to disciplinas_path, status: :see_other, notice: I18n.t('messages.disciplina_destroyed') }
+      format.html { redirect_to disciplinas_url, status: :see_other, notice: 'Disciplina removida com sucesso!' }
       format.json { head :no_content }
     end
   end
@@ -77,11 +80,11 @@ class DisciplinasController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_disciplina
-    @disciplina = Disciplina.find(params.expect(:id))
+    @disciplina = Disciplina.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
   def disciplina_params
-    params.expect(disciplina: %i[nome curso_id])
+    params.require(:disciplina).permit(:nome, :curso_id)
   end
 end

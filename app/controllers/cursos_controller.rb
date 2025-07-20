@@ -67,6 +67,6 @@ class CursosController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def curso_params
-    params.expect(curso: [:nome])
+    params.require(:curso).permit(:nome)
   end
 end
