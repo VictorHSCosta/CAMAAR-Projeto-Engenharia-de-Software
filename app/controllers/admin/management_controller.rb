@@ -6,7 +6,7 @@ module Admin
     before_action :authorize_management
 
     def index
-      @has_imported_data = check_imported_data
+      @has_imported_data = imported_data_exists?
     end
 
     def import_modal
