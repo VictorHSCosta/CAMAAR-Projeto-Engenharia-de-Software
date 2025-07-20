@@ -1,10 +1,10 @@
 class RecuperarSenhaController < ApplicationController
   skip_before_action :authenticate_user!
-  
+
   def new
     # Formulário para recuperar senha
   end
-  
+
   def create
     # Validações básicas dos parâmetros
     unless params[:matricula].present? && params[:email].present?
@@ -30,19 +30,19 @@ class RecuperarSenhaController < ApplicationController
       render :new, status: :unprocessable_entity
       return
     end
-    
+
     # Busca usuário por matrícula e email
     user = User.find_by(
       matricula: params[:matricula].strip,
       email: params[:email].strip.downcase
     )
-    
+
     if user.nil?
       flash.now[:alert] = 'Usuário não encontrado. Verifique sua matrícula e email.'
       render :new, status: :unprocessable_entity
       return
     end
-    
+
     # Atualiza a senha do usuário
     if user.update(password: params[:password], password_confirmation: params[:password_confirmation])
       flash[:notice] = 'Senha redefinida com sucesso! Agora você pode fazer login.'

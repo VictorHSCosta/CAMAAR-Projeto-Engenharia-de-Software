@@ -76,7 +76,7 @@ RSpec.describe '/cursos', type: :request do
 
       it 'redirects to the created curso' do
         post cursos_url, params: { curso: valid_attributes }
-        expect(response).to redirect_to(curso_url(Curso.last))
+        expect(response).to redirect_to(cursos_path)
       end
     end
 

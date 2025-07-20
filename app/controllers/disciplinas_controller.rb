@@ -55,6 +55,24 @@ class DisciplinasController < ApplicationController
     end
   end
 
+  # GET /disciplinas/:id/turmas - AJAX endpoint para buscar turmas de uma disciplina
+  def turmas
+    @disciplina = Disciplina.find(params[:id])
+    @turmas = @disciplina.turmas.includes(:professor)
+
+    respond_to do |format|
+      format.json do
+        render json: @turmas.map { |turma|
+          {
+            id: turma.id,
+            semestre: turma.semestre,
+            professor_nome: turma.professor.name
+          }
+        }
+      end
+    end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

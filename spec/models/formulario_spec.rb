@@ -13,7 +13,9 @@ RSpec.describe Formulario, type: :model do
                  role: 'professor')
   end
   let(:turma) { Turma.create!(disciplina: disciplina, professor: professor, semestre: '2024.1') }
-  let(:template) { Template.create!(titulo: 'Test Template', publico_alvo: 1, criado_por: user) }
+  let(:template) do
+    Template.create!(titulo: 'Test Template', publico_alvo: 1, criado_por: user, disciplina: disciplina)
+  end
 
   describe 'validations' do
     it 'is valid with valid attributes' do
@@ -44,7 +46,10 @@ RSpec.describe Formulario, type: :model do
   end
 
   describe 'associations' do
-    let(:formulario) { described_class.create!(template: template, turma: turma, coordenador: user) }
+    let(:formulario) do
+      described_class.create!(template: template, turma: turma, coordenador: user, data_envio: Time.current,
+                              data_fim: 1.week.from_now)
+    end
 
     it 'belongs to a template' do
       expect(formulario.template).to eq(template)

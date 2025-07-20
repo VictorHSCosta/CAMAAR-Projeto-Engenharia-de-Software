@@ -46,8 +46,11 @@ RSpec.describe User, type: :model do
                               role: 'admin')
     end
 
+    let(:curso) { Curso.create!(nome: 'Engenharia de Software') }
+    let(:disciplina) { Disciplina.create!(nome: 'Test Discipline', curso: curso) }
+
     it 'can have many created templates' do
-      template = Template.create!(titulo: 'Test Template', publico_alvo: 1, criado_por: user)
+      template = Template.create!(titulo: 'Test Template', publico_alvo: 1, criado_por: user, disciplina: disciplina)
       expect(user.templates.count).to eq(1)
       expect(user.templates.first).to eq(template)
     end

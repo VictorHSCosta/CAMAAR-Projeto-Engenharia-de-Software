@@ -45,6 +45,78 @@ class UsersController < ApplicationController
     end
   end
 
+  # POST /users/adicionar_disciplina_aluno
+  def adicionar_disciplina_aluno
+    return redirect_to root_path, alert: 'Acesso negado.' unless current_user.admin?
+
+    @user = User.find(params[:user_id])
+    @turma = Turma.find(params[:turma_id])
+
+    # Verificar se o aluno já está matriculado nesta turma
+    if @user.matriculas.exists?(turma_id: @turma.id)
+      redirect_to edit_user_path(@user), alert: 'Este aluno já está matriculado nesta turma.'
+      return
+    end
+
+    @matricula = @user.matriculas.create!(turma: @turma)
+
+    redirect_to edit_user_path(@user),
+                notice: "Aluno matriculado na disciplina #{@turma.disciplina.nome} - #{@turma.semestre}."
+  end
+
+  # DELETE /users/remover_disciplina_aluno
+  def remover_disciplina_aluno
+    return redirect_to root_path, alert: 'Acesso negado.' unless current_user.admin?
+
+    @matricula = Matricula.find(params[:matricula_id])
+    @user = @matricula.user
+    disciplina_nome = @matricula.turma.disciplina.nome
+    semestre = @matricula.turma.semestre
+
+    @matricula.destroy!
+
+    redirect_to edit_user_path(@user),
+                notice: "Matrícula removida da disciplina #{disciplina_nome} - #{semestre}."
+  end
+
+  # POST /users/adicionar_disciplina_professor
+  def adicionar_disciplina_professor
+    return redirect_to root_path, alert: 'Acesso negado.' unless current_user.admin?
+
+    @user = User.find(params[:user_id])
+    @disciplina = Disciplina.find(params[:disciplina_id])
+    semestre = params[:semestre]
+
+    # Verificar se já existe uma turma para este professor nesta disciplina no semestre
+    if @disciplina.turmas.exists?(professor_id: @user.id, semestre: semestre)
+      redirect_to edit_user_path(@user), alert: 'Este professor já leciona esta disciplina neste semestre.'
+      return
+    end
+
+    @turma = @disciplina.turmas.create!(
+      professor: @user,
+      semestre: semestre
+    )
+
+    redirect_to edit_user_path(@user),
+                notice: "Professor adicionado à disciplina #{@disciplina.nome} - #{semestre}."
+  end
+
+  # DELETE /users/remover_disciplina_professor
+  def remover_disciplina_professor
+    return redirect_to root_path, alert: 'Acesso negado.' unless current_user.admin?
+
+    @turma = Turma.find(params[:turma_id])
+    @user = @turma.professor
+    disciplina_nome = @turma.disciplina.nome
+    semestre = @turma.semestre
+
+    @turma.destroy!
+
+    redirect_to edit_user_path(@user),
+                notice: "Professor removido da disciplina #{disciplina_nome} - #{semestre}."
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -99,11 +171,11 @@ class UsersController < ApplicationController
   # Only allow a list of trusted parameters through.
   def user_params
     if current_user&.admin?
-      # Administradores podem editar todos os campos incluindo role
-      params.expect(user: %i[email password password_confirmation name matricula role])
+      # Administradores podem editar todos os campos incluindo role e curso
+      params.expect(user: %i[email password password_confirmation name matricula role curso])
     else
-      # Usuários normais não podem editar role
-      params.expect(user: %i[email password password_confirmation name matricula])
+      # Usuários normais não podem editar role, mas podem editar curso
+      params.expect(user: %i[email password password_confirmation name matricula curso])
     end
   end
 end

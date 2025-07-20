@@ -29,6 +29,15 @@ Rails.application.routes.draw do
     end
   end
 
+  # Rotas para gerenciamento de disciplinas dos usuários
+  post 'users/adicionar_disciplina_aluno', to: 'users#adicionar_disciplina_aluno', as: :adicionar_disciplina_aluno
+  delete 'users/remover_disciplina_aluno', to: 'users#remover_disciplina_aluno', as: :remover_disciplina_aluno
+  post 'users/adicionar_disciplina_professor', to: 'users#adicionar_disciplina_professor', as: :adicionar_disciplina_professor
+  delete 'users/remover_disciplina_professor', to: 'users#remover_disciplina_professor', as: :remover_disciplina_professor
+
+  # Rota para buscar turmas de uma disciplina (AJAX)
+  get 'disciplinas/:id/turmas', to: 'disciplinas#turmas', as: :disciplina_turmas
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

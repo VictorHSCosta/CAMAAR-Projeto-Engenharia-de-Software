@@ -3,16 +3,16 @@
 
 # Criar um usuário de teste sem senha
 user_test = User.new(
-  name: "Usuario Teste Primeira Senha",
-  email: "teste.primeira.senha@camaar.com",
-  matricula: "123456789",
-  role: "aluno"
+  name: 'Usuario Teste Primeira Senha',
+  email: 'teste.primeira.senha@camaar.com',
+  matricula: '123456789',
+  role: 'aluno'
 )
 
 # Salvar sem validação de senha (bypass do Devise)
 user_test.save(validate: false)
 
-puts "Usuário criado:"
+puts 'Usuário criado:'
 puts "Nome: #{user_test.name}"
 puts "Email: #{user_test.email}"
 puts "Matrícula: #{user_test.matricula}"
