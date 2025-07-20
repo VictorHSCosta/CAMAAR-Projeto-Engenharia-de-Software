@@ -57,7 +57,7 @@ class EvaluationsController < ApplicationController
   # Mostrar resultados estatísticos do formulário (para administradores e coordenadores)
   def results
     @formulario = Formulario.find(params[:id])
-    
+
     # Verificar se o usuário tem permissão para ver resultados
     unless current_user&.admin? || (current_user&.coordenador? && @formulario.coordenador == current_user)
       redirect_to evaluations_path, alert: 'Acesso negado. Você não tem permissão para ver estes resultados.'
