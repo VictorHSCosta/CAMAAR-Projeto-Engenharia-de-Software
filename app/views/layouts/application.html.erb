@@ -15,6 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "figma_custom", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "navbar_fix", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
   <body class="<%= 'user-signed-in' if user_signed_in? %>">
@@ -32,16 +33,26 @@
               <input type="search" class="form-control" placeholder="Buscar..." style="width: 250px;">
             </div>
             <% if current_user %>
-              <div class="dropdown" style="position: relative; z-index: 9999;">
-                <button class="btn p-0" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="border: none; background: none;">
+              <div class="dropdown">
+                <button class="btn p-0 dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                   <div class="user-avatar">
                     <%= current_user.name.first.upcase %>
                   </div>
                 </button>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown" style="z-index: 10000; min-width: 160px;">
-                  <li><%= link_to "Meu Perfil", edit_user_path(current_user), class: "dropdown-item" %></li>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                  <li>
+                    <%= link_to edit_user_path(current_user), class: "dropdown-item" do %>
+                      <i class="fas fa-user me-2"></i>
+                      Meu Perfil
+                    <% end %>
+                  </li>
                   <li><hr class="dropdown-divider"></li>
-                  <li><%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %></li>
+                  <li>
+                    <%= link_to destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" do %>
+                      <i class="fas fa-sign-out-alt me-2"></i>
+                      Logout
+                    <% end %>
+                  </li>
                 </ul>
               </div>
             <% end %>
@@ -119,65 +130,28 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-      // Inicializa componentes Bootstrap
-      function initializeBootstrap() {
-        console.log('Inicializando componentes Bootstrap...');
-        
-        // Destrói instâncias existentes para evitar conflitos
-        try {
-          document.querySelectorAll('[data-bs-toggle="dropdown"]').forEach(function(element) {
-            var existingDropdown = bootstrap.Dropdown.getInstance(element);
-            if (existingDropdown) {
-              existingDropdown.dispose();
-            }
-          });
-        } catch(e) {
-          console.log('Erro ao destruir dropdowns existentes:', e);
-        }
-
-        // Reinicializa dropdowns
-        var dropdownElementList = [].slice.call(document.querySelectorAll('[data-bs-toggle="dropdown"]'));
-        dropdownElementList.map(function (dropdownToggleEl) {
-          console.log('Inicializando dropdown:', dropdownToggleEl.id);
-          return new bootstrap.Dropdown(dropdownToggleEl);
-        });
-
-        // Reinicializa offcanvas
-        var offcanvasElementList = [].slice.call(document.querySelectorAll('[data-bs-toggle="offcanvas"]'));
-        offcanvasElementList.map(function (offcanvasToggleEl) {
-          return new bootstrap.Offcanvas(offcanvasToggleEl);
-        });
-        
-        // Reinicializa tooltips
-        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-        tooltipTriggerList.map(function (tooltipTriggerEl) {
-          return new bootstrap.Tooltip(tooltipTriggerEl);
-        });
-        
-        console.log('Bootstrap inicializado com sucesso!');
-      }
-      
-      // Inicializa na carga inicial
+      // Inicialização simples do Bootstrap
       document.addEventListener('DOMContentLoaded', function() {
-        console.log('DOMContentLoaded event fired');
-        setTimeout(initializeBootstrap, 100);
+      // Inicializa todos os componentes Bootstrap automaticamente
+      var dropdownElementList = [].slice.call(document.querySelectorAll('[data-bs-toggle="dropdown"]'));
+      dropdownElementList.map(function (dropdownToggleEl) {
+      return new bootstrap.Dropdown(dropdownToggleEl);
       });
-      
-      // Garante que os componentes Bootstrap funcionem após navegação Turbo
+      var offcanvasElementList = [].slice.call(document.querySelectorAll('[data-bs-toggle="offcanvas"]'));
+      offcanvasElementList.map(function (offcanvasEl) {
+      return new bootstrap.Offcanvas(offcanvasEl);
+      });
+      });
+      // Reinicialização para Turbo
       document.addEventListener('turbo:load', function() {
-        console.log('turbo:load event fired');
-        setTimeout(initializeBootstrap, 100);
+      var dropdownElementList = [].slice.call(document.querySelectorAll('[data-bs-toggle="dropdown"]'));
+      dropdownElementList.map(function (dropdownToggleEl) {
+      return new bootstrap.Dropdown(dropdownToggleEl);
       });
-      
-      document.addEventListener('turbo:render', function() {
-        console.log('turbo:render event fired');
-        setTimeout(initializeBootstrap, 100);
+      var offcanvasElementList = [].slice.call(document.querySelectorAll('[data-bs-toggle="offcanvas"]'));
+      offcanvasElementList.map(function (offcanvasEl) {
+      return new bootstrap.Offcanvas(offcanvasEl);
       });
-      
-      document.addEventListener('turbo:frame-load', function() {
-        console.log('turbo:frame-load event fired');
-        setTimeout(initializeBootstrap, 100);
       });
-    </script>
-  </body>
-</html>
+    </body>
+  </html>
