@@ -80,6 +80,22 @@ class User < ApplicationRecord
     matriculas.exists?(turma_id: turma_id)
   end
 
+  # Método para verificar se o usuário não tem senha definida
+  def sem_senha?
+    encrypted_password.blank?
+  end
+
+  # Método para definir primeira senha (sem validação de senha atual)
+  def definir_primeira_senha(nova_senha, confirmacao_senha)
+    return false unless sem_senha?
+    return false if nova_senha != confirmacao_senha
+    return false if nova_senha.length < 6
+
+    self.password = nova_senha
+    self.password_confirmation = confirmacao_senha
+    save
+  end
+
   private
 
   def downcase_email
