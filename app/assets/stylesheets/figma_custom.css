@@ -647,3 +647,17 @@ body {
 .user-avatar:hover {
   transform: scale(1.05);
 }
+
+/* Links minimalistas roxos */
+.minimal-link {
+  color: var(--primary-purple) !important;
+  text-decoration: none !important;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.minimal-link:hover {
+  color: var(--secondary-purple) !important;
+  text-decoration: underline !important;
+}

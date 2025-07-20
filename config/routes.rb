@@ -5,7 +5,15 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }, skip: [:registrations]
 
-  resources :cursos, except: [:show]
+  # Rota para primeira senha (usuários sem senha)
+  get 'primeira_senha', to: 'primeira_senha#new', as: :nova_primeira_senha
+  post 'primeira_senha', to: 'primeira_senha#create', as: :primeira_senha
+
+  # Rota para recuperação de senha (sem email)
+  get 'recuperar_senha', to: 'recuperar_senha#new', as: :nova_recuperar_senha
+  post 'recuperar_senha', to: 'recuperar_senha#create', as: :recuperar_senha
+
+  resources :cursos
   resources :disciplinas, except: [:show]
   resources :formularios
   resources :matriculas
