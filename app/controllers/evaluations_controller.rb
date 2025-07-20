@@ -8,6 +8,9 @@ class EvaluationsController < ApplicationController
     @formularios = if current_user.admin?
                      # Administradores veem todos os formulários ativos (sem filtro de período)
                      Formulario.where(ativo: true)
+                   elsif current_user.coordenador?
+                     # Coordenadores veem formulários que eles criaram ou que são da sua área
+                     Formulario.where(ativo: true, coordenador: current_user)
                    else
                      # Usuários normais veem apenas formulários que podem responder
                      Formulario.ativos.no_periodo.select do |formulario|
@@ -16,8 +19,15 @@ class EvaluationsController < ApplicationController
                    end
 
     # Separar em formulários disponíveis e já respondidos
-    @formularios_disponiveis = @formularios.reject { |f| f.already_answered_by?(current_user) }
-    @formularios_respondidos = @formularios.select { |f| f.already_answered_by?(current_user) }
+    if current_user.admin? || current_user.coordenador?
+      # Para admins e coordenadores, todos são "disponíveis" (para visualização/gestão)
+      @formularios_disponiveis = @formularios
+      @formularios_respondidos = []
+    else
+      # Para outros usuários, separar entre disponíveis e respondidos
+      @formularios_disponiveis = @formularios.reject { |f| f.already_answered_by?(current_user) }
+      @formularios_respondidos = @formularios.select { |f| f.already_answered_by?(current_user) }
+    end
   end
 
   def show
@@ -44,15 +54,16 @@ class EvaluationsController < ApplicationController
     process_respostas
   end
 
-  # Mostrar resultados estatísticos do formulário (apenas para administradores)
+  # Mostrar resultados estatísticos do formulário (para administradores e coordenadores)
   def results
-    # Verificar se o usuário é administrador
-    unless current_user&.admin?
-      redirect_to evaluations_path, alert: 'Acesso negado. Apenas administradores podem ver resultados.'
+    @formulario = Formulario.find(params[:id])
+    
+    # Verificar se o usuário tem permissão para ver resultados
+    unless current_user&.admin? || (current_user&.coordenador? && @formulario.coordenador == current_user)
+      redirect_to evaluations_path, alert: 'Acesso negado. Você não tem permissão para ver estes resultados.'
       return
     end
 
-    @formulario = Formulario.find(params[:id])
     @template = @formulario.template
 
     # Buscar todas as respostas para este formulário

@@ -50,6 +50,11 @@ class Formulario < ApplicationRecord
     submissoes_concluidas.exists?(user: user)
   end
 
+  # Alias para already_answered_by? para compatibilidade
+  def respondido_por?(user)
+    already_answered_by?(user)
+  end
+
   private
 
   def visible_for_professor?(user)
