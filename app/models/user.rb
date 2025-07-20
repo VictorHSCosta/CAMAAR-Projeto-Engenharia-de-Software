@@ -16,11 +16,11 @@ class User < ApplicationRecord
   has_many :turmas, foreign_key: 'professor_id', dependent: :destroy
   has_many :matriculas, dependent: :destroy
   has_many :submissoes_concluidas, class_name: 'SubmissaoConcluida', dependent: :destroy
-  
+
   # Associações específicas para professores
   has_many :turmas_como_professor, class_name: 'Turma', foreign_key: 'professor_id', dependent: :destroy
   has_many :disciplinas_como_professor, through: :turmas_como_professor, source: :disciplina
-  
+
   # Associações específicas para alunos
   has_many :turmas_matriculadas, through: :matriculas, source: :turma
   has_many :disciplinas_como_aluno, through: :turmas_matriculadas, source: :disciplina
@@ -58,22 +58,25 @@ class User < ApplicationRecord
       Disciplina.none
     end
   end
-  
+
   # Método para verificar se professor leciona uma disciplina específica
   def leciona_disciplina?(disciplina_id)
     return false unless professor?
+
     disciplinas_como_professor.exists?(id: disciplina_id)
   end
-  
+
   # Método para verificar se aluno está matriculado em uma disciplina específica
   def matriculado_em_disciplina?(disciplina_id)
     return false unless aluno?
+
     disciplinas_como_aluno.exists?(id: disciplina_id)
   end
-  
+
   # Método para verificar se aluno está matriculado em uma turma específica
   def matriculado_em_turma?(turma_id)
     return false unless aluno?
+
     matriculas.exists?(turma_id: turma_id)
   end
 

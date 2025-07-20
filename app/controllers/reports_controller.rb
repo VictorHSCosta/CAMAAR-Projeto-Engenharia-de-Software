@@ -9,12 +9,12 @@ class ReportsController < ApplicationController
   def index
     # Para professores, mostrar apenas relatórios de suas disciplinas
     # Para admins, mostrar todos os relatórios
-    if current_user.professor?
-      @formularios = formularios_do_professor
-    else
-      @formularios = Formulario.all
-    end
-    
+    @formularios = if current_user.professor?
+                     formularios_do_professor
+                   else
+                     Formulario.all
+                   end
+
     @estatisticas_gerais = calcular_estatisticas_gerais
   end
 
@@ -53,9 +53,9 @@ class ReportsController < ApplicationController
   def calcular_estatisticas_gerais
     total_formularios = @formularios.count
     total_respostas = SubmissaoConcluida.joins(:formulario).where(formulario: @formularios).count
-    
+
     formularios_com_respostas = @formularios.joins(:submissoes_concluidas).distinct.count
-    taxa_participacao = total_formularios > 0 ? (formularios_com_respostas.to_f / total_formularios * 100).round(1) : 0
+    taxa_participacao = total_formularios.positive? ? (formularios_com_respostas.to_f / total_formularios * 100).round(1) : 0
 
     {
       total_formularios: total_formularios,
@@ -68,10 +68,10 @@ class ReportsController < ApplicationController
   def calcular_estatisticas_formulario(formulario)
     total_respostas = formulario.submissoes_concluidas.count
     total_perguntas = formulario.template.pergunta.count
-    
+
     # Calcular tempo médio de resposta se houver timestamps
     tempo_medio = calcular_tempo_medio_resposta(formulario)
-    
+
     {
       total_respostas: total_respostas,
       total_perguntas: total_perguntas,
@@ -79,7 +79,7 @@ class ReportsController < ApplicationController
     }
   end
 
-  def calcular_tempo_medio_resposta(formulario)
+  def calcular_tempo_medio_resposta(_formulario)
     # Se houver campos de timestamp nas submissões, calcular aqui
     # Por enquanto, retornar nil
     nil
@@ -88,29 +88,29 @@ class ReportsController < ApplicationController
   def obter_respostas_formulario(formulario)
     # Obter respostas agrupadas por pergunta
     respostas_por_pergunta = {}
-    
+
     formulario.template.pergunta.each do |pergunta|
       respostas = Respostum.where(pergunta: pergunta, formulario: formulario)
-      
-      if pergunta.multipla_escolha? || pergunta.verdadeiro_falso?
-        # Agrupar respostas por opção para múltipla escolha e verdadeiro/falso
-        respostas_por_pergunta[pergunta.id] = {
-          pergunta: pergunta,
-          tipo: 'multipla_escolha',
-          respostas_agrupadas: respostas.joins(:opcao)
-                                      .group('opcoes_pergunta.texto')
-                                      .count
-        }
-      else
-        # Para perguntas subjetivas, listar todas as respostas
-        respostas_por_pergunta[pergunta.id] = {
-          pergunta: pergunta,
-          tipo: 'texto_livre',
-          respostas_texto: respostas.pluck(:resposta_texto).compact
-        }
-      end
+
+      respostas_por_pergunta[pergunta.id] = if pergunta.multipla_escolha? || pergunta.verdadeiro_falso?
+                                              # Agrupar respostas por opção para múltipla escolha e verdadeiro/falso
+                                              {
+                                                pergunta: pergunta,
+                                                tipo: 'multipla_escolha',
+                                                respostas_agrupadas: respostas.joins(:opcao)
+                                                                              .group('opcoes_pergunta.texto')
+                                                                              .count
+                                              }
+                                            else
+                                              # Para perguntas subjetivas, listar todas as respostas
+                                              {
+                                                pergunta: pergunta,
+                                                tipo: 'texto_livre',
+                                                respostas_texto: respostas.pluck(:resposta_texto).compact
+                                              }
+                                            end
     end
-    
+
     respostas_por_pergunta
   end
 end

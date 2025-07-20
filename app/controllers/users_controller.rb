@@ -61,7 +61,9 @@ class UsersController < ApplicationController
   def save_user_and_respond
     respond_to do |format|
       if @user.save
-        format.html { redirect_to users_path, notice: "Usuário criado com sucesso! Senha temporária: #{@user.password}" }
+        format.html do
+          redirect_to users_path, notice: "Usuário criado com sucesso! Senha temporária: #{@user.password}"
+        end
         format.json { render json: @user, status: :created }
       else
         format.html { render :new, status: :unprocessable_entity }

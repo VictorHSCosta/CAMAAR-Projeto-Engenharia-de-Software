@@ -4,7 +4,7 @@
 template = Template.first
 
 if template.nil?
-  puts "❌ Nenhum template encontrado. Crie um template primeiro."
+  puts '❌ Nenhum template encontrado. Crie um template primeiro.'
   exit
 end
 
@@ -12,7 +12,7 @@ end
 admin = User.admin.first
 
 if admin.nil?
-  puts "❌ Nenhum usuário admin encontrado."
+  puts '❌ Nenhum usuário admin encontrado.'
   exit
 end
 
@@ -42,9 +42,9 @@ if disciplina
     ativo: true,
     escopo_visibilidade: :por_disciplina
   )
-  
+
   puts "✅ Formulário criado para disciplina #{disciplina.nome}: #{formulario_disciplina.id}"
 end
 
-puts "🎉 Dados de exemplo criados com sucesso!"
-puts "🔗 Acesse /evaluations para ver os formulários disponíveis"
+puts '🎉 Dados de exemplo criados com sucesso!'
+puts '🔗 Acesse /evaluations para ver os formulários disponíveis'
