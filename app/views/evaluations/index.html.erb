@@ -225,3 +225,90 @@
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', initializeEvaluationsDropdown);
+document.addEventListener('turbo:load', initializeEvaluationsDropdown);
+document.addEventListener('turbo:render', initializeEvaluationsDropdown);
+
+function initializeEvaluationsDropdown() {
+  console.log('[EVALUATIONS] Inicializando dropdown...');
+  
+  // Aguardar um momento para garantir que o DOM está pronto
+  setTimeout(function() {
+    const userDropdownButton = document.getElementById('userDropdown');
+    
+    if (!userDropdownButton) {
+      console.log('[EVALUATIONS] Botão userDropdown não encontrado');
+      return;
+    }
+    
+    console.log('[EVALUATIONS] Botão userDropdown encontrado');
+    
+    // Limpar qualquer instância existente
+    try {
+      const existingInstance = bootstrap.Dropdown.getInstance(userDropdownButton);
+      if (existingInstance) {
+        existingInstance.dispose();
+      }
+    } catch(e) {
+      console.log('[EVALUATIONS] Erro ao destruir instância existente:', e);
+    }
+    
+    // Remover event listeners existentes
+    userDropdownButton.removeAttribute('data-bs-toggle');
+    
+    // Recriar a funcionalidade do dropdown manualmente
+    userDropdownButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      console.log('[EVALUATIONS] Clique no dropdown detectado');
+      
+      const dropdownMenu = userDropdownButton.nextElementSibling;
+      if (dropdownMenu && dropdownMenu.classList.contains('dropdown-menu')) {
+        const isVisible = dropdownMenu.classList.contains('show');
+        
+        // Fechar todos os outros dropdowns
+        document.querySelectorAll('.dropdown-menu.show').forEach(menu => {
+          menu.classList.remove('show');
+        });
+        
+        // Toggle do dropdown atual
+        if (!isVisible) {
+          dropdownMenu.classList.add('show');
+          dropdownMenu.style.position = 'absolute';
+          dropdownMenu.style.inset = '0px 0px auto auto';
+          dropdownMenu.style.transform = 'translate(0px, 40px)';
+          console.log('[EVALUATIONS] Dropdown aberto');
+        } else {
+          console.log('[EVALUATIONS] Dropdown fechado');
+        }
+      } else {
+        console.log('[EVALUATIONS] Menu dropdown não encontrado');
+      }
+    });
+    
+    // Reativar o atributo Bootstrap após configurar nosso handler
+    userDropdownButton.setAttribute('data-bs-toggle', 'dropdown');
+    
+    // Tentar inicializar com Bootstrap novamente
+    try {
+      new bootstrap.Dropdown(userDropdownButton);
+      console.log('[EVALUATIONS] Bootstrap Dropdown inicializado');
+    } catch(e) {
+      console.log('[EVALUATIONS] Erro ao inicializar Bootstrap Dropdown:', e);
+    }
+    
+  }, 200);
+}
+
+// Fechar dropdown ao clicar fora
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.dropdown')) {
+    document.querySelectorAll('.dropdown-menu.show').forEach(menu => {
+      menu.classList.remove('show');
+    });
+  }
+});
+</script>

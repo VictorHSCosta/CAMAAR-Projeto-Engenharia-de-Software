@@ -96,6 +96,12 @@ class UsersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def user_params
-    params.expect(user: %i[email password password_confirmation name matricula role])
+    if current_user&.admin?
+      # Administradores podem editar todos os campos incluindo role
+      params.expect(user: %i[email password password_confirmation name matricula role])
+    else
+      # Usuários normais não podem editar role
+      params.expect(user: %i[email password password_confirmation name matricula])
+    end
   end
 end

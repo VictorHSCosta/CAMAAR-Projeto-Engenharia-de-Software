@@ -144,26 +144,6 @@ body {
   color: #4c6ef5 !important;
 }
 
-.user-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: bold;
-  font-size: 16px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.user-avatar:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
-
 /* Cards de Avaliações - Baseado no Figma */
 .evaluations-grid {
   display: grid;
@@ -574,6 +554,8 @@ body.user-signed-in {
   border-radius: 12px;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
   padding: 8px;
+  z-index: 10000 !important;
+  position: absolute !important;
 }
 
 .dropdown-item {
@@ -585,4 +567,57 @@ body.user-signed-in {
 .dropdown-item:hover {
   background: var(--primary-purple);
   color: var(--white);
+}
+
+/* Estilos específicos para o dropdown do usuário */
+.dropdown {
+  position: relative !important;
+}
+
+.dropdown-toggle {
+  border: none !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+
+.dropdown-toggle:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.dropdown-menu.show {
+  display: block !important;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  visibility: visible !important;
+}
+
+.dropdown-menu:not(.show) {
+  display: none !important;
+  opacity: 0 !important;
+  transform: translateY(-10px) !important;
+  visibility: hidden !important;
+}
+
+/* User avatar específico */
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.user-avatar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }

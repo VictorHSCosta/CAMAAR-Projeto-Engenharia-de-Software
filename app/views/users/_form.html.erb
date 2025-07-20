@@ -59,20 +59,23 @@
         <%= form.text_field :matricula, class: "form-control form-control-lg", placeholder: "Digite a matrícula" %>
       </div>
     </div>
-    <!-- Role Field -->
-    <div class="col-md-6">
-      <div class="form-group">
-        <%= form.label :role, "Tipo de Usuário", class: "form-label fw-semibold text-dark" %>
-        <%= form.select :role, 
-            options_for_select([
-              ['Administrador', 0],
-              ['Professor', 1], 
-              ['Aluno', 2]
-            ], user.role), 
-            { prompt: 'Selecione o tipo' }, 
-            { class: "form-select form-select-lg" } %>
+    <!-- Role Field - apenas para administradores -->
+    <% if current_user&.admin? %>
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= form.label :role, "Tipo de Usuário", class: "form-label fw-semibold text-dark" %>
+          <%= form.select :role, 
+              options_for_select([
+                ['Administrador', 'admin'],
+                ['Aluno', 'aluno'], 
+                ['Professor', 'professor'],
+                ['Coordenador', 'coordenador']
+              ], user.role), 
+              { prompt: 'Selecione o tipo' }, 
+              { class: "form-select form-select-lg" } %>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
   <!-- Submit Button -->
   <div class="d-grid mt-4">
