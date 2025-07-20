@@ -226,29 +226,3 @@
     }
   }
 </style>
-const visibilidadeSelect = document.getElementById('escopo_visibilidade_select');
-const turmaField = document.getElementById('campo-turma');
-const disciplinaField = document.getElementById('campo-disciplina');
-if (visibilidadeSelect) {
-function toggleFields() {
-const selectedValue = visibilidadeSelect.value;
-if (selectedValue === 'por_turma') {
-turmaField.style.display = 'block';
-turmaField.querySelector('select').required = true;
-} else {
-turmaField.style.display = 'none';
-turmaField.querySelector('select').required = false;
-}
-if (selectedValue === 'por_disciplina') {
-disciplinaField.style.display = 'block';
-disciplinaField.querySelector('select').required = true;
-} else {
-disciplinaField.style.display = 'none';
-disciplinaField.querySelector('select').required = false;
-}
-}
-visibilidadeSelect.addEventListener('change', toggleFields);
-toggleFields();
-}
-});
-</script>

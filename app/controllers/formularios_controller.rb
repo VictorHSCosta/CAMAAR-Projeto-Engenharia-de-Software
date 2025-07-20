@@ -50,7 +50,7 @@ class FormulariosController < ApplicationController
 
     respond_to do |format|
       if @formulario.save
-        format.html { redirect_to @formulario, notice: 'Formulário publicado com sucesso.' }
+        format.html { redirect_to formularios_path, notice: 'Formulário publicado com sucesso.' }
         format.json { render :show, status: :created, location: @formulario }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -63,7 +63,7 @@ class FormulariosController < ApplicationController
   def update
     respond_to do |format|
       if @formulario.update(formulario_params)
-        format.html { redirect_to @formulario, notice: 'Formulário atualizado com sucesso.' }
+        format.html { redirect_to formularios_path, notice: 'Formulário atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @formulario }
       else
         format.html { render :edit, status: :unprocessable_entity }
