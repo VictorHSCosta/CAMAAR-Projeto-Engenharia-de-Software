@@ -38,7 +38,7 @@ class User < ApplicationRecord
 
   # Permite que apenas admins cadastrem novos usuários
   def self.can_register?(current_user = nil)
-    current_user&.admin?
+    current_user&.admin? || false
   end
 
   # Método para retornar disciplinas que o usuário tem acesso

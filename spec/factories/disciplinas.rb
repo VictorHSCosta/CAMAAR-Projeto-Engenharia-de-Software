@@ -2,7 +2,8 @@
 
 FactoryBot.define do
   factory :disciplina do
-    nome { 'MyString' }
-    curso { nil }
+    nome { Faker::Educator.subject }
+    codigo { Faker::Alphanumeric.alpha(number: 3).upcase + Faker::Number.number(digits: 3).to_s }
+    association :curso
   end
 end
