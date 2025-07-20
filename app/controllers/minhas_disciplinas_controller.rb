@@ -42,7 +42,10 @@ class MinhasDisciplinasController < ApplicationController
         redirect_to minhas_disciplinas_path, alert: 'Você não tem acesso a esta disciplina.'
         return
       end
-      @turmas = @disciplina.turmas.joins(:matriculas).where(matriculas: { user_id: current_user.id }).includes(:professor)
+      @turmas = @disciplina.turmas
+                           .joins(:matriculas)
+                           .where(matriculas: { user_id: current_user.id })
+                           .includes(:professor)
     when 'professor'
       unless @disciplina.turmas.exists?(professor_id: current_user.id)
         redirect_to minhas_disciplinas_path, alert: 'Você não leciona esta disciplina.'
@@ -85,8 +88,10 @@ class MinhasDisciplinasController < ApplicationController
       semestre: semestre
     )
 
+    professor_name = @professor.name
+    disciplina_nome = @disciplina.nome
     redirect_to gerenciar_disciplinas_path,
-                notice: "Professor #{@professor.name} cadastrado na disciplina #{@disciplina.nome} para o semestre #{semestre}."
+                notice: "Professor #{professor_name} cadastrado na disciplina #{disciplina_nome} para o semestre #{semestre}."
   end
 
   def cadastrar_aluno_disciplina

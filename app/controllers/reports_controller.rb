@@ -55,7 +55,11 @@ class ReportsController < ApplicationController
     total_respostas = SubmissaoConcluida.joins(:formulario).where(formulario: @formularios).count
 
     formularios_com_respostas = @formularios.joins(:submissoes_concluidas).distinct.count
-    taxa_participacao = total_formularios.positive? ? (formularios_com_respostas.to_f / total_formularios * 100).round(1) : 0
+    taxa_participacao = if total_formularios.positive?
+                          (formularios_com_respostas.to_f / total_formularios * 100).round(1)
+                        else
+                          0
+                        end
 
     {
       total_formularios: total_formularios,

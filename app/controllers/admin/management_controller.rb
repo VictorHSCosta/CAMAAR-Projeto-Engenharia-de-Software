@@ -87,7 +87,7 @@ module Admin
       authorize %i[admin management], :import_disciplines?
     end
 
-    def check_imported_data
+    def imported_data_exists?
       # Verifica se já existem dados importados (excluindo usuários seed)
       seed_emails = ['admin@camaar.com', 'coordenador@camaar.com', 'professor@camaar.com', 'aluno@camaar.com']
       users_count = User.where.not(email: seed_emails).count

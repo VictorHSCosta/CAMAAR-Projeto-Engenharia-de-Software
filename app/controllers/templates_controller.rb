@@ -97,30 +97,41 @@ class TemplatesController < ApplicationController
     Rails.logger.info "Parâmetros recebidos: #{params[:perguntas].inspect}"
 
     params[:perguntas].each do |index, pergunta_attrs|
-      Rails.logger.info "Processando pergunta #{index}: #{pergunta_attrs.inspect}"
-
-      next if pergunta_attrs[:texto].blank?
-
-      pergunta = @template.pergunta.create!(
-        texto: pergunta_attrs[:texto],
-        tipo: pergunta_attrs[:tipo],
-        obrigatoria: %w[1 on].include?(pergunta_attrs[:obrigatoria])
-      )
-
-      Rails.logger.info "Pergunta criada: ID=#{pergunta.id}, Texto=#{pergunta.texto}"
-
-      # Criar opções se for múltipla escolha ou verdadeiro/falso
-      next unless pergunta_attrs[:opcoes] && pergunta.multipla_escolha_ou_verdadeiro_falso?
-
-      pergunta_attrs[:opcoes].each_value do |opcao_texto|
-        next if opcao_texto.blank?
-
-        opcao = pergunta.opcoes_pergunta.create!(texto: opcao_texto)
-        Rails.logger.info "Opção criada: ID=#{opcao.id}, Texto=#{opcao.texto}"
-      end
+      process_single_pergunta(index, pergunta_attrs)
     end
 
     Rails.logger.info '=== PROCESS PERGUNTAS FINALIZADO ==='
+  end
+
+  def process_single_pergunta(index, pergunta_attrs)
+    Rails.logger.info "Processando pergunta #{index}: #{pergunta_attrs.inspect}"
+
+    return if pergunta_attrs[:texto].blank?
+
+    pergunta = create_pergunta(pergunta_attrs)
+    Rails.logger.info "Pergunta criada: ID=#{pergunta.id}, Texto=#{pergunta.texto}"
+
+    create_opcoes_for_pergunta(pergunta, pergunta_attrs)
+  end
+
+  def create_pergunta(pergunta_attrs)
+    obrigatoria_values = %w[1 on]
+    @template.pergunta.create!(
+      texto: pergunta_attrs[:texto],
+      tipo: pergunta_attrs[:tipo],
+      obrigatoria: obrigatoria_values.include?(pergunta_attrs[:obrigatoria])
+    )
+  end
+
+  def create_opcoes_for_pergunta(pergunta, pergunta_attrs)
+    return unless pergunta_attrs[:opcoes] && pergunta.multipla_escolha_ou_verdadeiro_falso?
+
+    pergunta_attrs[:opcoes].each_value do |opcao_texto|
+      next if opcao_texto.blank?
+
+      opcao = pergunta.opcoes_pergunta.create!(texto: opcao_texto)
+      Rails.logger.info "Opção criada: ID=#{opcao.id}, Texto=#{opcao.texto}"
+    end
   end
 
   def process_perguntas_update
@@ -132,40 +143,45 @@ class TemplatesController < ApplicationController
     params[:perguntas].each_value do |pergunta_attrs|
       next if pergunta_attrs[:texto].blank?
 
-      if pergunta_attrs[:id].present?
-        # Pergunta existente - atualizar
-        pergunta = @template.pergunta.find(pergunta_attrs[:id])
-        pergunta.update!(
-          texto: pergunta_attrs[:texto],
-          tipo: pergunta_attrs[:tipo],
-          obrigatoria: %w[1 on].include?(pergunta_attrs[:obrigatoria])
-        )
-        pergunta_ids_enviadas << pergunta.id
+      pergunta = process_pergunta_update(pergunta_attrs)
+      pergunta_ids_enviadas << pergunta.id
 
-        # Remover opções existentes e recriar
-        pergunta.opcoes_pergunta.destroy_all
-      else
-        # Nova pergunta - criar
-        pergunta = @template.pergunta.create!(
-          texto: pergunta_attrs[:texto],
-          tipo: pergunta_attrs[:tipo],
-          obrigatoria: %w[1 on].include?(pergunta_attrs[:obrigatoria])
-        )
-        pergunta_ids_enviadas << pergunta.id
-      end
-
-      # Criar opções se for múltipla escolha ou verdadeiro/falso
-      next unless pergunta_attrs[:opcoes] && pergunta.multipla_escolha_ou_verdadeiro_falso?
-
-      pergunta_attrs[:opcoes].each_value do |opcao_texto|
-        next if opcao_texto.blank?
-
-        pergunta.opcoes_pergunta.create!(texto: opcao_texto)
-      end
+      create_opcoes_for_pergunta(pergunta, pergunta_attrs)
     end
 
     # Remover perguntas que não foram enviadas (foram deletadas no frontend)
     @template.pergunta.where.not(id: pergunta_ids_enviadas).destroy_all
+  end
+
+  def process_pergunta_update(pergunta_attrs)
+    if pergunta_attrs[:id].present?
+      update_existing_pergunta(pergunta_attrs)
+    else
+      create_new_pergunta(pergunta_attrs)
+    end
+  end
+
+  def update_existing_pergunta(pergunta_attrs)
+    pergunta = @template.pergunta.find(pergunta_attrs[:id])
+    obrigatoria_values = %w[1 on]
+    pergunta.update!(
+      texto: pergunta_attrs[:texto],
+      tipo: pergunta_attrs[:tipo],
+      obrigatoria: obrigatoria_values.include?(pergunta_attrs[:obrigatoria])
+    )
+
+    # Remover opções existentes e recriar
+    pergunta.opcoes_pergunta.destroy_all
+    pergunta
+  end
+
+  def create_new_pergunta(pergunta_attrs)
+    obrigatoria_values = %w[1 on]
+    @template.pergunta.create!(
+      texto: pergunta_attrs[:texto],
+      tipo: pergunta_attrs[:tipo],
+      obrigatoria: obrigatoria_values.include?(pergunta_attrs[:obrigatoria])
+    )
   end
 
   # Only allow a list of trusted parameters through.

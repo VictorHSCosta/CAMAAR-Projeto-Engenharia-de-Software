@@ -37,9 +37,9 @@ class Formulario < ApplicationRecord
 
     case template.publico_alvo
     when 'professores'
-      user.professor? && (todos_os_alunos? || (por_disciplina? && user.leciona_disciplina?(disciplina_id)))
+      visible_for_professor?(user)
     when 'alunos'
-      user.aluno? && (todos_os_alunos? || (por_disciplina? && user.matriculado_em_disciplina?(disciplina_id)))
+      visible_for_aluno?(user)
     else
       false
     end
@@ -51,6 +51,22 @@ class Formulario < ApplicationRecord
   end
 
   private
+
+  def visible_for_professor?(user)
+    user.professor? && (todos_os_alunos? || professor_has_access?(user))
+  end
+
+  def visible_for_aluno?(user)
+    user.aluno? && (todos_os_alunos? || aluno_has_access?(user))
+  end
+
+  def professor_has_access?(user)
+    por_disciplina? && user.leciona_disciplina?(disciplina_id)
+  end
+
+  def aluno_has_access?(user)
+    por_disciplina? && user.matriculado_em_disciplina?(disciplina_id)
+  end
 
   def no_periodo?
     Time.current.between?(data_envio, data_fim)
