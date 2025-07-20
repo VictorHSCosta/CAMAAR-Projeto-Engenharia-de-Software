@@ -40,6 +40,9 @@ Rails.application.routes.draw do
   post 'evaluations/:id', to: 'evaluations#show'
   get 'evaluations/:id/results', to: 'evaluations#results', as: :evaluation_results
 
+  # Rotas para relatórios (professores e admins)
+  resources :reports, only: [:index, :show]
+
   # Rotas para disciplinas pessoais (alunos, professores e admin)
   get 'minhas_disciplinas', to: 'minhas_disciplinas#index'
   get 'minhas_disciplinas/:id', to: 'minhas_disciplinas#show', as: :minhas_disciplinas_show
