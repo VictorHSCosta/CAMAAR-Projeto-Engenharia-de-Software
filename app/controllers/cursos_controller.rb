@@ -39,7 +39,7 @@ class CursosController < ApplicationController
   def update
     respond_to do |format|
       if @curso.update(curso_params)
-        format.html { redirect_to cursos_path, notice: I18n.t('messages.course_updated') }
+        format.html { redirect_to curso_url(@curso), notice: I18n.t('messages.course_updated') }
         format.json { render json: @curso, status: :ok }
       else
         format.html { render :edit, status: :unprocessable_entity }

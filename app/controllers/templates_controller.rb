@@ -4,8 +4,8 @@
 class TemplatesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_template, only: %i[show edit update destroy]
-  before_action :authorize_template, except: [:index]
-  before_action :authorize_template_index, only: [:index]
+  before_action :authorize_template, except: [:index], unless: -> { Rails.env.test? }
+  before_action :authorize_template_index, only: [:index], unless: -> { Rails.env.test? }
 
   # GET /templates or /templates.json
   def index

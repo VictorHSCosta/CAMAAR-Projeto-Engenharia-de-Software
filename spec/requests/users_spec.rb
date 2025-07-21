@@ -142,7 +142,7 @@ RSpec.describe '/users', type: :request do
       user = User.create! valid_attributes
       expect do
         delete user_url(user)
-      end.not_to change(User, :count)
+      end.to change(User, :count).by(-1)
     end
 
     it 'redirects to the users list' do

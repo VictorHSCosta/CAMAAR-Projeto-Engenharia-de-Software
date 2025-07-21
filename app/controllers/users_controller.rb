@@ -42,6 +42,8 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 or /users/1.json
   def destroy
+    return redirect_to root_path, alert: 'Acesso negado.' unless current_user&.admin?
+
     @user.destroy!
 
     respond_to do |format|
@@ -73,15 +75,20 @@ class UsersController < ApplicationController
   def remover_disciplina_aluno
     return redirect_to root_path, alert: 'Acesso negado.' unless current_user.admin?
 
-    @matricula = Matricula.find(params[:matricula_id])
-    @user = @matricula.user
-    disciplina_nome = @matricula.turma.disciplina.nome
-    semestre = @matricula.turma.semestre
+    if params[:matricula_id]
+      @matricula = Matricula.find(params[:matricula_id])
+    else
+      @user = User.find(params[:user_id])
+      disciplina = Disciplina.find(params[:disciplina_id])
+      @matricula = @user.matriculas.joins(:turma).where(turmas: { disciplina: disciplina }).first
+    end
+
+    @user ||= @matricula.user
 
     @matricula.destroy!
 
     redirect_to edit_user_path(@user),
-                notice: "Matrícula removida da disciplina #{disciplina_nome} - #{semestre}."
+                notice: 'Disciplina removida com sucesso!'
   end
 
   # POST /users/adicionar_disciplina_professor
@@ -104,7 +111,7 @@ class UsersController < ApplicationController
     )
 
     redirect_to edit_user_path(@user),
-                notice: "Professor adicionado à disciplina #{@disciplina.nome} - #{semestre}."
+                notice: 'Disciplina adicionada ao professor com sucesso!'
   end
 
   # DELETE /users/remover_disciplina_professor

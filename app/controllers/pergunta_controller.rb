@@ -67,6 +67,6 @@ class PerguntaController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def perguntum_params
-    params.require(:perguntum).permit(:template_id, :texto, :tipo, :obrigatoria)
+    params.require(:perguntum).permit(:template_id, :texto, :tipo, :obrigatoria, :titulo, :ordem)
   end
 end

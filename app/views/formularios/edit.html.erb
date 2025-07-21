@@ -31,7 +31,7 @@
           <div>
             <h1 class="display-6 fw-bold text-dark mb-1">Editar Formulário</h1>
             <p class="text-muted mb-0">
-              Atualize as configurações do formulário "<strong><%= @formulario.template.titulo %></strong>"
+              Atualize as configurações do formulário "<strong><%= @formulario.template&.titulo || 'Sem template' %></strong>"
             </p>
           </div>
         </div>
@@ -55,8 +55,8 @@
                 <div class="col-md-4">
                   <small class="text-muted d-block">Público-alvo</small>
                   <span class="fw-semibold text-dark">
-                    <i class="fas fa-<%= @formulario.template.publico_alvo == 'alunos' ? 'graduation-cap' : 'chalkboard-teacher' %> me-1"></i>
-                    <%= @formulario.template.publico_alvo.humanize %>
+                    <i class="fas fa-<%= @formulario.template&.publico_alvo == 'alunos' ? 'graduation-cap' : 'chalkboard-teacher' %> me-1"></i>
+                    <%= @formulario.template&.publico_alvo&.humanize || 'Não definido' %>
                   </span>
                 </div>
                 <div class="col-md-4">
@@ -97,7 +97,7 @@
         </div>
         <div class="text-muted small">
           <i class="fas fa-user me-1"></i>
-          Criado por <strong><%= @formulario.coordenador.name %></strong>
+          Criado por <strong><%= @formulario.coordenador&.name || 'Usuário não definido' %></strong>
           em <%= @formulario.created_at.strftime("%d/%m/%Y") %>
         </div>
       </div>
