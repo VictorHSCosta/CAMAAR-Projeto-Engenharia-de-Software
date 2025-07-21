@@ -47,7 +47,10 @@ RSpec.describe '/resposta', type: :request do
   end
   let(:turma) { Turma.create!(disciplina: disciplina, professor: professor, semestre: '2024.1') }
   let(:template) { Template.create!(titulo: 'Test Template', publico_alvo: 1, criado_por: user) }
-  let(:formulario) { Formulario.create!(template: template, turma: turma, coordenador: user) }
+  let(:formulario) do
+    Formulario.create!(template: template, turma: turma, coordenador: user, data_envio: 1.day.from_now,
+                       data_fim: 7.days.from_now)
+  end
   let(:pergunta) { Perguntum.create!(template: template, titulo: 'Test Question', tipo: 1, ordem: 1) }
   let(:opcao) { OpcoesPerguntum.create!(pergunta: pergunta, texto: 'Test Option') }
 

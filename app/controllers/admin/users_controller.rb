@@ -24,7 +24,7 @@ module Admin
     private
 
     def user_params
-      params.expect(user: %i[email name matricula role password password_confirmation])
+      params.require(:user).permit(:email, :name, :matricula, :role, :password, :password_confirmation)
     end
 
     def ensure_admin

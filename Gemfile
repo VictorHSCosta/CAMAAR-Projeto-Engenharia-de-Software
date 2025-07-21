@@ -72,6 +72,7 @@ group :test do
   gem 'capybara'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner-active_record'
+  gem 'rails-controller-testing'
   gem 'rspec_junit_formatter'
   gem 'shoulda-matchers', '~> 5.0'
 end

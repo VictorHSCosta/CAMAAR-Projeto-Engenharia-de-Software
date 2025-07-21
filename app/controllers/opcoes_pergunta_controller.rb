@@ -64,11 +64,11 @@ class OpcoesPerguntaController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_opcoes_perguntum
-    @opcoes_perguntum = OpcoesPerguntum.find(params.expect(:id))
+    @opcoes_perguntum = OpcoesPerguntum.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
   def opcoes_perguntum_params
-    params.expect(opcoes_perguntum: %i[pergunta_id texto])
+    params.require(:opcoes_perguntum).permit(:pergunta_id, :texto)
   end
 end

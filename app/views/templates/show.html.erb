@@ -29,7 +29,7 @@
           <!-- Disciplina -->
           <div class="mb-3">
             <label class="form-label fw-bold">Disciplina:</label>
-            <p class="mb-0"><%= @template.disciplina.nome %></p>
+            <p class="mb-0"><%= @template.disciplina&.nome || "Nenhuma disciplina associada" %></p>
           </div>
           <!-- Criado por -->
           <div class="mb-3">

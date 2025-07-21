@@ -11,7 +11,8 @@ RSpec.describe UsersController, type: :controller do
   let(:turma) { create(:turma, disciplina: disciplina, professor: professor) }
 
   before do
-    sign_in admin
+    @request.env['devise.mapping'] = Devise.mappings[:user]
+    login_as(admin, scope: :user)
   end
 
   describe 'GET #index' do

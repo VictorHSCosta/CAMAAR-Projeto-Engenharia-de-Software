@@ -62,11 +62,11 @@ class MatriculasController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_matricula
-    @matricula = Matricula.find(params.expect(:id))
+    @matricula = Matricula.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
   def matricula_params
-    params.expect(matricula: %i[user_id turma_id])
+    params.require(:matricula).permit(:user_id, :turma_id)
   end
 end
