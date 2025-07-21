@@ -48,13 +48,14 @@ RSpec.describe '/disciplinas', type: :request do
     end
   end
 
-  describe 'GET /show' do
-    it 'renders a successful response' do
-      disciplina = Disciplina.create! valid_attributes
-      get disciplina_url(disciplina)
-      expect(response).to be_successful
-    end
-  end
+  # Skip show test since disciplinas don't have show route
+  # describe 'GET /show' do
+  #   it 'renders a successful response' do
+  #     disciplina = Disciplina.create! valid_attributes
+  #     get disciplina_url(disciplina)
+  #     expect(response).to be_successful
+  #   end
+  # end
 
   describe 'GET /new' do
     it 'renders a successful response' do
@@ -81,7 +82,7 @@ RSpec.describe '/disciplinas', type: :request do
 
       it 'redirects to the created disciplina' do
         post disciplinas_url, params: { disciplina: valid_attributes }
-        expect(response).to redirect_to(disciplina_url(Disciplina.last))
+        expect(response).to redirect_to(disciplinas_url)
       end
     end
 

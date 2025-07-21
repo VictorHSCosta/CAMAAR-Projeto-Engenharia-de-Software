@@ -57,6 +57,23 @@ RSpec.configure do |config|
   config.include Devise::Test::IntegrationHelpers, type: :system
   config.include Warden::Test::Helpers
 
+  # Configurar Devise para testes
+  config.before(:each, type: :controller) do
+    @request.env['devise.mapping'] = Devise.mappings[:user] if @request
+    if defined?(controller) && controller
+      controller.request = @request
+    end
+  end
+
+  config.before(:each, type: :view) do
+    @request.env['devise.mapping'] = Devise.mappings[:user] if @request && defined?(@request)
+  end
+
+  config.before do
+    # Ensure Devise mappings are available
+    allow(Devise).to receive(:mappings).and_return(Devise.mappings) if defined?(Devise) && !Devise.mappings.empty?
+  end
+
   config.after do
     Warden.test_reset!
   end

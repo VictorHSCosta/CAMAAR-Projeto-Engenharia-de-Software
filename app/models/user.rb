@@ -16,11 +16,11 @@ class User < ApplicationRecord
   has_many :turmas, foreign_key: 'professor_id', dependent: :destroy
   has_many :matriculas, dependent: :destroy
   has_many :submissoes_concluidas, class_name: 'SubmissaoConcluida', dependent: :destroy
-  
+
   # Associações específicas para professores
   has_many :turmas_como_professor, class_name: 'Turma', foreign_key: 'professor_id', dependent: :destroy
   has_many :disciplinas_como_professor, through: :turmas_como_professor, source: :disciplina
-  
+
   # Associações específicas para alunos
   has_many :turmas_matriculadas, through: :matriculas, source: :turma
   has_many :disciplinas_como_aluno, through: :turmas_matriculadas, source: :disciplina
@@ -38,7 +38,7 @@ class User < ApplicationRecord
 
   # Permite que apenas admins cadastrem novos usuários
   def self.can_register?(current_user = nil)
-    current_user&.admin?
+    current_user&.admin? || false
   end
 
   # Método para retornar disciplinas que o usuário tem acesso
@@ -58,23 +58,42 @@ class User < ApplicationRecord
       Disciplina.none
     end
   end
-  
+
   # Método para verificar se professor leciona uma disciplina específica
   def leciona_disciplina?(disciplina_id)
     return false unless professor?
+
     disciplinas_como_professor.exists?(id: disciplina_id)
   end
-  
+
   # Método para verificar se aluno está matriculado em uma disciplina específica
   def matriculado_em_disciplina?(disciplina_id)
     return false unless aluno?
+
     disciplinas_como_aluno.exists?(id: disciplina_id)
   end
-  
+
   # Método para verificar se aluno está matriculado em uma turma específica
   def matriculado_em_turma?(turma_id)
     return false unless aluno?
+
     matriculas.exists?(turma_id: turma_id)
+  end
+
+  # Método para verificar se o usuário não tem senha definida
+  def sem_senha?
+    encrypted_password.blank?
+  end
+
+  # Método para definir primeira senha (sem validação de senha atual)
+  def definir_primeira_senha(nova_senha, confirmacao_senha)
+    return false unless sem_senha?
+    return false if nova_senha != confirmacao_senha
+    return false if nova_senha.length < 6
+
+    self.password = nova_senha
+    self.password_confirmation = confirmacao_senha
+    save
   end
 
   private

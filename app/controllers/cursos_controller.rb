@@ -2,12 +2,15 @@
 
 # Adicione um comentário de documentação para a classe CursosController.
 class CursosController < ApplicationController
-  before_action :set_curso, only: %i[edit update destroy]
+  before_action :set_curso, only: %i[show edit update destroy]
 
   # GET /cursos or /cursos.json
   def index
     @cursos = Curso.order(:nome)
   end
+
+  # GET /cursos/1 or /cursos/1.json
+  def show; end
 
   # GET /cursos/new
   def new
@@ -36,7 +39,7 @@ class CursosController < ApplicationController
   def update
     respond_to do |format|
       if @curso.update(curso_params)
-        format.html { redirect_to cursos_path, notice: I18n.t('messages.course_updated') }
+        format.html { redirect_to curso_url(@curso), notice: I18n.t('messages.course_updated') }
         format.json { render json: @curso, status: :ok }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -59,11 +62,11 @@ class CursosController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_curso
-    @curso = Curso.find(params.expect(:id))
+    @curso = Curso.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
   def curso_params
-    params.expect(curso: [:nome])
+    params.require(:curso).permit(:nome)
   end
 end

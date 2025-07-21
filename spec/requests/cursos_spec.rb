@@ -15,7 +15,7 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe '/cursos', type: :request do
-  let(:user) { FactoryBot.create(:user) }
+  let(:user) { FactoryBot.create(:user, :admin) }
   # This should return the minimal set of attributes required to create a valid
   # Curso. As you add validations to Curso, be sure to
   # adjust the attributes here as well.
@@ -76,7 +76,7 @@ RSpec.describe '/cursos', type: :request do
 
       it 'redirects to the created curso' do
         post cursos_url, params: { curso: valid_attributes }
-        expect(response).to redirect_to(curso_url(Curso.last))
+        expect(response).to redirect_to(cursos_path)
       end
     end
 

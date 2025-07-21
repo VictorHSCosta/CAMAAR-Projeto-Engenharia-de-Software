@@ -62,11 +62,12 @@ class RespostaController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_respostum
-    @respostum = Respostum.find(params.expect(:id))
+    @respostum = Respostum.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
   def respostum_params
-    params.expect(respostum: %i[formulario_id pergunta_id opcao_id resposta_texto turma_id uuid_anonimo])
+    params.require(:respostum).permit(:formulario_id, :pergunta_id, :opcao_id, :resposta_texto, :turma_id,
+                                      :uuid_anonimo)
   end
 end

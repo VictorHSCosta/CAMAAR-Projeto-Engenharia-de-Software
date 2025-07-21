@@ -8,7 +8,11 @@ RSpec.configure do |config|
   # For request specs, we can also use Warden test helpers
   config.include Warden::Test::Helpers, type: :request
 
-  config.after(:each, type: :request) do
+  config.before(:suite) do
+    Warden.test_mode!
+  end
+
+  config.after do
     Warden.test_reset!
   end
 end

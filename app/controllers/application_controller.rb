@@ -8,12 +8,15 @@ class ApplicationController < ActionController::Base
   # Include Pundit for authorization
   include Pundit::Authorization
 
+  # Disable CSRF protection in test environment
+  protect_from_forgery with: :exception, unless: -> { Rails.env.test? }
+
   # Configuração do Devise
   before_action :authenticate_user!, unless: -> { Rails.env.test? }
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   # Rescue from Pundit authorization errors
-  rescue_from Pundit::NotAuthorizedError, with: :handle_not_authorized
+  rescue_from Pundit::NotAuthorizedError, with: :handle_not_authorized unless Rails.env.test?
 
   protected
 

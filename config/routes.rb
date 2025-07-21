@@ -5,7 +5,15 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }, skip: [:registrations]
 
-  resources :cursos, except: [:show]
+  # Rota para primeira senha (usuários sem senha)
+  get 'primeira_senha', to: 'primeira_senha#new', as: :nova_primeira_senha
+  post 'primeira_senha', to: 'primeira_senha#create', as: :primeira_senha
+
+  # Rota para recuperação de senha (sem email)
+  get 'recuperar_senha', to: 'recuperar_senha#new', as: :nova_recuperar_senha
+  post 'recuperar_senha', to: 'recuperar_senha#create', as: :recuperar_senha
+
+  resources :cursos
   resources :disciplinas, except: [:show]
   resources :formularios
   resources :matriculas
@@ -15,11 +23,20 @@ Rails.application.routes.draw do
   resources :templates
   resources :turmas
   get "evaluations/index"
-  resources :users, except: [:show] do
+  resources :users do
     member do
       patch :toggle_active
     end
   end
+
+  # Rotas para gerenciamento de disciplinas dos usuários
+  post 'users/adicionar_disciplina_aluno', to: 'users#adicionar_disciplina_aluno', as: :adicionar_disciplina_aluno
+  delete 'users/remover_disciplina_aluno', to: 'users#remover_disciplina_aluno', as: :remover_disciplina_aluno
+  post 'users/adicionar_disciplina_professor', to: 'users#adicionar_disciplina_professor', as: :adicionar_disciplina_professor
+  delete 'users/remover_disciplina_professor', to: 'users#remover_disciplina_professor', as: :remover_disciplina_professor
+
+  # Rota para buscar turmas de uma disciplina (AJAX)
+  get 'disciplinas/:id/turmas', to: 'disciplinas#turmas', as: :disciplina_turmas
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -39,6 +56,9 @@ Rails.application.routes.draw do
   get 'evaluations/:id', to: 'evaluations#show', as: :evaluation
   post 'evaluations/:id', to: 'evaluations#show'
   get 'evaluations/:id/results', to: 'evaluations#results', as: :evaluation_results
+
+  # Rotas para relatórios (professores e admins)
+  resources :reports, only: [:index, :show]
 
   # Rotas para disciplinas pessoais (alunos, professores e admin)
   get 'minhas_disciplinas', to: 'minhas_disciplinas#index'

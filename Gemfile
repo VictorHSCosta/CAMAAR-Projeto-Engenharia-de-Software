@@ -72,7 +72,9 @@ group :test do
   gem 'capybara'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner-active_record'
+  gem 'rails-controller-testing'
   gem 'rspec_junit_formatter'
+  gem 'shoulda-matchers', '~> 5.0'
 end
 
 gem 'bcrypt', '~> 3.1'
@@ -80,3 +82,5 @@ gem 'devise', '~> 4.2'
 gem 'faker', '~> 3.4', '>= 3.4.2'
 
 gem 'tailwindcss-rails', '~> 4.3'
+
+gem 'rubycritic', require: false

@@ -4,15 +4,20 @@ class Matricula < ApplicationRecord
   belongs_to :user
   belongs_to :turma
   has_one :disciplina, through: :turma
-  has_one :aluno, -> { where(role: 'aluno') }, class_name: 'User', foreign_key: 'user_id'
-  
+
   validates :situacao, inclusion: { in: %w[matriculado aprovado reprovado] }
-  validates :user_id, uniqueness: { scope: :turma_id, message: "já está matriculado nesta turma" }
-  
+  # NOTE: This uniqueness validation might need a database index for better performance
+  validates :user_id, uniqueness: { scope: :turma_id, message: 'já está matriculado nesta turma' }
+
   before_validation :set_default_situacao
-  
+
+  # Helper method to get the student (aluno) associated with this matricula
+  def aluno
+    user if user&.aluno?
+  end
+
   private
-  
+
   def set_default_situacao
     self.situacao ||= 'matriculado'
   end

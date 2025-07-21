@@ -2,8 +2,8 @@
 
 FactoryBot.define do
   factory :turma do
-    disciplina { nil }
-    professor { nil }
-    semestre { 'MyString' }
+    association :disciplina
+    association :professor, factory: %i[user professor]
+    semestre { '2025.1' }
   end
 end

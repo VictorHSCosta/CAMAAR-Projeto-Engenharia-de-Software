@@ -62,11 +62,11 @@ class PerguntaController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_perguntum
-    @perguntum = Perguntum.find(params.expect(:id))
+    @perguntum = Perguntum.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
   def perguntum_params
-    params.expect(perguntum: %i[template_id texto tipo obrigatoria])
+    params.require(:perguntum).permit(:template_id, :texto, :tipo, :obrigatoria, :titulo, :ordem)
   end
 end
