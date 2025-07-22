@@ -1,5 +1,40 @@
 # frozen_string_literal: true
 
+# Configure SimpleCov for test coverage analysis
+require 'simplecov'
+SimpleCov.start 'rails' do
+  # Minimum coverage percentage required
+  minimum_coverage 90
+  
+  # Exclude files from coverage
+  add_filter '/vendor/'
+  add_filter '/spec/'
+  add_filter '/config/'
+  add_filter '/db/'
+  add_filter '/bin/'
+  add_filter '/tmp/'
+  add_filter '/log/'
+  add_filter '/public/'
+  
+  # Group coverage by type
+  add_group 'Controllers', 'app/controllers'
+  add_group 'Models', 'app/models'
+  add_group 'Views', 'app/views'
+  add_group 'Helpers', 'app/helpers'
+  add_group 'Jobs', 'app/jobs'
+  add_group 'Mailers', 'app/mailers'
+  add_group 'Policies', 'app/policies'
+  
+  # Enable branch coverage for more detailed analysis
+  enable_coverage :branch
+  
+  # Format options
+  formatter SimpleCov::Formatter::MultiFormatter.new([
+    SimpleCov::Formatter::HTMLFormatter,
+    SimpleCov::Formatter::SimpleFormatter
+  ])
+end
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'

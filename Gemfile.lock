@@ -576,6 +576,7 @@ DEPENDENCIES
   rubocop-rspec
   rubycritic
   shoulda-matchers (~> 5.0)
+  simplecov
   solid_cable
   solid_cache
   solid_queue
