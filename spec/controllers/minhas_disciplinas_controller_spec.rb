@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
+require 'simplecov'
+SimpleCov.start
 
 RSpec.describe MinhasDisciplinasController, type: :controller do
   let(:admin) { create(:user, :admin) }
