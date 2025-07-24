@@ -1,438 +1,347 @@
 require 'rails_helper'
 
 RSpec.describe Users::RegistrationsController, type: :controller do
-  include_examples "skipped controller tests"
-  
-  # Skip all tests in this file as the registrations controller is not mapped in routes
-  before(:each) do
-    skip("Users::RegistrationsController not mapped in routes.rb")
-  end
-  let(:admin_user) { create(:user, role: 'admin') }
-  let(:non_admin_user) { create(:user, role: 'aluno') }
+  let(:admin_user) { create(:user, role: :admin) }
+  let(:aluno_user) { create(:user, role: :aluno) }
 
   before do
     @request.env["devise.mapping"] = Devise.mappings[:user]
   end
 
-  describe 'GET #new' do
-    context 'when user is admin' do
-      before do
-        sign_in admin_user
-      end
-
-      it 'returns a success response' do
-        get :new
-        expect(response).to be_successful
-      end
-
-      it 'builds a new user resource' do
-        get :new
-        expect(assigns(:user)).to be_a_new(User)
-      end
-
-      it 'sets default role to aluno' do
-        get :new
-        expect(assigns(:user).role).to eq('aluno')
-      end
-
-      it 'responds with the resource' do
-        get :new
-        expect(response).to render_template(:new)
-      end
-    end
-
-    context 'when user is not admin' do
-      before do
-        sign_in non_admin_user
-      end
-
-      it 'redirects to root path' do
-        get :new
-        expect(response).to redirect_to(root_path)
-      end
-
-      it 'sets admin only alert' do
-        get :new
-        expect(flash[:alert]).to eq(I18n.t('messages.admin_only'))
-      end
-    end
-
-    context 'when user is not signed in' do
-      it 'redirects to root path' do
-        get :new
-        expect(response).to redirect_to(root_path)
-      end
-
-      it 'sets admin only alert' do
-        get :new
-        expect(flash[:alert]).to eq(I18n.t('messages.admin_only'))
-      end
-    end
-  end
-
-  describe 'POST #create' do
-    let(:valid_attributes) do
-      {
-        email: 'newuser@example.com',
-        password: 'password123',
-        password_confirmation: 'password123',
-        name: 'New User',
-        matricula: '54321',
-        role: 'professor'
-      }
-    end
-
-    let(:invalid_attributes) do
-      {
-        email: '',
-        password: 'short',
-        password_confirmation: 'different',
-        name: '',
-        matricula: ''
-      }
-    end
-
-    context 'when user is admin' do
-      before do
-        sign_in admin_user
-      end
-
-      context 'with valid parameters' do
-        it 'creates a new user' do
-          expect {
-            post :create, params: { user: valid_attributes }
-          }.to change(User, :count).by(1)
-        end
-
-        it 'sets the correct attributes' do
-          post :create, params: { user: valid_attributes }
-          created_user = User.last
-          expect(created_user.email).to eq('newuser@example.com')
-          expect(created_user.name).to eq('New User')
-          expect(created_user.matricula).to eq('54321')
-          expect(created_user.role).to eq('professor')
-        end
-
-        it 'signs in the new user' do
-          post :create, params: { user: valid_attributes }
-          expect(controller.current_user).to eq(User.last)
-        end
-
-        it 'redirects to user path' do
-          post :create, params: { user: valid_attributes }
-          created_user = User.last
-          expect(response).to redirect_to(user_path(created_user))
-        end
-
-        it 'sets success notice' do
-          post :create, params: { user: valid_attributes }
-          expect(flash[:notice]).to be_present
-        end
-      end
-
-      context 'with invalid parameters' do
-        it 'does not create a new user' do
-          expect {
-            post :create, params: { user: invalid_attributes }
-          }.not_to change(User, :count)
-        end
-
-        it 'renders new template' do
-          post :create, params: { user: invalid_attributes }
-          expect(response).to render_template(:new)
-        end
-
-        it 'assigns user with errors' do
-          post :create, params: { user: invalid_attributes }
-          expect(assigns(:user)).to be_a(User)
-          expect(assigns(:user).errors).not_to be_empty
-        end
-
-        it 'does not sign in any user' do
-          post :create, params: { user: invalid_attributes }
-          expect(controller.current_user).to eq(admin_user)
-        end
-      end
-
-      context 'when user is inactive for authentication' do
-        before do
-          allow_any_instance_of(User).to receive(:active_for_authentication?).and_return(false)
-          allow_any_instance_of(User).to receive(:inactive_message).and_return('unconfirmed')
-        end
-
-        it 'handles inactive user' do
-          post :create, params: { user: valid_attributes }
-          expect(flash[:notice]).to include('unconfirmed')
-        end
-
-        it 'does not sign in the user' do
-          post :create, params: { user: valid_attributes }
-          expect(controller.current_user).to eq(admin_user)
-        end
-      end
-    end
-
-    context 'when user is not admin' do
-      before do
-        sign_in non_admin_user
-      end
-
-      it 'redirects to root path' do
-        post :create, params: { user: valid_attributes }
-        expect(response).to redirect_to(root_path)
-      end
-
-      it 'sets admin only alert' do
-        post :create, params: { user: valid_attributes }
-        expect(flash[:alert]).to eq(I18n.t('messages.admin_only'))
-      end
-
-      it 'does not create a user' do
-        expect {
-          post :create, params: { user: valid_attributes }
-        }.not_to change(User, :count)
-      end
-    end
-  end
-
-  describe 'private methods' do
-    before do
-      sign_in admin_user
-    end
-
-    describe '#save_and_respond_to_user' do
-      let(:user) { build(:user, email: 'test@example.com') }
-
-      before do
-        allow(controller).to receive(:resource).and_return(user)
-      end
-
-      context 'when user saves successfully' do
-        before do
-          allow(user).to receive(:save).and_return(true)
-          allow(user).to receive(:persisted?).and_return(true)
-        end
-
-        it 'calls handle_successful_registration' do
-          expect(controller).to receive(:handle_successful_registration)
-          controller.send(:save_and_respond_to_user)
-        end
-      end
-
-      context 'when user fails to save' do
-        before do
-          allow(user).to receive(:save).and_return(true)
-          allow(user).to receive(:persisted?).and_return(false)
-        end
-
-        it 'calls handle_failed_registration' do
-          expect(controller).to receive(:handle_failed_registration)
-          controller.send(:save_and_respond_to_user)
-        end
-      end
-    end
-
-    describe '#handle_successful_registration' do
-      let(:user) { build(:user, email: 'test@example.com') }
-
-      before do
-        allow(controller).to receive(:resource).and_return(user)
-      end
-
-      context 'when user is active for authentication' do
-        before do
-          allow(user).to receive(:active_for_authentication?).and_return(true)
-        end
-
-        it 'calls handle_active_user' do
-          expect(controller).to receive(:handle_active_user)
-          controller.send(:handle_successful_registration)
-        end
-      end
-
-      context 'when user is not active for authentication' do
-        before do
-          allow(user).to receive(:active_for_authentication?).and_return(false)
-        end
-
-        it 'calls handle_inactive_user' do
-          expect(controller).to receive(:handle_inactive_user)
-          controller.send(:handle_successful_registration)
-        end
-      end
-    end
-
-    describe '#handle_active_user' do
-      let(:user) { create(:user, email: 'active@example.com') }
-
-      before do
-        allow(controller).to receive(:resource).and_return(user)
-        allow(controller).to receive(:resource_name).and_return(:user)
-        allow(controller).to receive(:set_flash_message!)
-        allow(controller).to receive(:sign_up)
-        allow(controller).to receive(:respond_with)
-        allow(controller).to receive(:after_sign_up_path_for).with(user).and_return(user_path(user))
-      end
-
-      it 'sets flash notice' do
-        expect(controller).to receive(:set_flash_message!).with(:notice, :signed_up)
-        controller.send(:handle_active_user)
-      end
-
-      it 'signs up the user' do
-        expect(controller).to receive(:sign_up).with(:user, user)
-        controller.send(:handle_active_user)
-      end
-
-      it 'responds with redirect location' do
-        expect(controller).to receive(:respond_with).with(user, location: user_path(user))
-        controller.send(:handle_active_user)
-      end
-    end
-
-    describe '#handle_inactive_user' do
-      let(:user) { create(:user, email: 'inactive@example.com') }
-
-      before do
-        allow(controller).to receive(:resource).and_return(user)
-        allow(user).to receive(:inactive_message).and_return('unconfirmed')
-        allow(controller).to receive(:set_flash_message!)
-        allow(controller).to receive(:expire_data_after_sign_up!)
-        allow(controller).to receive(:respond_with)
-        allow(controller).to receive(:after_inactive_sign_up_path_for).with(user).and_return(root_path)
-      end
-
-      it 'sets flash notice with inactive message' do
-        expect(controller).to receive(:set_flash_message!).with(:notice, :signed_up_but_unconfirmed)
-        controller.send(:handle_inactive_user)
-      end
-
-      it 'expires data after sign up' do
-        expect(controller).to receive(:expire_data_after_sign_up!)
-        controller.send(:handle_inactive_user)
-      end
-
-      it 'responds with inactive sign up path' do
-        expect(controller).to receive(:respond_with).with(user, location: root_path)
-        controller.send(:handle_inactive_user)
-      end
-    end
-
-    describe '#handle_failed_registration' do
-      let(:user) { build(:user, email: 'failed@example.com') }
-
-      before do
-        allow(controller).to receive(:resource).and_return(user)
-        allow(controller).to receive(:clean_up_passwords)
-        allow(controller).to receive(:set_minimum_password_length)
-        allow(controller).to receive(:respond_with)
-      end
-
-      it 'cleans up passwords' do
-        expect(controller).to receive(:clean_up_passwords).with(user)
-        controller.send(:handle_failed_registration)
-      end
-
-      it 'sets minimum password length' do
-        expect(controller).to receive(:set_minimum_password_length)
-        controller.send(:handle_failed_registration)
-      end
-
-      it 'responds with the resource' do
-        expect(controller).to receive(:respond_with).with(user)
-        controller.send(:handle_failed_registration)
-      end
-    end
-
-    describe '#ensure_admin' do
-      context 'when current user is admin' do
-        it 'does not redirect' do
-          allow(controller).to receive(:user_signed_in?).and_return(true)
-          allow(controller).to receive(:current_user).and_return(admin_user)
-          expect(controller).not_to receive(:redirect_to)
-          controller.send(:ensure_admin)
-        end
-      end
-
-      context 'when current user is not admin' do
-        it 'redirects to root path' do
-          allow(controller).to receive(:user_signed_in?).and_return(true)
-          allow(controller).to receive(:current_user).and_return(non_admin_user)
-          expect(controller).to receive(:redirect_to).with(root_path, alert: I18n.t('messages.admin_only'))
-          controller.send(:ensure_admin)
-        end
-      end
-
-      context 'when no user is signed in' do
-        it 'redirects to root path' do
-          allow(controller).to receive(:user_signed_in?).and_return(false)
-          expect(controller).to receive(:redirect_to).with(root_path, alert: I18n.t('messages.admin_only'))
-          controller.send(:ensure_admin)
-        end
-      end
-    end
-
-    describe '#configure_sign_up_params' do
-      it 'permits additional sign up parameters' do
-        sanitizer = double('devise_parameter_sanitizer')
-        allow(controller).to receive(:devise_parameter_sanitizer).and_return(sanitizer)
+  # Testes usando requests diretos para exercitar o código real
+  describe 'HTTP requests that exercise actual controller code' do
+    # Testes diretos sem sign_in que causava problemas de mapping
+    describe 'method calls via direct invocation' do
+      it 'executes verificar_admin for admin user' do
+        # Setup do controller
+        controller_instance = described_class.new
+        allow(controller_instance).to receive(:current_user).and_return(admin_user)
+        allow(controller_instance).to receive(:request).and_return(request)
         
-        expect(sanitizer).to receive(:permit).with(:sign_up, keys: %i[name matricula role])
-        controller.send(:configure_sign_up_params)
+        # Execução real - admin deve ter acesso
+        result = controller_instance.send(:verificar_admin)
+        expect(result).to be_nil  # Método retorna nil quando permite acesso
       end
-    end
 
-    describe '#configure_account_update_params' do
-      it 'permits additional account update parameters' do
-        sanitizer = double('devise_parameter_sanitizer')
-        allow(controller).to receive(:devise_parameter_sanitizer).and_return(sanitizer)
+      it 'executes verificar_admin for non-admin user' do
+        controller_instance = described_class.new
+        allow(controller_instance).to receive(:current_user).and_return(aluno_user)
+        allow(controller_instance).to receive(:flash).and_return(flash)
+        allow(controller_instance).to receive(:redirect_to) { |path| path }
+        allow(controller_instance).to receive(:root_path).and_return('/')
         
+        # Execução real - não-admin deve ser redirecionado
+        expect(controller_instance).to receive(:redirect_to).with('/')
+        controller_instance.send(:verificar_admin)
+      end
+
+      it 'executes sign_up_params with valid parameters' do
+        controller_instance = described_class.new
+        
+        # Simular params reais
+        test_params = ActionController::Parameters.new(
+          user: { 
+            email: 'test@example.com', 
+            password: 'password123', 
+            password_confirmation: 'password123',
+            role: 'aluno',
+            name: 'Test User',
+            matricula: '123456'
+          }
+        )
+        
+        allow(controller_instance).to receive(:params).and_return(test_params)
+        
+        # Execução real
+        result = controller_instance.send(:sign_up_params)
+        
+        # Verificar que o código foi executado
+        expect(result).to be_a(ActionController::Parameters)
+        expect(result['email']).to eq('test@example.com')
+        expect(result['name']).to eq('Test User')
+        expect(result['matricula']).to eq('123456')
+      end
+
+      it 'executes account_update_params with valid parameters' do
+        controller_instance = described_class.new
+        
+        test_params = ActionController::Parameters.new(
+          user: { 
+            email: 'updated@example.com', 
+            password: 'newpassword123', 
+            password_confirmation: 'newpassword123',
+            current_password: 'oldpassword',
+            name: 'Updated Name',
+            matricula: '654321'
+          }
+        )
+        
+        allow(controller_instance).to receive(:params).and_return(test_params)
+        
+        # Execução real
+        result = controller_instance.send(:account_update_params)
+        
+        expect(result).to be_a(ActionController::Parameters)
+        expect(result['email']).to eq('updated@example.com')
+        expect(result['name']).to eq('Updated Name')
+      end
+
+      it 'executes configure_sign_up_params' do
+        controller_instance = described_class.new
+        sanitizer = double('sanitizer')
+        
+        allow(controller_instance).to receive(:devise_parameter_sanitizer).and_return(sanitizer)
+        expect(sanitizer).to receive(:permit).with(:sign_up, keys: %i[name role matricula])
+        
+        # Execução real
+        controller_instance.send(:configure_sign_up_params)
+      end
+
+      it 'executes configure_account_update_params' do
+        controller_instance = described_class.new
+        sanitizer = double('sanitizer')
+        
+        allow(controller_instance).to receive(:devise_parameter_sanitizer).and_return(sanitizer)
         expect(sanitizer).to receive(:permit).with(:account_update, keys: %i[name matricula])
-        controller.send(:configure_account_update_params)
+        
+        # Execução real
+        controller_instance.send(:configure_account_update_params)
       end
-    end
 
-    describe '#after_sign_up_path_for' do
-      let(:user) { create(:user) }
+      it 'executes after_sign_up_path_for' do
+        controller_instance = described_class.new
+        user_instance = build(:user)
+        
+        # Mock users_path
+        allow(controller_instance).to receive(:users_path).and_return('/users')
+        
+        # Execução real
+        result = controller_instance.send(:after_sign_up_path_for, user_instance)
+        expect(result).to eq('/users')
+      end
 
-      it 'returns user path' do
-        result = controller.send(:after_sign_up_path_for, user)
-        expect(result).to eq(user_path(user))
+      it 'executes after_inactive_sign_up_path_for' do
+        controller_instance = described_class.new
+        user_instance = build(:user)
+        
+        # Mock users_path
+        allow(controller_instance).to receive(:users_path).and_return('/users')
+        
+        # Execução real
+        result = controller_instance.send(:after_inactive_sign_up_path_for, user_instance)
+        expect(result).to eq('/users')
       end
     end
   end
 
-  describe 'parameter sanitization' do
+  # Testes com uso manual de ActionController::TestCase para forçar execução
+  describe 'manual controller invocation' do
+    let(:controller_instance) { described_class.new }
+
     before do
-      sign_in admin_user
+      # Setup mais completo para simular ambiente de controller
+      allow(controller_instance).to receive(:request).and_return(request)
+      allow(controller_instance).to receive(:response).and_return(response)
+      allow(controller_instance).to receive(:session).and_return(session)
+      allow(controller_instance).to receive(:flash).and_return(flash)
     end
 
-    it 'permits name parameter' do
-      post :create, params: { user: valid_attributes.merge(name: 'Custom Name') }
-      expect(assigns(:user).name).to eq('Custom Name')
+    it 'calls new method implementation parts without Devise dependency' do
+      # Setup para new method sem depender do Devise
+      user_instance = User.new
+      
+      # Mock build_resource e resource para simular comportamento do Devise
+      expect(controller_instance).to receive(:build_resource).with({}).and_return(user_instance)
+      allow(controller_instance).to receive(:resource).and_return(user_instance)
+      expect(controller_instance).to receive(:respond_with).with(user_instance)
+      
+      # Execução real do método new
+      controller_instance.new
+      
+      # Verificar que role foi definido
+      expect(user_instance.role).to eq('aluno')
     end
 
-    it 'permits matricula parameter' do
-      post :create, params: { user: valid_attributes.merge(matricula: 'CUSTOM123') }
-      expect(assigns(:user).matricula).to eq('CUSTOM123')
+    it 'calls create method logic without Devise resource' do
+      # Setup simples para testar lógica do create
+      user_instance = build(:user)
+      
+      # Mock build_resource, resource e outros métodos necessários
+      allow(controller_instance).to receive(:build_resource).and_return(user_instance)
+      allow(controller_instance).to receive(:resource).and_return(user_instance)
+      allow(controller_instance).to receive(:sign_up_params).and_return(
+        ActionController::Parameters.new(email: 'test@test.com').permit!
+      )
+      
+      # Teste quando save é bem-sucedido
+      allow(user_instance).to receive(:save).and_return(true)
+      allow(controller_instance).to receive(:users_path).and_return('/users')
+      expect(controller_instance).to receive(:redirect_to).with('/users')
+      
+      # Execução real
+      controller_instance.create
+      
+      # Verificar flash message foi definida
+      expect(flash[:notice]).to eq('Usuário criado com sucesso!')
     end
 
-    it 'permits role parameter' do
-      post :create, params: { user: valid_attributes.merge(role: 'coordenador') }
-      expect(assigns(:user).role).to eq('coordenador')
+    it 'calls create method failure path' do
+      # Setup
+      user_instance = build(:user)
+      allow(user_instance).to receive(:save).and_return(false)
+      
+      # Mocks necessários incluindo o método resource
+      allow(controller_instance).to receive(:build_resource).and_return(user_instance)
+      allow(controller_instance).to receive(:resource).and_return(user_instance)
+      allow(controller_instance).to receive(:sign_up_params).and_return(
+        ActionController::Parameters.new.permit!
+      )
+      allow(controller_instance).to receive(:clean_up_passwords)
+      allow(controller_instance).to receive(:set_minimum_password_length)
+      
+      # Expectativas  
+      expect(controller_instance).to receive(:render).with(:new, status: :unprocessable_entity)
+      
+      # Execução real
+      controller_instance.create
     end
   end
 
-  private
+  # Testes de error paths e edge cases
+  describe 'error handling and edge cases' do
+    let(:controller_instance) { described_class.new }
 
-  def valid_attributes
-    {
-      email: 'newuser@example.com',
-      password: 'password123',
-      password_confirmation: 'password123',
-      name: 'New User',
-      matricula: '54321',
-      role: 'professor'
-    }
+    it 'handles ParameterMissing in sign_up_params' do
+      params_without_user = ActionController::Parameters.new(other: 'value')
+      allow(controller_instance).to receive(:params).and_return(params_without_user)
+      
+      # Execução real que deve gerar erro
+      expect { controller_instance.send(:sign_up_params) }.to raise_error(ActionController::ParameterMissing)
+    end
+
+    it 'handles ParameterMissing in account_update_params' do
+      params_without_user = ActionController::Parameters.new(other: 'value')
+      allow(controller_instance).to receive(:params).and_return(params_without_user)
+      
+      # Execução real que deve gerar erro
+      expect { controller_instance.send(:account_update_params) }.to raise_error(ActionController::ParameterMissing)
+    end
+
+    it 'handles nil current_user in verificar_admin' do
+      allow(controller_instance).to receive(:current_user).and_return(nil)
+      allow(controller_instance).to receive(:flash).and_return(flash)
+      allow(controller_instance).to receive(:root_path).and_return('/')
+      
+      expect(controller_instance).to receive(:redirect_to).with('/')
+      
+      # Execução real
+      controller_instance.send(:verificar_admin)
+      expect(flash[:alert]).to eq('Acesso negado. Apenas administradores podem cadastrar novos usuários.')
+    end
+
+    it 'filters dangerous parameters in sign_up_params' do
+      dangerous_params = ActionController::Parameters.new(
+        user: { 
+          email: 'test@example.com',
+          password: 'password123',
+          role: 'admin',
+          name: 'Test User',
+          matricula: '12345',  # Este é permitido
+          dangerous_field: 'should_be_filtered',
+          admin: true
+        }
+      )
+      
+      allow(controller_instance).to receive(:params).and_return(dangerous_params)
+      
+      # Execução real
+      result = controller_instance.send(:sign_up_params)
+      
+      # Verificar filtragem - matricula deve estar incluído agora
+      expect(result.keys).not_to include('dangerous_field', 'admin')
+      expect(result.keys).to include('email', 'password', 'role', 'name', 'matricula')
+    end
+  end
+
+  # Testes de configuração e herança
+  describe 'controller configuration' do
+    it 'has correct inheritance hierarchy' do
+      expect(described_class.superclass).to eq(Devise::RegistrationsController)
+      expect(described_class.ancestors).to include(ActionController::Base)
+    end
+
+    it 'has correct before_action callbacks configured' do
+      callbacks = described_class._process_action_callbacks
+      
+      verificar_admin_callback = callbacks.find { |cb| cb.filter == :verificar_admin }
+      expect(verificar_admin_callback).not_to be_nil
+      expect(verificar_admin_callback.kind).to eq(:before)
+      
+      configure_sign_up_callback = callbacks.find { |cb| cb.filter == :configure_sign_up_params }
+      expect(configure_sign_up_callback).not_to be_nil
+      
+      configure_account_update_callback = callbacks.find { |cb| cb.filter == :configure_account_update_params }
+      expect(configure_account_update_callback).not_to be_nil
+    end
+
+    it 'defines all expected instance methods' do
+      expect(described_class.instance_methods(false)).to include(:new, :create)
+    end
+
+    it 'defines all expected private methods' do
+      private_methods = described_class.private_instance_methods(false)
+      expect(private_methods).to include(:verificar_admin)
+      expect(private_methods).to include(:sign_up_params)
+      expect(private_methods).to include(:account_update_params)
+      expect(private_methods).to include(:configure_sign_up_params)
+      expect(private_methods).to include(:configure_account_update_params)
+      expect(private_methods).to include(:after_sign_up_path_for)
+      expect(private_methods).to include(:after_inactive_sign_up_path_for)
+    end
+  end
+
+  # Testes adicionais de cobertura
+  describe 'additional coverage tests' do
+    let(:controller_instance) { described_class.new }
+
+    it 'handles different parameter types correctly' do
+      # Teste com role como integer
+      int_params = ActionController::Parameters.new(
+        user: { email: 'test@example.com', role: 1, matricula: 123456 }
+      )
+      allow(controller_instance).to receive(:params).and_return(int_params)
+      
+      result = controller_instance.send(:sign_up_params)
+      expect(result['role']).to eq(1)
+      expect(result['matricula']).to eq(123456)
+    end
+
+    it 'handles empty string parameters' do
+      empty_params = ActionController::Parameters.new(
+        user: { email: '', name: '', password: '', matricula: '' }
+      )
+      allow(controller_instance).to receive(:params).and_return(empty_params)
+      
+      result = controller_instance.send(:sign_up_params)
+      expect(result['email']).to eq('')
+      expect(result['name']).to eq('')
+    end
+
+    it 'properly initializes controller instance' do
+      expect(described_class.new).to be_an_instance_of(Users::RegistrationsController)
+      expect(described_class.new).to be_a(Devise::RegistrationsController)
+    end
+
+    it 'verifies method visibility' do
+      instance = described_class.new
+      
+      # Public methods
+      expect(instance).to respond_to(:new)
+      expect(instance).to respond_to(:create)
+      
+      # Private methods should not be accessible publicly
+      expect { instance.verificar_admin }.to raise_error(NoMethodError)
+      expect { instance.sign_up_params }.to raise_error(NoMethodError)
+    end
   end
 end

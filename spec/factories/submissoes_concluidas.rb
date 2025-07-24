@@ -4,6 +4,6 @@ FactoryBot.define do
   factory :submissao_concluida do
     association :user
     association :formulario
-    data_submissao { Time.current }
+    uuid_anonimo { SecureRandom.uuid }
   end
 end

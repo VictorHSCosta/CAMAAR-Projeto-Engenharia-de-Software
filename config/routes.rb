@@ -16,7 +16,11 @@ Rails.application.routes.draw do
 
   resources :cursos
   resources :disciplinas, except: [:show]
-  resources :formularios
+  resources :formularios do
+    member do
+      post :responder_formulario
+    end
+  end
   resources :matriculas
   resources :opcoes_pergunta
   resources :pergunta
