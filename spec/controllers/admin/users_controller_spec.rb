@@ -227,14 +227,13 @@ RSpec.describe Admin::UsersController, type: :controller do
         
         permitted_params = controller.send(:user_params)
         
-        expect(permitted_params).to include(
-          'email' => 'test@example.com',
-          'name' => 'Test User',
-          'matricula' => '12345',
-          'role' => 'aluno',
-          'password' => 'password',
-          'password_confirmation' => 'password'
-        )
+        expect(permitted_params.keys).to match_array(['email', 'name', 'matricula', 'role', 'password', 'password_confirmation'])
+        expect(permitted_params['email']).to eq('test@example.com')
+        expect(permitted_params['name']).to eq('Test User')
+        expect(permitted_params['matricula']).to eq('12345')
+        expect(permitted_params['role']).to eq('aluno')
+        expect(permitted_params['password']).to eq('password')
+        expect(permitted_params['password_confirmation']).to eq('password')
         expect(permitted_params).not_to have_key('forbidden_param')
       end
     end

@@ -3,11 +3,11 @@
 require 'rails_helper'
 
 RSpec.describe RecuperarSenhaController, type: :controller do
+  let(:existing_user) { create(:user, email: 'user@example.com', matricula: '12345678') }
+
   before do
     allow(controller).to receive(:authenticate_user!).and_return(true)
   end
-
-    let(:existing_user) { create(:user, email: 'user@example.com', matricula: '12345678') }
 
   describe 'GET #new' do
     it 'returns a successful response' do
@@ -25,7 +25,7 @@ RSpec.describe RecuperarSenhaController, type: :controller do
     context 'with missing parameters' do
       it 'handles missing matricula' do
         post :create, params: {
-          email: user.email,
+          email: existing_user.email,
           password: 'newpassword123',
           password_confirmation: 'newpassword123'
         }
@@ -36,7 +36,7 @@ RSpec.describe RecuperarSenhaController, type: :controller do
 
       it 'handles missing email' do
         post :create, params: {
-          matricula: user.matricula,
+          matricula: existing_user.matricula,
           password: 'newpassword123',
           password_confirmation: 'newpassword123'
         }
@@ -47,8 +47,8 @@ RSpec.describe RecuperarSenhaController, type: :controller do
 
       it 'handles missing password' do
         post :create, params: {
-          matricula: user.matricula,
-          email: user.email,
+          matricula: existing_user.matricula,
+          email: existing_user.email,
           password_confirmation: 'newpassword123'
         }
 
@@ -58,8 +58,8 @@ RSpec.describe RecuperarSenhaController, type: :controller do
 
       it 'handles missing password confirmation' do
         post :create, params: {
-          matricula: user.matricula,
-          email: user.email,
+          matricula: existing_user.matricula,
+          email: existing_user.email,
           password: 'newpassword123'
         }
 
@@ -71,8 +71,8 @@ RSpec.describe RecuperarSenhaController, type: :controller do
     context 'with password validation errors' do
       it 'handles password mismatch' do
         post :create, params: {
-          matricula: user.matricula,
-          email: user.email,
+          matricula: existing_user.matricula,
+          email: existing_user.email,
           password: 'newpassword123',
           password_confirmation: 'differentpassword'
         }
@@ -83,8 +83,8 @@ RSpec.describe RecuperarSenhaController, type: :controller do
 
       it 'handles password too short' do
         post :create, params: {
-          matricula: user.matricula,
-          email: user.email,
+          matricula: existing_user.matricula,
+          email: existing_user.email,
           password: '123',
           password_confirmation: '123'
         }
@@ -98,7 +98,7 @@ RSpec.describe RecuperarSenhaController, type: :controller do
       it 'handles invalid matricula' do
         post :create, params: {
           matricula: 'invalid_matricula',
-          email: user.email,
+          email: existing_user.email,
           password: 'newpassword123',
           password_confirmation: 'newpassword123'
         }
@@ -109,7 +109,7 @@ RSpec.describe RecuperarSenhaController, type: :controller do
 
       it 'handles invalid email' do
         post :create, params: {
-          matricula: user.matricula,
+          matricula: existing_user.matricula,
           email: 'invalid@email.com',
           password: 'newpassword123',
           password_confirmation: 'newpassword123'
@@ -123,8 +123,8 @@ RSpec.describe RecuperarSenhaController, type: :controller do
     context 'with valid parameters' do
       it 'successfully resets the password' do
         post :create, params: {
-          matricula: user.matricula,
-          email: user.email,
+          matricula: existing_user.matricula,
+          email: existing_user.email,
           password: 'newpassword123',
           password_confirmation: 'newpassword123'
         }
@@ -135,26 +135,27 @@ RSpec.describe RecuperarSenhaController, type: :controller do
 
       it 'updates the user password' do
         post :create, params: {
-          matricula: user.matricula,
-          email: user.email,
+          matricula: existing_user.matricula,
+          email: existing_user.email,
           password: 'newpassword123',
           password_confirmation: 'newpassword123'
         }
 
-        user.reload
-        expect(user.valid_password?('newpassword123')).to be true
+        existing_user.reload
+        expect(existing_user.valid_password?('newpassword123')).to be true
       end
 
       it 'invalidates old password' do
+        old_password = existing_user.encrypted_password
         post :create, params: {
-          matricula: user.matricula,
-          email: user.email,
+          matricula: existing_user.matricula,
+          email: existing_user.email,
           password: 'newpassword123',
           password_confirmation: 'newpassword123'
         }
 
-        user.reload
-        expect(user.valid_password?('oldpassword123')).to be false
+        existing_user.reload
+        expect(existing_user.encrypted_password).not_to eq(old_password)
       end
     end
 
@@ -165,8 +166,8 @@ RSpec.describe RecuperarSenhaController, type: :controller do
 
       it 'handles password update failure' do
         post :create, params: {
-          matricula: user.matricula,
-          email: user.email,
+          matricula: existing_user.matricula,
+          email: existing_user.email,
           password: 'newpassword123',
           password_confirmation: 'newpassword123'
         }
@@ -179,8 +180,8 @@ RSpec.describe RecuperarSenhaController, type: :controller do
     context 'parameter sanitization' do
       it 'strips whitespace from matricula and email' do
         post :create, params: {
-          matricula: "  #{user.matricula}  ",
-          email: "  #{user.email.upcase}  ",
+          matricula: "  #{existing_user.matricula}  ",
+          email: "  #{existing_user.email.upcase}  ",
           password: 'newpassword123',
           password_confirmation: 'newpassword123'
         }
@@ -193,14 +194,64 @@ RSpec.describe RecuperarSenhaController, type: :controller do
     context 'case insensitive email matching' do
       it 'finds user with different case email' do
         post :create, params: {
-          matricula: user.matricula,
-          email: user.email.upcase,
+          matricula: existing_user.matricula,
+          email: existing_user.email.upcase,
           password: 'newpassword123',
           password_confirmation: 'newpassword123'
         }
 
         expect(response).to redirect_to(new_user_session_path)
         expect(flash[:notice]).to eq('Senha redefinida com sucesso! Agora você pode fazer login.')
+      end
+    end
+
+    context 'edge cases' do
+      it 'handles empty matricula' do
+        post :create, params: {
+          matricula: '',
+          email: existing_user.email,
+          password: 'newpassword123',
+          password_confirmation: 'newpassword123'
+        }
+
+        expect(response).to have_http_status(:unprocessable_entity)
+        expect(flash.now[:alert]).to eq('Por favor, preencha todos os campos obrigatórios.')
+      end
+
+      it 'handles empty email' do
+        post :create, params: {
+          matricula: existing_user.matricula,
+          email: '',
+          password: 'newpassword123',
+          password_confirmation: 'newpassword123'
+        }
+
+        expect(response).to have_http_status(:unprocessable_entity)
+        expect(flash.now[:alert]).to eq('Por favor, preencha todos os campos obrigatórios.')
+      end
+
+      it 'handles empty password' do
+        post :create, params: {
+          matricula: existing_user.matricula,
+          email: existing_user.email,
+          password: '',
+          password_confirmation: 'newpassword123'
+        }
+
+        expect(response).to have_http_status(:unprocessable_entity)
+        expect(flash.now[:alert]).to eq('Por favor, informe a nova senha e sua confirmação.')
+      end
+
+      it 'handles empty password confirmation' do
+        post :create, params: {
+          matricula: existing_user.matricula,
+          email: existing_user.email,
+          password: 'newpassword123',
+          password_confirmation: ''
+        }
+
+        expect(response).to have_http_status(:unprocessable_entity)
+        expect(flash.now[:alert]).to eq('Por favor, informe a nova senha e sua confirmação.')
       end
     end
   end
