@@ -11,7 +11,7 @@ class HomeController < ApplicationController
     return if Rails.env.test?
 
     # Redireciona admins para o gerenciamento se não houver dados importados
-    return unless current_user.admin?
+    return unless current_user&.admin?
 
     seed_emails = ['admin@camaar.com', 'coordenador@camaar.com', 'professor@camaar.com', 'aluno@camaar.com']
     users_count = User.where.not(email: seed_emails).count

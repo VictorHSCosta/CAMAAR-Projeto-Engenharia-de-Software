@@ -3,36 +3,36 @@
 # Policy para controle de acesso aos templates
 class TemplatePolicy < ApplicationPolicy
   def index?
-    user.admin?
+    user&.admin?
   end
 
   def show?
-    user.admin?
+    user&.admin?
   end
 
   def new?
-    user.admin?
+    user&.admin?
   end
 
   def create?
-    user.admin?
+    user&.admin?
   end
 
   def edit?
-    user.admin?
+    user&.admin?
   end
 
   def update?
-    user.admin?
+    user&.admin?
   end
 
   def destroy?
-    user.admin?
+    user&.admin?
   end
 
-  class Scope < Scope
+  class Scope < ApplicationPolicy::Scope
     def resolve
-      if user.admin?
+      if user&.admin?
         scope.all
       else
         scope.none

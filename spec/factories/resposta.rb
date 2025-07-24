@@ -2,11 +2,9 @@
 
 FactoryBot.define do
   factory :respostum do
-    formulario { nil }
-    pergunta { nil }
-    opcao { nil }
-    resposta_texto { 'MyText' }
-    turma { nil }
-    uuid_anonimo { 'MyString' }
+    association :formulario
+    association :pergunta, factory: :perguntum
+    resposta_texto { 'Texto da resposta' }
+    uuid_anonimo { SecureRandom.uuid }
   end
 end
