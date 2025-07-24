@@ -7,5 +7,7 @@ FactoryBot.define do
     association :coordenador, factory: :user
     data_envio { 1.day.from_now }
     data_fim { 7.days.from_now }
+    ativo { true }
+    disciplina { nil }
   end
 end

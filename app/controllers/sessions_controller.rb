@@ -1,55 +1,32 @@
 # frozen_string_literal: true
 
-# Adicione um comentário de documentação para a classe SessionsController.
-class SessionsController < ApplicationController
+# SessionsController for custom authentication logic
+class SessionsController < Devise::SessionsController
   # Desativa o layout padrão para esta página específica
-  # Ignora a verificação de login para as páginas de 'new' (formulário) e 'create' (processamento)
-  skip_before_action :authenticate_user!, only: %i[new create]
-  layout false, only: [:new] # Continua sem layout na página de login
+  layout false, only: [:new]
 
   def new
-    # Renderiza o formulário de login
+    super
   end
 
   def create
-    user = User.find_by(email: params[:email].downcase)
-    authenticate_user(user)
+    # Handle missing parameters
+    if params[:user].blank? || params[:user][:email].blank? || params[:user][:password].blank?
+      flash.now[:alert] = 'Por favor, preencha email e senha.'
+      render :new, status: :unprocessable_entity
+      return
+    end
+
+    super
   end
 
   def destroy
-    # Apaga a sessão do usuário
-    session[:user_id] = nil
-    redirect_to login_path, notice: I18n.t('messages.logout_success')
+    super
   end
 
-  private
+  protected
 
-  def authenticate_user(user)
-    if valid_user_credentials?(user)
-      login_user(user)
-    else
-      handle_invalid_credentials
-    end
-  rescue BCrypt::Errors::InvalidHash
-    handle_authentication_error
-  end
-
-  def valid_user_credentials?(user)
-    user && user.password_digest.present? && user.authenticate(params[:password])
-  end
-
-  def login_user(user)
-    session[:user_id] = user.id
-    redirect_to evaluations_path, notice: I18n.t('messages.login_success')
-  end
-
-  def handle_invalid_credentials
-    flash.now[:alert] = I18n.t('messages.login_failed')
-    render :new, status: :unprocessable_entity
-  end
-
-  def handle_authentication_error
-    flash.now[:alert] = I18n.t('messages.auth_error')
-    render :new, status: :unprocessable_entity
+  def configure_sign_in_params
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :password])
   end
 end

@@ -1,14 +1,14 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
 
-RSpec.describe CursoPolicy, type: :policy do
-  subject { described_class.new(user, curso) }
+RSpec.describe FormularioPolicy do
+  let(:formulario) { create(:formulario) }
+  let(:admin_user) { create(:user, role: 'admin') }
+  let(:coordenador_user) { create(:user, role: 'coordenador') }
+  let(:professor_user) { create(:user, role: 'professor') }
+  let(:aluno_user) { create(:user, role: 'aluno') }
 
-  let(:curso) { create(:curso) }
-
-  context 'when user is admin' do
-    let(:user) { create(:user, role: :admin) }
+  describe 'permissions for admin' do
+    subject { described_class.new(admin_user, formulario) }
 
     it 'permits index' do
       expect(subject).to be_index
@@ -31,8 +31,8 @@ RSpec.describe CursoPolicy, type: :policy do
     end
   end
 
-  context 'when user is coordenador' do
-    let(:user) { create(:user, role: :coordenador) }
+  describe 'permissions for coordenador' do
+    subject { described_class.new(coordenador_user, formulario) }
 
     it 'permits index' do
       expect(subject).to be_index
@@ -50,13 +50,13 @@ RSpec.describe CursoPolicy, type: :policy do
       expect(subject).to be_update
     end
 
-    it 'does not permit destroy' do
-      expect(subject).not_to be_destroy
+    it 'permits destroy' do
+      expect(subject).to be_destroy
     end
   end
 
-  context 'when user is professor' do
-    let(:user) { create(:user, role: :professor) }
+  describe 'permissions for professor' do
+    subject { described_class.new(professor_user, formulario) }
 
     it 'permits index' do
       expect(subject).to be_index
@@ -66,21 +66,21 @@ RSpec.describe CursoPolicy, type: :policy do
       expect(subject).to be_show
     end
 
-    it 'does not permit create' do
+    it 'denies create' do
       expect(subject).not_to be_create
     end
 
-    it 'does not permit update' do
+    it 'denies update' do
       expect(subject).not_to be_update
     end
 
-    it 'does not permit destroy' do
+    it 'denies destroy' do
       expect(subject).not_to be_destroy
     end
   end
 
-  context 'when user is aluno' do
-    let(:user) { create(:user, role: :aluno) }
+  describe 'permissions for aluno' do
+    subject { described_class.new(aluno_user, formulario) }
 
     it 'permits index' do
       expect(subject).to be_index
@@ -90,21 +90,21 @@ RSpec.describe CursoPolicy, type: :policy do
       expect(subject).to be_show
     end
 
-    it 'does not permit create' do
+    it 'denies create' do
       expect(subject).not_to be_create
     end
 
-    it 'does not permit update' do
+    it 'denies update' do
       expect(subject).not_to be_update
     end
 
-    it 'does not permit destroy' do
+    it 'denies destroy' do
       expect(subject).not_to be_destroy
     end
   end
 
-  context 'when user is nil' do
-    let(:user) { nil }
+  describe 'permissions for nil user' do
+    subject { described_class.new(nil, formulario) }
 
     it 'permits index' do
       expect(subject).to be_index
@@ -114,33 +114,16 @@ RSpec.describe CursoPolicy, type: :policy do
       expect(subject).to be_show
     end
 
-    it 'does not permit create' do
+    it 'denies create' do
       expect(subject).not_to be_create
     end
 
-    it 'does not permit update' do
+    it 'denies update' do
       expect(subject).not_to be_update
     end
 
-    it 'does not permit destroy' do
+    it 'denies destroy' do
       expect(subject).not_to be_destroy
-    end
-  end
-
-  describe 'Scope' do
-    let(:admin) { create(:user, role: :admin) }
-    let(:professor) { create(:user, role: :professor) }
-    let!(:curso1) { create(:curso, nome: 'Curso 1') }
-    let!(:curso2) { create(:curso, nome: 'Curso 2') }
-
-    it 'returns all cursos for any user' do
-      scope = described_class::Scope.new(admin, Curso.all).resolve
-      expect(scope).to include(curso1, curso2)
-    end
-
-    it 'returns all cursos for professor' do
-      scope = described_class::Scope.new(professor, Curso.all).resolve
-      expect(scope).to include(curso1, curso2)
     end
   end
 end

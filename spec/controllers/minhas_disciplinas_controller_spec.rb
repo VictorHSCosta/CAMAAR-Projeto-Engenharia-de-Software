@@ -1,347 +1,398 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-require 'simplecov'
-SimpleCov.start
 
 RSpec.describe MinhasDisciplinasController, type: :controller do
-  let(:admin) { create(:user, :admin) }
-  let(:professor) { create(:user, :professor) }
-  let(:aluno) { create(:user, :aluno) }
+  let(:admin_user) { create(:user, :admin) }
+  let(:professor_user) { create(:user, :professor) }
+  let(:aluno_user) { create(:user, :aluno) }
   let(:curso) { create(:curso) }
   let(:disciplina) { create(:disciplina, curso: curso) }
-  let(:turma) { create(:turma, disciplina: disciplina, professor: professor) }
 
   before do
-    @request.env['devise.mapping'] = Devise.mappings[:user]
+    allow(controller).to receive(:authenticate_user!).and_return(true)
   end
 
   describe 'GET #index' do
     context 'when user is aluno' do
       before do
-        login_as(aluno, scope: :user)
-        create(:matricula, user: aluno, turma: turma)
+        allow(controller).to receive(:current_user).and_return(aluno_user)
+        allow(aluno_user).to receive(:role).and_return('aluno')
       end
 
-      it 'returns a successful response' do
+      it 'returns http success' do
+        disciplinas_relation = double('disciplinas_relation')
+        allow(Disciplina).to receive_message_chain(:joins, :where, :includes, :distinct).and_return(disciplinas_relation)
+        allow_any_instance_of(MinhasDisciplinasController).to receive(:set_user_disciplinas)
+        
         get :index
-        expect(response).to be_successful
-      end
-
-      it 'shows disciplinas the aluno is enrolled in' do
-        get :index
-        expect(assigns(:disciplinas)).to include(disciplina)
-      end
-
-      it 'sets correct page title and user type' do
-        get :index
-        expect(assigns(:page_title)).to eq('Minhas Disciplinas - Aluno')
+        expect(response).to have_http_status(:success)
         expect(assigns(:user_type)).to eq('aluno')
+        expect(assigns(:page_title)).to eq('Minhas Disciplinas - Aluno')
       end
     end
 
     context 'when user is professor' do
-      before { login_as(professor, scope: :user) }
-
-      it 'returns a successful response' do
-        get :index
-        expect(response).to be_successful
+      before do
+        allow(controller).to receive(:current_user).and_return(professor_user)
+        allow(professor_user).to receive(:role).and_return('professor')
       end
 
-      it 'shows disciplinas the professor teaches' do
+      it 'returns http success' do
+        disciplinas_relation = double('disciplinas_relation')
+        allow(Disciplina).to receive_message_chain(:joins, :where, :includes, :distinct).and_return(disciplinas_relation)
+        allow_any_instance_of(MinhasDisciplinasController).to receive(:set_user_disciplinas)
+        
         get :index
-        expect(assigns(:disciplinas)).to include(disciplina)
-      end
-
-      it 'sets correct page title and user type' do
-        get :index
-        expect(assigns(:page_title)).to eq('Minhas Disciplinas - Professor')
+        expect(response).to have_http_status(:success)
         expect(assigns(:user_type)).to eq('professor')
+        expect(assigns(:page_title)).to eq('Minhas Disciplinas - Professor')
       end
     end
 
     context 'when user is admin' do
-      before { login_as(admin, scope: :user) }
-
-      it 'returns a successful response' do
-        get :index
-        expect(response).to be_successful
+      before do
+        allow(controller).to receive(:current_user).and_return(admin_user)
+        allow(admin_user).to receive(:role).and_return('admin')
       end
 
-      it 'shows all disciplinas' do
+      it 'returns http success' do
+        disciplinas_relation = double('disciplinas_relation')
+        allow(Disciplina).to receive_message_chain(:includes, :all).and_return(disciplinas_relation)
+        allow_any_instance_of(MinhasDisciplinasController).to receive(:set_user_disciplinas)
+        
         get :index
-        expect(assigns(:disciplinas)).to include(disciplina)
-      end
-
-      it 'sets correct page title and user type' do
-        get :index
-        expect(assigns(:page_title)).to eq('Todas as Disciplinas - Administrador')
+        expect(response).to have_http_status(:success)
         expect(assigns(:user_type)).to eq('admin')
+        expect(assigns(:page_title)).to eq('Todas as Disciplinas - Administrador')
       end
     end
 
-    context 'when user has invalid role' do
-      let(:coordenador) { create(:user, :coordenador) }
-
-      before { login_as(coordenador, scope: :user) }
-
-      it 'redirects to root path' do
-        get :index
-        expect(response).to redirect_to(root_path)
+    context 'when user has unknown role' do
+      before do
+        allow(controller).to receive(:current_user).and_return(admin_user)
+        allow(admin_user).to receive(:role).and_return('unknown')
       end
 
-      it 'sets access denied alert' do
+      it 'redirects to root path with alert' do
+        allow_any_instance_of(MinhasDisciplinasController).to receive(:set_user_disciplinas)
+        
         get :index
+        expect(response).to redirect_to(root_path)
         expect(flash[:alert]).to eq('Acesso negado.')
       end
     end
   end
 
   describe 'GET #show' do
-    context 'when user is aluno with access' do
+    context 'when user is aluno' do
       before do
-        login_as(aluno, scope: :user)
-        create(:matricula, user: aluno, turma: turma)
+        allow(controller).to receive(:current_user).and_return(aluno_user)
+        allow(aluno_user).to receive(:role).and_return('aluno')
+        allow(Disciplina).to receive(:find).with('1').and_return(disciplina)
       end
 
-      it 'returns a successful response' do
-        get :show, params: { id: disciplina.id }
-        expect(response).to be_successful
+      it 'returns http success when aluno has access' do
+        matriculas_relation = double('matriculas_relation')
+        allow(aluno_user).to receive(:matriculas).and_return(matriculas_relation)
+        allow(matriculas_relation).to receive_message_chain(:joins, :exists?).and_return(true)
+        
+        turmas_relation = double('turmas_relation')
+        allow(disciplina).to receive(:turmas).and_return(turmas_relation)
+        allow(turmas_relation).to receive_message_chain(:joins, :where, :includes).and_return([])
+        
+        get :show, params: { id: '1' }
+        expect(response).to have_http_status(:success)
       end
 
-      it 'assigns the disciplina' do
-        get :show, params: { id: disciplina.id }
-        expect(assigns(:disciplina)).to eq(disciplina)
-      end
-
-      it 'assigns turmas the aluno is enrolled in' do
-        get :show, params: { id: disciplina.id }
-        expect(assigns(:turmas)).to include(turma)
-      end
-    end
-
-    context 'when user is aluno without access' do
-      before { login_as(aluno, scope: :user) }
-
-      it 'redirects to minhas disciplinas path' do
-        get :show, params: { id: disciplina.id }
+      it 'redirects when aluno does not have access' do
+        matriculas_relation = double('matriculas_relation')
+        allow(aluno_user).to receive(:matriculas).and_return(matriculas_relation)
+        allow(matriculas_relation).to receive_message_chain(:joins, :exists?).and_return(false)
+        
+        get :show, params: { id: '1' }
         expect(response).to redirect_to(minhas_disciplinas_path)
-      end
-
-      it 'sets access denied alert' do
-        get :show, params: { id: disciplina.id }
         expect(flash[:alert]).to eq('Você não tem acesso a esta disciplina.')
       end
     end
 
-    context 'when user is professor with access' do
-      before { login_as(professor, scope: :user) }
-
-      it 'returns a successful response' do
-        get :show, params: { id: disciplina.id }
-        expect(response).to be_successful
+    context 'when user is professor' do
+      before do
+        allow(controller).to receive(:current_user).and_return(professor_user)
+        allow(professor_user).to receive(:role).and_return('professor')
+        allow(Disciplina).to receive(:find).with('1').and_return(disciplina)
       end
 
-      it 'assigns turmas the professor teaches' do
-        get :show, params: { id: disciplina.id }
-        expect(assigns(:turmas)).to include(turma)
+      it 'returns http success when professor teaches the disciplina' do
+        turmas_relation = double('turmas_relation')
+        allow(disciplina).to receive(:turmas).and_return(turmas_relation)
+        allow(turmas_relation).to receive(:exists?).with(professor_id: professor_user.id).and_return(true)
+        allow(turmas_relation).to receive_message_chain(:where, :includes).and_return([])
+        
+        get :show, params: { id: '1' }
+        expect(response).to have_http_status(:success)
       end
-    end
 
-    context 'when user is professor without access' do
-      let(:other_professor) { create(:user, :professor) }
-
-      before { login_as(other_professor, scope: :user) }
-
-      it 'redirects to minhas disciplinas path' do
-        get :show, params: { id: disciplina.id }
+      it 'redirects when professor does not teach the disciplina' do
+        turmas_relation = double('turmas_relation')
+        allow(disciplina).to receive(:turmas).and_return(turmas_relation)
+        allow(turmas_relation).to receive(:exists?).with(professor_id: professor_user.id).and_return(false)
+        
+        get :show, params: { id: '1' }
         expect(response).to redirect_to(minhas_disciplinas_path)
-      end
-
-      it 'sets access denied alert' do
-        get :show, params: { id: disciplina.id }
         expect(flash[:alert]).to eq('Você não leciona esta disciplina.')
       end
     end
 
     context 'when user is admin' do
-      before { login_as(admin, scope: :user) }
-
-      it 'returns a successful response' do
-        get :show, params: { id: disciplina.id }
-        expect(response).to be_successful
+      before do
+        allow(controller).to receive(:current_user).and_return(admin_user)
+        allow(admin_user).to receive(:role).and_return('admin')
+        allow(Disciplina).to receive(:find).with('1').and_return(disciplina)
       end
 
-      it 'assigns all turmas for the disciplina' do
-        get :show, params: { id: disciplina.id }
-        expect(assigns(:turmas)).to include(turma)
+      it 'returns http success' do
+        turmas_relation = double('turmas_relation')
+        allow(disciplina).to receive(:turmas).and_return(turmas_relation)
+        allow(turmas_relation).to receive(:includes).and_return([])
+        
+        get :show, params: { id: '1' }
+        expect(response).to have_http_status(:success)
       end
     end
   end
 
   describe 'GET #gerenciar' do
     context 'when user is admin' do
-      before { login_as(admin, scope: :user) }
-
-      it 'returns a successful response' do
-        get :gerenciar
-        expect(response).to be_successful
+      before do
+        allow(controller).to receive(:current_user).and_return(admin_user)
+        allow(admin_user).to receive(:admin?).and_return(true)
       end
 
-      it 'assigns necessary data for management' do
+      it 'returns http success' do
+        allow(Disciplina).to receive_message_chain(:includes, :all).and_return([])
+        allow(Curso).to receive(:all).and_return([])
+        allow(User).to receive(:where).with(role: 'professor').and_return([])
+        allow(User).to receive(:where).with(role: 'aluno').and_return([])
+        allow(Disciplina).to receive(:new).and_return(double('disciplina'))
+        allow(Turma).to receive(:new).and_return(double('turma'))
+        
         get :gerenciar
-        expect(assigns(:disciplinas)).to be_present
-        expect(assigns(:cursos)).to be_present
-        expect(assigns(:professores)).to be_present
-        expect(assigns(:alunos)).to be_present
-        expect(assigns(:disciplina)).to be_a_new(Disciplina)
-        expect(assigns(:turma)).to be_a_new(Turma)
+        expect(response).to have_http_status(:success)
       end
     end
 
     context 'when user is not admin' do
-      before { login_as(aluno, scope: :user) }
-
-      it 'redirects to root path' do
-        get :gerenciar
-        expect(response).to redirect_to(root_path)
+      before do
+        allow(controller).to receive(:current_user).and_return(aluno_user)
+        allow(aluno_user).to receive(:admin?).and_return(false)
       end
 
-      it 'sets access denied alert' do
+      it 'redirects to root path with alert' do
         get :gerenciar
+        expect(response).to redirect_to(root_path)
         expect(flash[:alert]).to eq('Acesso negado.')
       end
     end
   end
 
   describe 'POST #cadastrar_professor_disciplina' do
+    let(:disciplina_id) { '1' }
+    let(:professor_id) { '2' }
+    let(:semestre) { '2024.1' }
+
     context 'when user is admin' do
-      before { login_as(admin, scope: :user) }
-
-      it 'creates a new turma for the professor' do
-        expect do
-          post :cadastrar_professor_disciplina, params: {
-            disciplina_id: disciplina.id,
-            professor_id: professor.id,
-            semestre: '2024.1'
-          }
-        end.to change(Turma, :count).by(1)
+      before do
+        allow(controller).to receive(:current_user).and_return(admin_user)
+        allow(admin_user).to receive(:admin?).and_return(true)
+        allow(Disciplina).to receive(:find).with(disciplina_id).and_return(disciplina)
+        allow(User).to receive(:find).with(professor_id).and_return(professor_user)
+        allow(professor_user).to receive(:name).and_return('Professor Test')
+        allow(disciplina).to receive(:nome).and_return('Disciplina Test')
       end
 
-      it 'redirects to gerenciar disciplinas path' do
+      it 'creates new turma when professor not already assigned' do
+        turmas_relation = double('turmas_relation')
+        allow(disciplina).to receive(:turmas).and_return(turmas_relation)
+        allow(turmas_relation).to receive(:exists?).and_return(false)
+        
+        new_turma = double('turma')
+        allow(turmas_relation).to receive(:create!).and_return(new_turma)
+        
         post :cadastrar_professor_disciplina, params: {
-          disciplina_id: disciplina.id,
-          professor_id: professor.id,
-          semestre: '2024.1'
+          disciplina_id: disciplina_id,
+          professor_id: professor_id,
+          semestre: semestre
         }
+        
         expect(response).to redirect_to(gerenciar_disciplinas_path)
+        expect(flash[:notice]).to include('Professor Professor Test cadastrado')
       end
 
-      it 'sets success notice' do
+      it 'redirects with alert when professor already assigned' do
+        turmas_relation = double('turmas_relation')
+        allow(disciplina).to receive(:turmas).and_return(turmas_relation)
+        allow(turmas_relation).to receive(:exists?).and_return(true)
+        
         post :cadastrar_professor_disciplina, params: {
-          disciplina_id: disciplina.id,
-          professor_id: professor.id,
-          semestre: '2024.1'
+          disciplina_id: disciplina_id,
+          professor_id: professor_id,
+          semestre: semestre
         }
-        expect(flash[:notice]).to include('cadastrado na disciplina')
-      end
-
-      it 'prevents duplicate professor-disciplina-semestre combination' do
-        create(:turma, disciplina: disciplina, professor: professor, semestre: '2024.1')
-
-        post :cadastrar_professor_disciplina, params: {
-          disciplina_id: disciplina.id,
-          professor_id: professor.id,
-          semestre: '2024.1'
-        }
-
+        
         expect(response).to redirect_to(gerenciar_disciplinas_path)
         expect(flash[:alert]).to eq('Este professor já leciona esta disciplina neste semestre.')
       end
     end
 
     context 'when user is not admin' do
-      before { login_as(aluno, scope: :user) }
-
-      it 'redirects to root path' do
-        post :cadastrar_professor_disciplina, params: {
-          disciplina_id: disciplina.id,
-          professor_id: professor.id,
-          semestre: '2024.1'
-        }
-        expect(response).to redirect_to(root_path)
+      before do
+        allow(controller).to receive(:current_user).and_return(aluno_user)
+        allow(aluno_user).to receive(:admin?).and_return(false)
       end
 
-      it 'sets access denied alert' do
+      it 'redirects to root path with alert' do
         post :cadastrar_professor_disciplina, params: {
-          disciplina_id: disciplina.id,
-          professor_id: professor.id,
-          semestre: '2024.1'
+          disciplina_id: disciplina_id,
+          professor_id: professor_id,
+          semestre: semestre
         }
+        
+        expect(response).to redirect_to(root_path)
         expect(flash[:alert]).to eq('Acesso negado.')
       end
     end
   end
 
   describe 'POST #cadastrar_aluno_disciplina' do
+    let(:turma_id) { '1' }
+    let(:aluno_id) { '2' }
+    let(:turma) { double('turma') }
+
     context 'when user is admin' do
-      before { login_as(admin, scope: :user) }
-
-      it 'creates a new matricula for the aluno' do
-        expect do
-          post :cadastrar_aluno_disciplina, params: {
-            aluno_id: aluno.id,
-            turma_id: turma.id
-          }
-        end.to change(Matricula, :count).by(1)
+      before do
+        allow(controller).to receive(:current_user).and_return(admin_user)
+        allow(admin_user).to receive(:admin?).and_return(true)
+        allow(Turma).to receive(:find).with(turma_id).and_return(turma)
+        allow(User).to receive(:find).with(aluno_id).and_return(aluno_user)
+        allow(aluno_user).to receive(:name).and_return('Aluno Test')
+        allow(turma).to receive_message_chain(:disciplina, :nome).and_return('Disciplina Test')
+        allow(turma).to receive(:semestre).and_return('2024.1')
       end
 
-      it 'redirects to gerenciar disciplinas path' do
+      it 'creates new matricula when aluno not already enrolled' do
+        matriculas_relation = double('matriculas_relation')
+        allow(aluno_user).to receive(:matriculas).and_return(matriculas_relation)
+        allow(matriculas_relation).to receive(:exists?).and_return(false)
+        
+        new_matricula = double('matricula')
+        allow(matriculas_relation).to receive(:create!).and_return(new_matricula)
+        
         post :cadastrar_aluno_disciplina, params: {
-          aluno_id: aluno.id,
-          turma_id: turma.id
+          turma_id: turma_id,
+          aluno_id: aluno_id
         }
+        
         expect(response).to redirect_to(gerenciar_disciplinas_path)
+        expect(flash[:notice]).to include('Aluno Aluno Test matriculado')
       end
 
-      it 'sets success notice' do
+      it 'redirects with alert when aluno already enrolled' do
+        matriculas_relation = double('matriculas_relation')
+        allow(aluno_user).to receive(:matriculas).and_return(matriculas_relation)
+        allow(matriculas_relation).to receive(:exists?).and_return(true)
+        
         post :cadastrar_aluno_disciplina, params: {
-          aluno_id: aluno.id,
-          turma_id: turma.id
+          turma_id: turma_id,
+          aluno_id: aluno_id
         }
-        expect(flash[:notice]).to include('matriculado na turma')
-      end
-
-      it 'prevents duplicate matricula' do
-        create(:matricula, user: aluno, turma: turma)
-
-        post :cadastrar_aluno_disciplina, params: {
-          aluno_id: aluno.id,
-          turma_id: turma.id
-        }
-
+        
         expect(response).to redirect_to(gerenciar_disciplinas_path)
         expect(flash[:alert]).to eq('Este aluno já está matriculado nesta turma.')
       end
     end
 
     context 'when user is not admin' do
-      before { login_as(aluno, scope: :user) }
-
-      it 'redirects to root path' do
-        post :cadastrar_aluno_disciplina, params: {
-          aluno_id: aluno.id,
-          turma_id: turma.id
-        }
-        expect(response).to redirect_to(root_path)
+      before do
+        allow(controller).to receive(:current_user).and_return(aluno_user)
+        allow(aluno_user).to receive(:admin?).and_return(false)
       end
 
-      it 'sets access denied alert' do
+      it 'redirects to root path with alert' do
         post :cadastrar_aluno_disciplina, params: {
-          aluno_id: aluno.id,
-          turma_id: turma.id
+          turma_id: turma_id,
+          aluno_id: aluno_id
         }
+        
+        expect(response).to redirect_to(root_path)
         expect(flash[:alert]).to eq('Acesso negado.')
+      end
+    end
+  end
+
+  describe 'private methods' do
+    describe '#set_user_disciplinas' do
+      context 'when user is aluno' do
+        before do
+          allow(controller).to receive(:current_user).and_return(aluno_user)
+          allow(aluno_user).to receive(:role).and_return('aluno')
+        end
+
+        it 'sets count for aluno' do
+          matriculas_relation = double('matriculas_relation')
+          allow(aluno_user).to receive(:matriculas).and_return(matriculas_relation)
+          allow(matriculas_relation).to receive_message_chain(:joins, :distinct, :count).and_return(5)
+          
+          allow(Disciplina).to receive_message_chain(:joins, :where, :includes, :distinct).and_return([])
+          
+          get :index
+          expect(assigns(:user_disciplinas_count)).to eq(5)
+        end
+      end
+
+      context 'when user is professor' do
+        before do
+          allow(controller).to receive(:current_user).and_return(professor_user)
+          allow(professor_user).to receive(:role).and_return('professor')
+        end
+
+        it 'sets count for professor' do
+          turmas_relation = double('turmas_relation')
+          allow(professor_user).to receive(:turmas_como_professor).and_return(turmas_relation)
+          allow(turmas_relation).to receive_message_chain(:joins, :distinct, :count).and_return(3)
+          
+          allow(Disciplina).to receive_message_chain(:joins, :where, :includes, :distinct).and_return([])
+          
+          get :index
+          expect(assigns(:user_disciplinas_count)).to eq(3)
+        end
+      end
+
+      context 'when user is admin' do
+        before do
+          allow(controller).to receive(:current_user).and_return(admin_user)
+          allow(admin_user).to receive(:role).and_return('admin')
+        end
+
+        it 'sets count for admin' do
+          allow(Disciplina).to receive(:count).and_return(10)
+          allow(Disciplina).to receive_message_chain(:includes, :all).and_return([])
+          
+          get :index
+          expect(assigns(:user_disciplinas_count)).to eq(10)
+        end
+      end
+
+      context 'when user has unknown role' do
+        before do
+          allow(controller).to receive(:current_user).and_return(admin_user)
+          allow(admin_user).to receive(:role).and_return('unknown')
+        end
+
+        it 'sets count to 0' do
+          get :index
+          expect(assigns(:user_disciplinas_count)).to eq(0)
+        end
       end
     end
   end

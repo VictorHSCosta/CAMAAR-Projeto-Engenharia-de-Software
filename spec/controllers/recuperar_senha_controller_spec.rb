@@ -3,7 +3,11 @@
 require 'rails_helper'
 
 RSpec.describe RecuperarSenhaController, type: :controller do
-  let(:user) { create(:user, password: 'oldpassword123') }
+  before do
+    allow(controller).to receive(:authenticate_user!).and_return(true)
+  end
+
+    let(:existing_user) { create(:user, email: 'user@example.com', matricula: '12345678') }
 
   describe 'GET #new' do
     it 'returns a successful response' do

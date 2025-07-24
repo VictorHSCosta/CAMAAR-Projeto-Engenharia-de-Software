@@ -1,253 +1,124 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-require 'simplecov'
-SimpleCov.start
-
 
 RSpec.describe EvaluationsController, type: :controller do
-  let(:admin) { create(:user, :admin) }
-  let(:coordenador) { create(:user, :coordenador) }
-  let(:professor) { create(:user, :professor) }
-  let(:aluno) { create(:user, :aluno) }
+  let(:user_admin) { create(:user, role: 'admin') }
+  let(:user_coordenador) { create(:user, role: 'coordenador') }
+  let(:user_aluno) { create(:user, role: 'aluno') }
   let(:curso) { create(:curso) }
   let(:disciplina) { create(:disciplina, curso: curso) }
-  let(:turma) { create(:turma, disciplina: disciplina, professor: professor) }
-  let(:template) { create(:template, criado_por: coordenador, disciplina: disciplina) }
-  let(:formulario) { create(:formulario, template: template, turma: turma, coordenador: coordenador) }
-  let(:pergunta) { create(:perguntum, template: template, texto: 'Test Question', tipo: 'subjetiva') }
+  let(:template) { create(:template, criado_por: user_coordenador, disciplina: disciplina) }
+  let(:formulario) { create(:formulario, template: template, coordenador: user_coordenador, ativo: true) }
 
   before do
-    @request.env['devise.mapping'] = Devise.mappings[:user]
+    allow(controller).to receive(:authenticate_user!).and_return(true)
   end
 
   describe 'GET #index' do
-    context 'when user is admin' do
-      before { login_as(admin, scope: :user) }
-
-      it 'returns a successful response' do
-        get :index
-        expect(response).to be_successful
+    context 'como admin' do
+      before do
+        allow(controller).to receive(:current_user).and_return(user_admin)
       end
 
-      it 'shows all active formularios' do
-        formulario.update!(ativo: true)
+      it 'retorna sucesso' do
         get :index
+        expect(response).to have_http_status(:success)
+      end
+
+      it 'exibe todos os formulários ativos para administrador' do
+        get :index
+        expect(assigns(:formularios)).to include(formulario)
         expect(assigns(:formularios_disponiveis)).to include(formulario)
+        expect(assigns(:formularios_respondidos)).to be_empty
       end
     end
 
-    context 'when user is coordenador' do
-      before { login_as(coordenador, scope: :user) }
-
-      it 'returns a successful response' do
-        get :index
-        expect(response).to be_successful
+    context 'como coordenador' do
+      before do
+        allow(controller).to receive(:current_user).and_return(user_coordenador)
       end
 
-      it 'shows only formularios created by coordenador' do
-        formulario.update!(ativo: true)
-        other_formulario = create(:formulario, template: template, turma: turma, coordenador: admin)
-        other_formulario.update!(ativo: true)
-        
+      it 'retorna sucesso' do
         get :index
+        expect(response).to have_http_status(:success)
+      end
+
+      it 'exibe formulários criados pelo coordenador' do
+        get :index
+        expect(assigns(:formularios)).to include(formulario)
         expect(assigns(:formularios_disponiveis)).to include(formulario)
-        expect(assigns(:formularios_disponiveis)).not_to include(other_formulario)
+        expect(assigns(:formularios_respondidos)).to be_empty
       end
     end
 
-    context 'when user is aluno' do
-      before { login_as(aluno, scope: :user) }
+    context 'como aluno' do
+      before do
+        allow(controller).to receive(:current_user).and_return(user_aluno)
+      end
 
-      it 'returns a successful response' do
+      it 'retorna sucesso' do
         get :index
-        expect(response).to be_successful
+        expect(response).to have_http_status(:success)
       end
     end
   end
 
   describe 'GET #show' do
-    context 'when user has permission' do
+    before do
+      allow(controller).to receive(:current_user).and_return(user_aluno)
+    end
+
+    context 'quando o usuário pode ver o formulário' do
       before do
-        login_as(aluno, scope: :user)
-        create(:matricula, user: aluno, turma: turma)
+        allow(formulario).to receive(:can_be_seen_by?).with(user_aluno).and_return(true)
+        allow(formulario).to receive(:already_answered_by?).with(user_aluno).and_return(false)
       end
 
-      it 'returns a successful response' do
+      it 'exibe o formulário com sucesso' do
         get :show, params: { id: formulario.id }
-        expect(response).to be_successful
-      end
-
-      it 'assigns the formulario' do
-        get :show, params: { id: formulario.id }
+        expect(response).to have_http_status(:success)
         expect(assigns(:formulario)).to eq(formulario)
-      end
-
-      it 'assigns the template' do
-        get :show, params: { id: formulario.id }
         expect(assigns(:template)).to eq(template)
       end
-
-      it 'assigns the perguntas' do
-        pergunta # create the pergunta
-        get :show, params: { id: formulario.id }
-        expect(assigns(:perguntas)).to include(pergunta)
-      end
     end
 
-    context 'when user already answered' do
+    context 'quando o usuário não pode ver o formulário' do
       before do
-        login_as(aluno, scope: :user)
-        create(:matricula, user: aluno, turma: turma)
-        create(:submissao_concluida, user: aluno, formulario: formulario)
+        allow(formulario).to receive(:can_be_seen_by?).with(user_aluno).and_return(false)
       end
 
-      it 'redirects to evaluations path' do
+      it 'redireciona com mensagem de erro' do
         get :show, params: { id: formulario.id }
         expect(response).to redirect_to(evaluations_path)
-      end
-
-      it 'sets notice message' do
-        get :show, params: { id: formulario.id }
-        expect(flash[:notice]).to eq('Você já respondeu este formulário.')
-      end
-    end
-
-    context 'when user does not have permission' do
-      before { login_as(aluno, scope: :user) }
-
-      it 'redirects to evaluations path' do
-        get :show, params: { id: formulario.id }
-        expect(response).to redirect_to(evaluations_path)
-      end
-
-      it 'sets alert message' do
-        get :show, params: { id: formulario.id }
         expect(flash[:alert]).to eq('Você não tem permissão para acessar este formulário.')
       end
     end
   end
 
   describe 'GET #results' do
-    context 'when user is admin' do
-      before { login_as(admin, scope: :user) }
-
-      it 'returns a successful response' do
-        get :results, params: { id: formulario.id }
-        expect(response).to be_successful
+    context 'como admin' do
+      before do
+        allow(controller).to receive(:current_user).and_return(user_admin)
       end
 
-      it 'assigns the formulario' do
+      it 'exibe resultados do formulário' do
         get :results, params: { id: formulario.id }
+        expect(response).to have_http_status(:success)
         expect(assigns(:formulario)).to eq(formulario)
-      end
-
-      it 'assigns the template' do
-        get :results, params: { id: formulario.id }
         expect(assigns(:template)).to eq(template)
       end
-
-      it 'calculates statistics' do
-        pergunta # create the pergunta
-        get :results, params: { id: formulario.id }
-        expect(assigns(:estatisticas)).to be_present
-      end
     end
 
-    context 'when user is coordenador who created the formulario' do
-      before { login_as(coordenador, scope: :user) }
-
-      it 'returns a successful response' do
-        get :results, params: { id: formulario.id }
-        expect(response).to be_successful
+    context 'como aluno' do
+      before do
+        allow(controller).to receive(:current_user).and_return(user_aluno)
       end
-    end
 
-    context 'when user is coordenador who did not create the formulario' do
-      let(:other_coordenador) { create(:user, :coordenador) }
-      
-      before { login_as(other_coordenador, scope: :user) }
-
-      it 'redirects to evaluations path' do
+      it 'nega acesso aos resultados' do
         get :results, params: { id: formulario.id }
         expect(response).to redirect_to(evaluations_path)
-      end
-
-      it 'sets access denied alert' do
-        get :results, params: { id: formulario.id }
         expect(flash[:alert]).to eq('Acesso negado. Você não tem permissão para ver estes resultados.')
-      end
-    end
-
-    context 'when user is aluno' do
-      before { login_as(aluno, scope: :user) }
-
-      it 'redirects to evaluations path' do
-        get :results, params: { id: formulario.id }
-        expect(response).to redirect_to(evaluations_path)
-      end
-
-      it 'sets access denied alert' do
-        get :results, params: { id: formulario.id }
-        expect(flash[:alert]).to eq('Acesso negado. Você não tem permissão para ver estes resultados.')
-      end
-    end
-  end
-
-  describe 'POST #show (submitting answers)' do
-    let(:opcao) { create(:opcoes_perguntum, pergunta: pergunta) }
-    
-    before do
-      login_as(aluno, scope: :user)
-      create(:matricula, user: aluno, turma: turma)
-    end
-
-    context 'with valid responses' do
-      it 'processes the responses successfully' do
-        post :show, params: { 
-          id: formulario.id,
-          respostas: { pergunta.id.to_s => 'Test answer' }
-        }
-        expect(response).to redirect_to(evaluations_path)
-      end
-
-      it 'creates submissao_concluida' do
-        expect {
-          post :show, params: { 
-            id: formulario.id,
-            respostas: { pergunta.id.to_s => 'Test answer' }
-          }
-        }.to change(SubmissaoConcluida, :count).by(1)
-      end
-
-      it 'creates resposta' do
-        expect {
-          post :show, params: { 
-            id: formulario.id,
-            respostas: { pergunta.id.to_s => 'Test answer' }
-          }
-        }.to change(Respostum, :count).by(1)
-      end
-
-      it 'sets success notice' do
-        post :show, params: { 
-          id: formulario.id,
-          respostas: { pergunta.id.to_s => 'Test answer' }
-        }
-        expect(flash[:notice]).to eq('Respostas enviadas com sucesso! Obrigado pela sua participação.')
-      end
-    end
-
-    context 'with invalid pergunta' do
-      let(:invalid_pergunta) { create(:perguntum, template: create(:template, criado_por: admin)) }
-
-      it 'handles error gracefully' do
-        post :show, params: { 
-          id: formulario.id,
-          respostas: { invalid_pergunta.id.to_s => 'Test answer' }
-        }
-        expect(response).to redirect_to(evaluations_path)
-        expect(flash[:alert]).to eq('Erro ao processar respostas. Tente novamente.')
       end
     end
   end

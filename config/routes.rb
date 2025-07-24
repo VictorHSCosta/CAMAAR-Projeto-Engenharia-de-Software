@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   get "home/index"
   # Configurações do Devise
   devise_for :users, controllers: {
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
+    sessions: 'sessions'
   }, skip: [:registrations]
 
   # Rota para primeira senha (usuários sem senha)

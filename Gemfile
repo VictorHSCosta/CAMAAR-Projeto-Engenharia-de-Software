@@ -75,7 +75,8 @@ group :test do
   gem 'rails-controller-testing'
   gem 'rspec_junit_formatter'
   gem 'shoulda-matchers', '~> 5.0'
-  gem 'simplecov', require: false
+  gem 'simplecov', '~> 0.22', require: false
+  gem 'simplecov-html', require: false
 end
 
 gem 'bcrypt', '~> 3.1'

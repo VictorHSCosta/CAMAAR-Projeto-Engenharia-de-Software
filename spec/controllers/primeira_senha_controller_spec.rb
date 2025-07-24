@@ -3,7 +3,16 @@
 require 'rails_helper'
 
 RSpec.describe PrimeiraSenhaController, type: :controller do
-  let(:user_without_password) { create(:user, password: nil, password_confirmation: nil) }
+  before do
+    allow(controller).to receive(:authenticate_user!).and_return(true)
+  end
+
+  let(:user_without_password) do
+    user = build(:user)
+    user.encrypted_password = ''
+    user.save(validate: false)
+    user
+  end
   let(:user_with_password) { create(:user, password: 'password123') }
 
   describe 'GET #new' do

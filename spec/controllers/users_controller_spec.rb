@@ -3,6 +3,10 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
+  before do
+    allow(controller).to receive(:authenticate_user!).and_return(true)
+  end
+
   let(:admin) { create(:user, :admin) }
   let(:aluno) { create(:user, :aluno, curso: 'Engenharia de Software') }
   let(:professor) { create(:user, :professor) }

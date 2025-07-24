@@ -11,14 +11,14 @@ class FormularioPolicy < ApplicationPolicy
   end
 
   def create?
-    user.admin? || user.coordenador?
+    user&.admin? || user&.coordenador?
   end
 
   def update?
-    user.admin? || user.coordenador?
+    user&.admin? || user&.coordenador?
   end
 
   def destroy?
-    user.admin? || user.coordenador?
+    user&.admin? || user&.coordenador?
   end
 end
