@@ -1,7 +1,26 @@
 # frozen_string_literal: true
 
-# Serviço para importar dados dos arquivos JSON
+# Service for importing data from JSON files.
+# Handles the logic for creating users and disciplines from structured data.
 class ImportService
+  # Imports users from a given data structure.
+  #
+  # ==== Attributes
+  #
+  # * +data+ - A Hash or Array of Hashes containing user data.
+  #
+  # ==== Returns
+  #
+  # * +Hash+ - A hash containing the result of the operation.
+  #   - +:success+ (Boolean) - True if the import was successful, false otherwise.
+  #   - +:imported+ (Integer) - The number of users successfully imported.
+  #   - +:skipped+ (Integer) - The number of users skipped because they already existed.
+  #   - +:error+ (String) - A message describing any errors that occurred.
+  #
+  # ==== Side Effects
+  #
+  # * Creates new User records in the database.
+  #
   def self.import_users(data)
     imported = 0
     skipped = 0
@@ -72,6 +91,24 @@ class ImportService
     { success: false, error: e.message }
   end
 
+  # Imports disciplines from a given data structure.
+  #
+  # ==== Attributes
+  #
+  # * +data+ - An Array of Hashes containing discipline data.
+  #
+  # ==== Returns
+  #
+  # * +Hash+ - A hash containing the result of the operation.
+  #   - +:success+ (Boolean) - True if the import was successful, false otherwise.
+  #   - +:imported+ (Integer) - The number of disciplines successfully imported.
+  #   - +:skipped+ (Integer) - The number of disciplines skipped because they already existed.
+  #   - +:error+ (String) - A message describing any errors that occurred.
+  #
+  # ==== Side Effects
+  #
+  # * Creates new Disciplina and Curso records in the database.
+  #
   def self.import_disciplines(data)
     imported = 0
     skipped = 0
@@ -126,6 +163,16 @@ class ImportService
     { success: false, error: e.message }
   end
 
+  # Determines the user role based on their occupation.
+  #
+  # ==== Attributes
+  #
+  # * +ocupacao+ - A string representing the user's occupation (e.g., 'docente', 'dicente').
+  #
+  # ==== Returns
+  #
+  # * +String+ - The corresponding role name ('professor', 'aluno', 'coordenador'). Defaults to 'aluno'.
+  #
   def self.determine_role(ocupacao)
     case ocupacao&.downcase
     when 'docente'
@@ -139,6 +186,16 @@ class ImportService
     end
   end
 
+  # Extracts the course name from a discipline code.
+  #
+  # ==== Attributes
+  #
+  # * +code+ - A string representing the discipline code (e.g., 'CIC0097').
+  #
+  # ==== Returns
+  #
+  # * +String+ - The name of the course associated with the code. Defaults to 'Curso Geral'.
+  #
   def self.extract_course_from_code(code)
     # Extrai o curso baseado no código (ex: CIC0097 -> Ciência da Computação)
     case code&.upcase

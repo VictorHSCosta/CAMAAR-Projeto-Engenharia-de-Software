@@ -1,3 +1,4 @@
+# Controller para gerenciar formulários.
 class FormulariosController < ApplicationController
   require 'digest'
 
@@ -7,11 +8,17 @@ class FormulariosController < ApplicationController
   # Exemplo: before_action :authenticate_admin!, only: %i[ new create edit update destroy ]
 
   # GET /formularios or /formularios.json
+  #
+  # Lista todos os formulários.
+  #
   def index
     @formularios = Formulario.all
   end
 
   # GET /formularios/1 or /formularios/1.json
+  #
+  # Exibe um formulário específico.
+  #
   def show
     return unless current_user&.aluno? || Rails.env.test?
 
@@ -33,16 +40,35 @@ class FormulariosController < ApplicationController
   end
 
   # GET /formularios/new
+  #
+  # Exibe o formulário para a criação de um novo formulário.
+  #
   def new
     @formulario = Formulario.new
   end
 
   # GET /formularios/1/edit
+  #
+  # Exibe o formulário para a edição de um formulário existente.
+  #
   def edit
     # A ação de edição agora está mais limpa porque os dados são carregados pelo before_action
   end
 
   # POST /formularios or /formularios.json
+  #
+  # Cria um novo formulário com os parâmetros fornecidos.
+  #
+  # ==== Attributes
+  #
+  # * +formulario+ - Um hash com os atributos do formulário.
+  #
+  # ==== Side Effects
+  #
+  # * Cria um novo formulário no banco de dados.
+  # * Redireciona para a página do formulário em caso de sucesso.
+  # * Renderiza o formulário novamente em caso de falha.
+  #
   def create
     @formulario = Formulario.new(formulario_params)
     @formulario.coordenador_id = current_user.id
@@ -60,6 +86,20 @@ class FormulariosController < ApplicationController
   end
 
   # PATCH/PUT /formularios/1 or /formularios/1.json
+  #
+  # Atualiza um formulário existente com os parâmetros fornecidos.
+  #
+  # ==== Attributes
+  #
+  # * +id+ - O ID do formulário a ser atualizado.
+  # * +formulario+ - Um hash com os novos atributos do formulário.
+  #
+  # ==== Side Effects
+  #
+  # * Atualiza o formulário no banco de dados.
+  # * Redireciona para a página do formulário em caso de sucesso.
+  # * Renderiza o formulário de edição novamente em caso de falha.
+  #
   def update
     respond_to do |format|
       if @formulario.update(formulario_params)
@@ -73,6 +113,18 @@ class FormulariosController < ApplicationController
   end
 
   # DELETE /formularios/1 or /formularios/1.json
+  #
+  # Exclui um formulário existente.
+  #
+  # ==== Attributes
+  #
+  # * +id+ - O ID do formulário a ser excluído.
+  #
+  # ==== Side Effects
+  #
+  # * Exclui o formulário do banco de dados.
+  # * Redireciona para a lista de formulários.
+  #
   def destroy
     @formulario.destroy!
 
@@ -83,6 +135,18 @@ class FormulariosController < ApplicationController
   end
 
   # POST /formularios/1/responder
+  #
+  # Processa as respostas de um formulário enviado por um aluno.
+  #
+  # ==== Attributes
+  #
+  # * +id+ - O ID do formulário.
+  #
+  # ==== Side Effects
+  #
+  # * Salva as respostas do aluno no banco de dados.
+  # * Redireciona para a lista de avaliações.
+  #
   def responder_formulario
     # Esta lógica continua a mesma, para os alunos
     unless @formulario.ativo?
@@ -98,90 +162,61 @@ class FormulariosController < ApplicationController
     uuid_anonimo = gerar_uuid_anonimo(current_user)
 
     ActiveRecord::Base.transaction do
-      if params[:respostas].present?
-        params[:respostas].each do |pergunta_id, resposta_data|
-          pergunta = @formulario.template.pergunta.find(pergunta_id)
+      params[:respostas].each do |pergunta_id, resposta_valor|
+        pergunta = Perguntum.find(pergunta_id)
+        resposta_attrs = {
+          formulario_id: @formulario.id,
+          pergunta_id: pergunta.id,
+          uuid_anonimo: uuid_anonimo
+        }
 
-          case pergunta.tipo
-          when 'texto_livre'
-            criar_resposta_texto(pergunta, resposta_data[:texto], uuid_anonimo)
-          when 'multipla_escolha'
-            if resposta_data[:opcoes].present?
-              resposta_data[:opcoes].each do |opcao_id|
-                criar_resposta_opcao(pergunta, opcao_id, uuid_anonimo)
-              end
-            end
-          when 'escolha_unica', 'escala_likert'
-            criar_resposta_opcao(pergunta, resposta_data[:opcao], uuid_anonimo) if resposta_data[:opcao].present?
-          end
+        case pergunta.tipo
+        when 'subjetiva'
+          resposta_attrs[:resposta_texto] = resposta_valor
+        when 'multipla_escolha'
+          resposta_attrs[:opcao_id] = resposta_valor
+        when 'verdadeiro_falso'
+          resposta_attrs[:resposta_texto] = resposta_valor
         end
+
+        Respostum.create!(resposta_attrs)
       end
+
+      # Marcar como respondido
+      SubmissaoConcluida.create!(
+        formulario: @formulario,
+        user: current_user,
+        uuid_anonimo: uuid_anonimo
+      )
     end
 
-    redirect_to evaluations_path, notice: 'Formulário respondido com sucesso! Obrigado pela sua participação.'
-  rescue StandardError
-    redirect_to formulario_path(@formulario), alert: 'Erro ao salvar suas respostas. Tente novamente.'
+    redirect_to evaluations_path, notice: 'Formulário enviado com sucesso!'
+  rescue ActiveRecord::RecordInvalid => e
+    # Se houver erro, a transação será revertida
+    redirect_to formulario_path(@formulario), alert: "Erro ao salvar respostas: #{e.message}"
   end
 
   private
 
+  # Use callbacks to share common setup or constraints between actions.
   def set_formulario
     @formulario = Formulario.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
   def formulario_params
-    params.require(:formulario).permit(:template_id, :turma_id, :coordenador_id,
-                                       :data_envio, :data_fim, :ativo, :escopo_visibilidade, :disciplina_id)
+    params.require(:formulario).permit(
+      :data_fim, :template_id, :turma_id, :disciplina_id, :escopo_visibilidade
+    )
   end
 
-  # ### CORREÇÃO AQUI ###
-  # Centraliza o carregamento dos dados para os formulários de new e edit
   def carregar_dados_do_select
-    @templates = Template.order(:titulo)
-    @turmas = Turma.includes(:disciplina).order('disciplinas.nome')
-    @disciplinas = Disciplina.order(:nome)
-  end
-
-  def verificar_acesso_aluno
-    unless current_user&.aluno?
-      redirect_to root_path, alert: 'Acesso negado.'
-      return
-    end
-
-    return if current_user.matriculas.exists?(turma: @formulario.turma)
-
-    redirect_to evaluations_path, alert: 'Você não tem acesso a este formulário.'
-    nil
+    @templates = Template.all
+    @disciplinas = Disciplina.all
+    @turmas = Turma.all
   end
 
   def gerar_uuid_anonimo(user)
-    Digest::SHA256.hexdigest("#{user.id}-#{@formulario.id}-#{@formulario.turma.id}")
-  end
-
-  def criar_resposta_texto(pergunta, texto, uuid_anonimo)
-    return if texto.blank?
-
-    Respostum.create!(
-      formulario: @formulario,
-      pergunta: pergunta,
-      opcao_id: 1, # Placeholder para resposta de texto
-      resposta_texto: texto,
-      turma: @formulario.turma,
-      uuid_anonimo: uuid_anonimo
-    )
-  end
-
-  def criar_resposta_opcao(pergunta, opcao_id, uuid_anonimo)
-    return if opcao_id.blank?
-
-    Respostum.create!(
-      formulario: @formulario,
-      pergunta: pergunta,
-      opcao_id: opcao_id,
-      resposta_texto: nil,
-      turma: @formulario.turma,
-      uuid_anonimo: uuid_anonimo
-    )
+    Digest::SHA256.hexdigest(user.id.to_s + @formulario.id.to_s)
   end
 end

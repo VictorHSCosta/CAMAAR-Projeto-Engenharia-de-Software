@@ -40,7 +40,7 @@
 
 #### Funcionalidade: Visualizar resultados dos formulários
 
-**Status:** Será implementada na terceira sprint
+**Status:** Implementada
 
 * **Cenário:** Visualizar resultados enquanto formulário ainda está aberto.
   - O sistema exibe resultados parciais das respostas já recebidas, informando que o formulário ainda está aberto para novas respostas.
@@ -55,7 +55,7 @@
 
 #### Funcionalidade: Responder formulário
 
-**Status:** Será implementada na terceira sprint
+**Status:** Implementada
 
 * **Cenário:** Formulário com respostas anônimas.
   - O sistema garante o anonimato das respostas quando o formulário exige anonimato, utilizando identificador anônimo.
@@ -166,7 +166,7 @@
 
 #### Funcionalidade: Sistema de gerenciamento por departamento
 
-**Status:** Será implementada na terceira sprint
+**Status:** Implementada
 
 * **Cenário:** Administrador visualiza formulários de todos os departamentos.
   - O administrador acessa a listagem e visualiza formulários de todos os departamentos sem restrição.
@@ -199,7 +199,7 @@
 
 #### Funcionalidade: Redefinição de senha
 
-**Status:** Será implementada na terceira sprint
+**Status:** Implementada
 
 * **Cenário:** Redefinir senha com sucesso.
   - O usuário acessa o link de redefinição, informa uma nova senha válida e tem sua senha atualizada com sucesso.
@@ -214,7 +214,7 @@
 
 #### Funcionalidade: Visualização de formulários para responder
 
-**Status:** Será implementada na terceira sprint
+**Status:** Implementada
 
 * **Cenário:** Nenhum formulário disponível para o usuário.
   - O sistema exibe uma mensagem informando que não há formulários disponíveis para resposta.
@@ -232,7 +232,7 @@
 
 #### Funcionalidade: Atualizar base de dados com dados do SIGAA
 
-**Status:** Será implementada na terceira sprint
+**Status:** Implementada
 
 * **Cenário:** Importar dados atualizando e mantendo os existentes.
   - O sistema importa um arquivo JSON do SIGAA, atualizando registros existentes e mantendo os dados já presentes na base.
@@ -259,7 +259,7 @@
 
 #### Funcionalidade: Visualizar templates criados
 
-**Status:** Será implementada na terceira sprint
+**Status:** Implementada
 
 * **Cenário:** Visualizar lista de templates com informações básicas.
   - O sistema exibe uma lista de templates cadastrados, mostrando título, público-alvo e status de uso.
@@ -436,6 +436,33 @@ bundle exec brakeman               # Análise de segurança
 - ✅ **Cobertura**: Models, Controllers, Views, Helpers
 - ✅ **Segurança**: Configuração Brakeman ativa
 - ✅ **Estilo**: RuboCop configurado
+
+---
+
+## Documentação do Código (RDoc)
+
+O código do projeto é documentado utilizando [RDoc](https://ruby.github.io/rdoc/), a ferramenta padrão de documentação para projetos Ruby.
+
+A cobertura atual da documentação é de **97.86%**.
+
+### Gerando a Documentação
+
+Para gerar a documentação localmente, execute o seguinte comando na raiz do projeto:
+
+```bash
+rdoc 'app'
+```
+
+Isso irá gerar os arquivos HTML da documentação no diretório `doc/`.
+
+### Visualizando a Documentação
+
+Após gerar a documentação, você pode abri-la em seu navegador. O arquivo principal é o `index.html`.
+
+Abra o seguinte arquivo no seu navegador:
+`file://<caminho-absoluto-para-o-projeto>/doc/index.html`
+
+Ou, se estiver usando o VS Code, pode usar a extensão "Simple Browser" para abrir o arquivo diretamente no editor.
 
 ---
 

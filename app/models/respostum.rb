@@ -1,5 +1,19 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: resposta
+#
+#  id             :integer          not null, primary key
+#  uuid_anonimo   :string
+#  resposta_texto :text
+#  formulario_id  :integer          not null
+#  pergunta_id    :integer          not null
+#  opcao_id       :integer
+#  turma_id       :integer
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
 # Classe responsável por representar respostas aos formulários
 class Respostum < ApplicationRecord
   self.table_name = 'resposta'

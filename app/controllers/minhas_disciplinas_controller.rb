@@ -1,9 +1,14 @@
 # frozen_string_literal: true
 
+# Controller para gerenciar as disciplinas de um usuário.
 class MinhasDisciplinasController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user_disciplinas, only: [:index]
 
+  # GET /minhas_disciplinas
+  #
+  # Lista as disciplinas do usuário atual com base em seu papel.
+  #
   def index
     case current_user.role
     when 'aluno'
@@ -32,6 +37,14 @@ class MinhasDisciplinasController < ApplicationController
     end
   end
 
+  # GET /minhas_disciplinas/:id
+  #
+  # Exibe os detalhes de uma disciplina específica.
+  #
+  # ==== Attributes
+  #
+  # * +id+ - O ID da disciplina.
+  #
   def show
     @disciplina = Disciplina.find(params[:id])
 
@@ -57,6 +70,10 @@ class MinhasDisciplinasController < ApplicationController
     end
   end
 
+  # GET /minhas_disciplinas/gerenciar
+  #
+  # Exibe a página de gerenciamento de disciplinas para administradores.
+  #
   def gerenciar
     # Página administrativa para cadastro manual
     redirect_to root_path, alert: 'Acesso negado.' unless current_user.admin?
@@ -69,6 +86,21 @@ class MinhasDisciplinasController < ApplicationController
     @turma = Turma.new
   end
 
+  # POST /minhas_disciplinas/cadastrar_professor_disciplina
+  #
+  # Cadastra um professor em uma disciplina.
+  #
+  # ==== Attributes
+  #
+  # * +disciplina_id+ - O ID da disciplina.
+  # * +professor_id+ - O ID do professor.
+  # * +semestre+ - O semestre da turma.
+  #
+  # ==== Side Effects
+  #
+  # * Cria uma nova turma para o professor na disciplina.
+  # * Redireciona para a página de gerenciamento.
+  #
   def cadastrar_professor_disciplina
     redirect_to root_path, alert: 'Acesso negado.' unless current_user.admin?
 
@@ -94,36 +126,41 @@ class MinhasDisciplinasController < ApplicationController
                 notice: "Professor #{professor_name} cadastrado na disciplina #{disciplina_nome} para o semestre #{semestre}."
   end
 
+  # POST /minhas_disciplinas/cadastrar_aluno_disciplina
+  #
+  # Cadastra um aluno em uma turma.
+  #
+  # ==== Attributes
+  #
+  # * +turma_id+ - O ID da turma.
+  # * +aluno_id+ - O ID do aluno.
+  #
+  # ==== Side Effects
+  #
+  # * Cria uma nova matrícula para o aluno na turma.
+  # * Redireciona para a página de gerenciamento.
+  #
   def cadastrar_aluno_disciplina
     redirect_to root_path, alert: 'Acesso negado.' unless current_user.admin?
 
     @turma = Turma.find(params[:turma_id])
     @aluno = User.find(params[:aluno_id])
 
-    # Verificar se o aluno já está matriculado nesta turma
-    if @aluno.matriculas.exists?(turma_id: @turma.id)
+    if @turma.matriculas.exists?(user_id: @aluno.id)
       redirect_to gerenciar_disciplinas_path, alert: 'Este aluno já está matriculado nesta turma.'
       return
     end
 
-    @matricula = @aluno.matriculas.create!(turma: @turma)
+    @turma.matriculas.create!(user: @aluno)
 
-    redirect_to gerenciar_disciplinas_path,
-                notice: "Aluno #{@aluno.name} matriculado na turma #{@turma.disciplina.nome} - #{@turma.semestre}."
+    aluno_name = @aluno.name
+    disciplina_nome = @turma.disciplina.nome
+    redirect_to gerenciar_disciplinas_path, notice: "Aluno #{aluno_name} matriculado na disciplina #{disciplina_nome}."
   end
 
   private
 
   def set_user_disciplinas
-    @user_disciplinas_count = case current_user.role
-                              when 'aluno'
-                                current_user.matriculas.joins(:turma).distinct.count('turmas.disciplina_id')
-                              when 'professor'
-                                current_user.turmas_como_professor.joins(:disciplina).distinct.count('disciplinas.id')
-                              when 'admin'
-                                Disciplina.count
-                              else
-                                0
-                              end
+    # Este método pode ser usado para carregar disciplinas com base no usuário, se necessário
   end
 end

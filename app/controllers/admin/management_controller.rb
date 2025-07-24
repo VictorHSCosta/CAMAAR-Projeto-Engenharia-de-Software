@@ -5,14 +5,46 @@ module Admin
   class ManagementController < ApplicationController
     before_action :authorize_management, unless: -> { Rails.env.test? }
 
+    # GET /admin/management
+    #
+    # Exibe a página principal de gerenciamento do administrador.
+    #
+    # ==== Returns
+    #
+    # * +@has_imported_data+ - Boolean indicando se dados já foram importados.
+    #
     def index
       @has_imported_data = imported_data_exists?
     end
 
+    # GET /admin/management/import_modal
+    #
+    # Renderiza o modal de importação de dados.
+    #
     def import_modal
       render partial: 'import_modal'
     end
 
+    # POST /admin/management/import_users
+    #
+    # Importa usuários a partir de um arquivo JSON.
+    #
+    # ==== Attributes
+    #
+    # * +file+ - O arquivo JSON contendo os dados dos usuários.
+    #
+    # ==== Returns
+    #
+    # * JSON - Retorna um objeto JSON com o resultado da importação.
+    #   - success: true/false
+    #   - message: Mensagem de sucesso ou erro.
+    #   - imported_count: Número de usuários importados.
+    #   - skipped_count: Número de usuários ignorados.
+    #
+    # ==== Side Effects
+    #
+    # * Cria novos usuários no banco de dados.
+    #
     def import_users
       # authorize_import_users
 
@@ -43,6 +75,26 @@ module Admin
       end
     end
 
+    # POST /admin/management/import_disciplines
+    #
+    # Importa disciplinas a partir de um arquivo JSON.
+    #
+    # ==== Attributes
+    #
+    # * +file+ - O arquivo JSON contendo os dados das disciplinas.
+    #
+    # ==== Returns
+    #
+    # * JSON - Retorna um objeto JSON com o resultado da importação.
+    #   - success: true/false
+    #   - message: Mensagem de sucesso ou erro.
+    #   - imported_count: Número de disciplinas importadas.
+    #   - skipped_count: Número de disciplinas ignoradas.
+    #
+    # ==== Side Effects
+    #
+    # * Cria novas disciplinas, turmas e matrículas no banco de dados.
+    #
     def import_disciplines
       # authorize_import_disciplines
 

@@ -4,6 +4,15 @@
 class EvaluationsController < ApplicationController
   before_action :authenticate_user!
 
+  # GET /evaluations
+  #
+  # Lista os formulários de avaliação disponíveis para o usuário atual.
+  #
+  # ==== Returns
+  #
+  # * +@formularios_disponiveis+ - Lista de formulários que o usuário pode responder.
+  # * +@formularios_respondidos+ - Lista de formulários que o usuário já respondeu.
+  #
   def index
     @formularios = if current_user.admin?
                      # Administradores veem todos os formulários ativos (sem filtro de período)
@@ -30,6 +39,20 @@ class EvaluationsController < ApplicationController
     end
   end
 
+  # GET /evaluations/:id
+  # POST /evaluations/:id
+  #
+  # Exibe um formulário para o usuário responder ou processa as respostas enviadas.
+  #
+  # ==== Attributes
+  #
+  # * +id+ - O ID do formulário.
+  #
+  # ==== Side Effects
+  #
+  # * Se a requisição for POST, salva as respostas do usuário no banco de dados.
+  # * Redireciona para a lista de avaliações se o usuário não tiver permissão ou já tiver respondido.
+  #
   def show
     @formulario = Formulario.find(params[:id])
 
@@ -54,7 +77,22 @@ class EvaluationsController < ApplicationController
     process_respostas
   end
 
-  # Mostrar resultados estatísticos do formulário (para administradores e coordenadores)
+  # GET /evaluations/:id/results
+  #
+  # Mostra os resultados estatísticos de um formulário.
+  #
+  # ==== Attributes
+  #
+  # * +id+ - O ID do formulário.
+  #
+  # ==== Returns
+  #
+  # * +@estatisticas+ - Um hash com as estatísticas das respostas.
+  #
+  # ==== Side Effects
+  #
+  # * Redireciona se o usuário não tiver permissão para ver os resultados.
+  #
   def results
     @formulario = Formulario.find(params[:id])
 
@@ -97,23 +135,14 @@ class EvaluationsController < ApplicationController
       when 'verdadeiro_falso'
         # Para verdadeiro/falso, usar resposta_texto
         opcoes_stats = {}
-
-        # Contar respostas "true" (verdadeiro)
-        verdadeiro_count = respostas_pergunta.where(resposta_texto: %w[true True TRUE Verdadeiro]).count
-        opcoes_stats['verdadeiro'] = {
-          texto: 'Verdadeiro',
-          count: verdadeiro_count
-        }
-
-        # Contar respostas "false" (falso)
-        falso_count = respostas_pergunta.where(resposta_texto: %w[false False FALSE Falso]).count
-        opcoes_stats['falso'] = {
-          texto: 'Falso',
-          count: falso_count
-        }
-
+        ['Verdadeiro', 'Falso'].each do |opcao_texto|
+          opcoes_stats[opcao_texto] = {
+            texto: opcao_texto,
+            count: respostas_pergunta.where(resposta_texto: opcao_texto).count
+          }
+        end
         @estatisticas[pergunta.id] = {
-          tipo: pergunta.tipo,
+          tipo: 'verdadeiro_falso',
           total_respostas: respostas_pergunta.count,
           opcoes: opcoes_stats
         }
@@ -128,49 +157,41 @@ class EvaluationsController < ApplicationController
   private
 
   def process_respostas
+    uuid_anonimo = SecureRandom.uuid
+    respostas_params = params.require(:respostas).permit!
+
     ActiveRecord::Base.transaction do
-      # Gerar UUID anônimo para o usuário (manter anonimato)
-      uuid_anonimo = SecureRandom.uuid
-
-      # Salvar cada resposta
-      params[:respostas].each do |pergunta_id, resposta_texto|
+      respostas_params.each do |pergunta_id, resposta_valor|
         pergunta = Perguntum.find(pergunta_id)
+        resposta_attrs = {
+          formulario_id: @formulario.id,
+          pergunta_id: pergunta.id,
+          uuid_anonimo: uuid_anonimo
+        }
 
-        # Validar se a pergunta pertence ao formulário
-        raise ActiveRecord::RecordInvalid unless pergunta.template_id == @formulario.template_id
-
-        # Criar resposta baseada no tipo de pergunta
-        if pergunta.multipla_escolha?
-          # Para múltipla escolha, resposta_texto é o ID da opção
-          opcao = OpcoesPerguntum.find(resposta_texto)
-          Respostum.create!(
-            pergunta: pergunta,
-            opcao: opcao,
-            formulario: @formulario,
-            uuid_anonimo: uuid_anonimo
-          )
-        else
-          # Para verdadeiro/falso e subjetiva
-          Respostum.create!(
-            pergunta: pergunta,
-            resposta_texto: resposta_texto,
-            formulario: @formulario,
-            uuid_anonimo: uuid_anonimo
-          )
+        case pergunta.tipo
+        when 'subjetiva'
+          resposta_attrs[:resposta_texto] = resposta_valor
+        when 'multipla_escolha'
+          resposta_attrs[:opcao_id] = resposta_valor
+        when 'verdadeiro_falso'
+          resposta_attrs[:resposta_texto] = resposta_valor
         end
+
+        Respostum.create!(resposta_attrs)
       end
 
-      # Marcar como concluído
+      # Marcar como respondido
       SubmissaoConcluida.create!(
-        user: current_user,
         formulario: @formulario,
+        user: current_user,
         uuid_anonimo: uuid_anonimo
       )
-
-      redirect_to evaluations_path, notice: 'Respostas enviadas com sucesso! Obrigado pela sua participação.'
     end
-  rescue StandardError => e
-    Rails.logger.error "Erro ao processar respostas: #{e.message}"
-    redirect_to evaluation_path(@formulario), alert: 'Erro ao enviar respostas. Tente novamente.'
+
+    redirect_to evaluations_path, notice: 'Formulário enviado com sucesso!'
+  rescue ActiveRecord::RecordInvalid => e
+    # Se houver erro, a transação será revertida
+    redirect_to evaluation_path(@formulario), alert: "Erro ao salvar respostas: #{e.message}"
   end
 end

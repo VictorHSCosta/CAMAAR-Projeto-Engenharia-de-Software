@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-# Adicione um comentário de documentação para o módulo FormulariosHelper.
+# Helper module for forms (formularios) views
 module FormulariosHelper
 end

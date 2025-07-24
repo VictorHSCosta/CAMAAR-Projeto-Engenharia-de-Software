@@ -1,10 +1,32 @@
+# Controller para o processo de recuperação de senha.
 class RecuperarSenhaController < ApplicationController
   skip_before_action :authenticate_user!
 
+  # GET /recuperar_senha/new
+  #
+  # Exibe o formulário para o usuário recuperar sua senha.
+  #
   def new
     # Formulário para recuperar senha
   end
 
+  # POST /recuperar_senha
+  #
+  # Processa o formulário de recuperação de senha.
+  #
+  # ==== Attributes
+  #
+  # * +matricula+ - A matrícula do usuário.
+  # * +email+ - O email do usuário.
+  # * +password+ - A nova senha.
+  # * +password_confirmation+ - A confirmação da nova senha.
+  #
+  # ==== Side Effects
+  #
+  # * Redefine a senha do usuário se os dados estiverem corretos.
+  # * Redireciona para a página de login em caso de sucesso.
+  # * Renderiza o formulário novamente em caso de falha.
+  #
   def create
     # Validações básicas dos parâmetros
     unless params[:matricula].present? && params[:email].present?

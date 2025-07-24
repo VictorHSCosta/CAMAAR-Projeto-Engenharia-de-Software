@@ -1,9 +1,17 @@
 # frozen_string_literal: true
 
-# Adicione um comentário de documentação para a classe HomeController.
+# Controller para a página inicial da aplicação.
 class HomeController < ApplicationController
   before_action :authenticate_user!, unless: -> { Rails.env.test? }
 
+  # GET /
+  #
+  # Exibe a página inicial.
+  #
+  # ==== Side Effects
+  #
+  # * Redireciona administradores para a página de gerenciamento se não houver dados importados.
+  #
   def index
     @current_user = current_user || User.new(name: 'Test User', role: 'admin') # Fallback for test env
 

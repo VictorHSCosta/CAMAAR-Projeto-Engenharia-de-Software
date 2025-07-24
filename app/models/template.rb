@@ -1,5 +1,17 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: templates
+#
+#  id             :integer          not null, primary key
+#  titulo         :string
+#  publico_alvo   :integer
+#  criado_por_id  :integer          not null
+#  disciplina_id  :integer
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
 # Classe responsável por representar templates de formulários
 class Template < ApplicationRecord
   belongs_to :criado_por, class_name: 'User'

@@ -1,5 +1,16 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: pergunta
+#
+#  id          :integer          not null, primary key
+#  texto       :string
+#  tipo        :integer
+#  template_id :integer          not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
 # Classe responsável por representar perguntas dos formulários
 class Perguntum < ApplicationRecord
   self.table_name = 'pergunta'
@@ -19,6 +30,12 @@ class Perguntum < ApplicationRecord
   alias_attribute :titulo, :texto
   attr_accessor :ordem
 
+  # Verifica se a pergunta é de múltipla escolha ou verdadeiro/falso.
+  #
+  # ==== Returns
+  #
+  # * +Boolean+ - Retorna true se o tipo da pergunta for 'multipla_escolha' ou 'verdadeiro_falso', caso contrário, retorna false.
+  #
   def multipla_escolha_ou_verdadeiro_falso?
     multipla_escolha? || verdadeiro_falso?
   end # Map virtual attributes before assignment
@@ -34,6 +51,11 @@ class Perguntum < ApplicationRecord
   end
 
   # Custom setter for tipo to handle numeric strings
+  #
+  # ==== Attributes
+  #
+  # * +value+ - O valor do tipo a ser definido, pode ser uma string numérica ou um inteiro.
+  #
   def tipo=(value)
     if value.is_a?(String) && value.match?(/^\d+$/)
       tipo_int = value.to_i
