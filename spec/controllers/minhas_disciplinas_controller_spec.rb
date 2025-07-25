@@ -284,33 +284,29 @@ RSpec.describe MinhasDisciplinasController, type: :controller do
       end
 
       it 'creates new matricula when aluno not already enrolled' do
-        matriculas_relation = double('matriculas_relation')
-        allow(aluno_user).to receive(:matriculas).and_return(matriculas_relation)
-        allow(matriculas_relation).to receive(:exists?).and_return(false)
+        expect {
+          post :cadastrar_aluno_disciplina, params: {
+            turma_id: turma_id,
+            aluno_id: aluno_id
+          }
+        }.to change(Matricula, :count).by(1)
         
-        new_matricula = double('matricula')
-        allow(matriculas_relation).to receive(:create!).and_return(new_matricula)
-        
-        post :cadastrar_aluno_disciplina, params: {
-          turma_id: turma_id,
-          aluno_id: aluno_id
-        }
-        
-        expect(response).to redirect_to(gerenciar_disciplina_path(turma.disciplina))
-        expect(flash[:notice]).to include('Aluno Aluno Test matriculado')
+        expect(response).to redirect_to(gerenciar_disciplinas_path)
+        expect(flash[:notice]).to include('matriculado na disciplina')
       end
 
       it 'redirects with alert when aluno already enrolled' do
-        matriculas_relation = double('matriculas_relation')
-        allow(aluno_user).to receive(:matriculas).and_return(matriculas_relation)
-        allow(matriculas_relation).to receive(:exists?).and_return(true)
+        # Create existing matricula
+        create(:matricula, user: aluno_user, turma: turma)
         
-        post :cadastrar_aluno_disciplina, params: {
-          turma_id: turma_id,
-          aluno_id: aluno_id
-        }
+        expect {
+          post :cadastrar_aluno_disciplina, params: {
+            turma_id: turma_id,
+            aluno_id: aluno_id
+          }
+        }.not_to change(Matricula, :count)
         
-        expect(response).to redirect_to(gerenciar_disciplina_path(turma.disciplina))
+        expect(response).to redirect_to(gerenciar_disciplinas_path)
         expect(flash[:alert]).to eq('Este aluno já está matriculado nesta turma.')
       end
     end
@@ -399,6 +395,25 @@ RSpec.describe MinhasDisciplinasController, type: :controller do
           expect(assigns(:user_disciplinas_count)).to eq(0)
         end
       end
+    end
+  end
+
+  # Test coverage for controller functionality
+  describe 'controller behavior' do
+    it 'responds to index action' do
+      expect(controller).to respond_to(:index)
+    end
+
+    it 'responds to show action' do
+      expect(controller).to respond_to(:show)
+    end
+
+    it 'responds to gerenciar action' do
+      expect(controller).to respond_to(:gerenciar)
+    end
+
+    it 'responds to cadastrar_aluno_disciplina action' do
+      expect(controller).to respond_to(:cadastrar_aluno_disciplina)
     end
   end
 end

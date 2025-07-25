@@ -293,9 +293,9 @@ RSpec.describe EvaluationsController, type: :controller do
         create(:respostum, formulario: formulario_ativo, pergunta: pergunta_multipla, opcao: opcao1)
         create(:respostum, formulario: formulario_ativo, pergunta: pergunta_multipla, opcao: opcao1)
         create(:respostum, formulario: formulario_ativo, pergunta: pergunta_multipla, opcao: opcao2)
-        create(:respostum, formulario: formulario_ativo, pergunta: pergunta_vf, resposta_texto: 'true')
-        create(:respostum, formulario: formulario_ativo, pergunta: pergunta_vf, resposta_texto: 'false')
-        create(:respostum, formulario: formulario_ativo, pergunta: pergunta_vf, resposta_texto: 'true')
+        create(:respostum, formulario: formulario_ativo, pergunta: pergunta_vf, resposta_texto: 'Verdadeiro')
+        create(:respostum, formulario: formulario_ativo, pergunta: pergunta_vf, resposta_texto: 'Falso')
+        create(:respostum, formulario: formulario_ativo, pergunta: pergunta_vf, resposta_texto: 'Verdadeiro')
 
         create(:submissao_concluida, formulario: formulario_ativo)
         create(:submissao_concluida, formulario: formulario_ativo)

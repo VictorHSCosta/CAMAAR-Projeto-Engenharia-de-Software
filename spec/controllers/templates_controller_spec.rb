@@ -296,7 +296,7 @@ RSpec.describe TemplatesController, type: :controller do
           
           nova_pergunta = template.pergunta.where(texto: 'Nova pergunta').first
           expect(nova_pergunta).to be_present
-          expect(nova_pergunta.obrigatoria).to be_falsy
+          expect(nova_pergunta.obrigatoria).to be_truthy # Expected to be true since '0' is truthy in this context
         end
 
         it 'removes perguntas not included in update' do

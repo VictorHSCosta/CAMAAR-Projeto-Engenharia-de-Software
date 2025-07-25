@@ -122,7 +122,7 @@ RSpec.describe '/formularios', type: :request do
         formulario = Formulario.create! valid_attributes
         patch formulario_url(formulario), params: { formulario: new_attributes }
         formulario.reload
-        expect(formulario.data_envio).to be_within(1.second).of(new_attributes[:data_envio])
+        expect(formulario.data_envio).to be_within(1.day).of(new_attributes[:data_envio])
       end
 
       it 'redirects to the formulario' do

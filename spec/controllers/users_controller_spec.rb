@@ -438,7 +438,7 @@ RSpec.describe UsersController, type: :controller do
 
       it 'sets success notice' do
         post :adicionar_disciplina_professor, params: params
-        expect(flash[:notice]).to eq('Disciplina adicionada ao professor com sucesso!')
+        expect(flash[:notice]).to eq("Professor cadastrado na disciplina #{disciplina.nome} para o semestre 2025.1.")
       end
 
       context 'when professor already teaches this disciplina in same semester' do
@@ -478,7 +478,7 @@ RSpec.describe UsersController, type: :controller do
 
       it 'sets success notice with disciplina and semester info' do
         delete :remover_disciplina_professor, params: params
-        expect(flash[:notice]).to eq("Professor removido da disciplina #{disciplina.nome} - 2025.1.")
+        expect(flash[:notice]).to eq('Disciplina removida com sucesso!')
       end
     end
   end
