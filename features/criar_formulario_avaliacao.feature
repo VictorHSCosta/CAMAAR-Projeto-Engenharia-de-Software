@@ -1,3 +1,4 @@
+# language: pt
 Funcionalidade: Criar formulário de avaliação
   Como administrador
   Quero utilizar um template previamente cadastrado

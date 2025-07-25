@@ -1,3 +1,4 @@
+# language: pt
 Funcionalidade: Redefinição de senha
   Como usuário do sistema (administrador, coordenador ou discente)
   Quero  redefinir minha senha caso eu a esqueça

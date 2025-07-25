@@ -1,3 +1,4 @@
+# language: pt
 Funcionalidade: Visualizar resultados dos formulários
   Como administrador ou coordenador
   Quero visualizar os resultados dos formulários enviados aos discentes

@@ -1,3 +1,4 @@
+# language: pt
 Funcionalidade: Atualizar base de dados com dados do SIGAA
   Como administrador
   Quero importar os dados do SIGAA por meio de um botão

@@ -1,3 +1,4 @@
+# language: pt
 Funcionalidade: Editar e deletar templates de formulário
   Como administrador do sistema
   Quero organizar e restringir o gerenciamento de formulários/templates por departamento

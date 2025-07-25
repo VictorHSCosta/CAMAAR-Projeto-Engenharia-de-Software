@@ -1,3 +1,4 @@
+# language: pt
 Funcionalidade: Editar e deletar templates de formulário
   Como administrador
   Quero  poder editar ou excluir templates criados anteriormente

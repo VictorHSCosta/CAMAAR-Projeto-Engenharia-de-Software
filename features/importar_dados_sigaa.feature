@@ -1,3 +1,4 @@
+# language: pt
 Funcionalidade: Importar dados do SIGAA
   Como administrador
   Quero importar dados acadêmicos (usuários, turmas, disciplinas) do SIGAА

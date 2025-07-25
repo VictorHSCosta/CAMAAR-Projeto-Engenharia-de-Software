@@ -1,3 +1,4 @@
+# language: pt
 Funcionalidade: Gerar relatório do administrador
   Como administrador
   Quero gerar relatórios com os dados das respostas aos formulários

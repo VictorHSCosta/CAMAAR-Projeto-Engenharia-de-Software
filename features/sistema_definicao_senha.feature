@@ -1,3 +1,4 @@
+# language: pt
 Funcionalidade: Sistema de definição de senha
   Como novo usuário do sistema (administrador, coordenador oudiscente)
   Quero definir uma senha no meu primeiro acesso

@@ -1,3 +1,4 @@
+# language: pt
 Funcionalidade: Cadastrar usuários do sistema
   Como administrador
   Quero cadastrar novos usuários com seus respectivos dados e permissões

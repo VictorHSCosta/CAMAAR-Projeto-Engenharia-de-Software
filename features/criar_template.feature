@@ -1,3 +1,4 @@
+# language: pt
 Funcionalidade: Criar template de formulário
   Como administrador
   Quero criar um modelo de formulário com perguntas personalizadas

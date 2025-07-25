@@ -1,3 +1,4 @@
+# language: pt
 Funcionalidade: Visualizar templates criados
   Como administrador
   Quero visualizar a lista de templates já criados

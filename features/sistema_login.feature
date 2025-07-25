@@ -1,3 +1,4 @@
+# language: pt
 Funcionalidade: Sistema de Login
   Como usuário cadastrado (administrador, coordenador ou discente)
   Quero acessar o sistema com minhas credenciais (e-mail e senha)
