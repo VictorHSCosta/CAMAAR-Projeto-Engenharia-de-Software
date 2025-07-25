@@ -416,6 +416,19 @@ O projeto utiliza GitHub Actions para integração contínua e entrega contínua
 - **Configuração**: `.brakeman.yml` com checks específicos
 - **Execução**: `bundle exec brakeman`
 
+#### RubyCritic
+- **Análise de Qualidade**: Avalia a qualidade do código Ruby através de métricas como complexidade, duplicação e manutenibilidade
+- **Score Atual**: **71%** - Percentual de código com pontuação ≤ 20 (considerado aceitável)
+- **Execução**: `bundle exec rubycritic app/`
+- **Relatório**: Gera relatório HTML em `tmp/rubycritic/overview.html`
+
+**Interpretação dos Resultados:**
+- **Score ≤ 20**: Código de boa qualidade (aceitável)
+- **Score 21-40**: Código com qualidade moderada (atenção necessária)
+- **Score > 40**: Código com problemas de qualidade (refatoração recomendada)
+
+O resultado de 71% indica que a maior parte do código está dentro dos padrões aceitáveis de qualidade.
+
 ### Executar CI Localmente
 
 Para executar os mesmos checks que rodam no CI:
