@@ -1,15 +1,33 @@
 # frozen_string_literal: true
 
 module Admin
-  # Adicione um comentário de documentação para a classe Admin::UsersController.
+  # Controller para o gerenciamento de usuários por administradores.
   class UsersController < ApplicationController
     before_action :authenticate_user!
     before_action :ensure_admin
 
+    # GET /admin/users/new
+    #
+    # Exibe o formulário para a criação de um novo usuário.
+    #
     def new
       @user = User.new
     end
 
+    # POST /admin/users
+    #
+    # Cria um novo usuário com os parâmetros fornecidos.
+    #
+    # ==== Attributes
+    #
+    # * +user+ - Um hash com os atributos do usuário.
+    #
+    # ==== Side Effects
+    #
+    # * Cria um novo usuário no banco de dados.
+    # * Redireciona para a lista de usuários em caso de sucesso.
+    # * Renderiza o formulário novamente em caso de falha.
+    #
     def create
       @user = User.new(user_params)
       @user.password = generate_temp_password if @user.password.blank?

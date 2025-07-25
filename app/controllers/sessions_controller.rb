@@ -1,25 +1,47 @@
 # frozen_string_literal: true
 
-# SessionsController for custom authentication logic
-class SessionsController < Devise::SessionsController
+# Controller para gerenciar sessões de usuário (login/logout).
+class SessionsController < ApplicationController
   # Desativa o layout padrão para esta página específica
   layout false, only: [:new]
 
+  # GET /login
+  #
+  # Exibe o formulário de login.
+  #
   def new
-    super
+    # Renderiza o formulário de login
   end
 
+  # POST /login
+  #
+  # Autentica o usuário e cria uma nova sessão.
+  #
+  # ==== Attributes
+  #
+  # * +email+ - O email do usuário.
+  # * +password+ - A senha do usuário.
+  #
+  # ==== Side Effects
+  #
+  # * Cria uma nova sessão para o usuário se as credenciais forem válidas.
+  # * Redireciona para a página de avaliações em caso de sucesso.
+  # * Renderiza o formulário de login novamente em caso de falha.
+  #
   def create
-    # Handle missing parameters
-    if params[:user].blank? || params[:user][:email].blank? || params[:user][:password].blank?
-      flash.now[:alert] = 'Por favor, preencha email e senha.'
-      render :new, status: :unprocessable_entity
-      return
-    end
-
-    super
+    user = User.find_by(email: params[:email].downcase)
+    authenticate_user(user)
   end
 
+  # DELETE /logout
+  #
+  # Encerra a sessão do usuário.
+  #
+  # ==== Side Effects
+  #
+  # * Destrói a sessão do usuário.
+  # * Redireciona para a página de login.
+  #
   def destroy
     super
   end
@@ -27,6 +49,6 @@ class SessionsController < Devise::SessionsController
   protected
 
   def configure_sign_in_params
-    devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :password])
+    devise_parameter_sanitizer.permit(:sign_in, keys: %i[email password])
   end
 end

@@ -86,3 +86,4 @@ gem 'faker', '~> 3.4', '>= 3.4.2'
 gem 'tailwindcss-rails', '~> 4.3'
 
 gem 'rubycritic', require: false
+gem 'rdoc', '>= 3.12'

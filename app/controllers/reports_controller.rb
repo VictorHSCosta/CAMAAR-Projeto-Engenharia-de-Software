@@ -6,6 +6,9 @@ class ReportsController < ApplicationController
   before_action :ensure_professor_or_admin!
 
   # GET /reports
+  #
+  # Exibe a página de relatórios com estatísticas gerais.
+  #
   def index
     # Para professores, mostrar apenas relatórios de suas disciplinas
     # Para admins, mostrar todos os relatórios
@@ -19,6 +22,13 @@ class ReportsController < ApplicationController
   end
 
   # GET /reports/:id
+  #
+  # Exibe o relatório detalhado de um formulário específico.
+  #
+  # ==== Attributes
+  #
+  # * +id+ - O ID do formulário.
+  #
   def show
     @formulario = find_formulario
     @estatisticas = calcular_estatisticas_formulario(@formulario)
@@ -98,20 +108,12 @@ class ReportsController < ApplicationController
 
       respostas_por_pergunta[pergunta.id] = if pergunta.multipla_escolha? || pergunta.verdadeiro_falso?
                                               # Agrupar respostas por opção para múltipla escolha e verdadeiro/falso
-                                              {
-                                                pergunta: pergunta,
-                                                tipo: 'multipla_escolha',
-                                                respostas_agrupadas: respostas.joins(:opcao)
-                                                                              .group('opcoes_pergunta.texto')
-                                                                              .count
-                                              }
+                                              respostas.group(:opcao_id).count.transform_keys do |key|
+                                                OpcoesPerguntum.find(key).texto if key
+                                              end
                                             else
-                                              # Para perguntas subjetivas, listar todas as respostas
-                                              {
-                                                pergunta: pergunta,
-                                                tipo: 'texto_livre',
-                                                respostas_texto: respostas.pluck(:resposta_texto).compact
-                                              }
+                                              # Para perguntas subjetivas, listar as respostas
+                                              respostas.pluck(:resposta_texto)
                                             end
     end
 

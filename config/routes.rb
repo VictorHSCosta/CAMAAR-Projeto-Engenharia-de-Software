@@ -2,8 +2,7 @@ Rails.application.routes.draw do
   get "home/index"
   # Configurações do Devise
   devise_for :users, controllers: {
-    registrations: 'users/registrations',
-    sessions: 'sessions'
+    registrations: 'users/registrations'
   }, skip: [:registrations]
 
   # Rota para primeira senha (usuários sem senha)
@@ -16,11 +15,7 @@ Rails.application.routes.draw do
 
   resources :cursos
   resources :disciplinas, except: [:show]
-  resources :formularios do
-    member do
-      post :responder_formulario
-    end
-  end
+  resources :formularios
   resources :matriculas
   resources :opcoes_pergunta
   resources :pergunta

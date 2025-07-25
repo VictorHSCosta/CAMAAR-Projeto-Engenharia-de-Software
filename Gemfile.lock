@@ -567,6 +567,7 @@ DEPENDENCIES
   pundit
   rails (~> 8.0.2)
   rails-controller-testing
+  rdoc (>= 3.12)
   rspec-rails
   rspec_junit_formatter
   rubocop

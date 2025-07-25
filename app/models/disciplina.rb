@@ -1,5 +1,19 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: disciplinas
+#
+#  id           :integer          not null, primary key
+#  nome         :string
+#  codigo       :string
+#  semestre     :string
+#  horario      :string
+#  curso_id     :integer          not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  codigo_turma :string
+#
 class Disciplina < ApplicationRecord
   belongs_to :curso
   has_many :turmas, dependent: :destroy

@@ -1,26 +1,38 @@
 # frozen_string_literal: true
 
-# Adicione um comentário de documentação para a classe UsersController.
+# Controller para gerenciar usuários.
 class UsersController < ApplicationController
   before_action :set_user, only: %i[edit update destroy]
   before_action :ensure_admin!, except: %i[show edit update]
 
   # GET /users or /users.json
+  #
+  # Lista todos os usuários em ordem alfabética.
+  #
   def index
     @users = User.order(:name)
   end
 
   # GET /users/1
+  #
+  # Exibe os detalhes de um usuário específico.
+  #
   def show
     @user = User.find(params[:id])
   end
 
   # GET /users/new
+  #
+  # Exibe o formulário para a criação de um novo usuário.
+  #
   def new
     @user = User.new
   end
 
   # GET /users/1/edit
+  #
+  # Exibe o formulário para a edição de um usuário existente.
+  #
   def edit
     # Permite que usuários editem apenas seu próprio perfil, ou admins editem qualquer um
     return if current_user.admin? || @user == current_user
@@ -29,18 +41,57 @@ class UsersController < ApplicationController
   end
 
   # POST /users or /users.json
+  #
+  # Cria um novo usuário com os parâmetros fornecidos.
+  #
+  # ==== Attributes
+  #
+  # * +user+ - Um hash com os atributos do usuário.
+  #
+  # ==== Side Effects
+  #
+  # * Cria um novo usuário no banco de dados.
+  # * Redireciona para a lista de usuários em caso de sucesso.
+  # * Renderiza o formulário novamente em caso de falha.
+  #
   def create
     @user = build_user_with_password
     save_user_and_respond
   end
 
   # PATCH/PUT /users/1 or /users/1.json
+  #
+  # Atualiza um usuário existente com os parâmetros fornecidos.
+  #
+  # ==== Attributes
+  #
+  # * +id+ - O ID do usuário a ser atualizado.
+  # * +user+ - Um hash com os novos atributos do usuário.
+  #
+  # ==== Side Effects
+  #
+  # * Atualiza o usuário no banco de dados.
+  # * Redireciona para a página do usuário em caso de sucesso.
+  # * Renderiza o formulário de edição novamente em caso de falha.
+  #
   def update
     clean_password_params_if_blank
     update_user_and_respond
   end
 
   # DELETE /users/1 or /users/1.json
+  #
+  # Exclui um usuário existente.
+  #
+  # ==== Attributes
+  #
+  # * +id+ - O ID do usuário a ser excluído.
+  #
+  # ==== Side Effects
+  #
+  # * Exclui o usuário do banco de dados.
+  # * Redireciona para a lista de usuários.
+  #
   def destroy
     return redirect_to root_path, alert: 'Acesso negado.' unless current_user&.admin?
 
@@ -53,6 +104,19 @@ class UsersController < ApplicationController
   end
 
   # POST /users/adicionar_disciplina_aluno
+  #
+  # Adiciona uma disciplina a um aluno.
+  #
+  # ==== Attributes
+  #
+  # * +user_id+ - O ID do aluno.
+  # * +turma_id+ - O ID da turma.
+  #
+  # ==== Side Effects
+  #
+  # * Cria uma nova matrícula para o aluno na turma.
+  # * Redireciona para a página de edição do aluno.
+  #
   def adicionar_disciplina_aluno
     return redirect_to root_path, alert: 'Acesso negado.' unless current_user.admin?
 
@@ -72,6 +136,18 @@ class UsersController < ApplicationController
   end
 
   # DELETE /users/remover_disciplina_aluno
+  #
+  # Remove uma disciplina de um aluno.
+  #
+  # ==== Attributes
+  #
+  # * +matricula_id+ - O ID da matrícula a ser removida.
+  #
+  # ==== Side Effects
+  #
+  # * Exclui a matrícula do aluno.
+  # * Redireciona para a página de edição do aluno.
+  #
   def remover_disciplina_aluno
     return redirect_to root_path, alert: 'Acesso negado.' unless current_user.admin?
 
@@ -92,6 +168,20 @@ class UsersController < ApplicationController
   end
 
   # POST /users/adicionar_disciplina_professor
+  #
+  # Adiciona uma disciplina a um professor.
+  #
+  # ==== Attributes
+  #
+  # * +user_id+ - O ID do professor.
+  # * +disciplina_id+ - O ID da disciplina.
+  # * +semestre+ - O semestre da turma.
+  #
+  # ==== Side Effects
+  #
+  # * Cria uma nova turma para o professor na disciplina.
+  # * Redireciona para a página de edição do professor.
+  #
   def adicionar_disciplina_professor
     return redirect_to root_path, alert: 'Acesso negado.' unless current_user.admin?
 
@@ -99,7 +189,7 @@ class UsersController < ApplicationController
     @disciplina = Disciplina.find(params[:disciplina_id])
     semestre = params[:semestre]
 
-    # Verificar se já existe uma turma para este professor nesta disciplina no semestre
+    # Verificar se já existe uma turma para este professor nesta disciplina neste semestre
     if @disciplina.turmas.exists?(professor_id: @user.id, semestre: semestre)
       redirect_to edit_user_path(@user), alert: 'Este professor já leciona esta disciplina neste semestre.'
       return
@@ -111,22 +201,32 @@ class UsersController < ApplicationController
     )
 
     redirect_to edit_user_path(@user),
-                notice: 'Disciplina adicionada ao professor com sucesso!'
+                notice: "Professor cadastrado na disciplina #{@disciplina.nome} para o semestre #{semestre}."
   end
 
   # DELETE /users/remover_disciplina_professor
+  #
+  # Remove uma disciplina de um professor.
+  #
+  # ==== Attributes
+  #
+  # * +turma_id+ - O ID da turma a ser removida.
+  #
+  # ==== Side Effects
+  #
+  # * Exclui a turma do professor.
+  # * Redireciona para a página de edição do professor.
+  #
   def remover_disciplina_professor
     return redirect_to root_path, alert: 'Acesso negado.' unless current_user.admin?
 
     @turma = Turma.find(params[:turma_id])
     @user = @turma.professor
-    disciplina_nome = @turma.disciplina.nome
-    semestre = @turma.semestre
 
     @turma.destroy!
 
     redirect_to edit_user_path(@user),
-                notice: "Professor removido da disciplina #{disciplina_nome} - #{semestre}."
+                notice: 'Disciplina removida com sucesso!'
   end
 
   private

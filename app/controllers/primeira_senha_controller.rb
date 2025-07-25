@@ -1,10 +1,32 @@
+# Controller para o processo de definição da primeira senha de um usuário.
 class PrimeiraSenhaController < ApplicationController
   skip_before_action :authenticate_user!
 
+  # GET /primeira_senha/new
+  #
+  # Exibe o formulário para o usuário definir sua primeira senha.
+  #
   def new
     # Formulário para definir primeira senha
   end
 
+  # POST /primeira_senha
+  #
+  # Processa o formulário de definição da primeira senha.
+  #
+  # ==== Attributes
+  #
+  # * +matricula+ - A matrícula do usuário.
+  # * +email+ - O email do usuário.
+  # * +password+ - A nova senha.
+  # * +password_confirmation+ - A confirmação da nova senha.
+  #
+  # ==== Side Effects
+  #
+  # * Define a primeira senha do usuário se os dados estiverem corretos.
+  # * Redireciona para a página de login em caso de sucesso.
+  # * Renderiza o formulário novamente em caso de falha.
+  #
   def create # rubocop:disable Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity
     # Validações básicas dos parâmetros
     unless params[:matricula].present? && params[:email].present?

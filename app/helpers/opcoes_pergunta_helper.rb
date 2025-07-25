@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-# Adicione um comentário de documentação para o módulo OpcoesPerguntaHelper.
+# Helper module for question options (opcoes_pergunta) views
 module OpcoesPerguntaHelper
 end

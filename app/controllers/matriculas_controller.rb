@@ -1,26 +1,51 @@
 # frozen_string_literal: true
 
-# Adicione um comentário de documentação para a classe MatriculasController.
+# Controller para gerenciar matrículas.
 class MatriculasController < ApplicationController
   before_action :set_matricula, only: %i[show edit update destroy]
 
   # GET /matriculas or /matriculas.json
+  #
+  # Lista todas as matrículas.
+  #
   def index
     @matriculas = Matricula.all
   end
 
   # GET /matriculas/1 or /matriculas/1.json
+  #
+  # Exibe os detalhes de uma matrícula específica.
+  #
   def show; end
 
   # GET /matriculas/new
+  #
+  # Exibe o formulário para a criação de uma nova matrícula.
+  #
   def new
     @matricula = Matricula.new
   end
 
   # GET /matriculas/1/edit
+  #
+  # Exibe o formulário para a edição de uma matrícula existente.
+  #
   def edit; end
 
   # POST /matriculas or /matriculas.json
+  #
+  # Cria uma nova matrícula com os parâmetros fornecidos.
+  #
+  # ==== Attributes
+  #
+  # * +matricula+ - Um hash com os atributos da matrícula.
+  #
+  # ==== Side Effects
+  #
+  # * Cria uma nova matrícula no banco de dados.
+  # * Redireciona para a página da matrícula em caso de sucesso.
+  # * Renderiza o formulário novamente em caso de falha.
+  #
   def create
     @matricula = Matricula.new(matricula_params)
 
@@ -36,6 +61,20 @@ class MatriculasController < ApplicationController
   end
 
   # PATCH/PUT /matriculas/1 or /matriculas/1.json
+  #
+  # Atualiza uma matrícula existente com os parâmetros fornecidos.
+  #
+  # ==== Attributes
+  #
+  # * +id+ - O ID da matrícula a ser atualizada.
+  # * +matricula+ - Um hash com os novos atributos da matrícula.
+  #
+  # ==== Side Effects
+  #
+  # * Atualiza a matrícula no banco de dados.
+  # * Redireciona para a página da matrícula em caso de sucesso.
+  # * Renderiza o formulário de edição novamente em caso de falha.
+  #
   def update
     respond_to do |format|
       if @matricula.update(matricula_params)
@@ -49,6 +88,18 @@ class MatriculasController < ApplicationController
   end
 
   # DELETE /matriculas/1 or /matriculas/1.json
+  #
+  # Exclui uma matrícula existente.
+  #
+  # ==== Attributes
+  #
+  # * +id+ - O ID da matrícula a ser excluída.
+  #
+  # ==== Side Effects
+  #
+  # * Exclui a matrícula do banco de dados.
+  # * Redireciona para a lista de matrículas.
+  #
   def destroy
     @matricula.destroy!
 
