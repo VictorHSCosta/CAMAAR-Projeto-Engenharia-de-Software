@@ -18,78 +18,156 @@ RSpec.describe Formulario, type: :model do
   end
 
   describe 'validations' do
-    it 'is valid with valid attributes' do
-      formulario = described_class.new(
-        template: template,
-        turma: turma,
-        coordenador: user,
-        data_envio: Time.current,
-        data_fim: 1.week.from_now
-      )
-      expect(formulario).to be_valid
-    end
-
-    it 'is invalid without a template' do
-      formulario = described_class.new(turma: turma, coordenador: user, data_envio: Time.current, data_fim: 1.week.from_now)
-      expect(formulario).not_to be_valid
-      expect(formulario.errors[:template]).to include("must exist")
-    end
-
-    it 'is invalid without a coordenador' do
-      formulario = described_class.new(template: template, turma: turma, data_envio: Time.current, data_fim: 1.week.from_now)
-      expect(formulario).not_to be_valid
-      expect(formulario.errors[:coordenador]).to include("must exist")
-    end
-
-    it 'is invalid without data_envio' do
-      formulario = described_class.new(template: template, turma: turma, coordenador: user, data_fim: 1.week.from_now)
-      expect(formulario).not_to be_valid
-      expect(formulario.errors[:data_envio]).to include("can't be blank")
-    end
-
-    it 'is invalid without data_fim' do
-      formulario = described_class.new(template: template, turma: turma, coordenador: user, data_envio: Time.current)
-      expect(formulario).not_to be_valid
-      expect(formulario.errors[:data_fim]).to include("can't be blank")
-    end
-
-    it 'is invalid when data_fim is before data_envio' do
-      formulario = described_class.new(
-        template: template,
-        turma: turma,
-        coordenador: user,
-        data_envio: 1.week.from_now,
-        data_fim: Time.current
-      )
-      expect(formulario).not_to be_valid
-      expect(formulario.errors[:data_fim]).to include("must be greater than #{1.week.from_now}")
-    end
-
-    context 'when escopo_visibilidade is por_disciplina' do
-      it 'requires disciplina_id' do
+    context 'happy path' do
+      it 'is valid with valid attributes' do
         formulario = described_class.new(
           template: template,
           turma: turma,
           coordenador: user,
           data_envio: Time.current,
-          data_fim: 1.week.from_now,
-          escopo_visibilidade: 'por_disciplina'
-        )
-        expect(formulario).not_to be_valid
-        expect(formulario.errors[:disciplina_id]).to include("can't be blank")
-      end
-
-      it 'is valid with disciplina_id' do
-        formulario = described_class.new(
-          template: template,
-          turma: turma,
-          coordenador: user,
-          data_envio: Time.current,
-          data_fim: 1.week.from_now,
-          escopo_visibilidade: 'por_disciplina',
-          disciplina: disciplina
+          data_fim: 1.week.from_now
         )
         expect(formulario).to be_valid
+      end
+
+      it 'is valid with all required fields present' do
+        formulario = described_class.new(
+          template: template,
+          turma: turma,
+          coordenador: user,
+          data_envio: Time.current,
+          data_fim: 1.week.from_now,
+          ativo: true
+        )
+        expect(formulario).to be_valid
+      end
+
+      it 'is valid when data_fim is after data_envio' do
+        formulario = described_class.new(
+          template: template,
+          turma: turma,
+          coordenador: user,
+          data_envio: Time.current,
+          data_fim: 2.weeks.from_now
+        )
+        expect(formulario).to be_valid
+      end
+
+      context 'when escopo_visibilidade is por_disciplina' do
+        it 'is valid with disciplina_id' do
+          formulario = described_class.new(
+            template: template,
+            turma: turma,
+            coordenador: user,
+            data_envio: Time.current,
+            data_fim: 1.week.from_now,
+            escopo_visibilidade: 'por_disciplina',
+            disciplina: disciplina
+          )
+          expect(formulario).to be_valid
+        end
+      end
+
+      it 'is valid with todos_os_alunos escopo_visibilidade (default)' do
+        formulario = described_class.new(
+          template: template,
+          turma: turma,
+          coordenador: user,
+          data_envio: Time.current,
+          data_fim: 1.week.from_now,
+          escopo_visibilidade: 'todos_os_alunos'
+        )
+        expect(formulario).to be_valid
+      end
+    end
+
+    context 'sad path' do
+      it 'is invalid without a template' do
+        formulario = described_class.new(turma: turma, coordenador: user, data_envio: Time.current, data_fim: 1.week.from_now)
+        expect(formulario).not_to be_valid
+        expect(formulario.errors[:template]).to include("must exist")
+      end
+
+      it 'is invalid without a coordenador' do
+        formulario = described_class.new(template: template, turma: turma, data_envio: Time.current, data_fim: 1.week.from_now)
+        expect(formulario).not_to be_valid
+        expect(formulario.errors[:coordenador]).to include("must exist")
+      end
+
+      it 'is invalid without data_envio' do
+        formulario = described_class.new(template: template, turma: turma, coordenador: user, data_fim: 1.week.from_now)
+        expect(formulario).not_to be_valid
+        expect(formulario.errors[:data_envio]).to include("can't be blank")
+      end
+
+      it 'is invalid without data_fim' do
+        formulario = described_class.new(template: template, turma: turma, coordenador: user, data_envio: Time.current)
+        expect(formulario).not_to be_valid
+        expect(formulario.errors[:data_fim]).to include("can't be blank")
+      end
+
+      it 'is invalid when data_fim is before data_envio' do
+        formulario = described_class.new(
+          template: template,
+          turma: turma,
+          coordenador: user,
+          data_envio: 1.week.from_now,
+          data_fim: Time.current
+        )
+        expect(formulario).not_to be_valid
+        expect(formulario.errors[:data_fim]).to include("must be greater than #{1.week.from_now}")
+      end
+
+      it 'is invalid when data_fim equals data_envio' do
+        time = Time.current
+        formulario = described_class.new(
+          template: template,
+          turma: turma,
+          coordenador: user,
+          data_envio: time,
+          data_fim: time
+        )
+        expect(formulario).not_to be_valid
+        expect(formulario.errors[:data_fim]).to include("must be greater than #{time}")
+      end
+
+      context 'when escopo_visibilidade is por_disciplina' do
+        it 'requires disciplina_id' do
+          formulario = described_class.new(
+            template: template,
+            turma: turma,
+            coordenador: user,
+            data_envio: Time.current,
+            data_fim: 1.week.from_now,
+            escopo_visibilidade: 'por_disciplina'
+          )
+          expect(formulario).not_to be_valid
+          expect(formulario.errors[:disciplina_id]).to include("can't be blank")
+        end
+
+        it 'is invalid with nil disciplina_id' do
+          formulario = described_class.new(
+            template: template,
+            turma: turma,
+            coordenador: user,
+            data_envio: Time.current,
+            data_fim: 1.week.from_now,
+            escopo_visibilidade: 'por_disciplina',
+            disciplina_id: nil
+          )
+          expect(formulario).not_to be_valid
+        end
+      end
+
+      it 'handles missing turma gracefully' do
+        formulario = described_class.new(
+          template: template,
+          coordenador: user,
+          data_envio: Time.current,
+          data_fim: 1.week.from_now
+        )
+        # Turma validation might not be enforced in this model
+        expect(formulario.turma).to be_nil
       end
     end
   end

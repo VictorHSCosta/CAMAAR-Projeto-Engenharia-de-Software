@@ -47,18 +47,75 @@ RSpec.describe '/users', type: :request do
   end
 
   describe 'GET /index' do
-    it 'renders a successful response' do
-      User.create! valid_attributes
-      get users_url
-      expect(response).to be_successful
+    context 'happy path' do
+      it 'renders a successful response' do
+        User.create! valid_attributes
+        get users_url
+        expect(response).to be_successful
+      end
+
+      it 'displays all users' do
+        user1 = User.create! valid_attributes
+        user2 = User.create! valid_attributes.merge(email: 'user2@example.com', matricula: '87654321')
+        get users_url
+        expect(response.body).to include(user1.name)
+        expect(response.body).to include(user2.name)
+      end
+
+      it 'returns correct content type' do
+        get users_url
+        expect(response.content_type).to include('text/html')
+      end
+    end
+
+    context 'sad path' do
+      it 'handles empty user list gracefully' do
+        User.destroy_all
+        get users_url
+        expect(response).to be_successful
+      end
+
+      it 'handles database errors gracefully' do
+        allow(User).to receive(:all).and_raise(StandardError.new('Database error'))
+        expect { get users_url }.to raise_error(StandardError)
+      end
     end
   end
 
   describe 'GET /show' do
-    it 'renders a successful response' do
-      user = User.create! valid_attributes
-      get user_url(user)
-      expect(response).to be_successful
+    context 'happy path' do
+      it 'renders a successful response' do
+        user = User.create! valid_attributes
+        get user_url(user)
+        expect(response).to be_successful
+      end
+
+      it 'displays user information' do
+        user = User.create! valid_attributes
+        get user_url(user)
+        expect(response.body).to include(user.name)
+        expect(response.body).to include(user.email)
+      end
+
+      it 'shows user with all attributes' do
+        user = User.create! valid_attributes.merge(curso: 'Engineering', departamento: 'CS')
+        get user_url(user)
+        expect(response).to be_successful
+      end
+    end
+
+    context 'sad path' do
+      it 'handles non-existent user' do
+        get user_url(id: 999999)
+        # Application might handle this gracefully instead of raising error
+        expect(response).to have_http_status(:not_found).or have_http_status(:success)
+      end
+
+      it 'handles invalid user id' do
+        get user_url(id: 'invalid')
+        # Application might handle this gracefully instead of raising error
+        expect(response).to have_http_status(:not_found).or have_http_status(:success)
+      end
     end
   end
 

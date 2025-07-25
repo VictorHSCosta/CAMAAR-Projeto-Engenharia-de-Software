@@ -18,97 +18,147 @@ RSpec.describe EvaluationsController, type: :controller do
   end
 
   describe 'GET #index' do
-    context 'when user is an admin' do
-      before do
-        allow(controller).to receive(:current_user).and_return(admin_user)
-        get :index
-      end
-
-      it 'assigns all active formularios' do
-        expect(assigns(:formularios)).to include(formulario_ativo, formulario_coordenador)
-      end
-
-      it 'does not assign inactive formularios' do
-        expect(assigns(:formularios)).not_to include(formulario_inativo)
-      end
-
-      it 'assigns all active forms to @formularios_disponiveis' do
-        expect(assigns(:formularios_disponiveis)).to match_array([formulario_ativo, formulario_coordenador])
-      end
-
-      it 'assigns an empty array to @formularios_respondidos' do
-        expect(assigns(:formularios_respondidos)).to be_empty
-      end
-
-      it 'renders the index template' do
-        expect(response).to render_template(:index)
-      end
-    end
-
-    context 'when user is a coordenador' do
-      before do
-        allow(controller).to receive(:current_user).and_return(coordenador_user)
-        get :index
-      end
-
-      it 'assigns only their own active formularios' do
-        expect(assigns(:formularios)).to eq([formulario_coordenador])
-      end
-
-      it 'assigns their own forms to @formularios_disponiveis' do
-        expect(assigns(:formularios_disponiveis)).to eq([formulario_coordenador])
-      end
-
-      it 'assigns an empty array to @formularios_respondidos' do
-        expect(assigns(:formularios_respondidos)).to be_empty
-      end
-    end
-
-    context 'when user is an aluno' do
-      before do
-        allow(controller).to receive(:current_user).and_return(aluno_user)
-        # Mock the chain of scopes
-        active_forms = Formulario.where(id: [formulario_ativo.id, formulario_coordenador.id])
-        allow(Formulario).to receive(:ativos).and_return(active_forms)
-        allow(active_forms).to receive(:no_periodo).and_return(active_forms)
-        allow_any_instance_of(Formulario).to receive(:can_be_seen_by?).and_return(true)
-      end
-
-      context 'with no answered forms' do
+    context 'happy path' do
+      context 'when user is an admin' do
         before do
-          allow_any_instance_of(Formulario).to receive(:already_answered_by?).and_return(false)
+          allow(controller).to receive(:current_user).and_return(admin_user)
           get :index
         end
 
-        it 'assigns available forms to @formularios_disponiveis' do
+        it 'assigns all active formularios' do
+          expect(assigns(:formularios)).to include(formulario_ativo, formulario_coordenador)
+        end
+
+        it 'does not assign inactive formularios' do
+          expect(assigns(:formularios)).not_to include(formulario_inativo)
+        end
+
+        it 'assigns all active forms to @formularios_disponiveis' do
           expect(assigns(:formularios_disponiveis)).to match_array([formulario_ativo, formulario_coordenador])
         end
 
         it 'assigns an empty array to @formularios_respondidos' do
           expect(assigns(:formularios_respondidos)).to be_empty
         end
+
+        it 'renders the index template' do
+          expect(response).to render_template(:index)
+        end
+
+        it 'returns successful response' do
+          expect(response).to be_successful
+        end
       end
 
-      context 'with one answered form' do
+      context 'when user is a coordenador' do
         before do
-          allow_any_instance_of(Formulario).to receive(:already_answered_by?) do |form, user|
-            case form.id
-            when formulario_ativo.id
-              true
-            when formulario_coordenador.id
-              false
-            else
-              false
-            end
-          end
+          allow(controller).to receive(:current_user).and_return(coordenador_user)
           get :index
         end
 
-        it 'separates available and answered forms' do
-          expect(assigns(:formularios_disponiveis)).to include(formulario_coordenador)
-          expect(assigns(:formularios_disponiveis)).not_to include(formulario_ativo)
-          expect(assigns(:formularios_respondidos)).to include(formulario_ativo)
-          expect(assigns(:formularios_respondidos)).not_to include(formulario_coordenador)
+        it 'assigns only their own active formularios' do
+          expect(assigns(:formularios)).to eq([formulario_coordenador])
+        end
+
+        it 'assigns their own forms to @formularios_disponiveis' do
+          expect(assigns(:formularios_disponiveis)).to eq([formulario_coordenador])
+        end
+
+        it 'assigns an empty array to @formularios_respondidos' do
+          expect(assigns(:formularios_respondidos)).to be_empty
+        end
+
+        it 'renders the index template successfully' do
+          expect(response).to render_template(:index)
+          expect(response).to be_successful
+        end
+      end
+
+      context 'when user is an aluno' do
+        before do
+          allow(controller).to receive(:current_user).and_return(aluno_user)
+          # Mock the chain of scopes
+          active_forms = Formulario.where(id: [formulario_ativo.id, formulario_coordenador.id])
+          allow(Formulario).to receive(:ativos).and_return(active_forms)
+          allow(active_forms).to receive(:no_periodo).and_return(active_forms)
+          allow_any_instance_of(Formulario).to receive(:can_be_seen_by?).and_return(true)
+        end
+
+        context 'with no answered forms' do
+          before do
+            allow_any_instance_of(Formulario).to receive(:already_answered_by?).and_return(false)
+            get :index
+          end
+
+          it 'assigns available forms to @formularios_disponiveis' do
+            expect(assigns(:formularios_disponiveis)).to match_array([formulario_ativo, formulario_coordenador])
+          end
+
+          it 'assigns an empty array to @formularios_respondidos' do
+            expect(assigns(:formularios_respondidos)).to be_empty
+          end
+
+          it 'renders successfully' do
+            expect(response).to be_successful
+          end
+        end
+
+        context 'with one answered form' do
+          before do
+            allow_any_instance_of(Formulario).to receive(:already_answered_by?) do |form, user|
+              case form.id
+              when formulario_ativo.id
+                true
+              when formulario_coordenador.id
+                false
+              else
+                false
+              end
+            end
+            get :index
+          end
+
+          it 'separates available and answered forms' do
+            expect(assigns(:formularios_disponiveis)).to eq([formulario_coordenador])
+            expect(assigns(:formularios_respondidos)).to eq([formulario_ativo])
+          end
+        end
+      end
+    end
+
+    context 'sad path' do
+      context 'when database is unavailable' do
+        before do
+          allow(controller).to receive(:current_user).and_return(admin_user)
+          allow(Formulario).to receive(:ativos).and_raise(StandardError.new('Database error'))
+        end
+
+        it 'handles database errors gracefully' do
+          expect { get :index }.to raise_error(StandardError)
+        end
+      end
+
+      context 'when user has no permissions' do
+        let(:unauthorized_user) { create(:user, role: nil) }
+
+        before do
+          allow(controller).to receive(:current_user).and_return(unauthorized_user)
+        end
+
+        it 'handles users without proper role' do
+          expect { get :index }.not_to raise_error
+          # The controller should still render but with limited data
+        end
+      end
+
+      context 'when formularios are corrupted' do
+        before do
+          allow(controller).to receive(:current_user).and_return(admin_user)
+          allow_any_instance_of(Formulario).to receive(:can_be_seen_by?).and_raise(StandardError.new('Corrupted data'))
+        end
+
+        it 'handles corrupted formulario data' do
+          expect { get :index }.to raise_error(StandardError)
         end
       end
     end

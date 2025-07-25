@@ -27,27 +27,71 @@ RSpec.describe FormulariosController, type: :controller do
     end
 
     describe 'GET #index' do
-      it 'returns a success response' do
-        get :index
-        expect(response).to be_successful
+      context 'happy path' do
+        it 'returns a success response' do
+          get :index
+          expect(response).to be_successful
+        end
+
+        it 'assigns all formularios' do
+          formulario
+          get :index
+          expect(assigns(:formularios)).to include(formulario)
+        end
+
+        it 'renders the index template' do
+          get :index
+          expect(response).to render_template(:index)
+        end
+
+        it 'loads formularios correctly when multiple exist' do
+          formulario2 = create(:formulario, template: template, coordenador: admin_user)
+          get :index
+          expect(assigns(:formularios)).to include(formulario, formulario2)
+        end
       end
 
-      it 'assigns all formularios' do
-        formulario
-        get :index
-        expect(assigns(:formularios)).to include(formulario)
+      context 'sad path' do
+        before do
+          allow(Formulario).to receive(:all).and_raise(StandardError.new('Database connection error'))
+        end
+
+        it 'handles database errors gracefully' do
+          expect { get :index }.to raise_error(StandardError)
+        end
       end
     end
 
     describe 'GET #show' do
-      it 'returns a success response' do
-        get :show, params: { id: formulario.to_param }
-        expect(response).to be_successful
+      context 'happy path' do
+        it 'returns a success response' do
+          get :show, params: { id: formulario.to_param }
+          expect(response).to be_successful
+        end
+
+        it 'assigns the requested formulario' do
+          get :show, params: { id: formulario.to_param }
+          expect(assigns(:formulario)).to eq(formulario)
+        end
+
+        it 'renders the show template' do
+          get :show, params: { id: formulario.to_param }
+          expect(response).to render_template(:show)
+        end
       end
 
-      it 'assigns the requested formulario' do
-        get :show, params: { id: formulario.to_param }
-        expect(assigns(:formulario)).to eq(formulario)
+      context 'sad path' do
+        it 'handles non-existent formulario' do
+          expect {
+            get :show, params: { id: 999999 }
+          }.to raise_error(ActiveRecord::RecordNotFound)
+        end
+
+        it 'handles invalid id format' do
+          expect {
+            get :show, params: { id: 'invalid' }
+          }.to raise_error(ActiveRecord::RecordNotFound)
+        end
       end
     end
 

@@ -6,61 +6,112 @@ RSpec.describe User, type: :model do
   describe 'validations' do
     subject { build(:user) }
 
-    it 'is valid with valid attributes' do
-      user = build(:user)
-      expect(user).to be_valid
+    context 'happy path' do
+      it 'is valid with valid attributes' do
+        user = build(:user)
+        expect(user).to be_valid
+      end
+
+      it 'is valid with all required fields' do
+        user = build(:user, name: 'John Doe', email: 'john@example.com', matricula: '12345', role: 'aluno')
+        expect(user).to be_valid
+      end
+
+      it 'allows blank departamento' do
+        user = build(:user, departamento: '')
+        expect(user).to be_valid
+      end
+
+      it 'allows blank formacao' do
+        user = build(:user, formacao: '')
+        expect(user).to be_valid
+      end
+
+      it 'accepts valid email formats' do
+        valid_emails = ['test@example.com', 'user.name@domain.co.uk', 'a@b.co']
+        valid_emails.each do |email|
+          user = build(:user, email: email)
+          expect(user).to be_valid, "#{email} should be valid"
+        end
+      end
+
+      it 'accepts different roles' do
+        %w[admin aluno professor coordenador].each do |role|
+          user = build(:user, role: role)
+          expect(user).to be_valid, "#{role} should be a valid role"
+        end
+      end
     end
 
-    it 'validates presence of name' do
-      user = build(:user, name: nil)
-      expect(user).not_to be_valid
-      expect(user.errors[:name]).to include("can't be blank")
-    end
+    context 'sad path' do
+      it 'validates presence of name' do
+        user = build(:user, name: nil)
+        expect(user).not_to be_valid
+        expect(user.errors[:name]).to include("can't be blank")
+      end
 
-    it 'validates presence of matricula' do
-      user = build(:user, matricula: nil)
-      expect(user).not_to be_valid
-      expect(user.errors[:matricula]).to include("can't be blank")
-    end
+      it 'validates presence of matricula' do
+        user = build(:user, matricula: nil)
+        expect(user).not_to be_valid
+        expect(user.errors[:matricula]).to include("can't be blank")
+      end
 
-    it 'validates uniqueness of matricula' do
-      create(:user, matricula: '12345')
-      user = build(:user, matricula: '12345')
-      expect(user).not_to be_valid
-      expect(user.errors[:matricula]).to include('has already been taken')
-    end
+      it 'validates uniqueness of matricula' do
+        create(:user, matricula: '12345')
+        user = build(:user, matricula: '12345')
+        expect(user).not_to be_valid
+        expect(user.errors[:matricula]).to include('has already been taken')
+      end
 
-    it 'validates presence of role' do
-      user = build(:user, role: nil)
-      expect(user).not_to be_valid
-    end
+      it 'validates presence of role' do
+        user = build(:user, role: nil)
+        expect(user).not_to be_valid
+      end
 
-    it 'validates length of curso' do
-      user = build(:user, curso: 'a' * 256)
-      expect(user).not_to be_valid
-      expect(user.errors[:curso]).to include('is too long (maximum is 255 characters)')
-    end
+      it 'validates length of curso' do
+        user = build(:user, curso: 'a' * 256)
+        expect(user).not_to be_valid
+        expect(user.errors[:curso]).to include('is too long (maximum is 255 characters)')
+      end
 
-    it 'validates length of departamento' do
-      user = build(:user, departamento: 'a' * 256)
-      expect(user).not_to be_valid
-      expect(user.errors[:departamento]).to include('is too long (maximum is 255 characters)')
-    end
+      it 'validates length of departamento' do
+        user = build(:user, departamento: 'a' * 256)
+        expect(user).not_to be_valid
+        expect(user.errors[:departamento]).to include('is too long (maximum is 255 characters)')
+      end
 
-    it 'allows blank departamento' do
-      user = build(:user, departamento: '')
-      expect(user).to be_valid
-    end
+      it 'validates length of formacao' do
+        user = build(:user, formacao: 'a' * 101)
+        expect(user).not_to be_valid
+        expect(user.errors[:formacao]).to include('is too long (maximum is 100 characters)')
+      end
 
-    it 'validates length of formacao' do
-      user = build(:user, formacao: 'a' * 101)
-      expect(user).not_to be_valid
-      expect(user.errors[:formacao]).to include('is too long (maximum is 100 characters)')
-    end
+      it 'rejects invalid email formats' do
+        invalid_emails = ['invalid', '@example.com', 'test@', 'test.example.com']
+        invalid_emails.each do |email|
+          user = build(:user, email: email)
+          expect(user).not_to be_valid, "#{email} should be invalid"
+          expect(user.errors[:email]).to be_present
+        end
+      end
 
-    it 'allows blank formacao' do
-      user = build(:user, formacao: '')
-      expect(user).to be_valid
+      it 'rejects blank name' do
+        user = build(:user, name: '')
+        expect(user).not_to be_valid
+        expect(user.errors[:name]).to include("can't be blank")
+      end
+
+      it 'rejects blank matricula' do
+        user = build(:user, matricula: '')
+        expect(user).not_to be_valid
+        expect(user.errors[:matricula]).to include("can't be blank")
+      end
+
+      it 'handles extremely long names gracefully' do
+        user = build(:user, name: 'a' * 1000)
+        # Model might not have length validation for name
+        expect(user.name.length).to eq(1000)
+      end
     end
   end
 

@@ -20,38 +20,93 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe 'GET #index' do
-    it 'returns a successful response' do
-      get :index
-      expect(response).to be_successful
+    context 'happy path' do
+      it 'returns a successful response' do
+        get :index
+        expect(response).to be_successful
+      end
+
+      it 'assigns all users' do
+        get :index
+        expect(assigns(:users)).to include(admin)
+      end
+
+      it 'renders the index template' do
+        get :index
+        expect(response).to render_template(:index)
+      end
     end
 
-    it 'assigns all users' do
-      get :index
-      expect(assigns(:users)).to include(admin)
+    context 'sad path' do
+      before do
+        allow(User).to receive(:all).and_raise(StandardError.new('Database error'))
+      end
+
+      it 'handles database errors gracefully' do
+        expect { get :index }.to raise_error(StandardError)
+      end
     end
   end
 
   describe 'GET #show' do
-    it 'returns a successful response' do
-      get :show, params: { id: admin.id }
-      expect(response).to be_successful
+    context 'happy path' do
+      it 'returns a successful response' do
+        get :show, params: { id: admin.id }
+        expect(response).to be_successful
+      end
+
+      it 'assigns the requested user' do
+        get :show, params: { id: admin.id }
+        expect(assigns(:user)).to eq(admin)
+      end
+
+      it 'renders the show template' do
+        get :show, params: { id: admin.id }
+        expect(response).to render_template(:show)
+      end
     end
 
-    it 'assigns the requested user' do
-      get :show, params: { id: admin.id }
-      expect(assigns(:user)).to eq(admin)
+    context 'sad path' do
+      it 'handles non-existent user gracefully' do
+        expect {
+          get :show, params: { id: 999999 }
+        }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+
+      it 'handles invalid id parameter' do
+        expect {
+          get :show, params: { id: 'invalid' }
+        }.to raise_error(ActiveRecord::RecordNotFound)
+      end
     end
   end
 
   describe 'GET #new' do
-    it 'returns a successful response' do
-      get :new
-      expect(response).to be_successful
+    context 'happy path' do
+      it 'returns a successful response' do
+        get :new
+        expect(response).to be_successful
+      end
+
+      it 'assigns a new user' do
+        get :new
+        expect(assigns(:user)).to be_a_new(User)
+      end
+
+      it 'renders the new template' do
+        get :new
+        expect(response).to render_template(:new)
+      end
     end
 
-    it 'assigns a new user' do
-      get :new
-      expect(assigns(:user)).to be_a_new(User)
+    context 'sad path' do
+      before do
+        allow(User).to receive(:new).and_raise(StandardError.new('Initialization error'))
+      end
+
+      it 'handles user initialization errors' do
+        expect { get :new }.to raise_error(StandardError)
+      end
     end
   end
 
@@ -90,102 +145,179 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe 'POST #create' do
-    context 'with valid parameters' do
-      let(:valid_attributes) do
-        {
-          name: 'New User',
-          email: 'newuser@example.com',
-          password: 'password123',
-          password_confirmation: 'password123',
-          matricula: '12345678',
-          role: 'aluno',
-          curso: 'Engenharia de Software'
-        }
-      end
+    context 'happy path' do
+      context 'with valid parameters' do
+        let(:valid_attributes) do
+          {
+            name: 'New User',
+            email: 'newuser@example.com',
+            password: 'password123',
+            password_confirmation: 'password123',
+            matricula: '12345678',
+            role: 'aluno',
+            curso: 'Engenharia de Software'
+          }
+        end
 
-      it 'creates a new user' do
-        expect do
+        it 'creates a new user' do
+          expect do
+            post :create, params: { user: valid_attributes }
+          end.to change(User, :count).by(1)
+        end
+
+        it 'redirects to the user' do
           post :create, params: { user: valid_attributes }
-        end.to change(User, :count).by(1)
+          expect(response).to redirect_to(User.last)
+        end
+
+        it 'sets success notice with temporary password' do
+          post :create, params: { user: valid_attributes }
+          expect(flash[:notice]).to match(/Usuário criado com sucesso! Senha temporária:/)
+        end
+
+        it 'assigns the user correctly' do
+          post :create, params: { user: valid_attributes }
+          expect(assigns(:user)).to be_persisted
+        end
       end
 
-      it 'redirects to the user' do
-        post :create, params: { user: valid_attributes }
-        expect(response).to redirect_to(User.last)
-      end
+      context 'with blank password' do
+        let(:attributes_without_password) do
+          {
+            name: 'New User',
+            email: 'newuser@example.com',
+            matricula: '12345678',
+            role: 'aluno',
+            curso: 'Engenharia de Software',
+            password: ''
+          }
+        end
 
-      it 'sets success notice with temporary password' do
-        post :create, params: { user: valid_attributes }
-        expect(flash[:notice]).to match(/Usuário criado com sucesso! Senha temporária:/)
-      end
-    end
+        it 'creates user successfully' do
+          expect do
+            post :create, params: { user: attributes_without_password }
+          end.to change(User, :count).by(1)
+        end
 
-    context 'with blank password' do
-      let(:attributes_without_password) do
-        {
-          name: 'New User',
-          email: 'newuser@example.com',
-          matricula: '12345678',
-          role: 'aluno',
-          curso: 'Engenharia de Software',
-          password: ''
-        }
-      end
-
-      it 'creates user successfully' do
-        expect do
+        it 'sets success notice with generated password' do
           post :create, params: { user: attributes_without_password }
-        end.to change(User, :count).by(1)
+          expect(flash[:notice]).to match(/Usuário criado com sucesso! Senha temporária:/)
+        end
+
+        it 'generates temporary password automatically' do
+          allow(controller).to receive(:generate_temp_password).and_return('temp123')
+          post :create, params: { user: attributes_without_password }
+          expect(controller).to have_received(:generate_temp_password)
+        end
       end
 
-      it 'sets success notice with generated password' do
-        post :create, params: { user: attributes_without_password }
-        expect(flash[:notice]).to match(/Usuário criado com sucesso! Senha temporária:/)
+      context 'with JSON format' do
+        let(:valid_attributes) do
+          {
+            name: 'New User',
+            email: 'newuser@example.com',
+            matricula: '12345678',
+            role: 'aluno'
+          }
+        end
+
+        it 'returns JSON response for successful creation' do
+          post :create, params: { user: valid_attributes }, format: :json
+          expect(response).to have_http_status(:created)
+          expect(response.content_type).to include('application/json')
+        end
+
+        it 'includes user data in JSON response' do
+          post :create, params: { user: valid_attributes }, format: :json
+          json_response = JSON.parse(response.body)
+          expect(json_response['name']).to eq('New User')
+        end
       end
     end
 
-    context 'with JSON format' do
-      let(:valid_attributes) do
-        {
-          name: 'New User',
-          email: 'newuser@example.com',
-          matricula: '12345678',
-          role: 'aluno'
-        }
-      end
+    context 'sad path' do
+      context 'with invalid parameters' do
+        let(:invalid_attributes) do
+          {
+            name: '',
+            email: 'invalid_email',
+            password: 'pass',
+            matricula: ''
+          }
+        end
 
-      it 'returns JSON response for successful creation' do
-        post :create, params: { user: valid_attributes }, format: :json
-        expect(response).to have_http_status(:created)
-        expect(response.content_type).to include('application/json')
-      end
+        it 'does not create a new user' do
+          expect do
+            post :create, params: { user: invalid_attributes }
+          end.not_to change(User, :count)
+        end
 
-      it 'returns JSON error for failed creation' do
-        post :create, params: { user: { name: '' } }, format: :json
-        expect(response).to have_http_status(:unprocessable_entity)
-        expect(response.content_type).to include('application/json')
-      end
-    end
-
-    context 'with invalid parameters' do
-      let(:invalid_attributes) do
-        {
-          name: '',
-          email: 'invalid_email',
-          password: 'pass',
-          matricula: ''
-        }
-      end
-
-      it 'does not create a new user' do
-        expect do
+        it 'renders the new template' do
           post :create, params: { user: invalid_attributes }
-        end.not_to change(User, :count)
+          expect(response).to render_template(:new)
+        end
+
+        it 'returns unprocessable entity status' do
+          post :create, params: { user: invalid_attributes }
+          expect(response).to have_http_status(:unprocessable_entity)
+        end
+
+        it 'assigns user with errors' do
+          post :create, params: { user: invalid_attributes }
+          expect(assigns(:user).errors).not_to be_empty
+        end
       end
 
-      it 'renders the new template' do
-        post :create, params: { user: invalid_attributes }
-        expect(response).to render_template(:new)
+      context 'with JSON format and invalid data' do
+        it 'returns JSON error for failed creation' do
+          post :create, params: { user: { name: '' } }, format: :json
+          expect(response).to have_http_status(:unprocessable_entity)
+          expect(response.content_type).to include('application/json')
+        end
+
+        it 'includes error details in JSON response' do
+          post :create, params: { user: { name: '' } }, format: :json
+          json_response = JSON.parse(response.body)
+          expect(json_response.keys).to include('name', 'email', 'matricula')
+        end
+      end
+
+      context 'with duplicate matricula' do
+        let(:existing_user_attributes) do
+          {
+            name: 'Existing User',
+            email: 'existing@example.com',
+            matricula: '12345678',
+            role: 'aluno'
+          }
+        end
+
+        before do
+          create(:user, matricula: '12345678')
+        end
+
+        it 'does not create duplicate user' do
+          expect do
+            post :create, params: { user: existing_user_attributes }
+          end.not_to change(User, :count)
+        end
+
+        it 'shows validation error for duplicate matricula' do
+          post :create, params: { user: existing_user_attributes }
+          expect(assigns(:user).errors[:matricula]).to include('has already been taken')
+        end
+      end
+
+      context 'when user creation fails unexpectedly' do
+        before do
+          allow_any_instance_of(User).to receive(:save).and_return(false)
+          allow_any_instance_of(User).to receive(:errors).and_return(double(empty?: false, full_messages: ['Unknown error']))
+        end
+
+        it 'handles save failure gracefully' do
+          post :create, params: { user: { name: 'Test', email: 'test@example.com', matricula: '123', role: 'aluno' } }
+          expect(response).to render_template(:new)
+        end
       end
     end
   end
