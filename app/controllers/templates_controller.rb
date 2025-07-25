@@ -57,6 +57,7 @@ class TemplatesController < ApplicationController
   #
   def create
     @template = Template.new(template_params)
+    @template.criado_por = current_user
     @template.disciplina_id ||= nil
 
     respond_to do |format|
