@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_14_000749) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_25_021720) do
   create_table "cursos", force: :cascade do |t|
     t.string "nome"
     t.datetime "created_at", null: false
@@ -37,7 +37,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_14_000749) do
     t.datetime "data_fim"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "ativo", default: false
+    t.boolean "ativo", default: true
     t.integer "escopo_visibilidade", default: 0, null: false
     t.integer "disciplina_id"
     t.index ["coordenador_id"], name: "index_formularios_on_coordenador_id"
