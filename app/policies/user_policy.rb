@@ -10,7 +10,7 @@ class UserPolicy < ApplicationPolicy
   # * +Boolean+ - True if the user is an admin, otherwise false.
   #
   def index?
-    user.admin?
+    user&.admin?
   end
 
   # Admins can view any user profile. Users can view their own profile.
@@ -20,7 +20,7 @@ class UserPolicy < ApplicationPolicy
   # * +Boolean+ - True if the user is an admin or is viewing their own profile, otherwise false.
   #
   def show?
-    user.admin? || record == user
+    user&.admin? || record == user
   end
 
   # Only admins can create new users.
@@ -30,7 +30,7 @@ class UserPolicy < ApplicationPolicy
   # * +Boolean+ - True if the user is an admin, otherwise false.
   #
   def create?
-    user.admin?
+    user&.admin?
   end
 
   # Admins can update any user. Users can update their own profile.
@@ -40,7 +40,7 @@ class UserPolicy < ApplicationPolicy
   # * +Boolean+ - True if the user is an admin or is updating their own profile, otherwise false.
   #
   def update?
-    user.admin? || record == user
+    user&.admin? || record == user
   end
 
   # Admins can destroy any user except themselves.
@@ -50,6 +50,6 @@ class UserPolicy < ApplicationPolicy
   # * +Boolean+ - True if the user is an admin and not destroying their own account, otherwise false.
   #
   def destroy?
-    user.admin? && record != user
+    user&.admin? && record != user
   end
 end

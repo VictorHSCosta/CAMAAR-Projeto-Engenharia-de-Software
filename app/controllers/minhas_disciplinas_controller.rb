@@ -111,7 +111,8 @@ class MinhasDisciplinasController < ApplicationController
     semestre = params[:semestre]
 
     if @disciplina.turmas.exists?(professor_id: @professor.id, semestre: semestre)
-      redirect_to gerenciar_disciplinas_path, alert: 'Este professor já leciona esta disciplina neste semestre.'
+      redirect_to gerenciar_disciplina_path(@disciplina),
+                  alert: 'Este professor já leciona esta disciplina neste semestre.'
       return
     end
 
@@ -122,7 +123,7 @@ class MinhasDisciplinasController < ApplicationController
 
     professor_name = @professor.name
     disciplina_nome = @disciplina.nome
-    redirect_to gerenciar_disciplinas_path,
+    redirect_to gerenciar_disciplina_path(@disciplina),
                 notice: "Professor #{professor_name} cadastrado na disciplina #{disciplina_nome} para o semestre #{semestre}."
   end
 

@@ -1,4 +1,6 @@
 require 'rails_helper'
+require 'simplecov'
+SimpleCov.start
 
 RSpec.describe 'User Management System Integration' do
   describe 'User model functionality' do

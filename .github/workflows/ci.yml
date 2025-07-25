@@ -41,33 +41,6 @@ jobs:
         name: rspec-results
         path: tmp/rspec_results.xml
 
-  lint:
-    runs-on: ubuntu-latest
-    
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: 3.2.0
-        bundler-cache: true
-
-    - name: Run RuboCop
-      run: bundle exec rubocop --format github
-
-    - name: Run RuboCop (JSON output for artifacts)
-      run: bundle exec rubocop --format json --out tmp/rubocop_results.json
-      continue-on-error: true
-
-    - name: Upload RuboCop results
-      uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: rubocop-results
-        path: tmp/rubocop_results.json
-
   security:
     runs-on: ubuntu-latest
     

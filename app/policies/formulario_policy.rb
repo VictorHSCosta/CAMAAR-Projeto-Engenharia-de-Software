@@ -30,7 +30,7 @@ class FormularioPolicy < ApplicationPolicy
   # * +Boolean+ - True if the user is an admin or coordinator, otherwise false.
   #
   def create?
-    user.admin? || user.coordenador?
+    user&.admin? || user&.coordenador?
   end
 
   # Only admins and coordinators can update forms.
@@ -40,7 +40,7 @@ class FormularioPolicy < ApplicationPolicy
   # * +Boolean+ - True if the user is an admin or coordinator, otherwise false.
   #
   def update?
-    user.admin? || user.coordenador?
+    user&.admin? || user&.coordenador?
   end
 
   # Only admins and coordinators can destroy forms.
@@ -50,6 +50,6 @@ class FormularioPolicy < ApplicationPolicy
   # * +Boolean+ - True if the user is an admin or coordinator, otherwise false.
   #
   def destroy?
-    user.admin? || user.coordenador?
+    user&.admin? || user&.coordenador?
   end
 end

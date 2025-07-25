@@ -10,7 +10,7 @@ class TemplatePolicy < ApplicationPolicy
   # * +Boolean+ - True if the user is an admin, otherwise false.
   #
   def index?
-    user.admin?
+    user&.admin?
   end
 
   # Only admins can view a specific template.
@@ -20,7 +20,7 @@ class TemplatePolicy < ApplicationPolicy
   # * +Boolean+ - True if the user is an admin, otherwise false.
   #
   def show?
-    user.admin?
+    user&.admin?
   end
 
   # Only admins can view the new template form.
@@ -30,7 +30,7 @@ class TemplatePolicy < ApplicationPolicy
   # * +Boolean+ - True if the user is an admin, otherwise false.
   #
   def new?
-    user.admin?
+    user&.admin?
   end
 
   # Only admins can create templates.
@@ -40,7 +40,7 @@ class TemplatePolicy < ApplicationPolicy
   # * +Boolean+ - True if the user is an admin, otherwise false.
   #
   def create?
-    user.admin?
+    user&.admin?
   end
 
   # Only admins can view the edit template form.
@@ -50,7 +50,7 @@ class TemplatePolicy < ApplicationPolicy
   # * +Boolean+ - True if the user is an admin, otherwise false.
   #
   def edit?
-    user.admin?
+    user&.admin?
   end
 
   # Only admins can update templates.
@@ -60,7 +60,7 @@ class TemplatePolicy < ApplicationPolicy
   # * +Boolean+ - True if the user is an admin, otherwise false.
   #
   def update?
-    user.admin?
+    user&.admin?
   end
 
   # Only admins can destroy templates.
@@ -70,7 +70,7 @@ class TemplatePolicy < ApplicationPolicy
   # * +Boolean+ - True if the user is an admin, otherwise false.
   #
   def destroy?
-    user.admin?
+    user&.admin?
   end
 
   # Scope class for Template records.
@@ -82,7 +82,7 @@ class TemplatePolicy < ApplicationPolicy
     # * +ActiveRecord::Relation+ - All templates for admins, none for others.
     #
     def resolve
-      if user.admin?
+      if user&.admin?
         scope.all
       else
         scope.none

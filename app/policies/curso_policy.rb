@@ -30,7 +30,7 @@ class CursoPolicy < ApplicationPolicy
   # * +Boolean+ - True if the user is an admin or coordinator, otherwise false.
   #
   def create?
-    user.admin? || user.coordenador?
+    user&.admin? || user&.coordenador?
   end
 
   # Only admins and coordinators can update courses.
@@ -40,7 +40,7 @@ class CursoPolicy < ApplicationPolicy
   # * +Boolean+ - True if the user is an admin or coordinator, otherwise false.
   #
   def update?
-    user.admin? || user.coordenador?
+    user&.admin? || user&.coordenador?
   end
 
   # Only admins can destroy courses.
@@ -50,7 +50,7 @@ class CursoPolicy < ApplicationPolicy
   # * +Boolean+ - True if the user is an admin, otherwise false.
   #
   def destroy?
-    user.admin?
+    user&.admin?
   end
 
   # Scope class for Curso records.
