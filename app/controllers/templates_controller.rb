@@ -156,25 +156,43 @@ class TemplatesController < ApplicationController
   end
 
   def process_perguntas_update
-    return unless params[:perguntas]
-
     Rails.logger.info '=== PROCESS PERGUNTAS UPDATE INICIADO ==='
-    Rails.logger.info "Parâmetros recebidos: #{params[:perguntas].inspect}"
+    Rails.logger.info "Parâmetros perguntas: #{params[:perguntas].inspect}"
+    Rails.logger.info "Parâmetros perguntas_existentes: #{params[:perguntas_existentes].inspect}"
 
     # Mapear perguntas existentes por ID para fácil acesso
     perguntas_existentes = @template.pergunta.index_by(&:id)
     perguntas_processadas_ids = []
 
-    params[:perguntas].each do |index, pergunta_attrs|
-      pergunta_id = pergunta_attrs[:id].presence
-      perguntas_processadas_ids << pergunta_id.to_i if pergunta_id
+    # Processar perguntas existentes primeiro
+    if params[:perguntas_existentes]
+      params[:perguntas_existentes].each do |pergunta_id, pergunta_attrs|
+        pergunta = perguntas_existentes[pergunta_id.to_i]
+        if pergunta
+          update_pergunta(pergunta, pergunta_attrs)
+          perguntas_processadas_ids << pergunta_id.to_i
+        end
+      end
+    end
 
-      if pergunta_id && (pergunta = perguntas_existentes[pergunta_id.to_i])
-        # Atualizar pergunta existente
-        update_pergunta(pergunta, pergunta_attrs)
-      else
-        # Criar nova pergunta
-        create_pergunta(pergunta_attrs)
+    # Processar novas perguntas
+    if params[:perguntas]
+      params[:perguntas].each do |_index, pergunta_attrs|
+        # Ignorar perguntas vazias
+        next if pergunta_attrs[:texto].blank?
+
+        pergunta_id = pergunta_attrs[:id].presence
+
+        if pergunta_id && (pergunta = perguntas_existentes[pergunta_id.to_i])
+          # Atualizar pergunta existente (caso não tenha sido processada acima)
+          unless perguntas_processadas_ids.include?(pergunta_id.to_i)
+            update_pergunta(pergunta, pergunta_attrs)
+            perguntas_processadas_ids << pergunta_id.to_i
+          end
+        else
+          # Criar nova pergunta
+          create_pergunta(pergunta_attrs)
+        end
       end
     end
 
@@ -212,25 +230,53 @@ class TemplatesController < ApplicationController
   end
 
   def process_opcoes(pergunta, opcoes_attrs)
-    opcoes_attrs.each_value do |opcao_attrs|
-      pergunta.opcoes_pergunta.create(texto: opcao_attrs[:texto])
+    Rails.logger.info "Processando opções: #{opcoes_attrs.inspect}"
+
+    return unless opcoes_attrs.present?
+
+    opcoes_attrs.each do |_key, opcao_texto|
+      # Se opcao_texto for um hash, extrair o texto
+      texto = opcao_texto.is_a?(Hash) ? opcao_texto[:texto] : opcao_texto
+
+      # Criar apenas se o texto não estiver vazio
+      if texto.present?
+        pergunta.opcoes_pergunta.create(texto: texto)
+        Rails.logger.info "Opção criada: #{texto}"
+      end
     end
   end
 
   def process_opcoes_update(pergunta, opcoes_attrs)
+    Rails.logger.info "Atualizando opções: #{opcoes_attrs.inspect}"
+
+    return unless opcoes_attrs.present?
+
     opcoes_existentes = pergunta.opcoes_pergunta.index_by(&:id)
     opcoes_processadas_ids = []
 
-    opcoes_attrs.each_value do |opcao_attrs|
-      opcao_id = opcao_attrs[:id].presence
+    opcoes_attrs.each do |_key, opcao_data|
+      # Tratar tanto strings quanto hashes
+      if opcao_data.is_a?(Hash)
+        opcao_id = opcao_data[:id].presence
+        texto = opcao_data[:texto]
+      else
+        opcao_id = nil
+        texto = opcao_data
+      end
+
+      # Pular opções vazias
+      next if texto.blank?
+
       opcoes_processadas_ids << opcao_id.to_i if opcao_id
 
       if opcao_id && (opcao = opcoes_existentes[opcao_id.to_i])
         # Atualizar opção existente
-        opcao.update(texto: opcao_attrs[:texto])
+        opcao.update(texto: texto)
+        Rails.logger.info "Opção atualizada: #{texto}"
       else
         # Criar nova opção
-        pergunta.opcoes_pergunta.create(texto: opcao_attrs[:texto])
+        pergunta.opcoes_pergunta.create(texto: texto)
+        Rails.logger.info "Nova opção criada: #{texto}"
       end
     end
 
