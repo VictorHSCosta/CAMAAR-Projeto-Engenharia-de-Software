@@ -185,7 +185,7 @@ class TemplatesController < ApplicationController
 
   def process_single_pergunta(_index, attrs)
     pergunta = @template.pergunta.build(
-      texto: attrs[:titulo],
+      texto: attrs[:texto],
       tipo: attrs[:tipo]
     )
     return unless pergunta.save
@@ -195,7 +195,7 @@ class TemplatesController < ApplicationController
 
   def create_pergunta(attrs)
     pergunta = @template.pergunta.build(
-      texto: attrs[:titulo],
+      texto: attrs[:texto],
       tipo: attrs[:tipo]
     )
     return unless pergunta.save
@@ -205,7 +205,7 @@ class TemplatesController < ApplicationController
 
   def update_pergunta(pergunta, attrs)
     pergunta.update(
-      texto: attrs[:titulo],
+      texto: attrs[:texto],
       tipo: attrs[:tipo]
     )
     process_opcoes_update(pergunta, attrs[:opcoes]) if attrs[:opcoes]
